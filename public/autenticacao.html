@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autenticação</title>
+  <link rel="stylesheet" href="./css/autentiticacao.css">
+</head>
+<body>
+  <div class="sign-up-container">
+    <div class="sign-up-leftside" id="leftsideContainer">
+      <div class="image-container" id="imageContainer">
+
+      </div>
+      <span onclick="switchPage(this)" id="btnSignUp" class="btn-switch btn-clicked"></span>
+      <span onclick="switchPage(this)" id="btnSignIn" class="btn-switch"></span>
+    </div>
+    <div class="sign-up-rightside">
+      <div class="sign-up-form" id="form">
+        <h1 id="formHeader">Criar uma conta</h1>
+        <p class="alredy-signed" id="signLinks">
+          Ja possui uma conta?
+          <button onclick="switchPage(this)">Entrar</button>
+        </p>
+        <div class="name-row">
+          <input id="inputRazaoSocial" placeholder="Razão social" type="text">
+          <input id="inputNomeFantasia" placeholder="Nome fantasia" type="text">
+        </div>
+        <input placeholder="Email" type="text">
+        <input placeholder="Insira sua senha" type="text">
+        <button>  
+          Criar conta
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="./js/autenticacao.js"></script>
