@@ -68,6 +68,8 @@ function receberDadosLogin(){
 function validateLoginCredentials(dados){
 /*   var caracteresEspeciais = ["@", "#", "!", "&", "*", "$", "%"]; */
   clearErrorSpans();
+  
+  var getAFalse = false;
 
   var lowerCasePassword = dados.password.toLowerCase();
   var cnpjLength = dados.cnpj.length;
@@ -79,8 +81,8 @@ function validateLoginCredentials(dados){
     cnpjLength !== 147
   ){
     cnpjErrorSpan.innerHTML = "Cnpj inválido.";
-
-    return false;
+    
+    getAFalse = true;
   }
 
   if(
@@ -90,10 +92,10 @@ function validateLoginCredentials(dados){
   ){
     passwordErrorSpan.innerHTML = "Senha inválida.";
 
-    return false;
+    getAFalse = true;
   }
 
-  return true;
+  return !getAFalse;
 }
 
 function clearErrorSpans(){
