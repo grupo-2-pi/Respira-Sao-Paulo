@@ -21,7 +21,7 @@ function showSignInForm() {
     <h1 id="formHeader">Entrar</h1>
         <input id="inputCnpj" placeholder="Cnpj" type="text">
         <span class="error-span" id="cnpjErrorSpan"></span>
-        <input id="inputLoginPassword" placeholder="Insira sua senha" type="text">
+        <input id="inputLoginPassword" placeholder="Insira sua senha" type="password">
         <span class="error-span" id="passwordErrorSpan"></span>
         <button onclick="login()">  
           Entrar
