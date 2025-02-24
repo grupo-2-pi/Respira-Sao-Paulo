@@ -19,14 +19,10 @@ function switchPage(button) {
 function showSignInForm() {
   form.innerHTML =  `
     <h1 id="formHeader">Entrar</h1>
-        <p class="alredy-signed" id="signLinks">
-          Não possui uma conta?
-          <a onclick="switchPage(this)">Criar</a>
-        </p>
         <input id="inputCnpj" placeholder="Cnpj" type="text">
-        <span class="error-span" id="cnpjErrorSpan"><span/>
+        <span class="error-span" id="cnpjErrorSpan"></span>
         <input id="inputLoginPassword" placeholder="Insira sua senha" type="text">
-        <span class="error-span" id="passwordErrorSpan"><span/>
+        <span class="error-span" id="passwordErrorSpan"></span>
         <button onclick="login()">  
           Entrar
         </button>
@@ -36,10 +32,6 @@ function showSignInForm() {
 function showSignUpForm(){
   form.innerHTML = `
     <h1 id="formHeader">Criar uma conta</h1>
-        <p class="alredy-signed" id="signLinks">
-          Ja possui uma conta?
-          <a onclick="switchPage(this)">Criar</a>
-        </p>
         <div class="name-row">
           <input placeholder="Razão social" type="text">
           <input placeholder="Nome fantasia" type="text">
@@ -74,7 +66,9 @@ function receberDadosLogin(){
 }
 
 function validateLoginCredentials(dados){
-  var caracteresEspeciais = ["@", "#", "!", "&", "*", "$", "%"];
+/*   var caracteresEspeciais = ["@", "#", "!", "&", "*", "$", "%"]; */
+  clearErrorSpans();
+
   var lowerCasePassword = dados.password.toLowerCase();
   var cnpjLength = dados.cnpj.length;
   var cnpjNumber = Number(dados.cnpj)
@@ -82,14 +76,27 @@ function validateLoginCredentials(dados){
   // Valida se o cnpj tem alguma letra (se tiver a conversão pra numero vai retornar nan)
   if(
     cnpjNumber === NaN || 
-    cnpjLength !== 14
-  ) return false;
+    cnpjLength !== 147
+  ){
+    cnpjErrorSpan.innerHTML = "Cnpj inválido.";
+
+    return false;
+  }
 
   if(
     dados.password === "" || 
     /* !caracteresEspeciais.includes(dados.password) || */
     lowerCasePassword === dados.password
-  ) return false;
+  ){
+    passwordErrorSpan.innerHTML = "Senha inválida.";
+
+    return false;
+  }
 
   return true;
-} 
+}
+
+function clearErrorSpans(){
+  cnpjErrorSpan.innerHTML = "";
+  passwordErrorSpan.innerHTML = "";
+}

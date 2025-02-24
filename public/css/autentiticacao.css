@@ -159,3 +159,8 @@ body {
   display: flex;
   font-size: clamp(24px, 5vw, 40px);
 }
+
+.error-span {
+  width: 100%;
+  color: #FF0000;
+}
