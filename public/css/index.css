@@ -1,0 +1,198 @@
+/* Criação das variaveis css, atribuindo elas para o root da aplicação inteira */
+:root {
+  --primary-bg: #3F4F44;
+  --primary-text: whitesmoke;
+  --muted-text: #DCD7C9;
+  --shadow: rgb(0, 0, 0, 0.5);
+}
+
+@media(max-width: 700px){
+  .leftside-container {
+    width: 100% !important;
+  }
+  .mobile-nav-bar{
+    display: flex !important;
+  }
+  .default-nav-bar {
+    display: none !important;
+  }
+  .leftside-container button{
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+  }
+  .row-marketing {
+    padding-left: 0 !important;
+  }
+  .row-marketing h1 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px;
+  }
+
+  .row-button {
+    padding-left: 0 !important;
+  }
+}
+
+body{
+  flex-direction: column;
+  align-items: center;
+  /* Impossibilita que a tela seja movida no sentido horzintal */
+  overflow-x: hidden;
+}
+
+.default-nav-bar {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  color: var(--primary-text);
+  /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
+  background-color: var(--primary-bg);
+  padding: 10px;
+  margin: 0;
+  height: 10%;
+  font-size: 20px;
+}
+
+.nav-selected{
+  color: var(--muted-text) !important; 
+}
+
+.default-nav-bar a {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: var(--primary-text);
+  transition: 0.5s;
+}
+
+.default-nav-bar a:hover {
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.logo-nav-container {
+  padding-right: 12%;
+}
+
+
+.main-container{
+  width: 100%;  
+  height: 100%;
+  background-image: url("../assets/bg-inicio.png");
+  background-attachment: fixed;
+  background-size: auto;
+  display: flex;
+  background-repeat: no-repeat;
+}
+
+
+.leftside-container{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-top: 5%;
+  color: var(--primary-text);
+  background-color: var(--shadow);
+}
+
+.leftside-container h1 {
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: normal;
+}
+.leftside-container button {
+  padding-top: 30px;
+  background-color: transparent;
+  border: none;
+  color: var(--muted-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: var(--muted-text) 2px solid;
+  font-size: medium;
+}
+
+.row-button {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  padding-left: 40%;
+}
+
+.row-marketing {
+  width: 100%;
+  padding-left: 40%;
+}
+
+.leftside-container button:hover{
+  cursor: pointer;
+  opacity: 75%;
+}
+
+.mobile-nav-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  color: var(--primary-text);
+  /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
+  background-color: var(--primary-bg);
+  padding: 10px;
+  margin: 0;
+  height: 10%;
+  font-size: 20px;
+}
+.mobile-nav-bar img {
+  margin-left: 20px;
+}
+
+.mobile-nav-bar button {
+  outline: none;
+  border: none;
+  color: var(--primary-text);
+  background-color: transparent;
+  width: 10%;
+  height: 10%;
+  transition: 0.5s;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.mobile-nav-bar button:hover {
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: 0.5s;
+}
+.side-bar{
+  /* Deixa o container acima dos outros elementos html */
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--primary-bg);
+  height: 100%;
+  width: 40%;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 40px;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+.side-bar a {
+  text-decoration: none !important;
+  color: var(--primary-text);
+}
+
+
+

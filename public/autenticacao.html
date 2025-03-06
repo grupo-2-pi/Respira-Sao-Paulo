@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autenticação</title>
   <link rel="stylesheet" href="./css/autentiticacao.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="./assets/logo.svg">
 </head>
 <body>
   <div class="sign-up-container">
@@ -17,17 +21,26 @@
     </div>
     <div class="sign-up-rightside">
       <div class="sign-up-form" id="form">
-        <h1 id="formHeader">Criar uma conta</h1>
-        <p class="alredy-signed" id="signLinks">
+        <h1 id="formHeader">
+          Criar uma conta
+          <span style="display: none;" id="spanLogoHeader">
+            <object 
+            data="./assets/logo.svg" 
+            type="image/svg+xml">
+            Logo da Respira São Paulo
+            </object>
+          </span>
+        </h1>
+        <!-- <p class="alredy-signed" id="signLinks">
           Ja possui uma conta?
           <button onclick="switchPage(this)">Entrar</button>
-        </p>
+        </p> -->
         <div class="name-row">
           <input id="inputRazaoSocial" placeholder="Razão social" type="text">
           <input id="inputNomeFantasia" placeholder="Nome fantasia" type="text">
         </div>
         <input placeholder="Email" type="text">
-        <input placeholder="Insira sua senha" type="text">
+        <input placeholder="Insira sua senha" type="password">
         <button>  
           Criar conta
         </button>
