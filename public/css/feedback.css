@@ -1,13 +1,14 @@
 body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 :root {
-  --primary-bg: #3F4F44;
+  --primary-bg: #1C4632;
   --primary-text: whitesmoke;
   --muted-text: #DCD7C9;
-  --shadow: rgb(0, 0, 0, 0.5);
+  --shadow: rgba(143, 109, 109, 0.5);
 }
 
 .feedback-container {
@@ -33,34 +34,50 @@ body{
 
 .feedback-content {
   width: 45%;
-  height: 600px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.feedback-content p {
+.paragraph-content{
   color: var(--primary-bg);
   opacity: 80%;
+  text-align: center;
 }
-
+.feedback-content h1 {
+  color: var(--primary-bg);
+  font-weight: bolder;
+}
 .feedback-selects{
   width: 100%;
-  height: 100%;
+  height: 500px;
   gap: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: start;
+  padding-bottom: 20px;
 }
 #textareaDescription {
+  width: 100%;
+  height: 30%;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid var(--primary-bg);
+  text-align: start;
+  vertical-align: top;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+/* #textareaDescription::placeholder {
   width: 100%;
   display: flex;
   justify-content: start;
   align-items: start;
-  height: 30%;
-}
+} */
 
 #buttonDescription {
   width: 100%;
@@ -77,5 +94,68 @@ body{
 
 .row-container select {
   width: 100%;
-  height: 40%;
+  height: 80%;
+  border: 1px solid var(--primary-bg);
+  border-radius: 10px;
+  background-color: transparent;
+  box-shadow: none;
+/*padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+/* .row-container select:focus{
+  outline: none;
+  border: none;
+} */
+
+.feedback-selects button {
+  height: 20%;
+  background-color: var(--primary-bg);
+  border: none;
+  border-radius: 10px;
+  color: var(--primary-text);
+  font-weight: bold;
+  font-size:small;
+  transition: 0.5s;
+}
+
+.feedback-selects button:hover {
+  cursor: pointer;
+  opacity: 80%;
+  transition: 0.5s;
+}
+
+
+.carousel {
+  position: relative;
+  width: 800px;
+  height: 300px;
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+/* Cada item do carrossel é posicionado de forma absoluta (sobrepoe outros) */
+.carousel-item {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  flex: 0 0 auto;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.carousel-item img {
+  width: 60%;
+  height: 65%;
+  border-radius: 8px;
+  justify-self: center;
+}
+/* Item clicado aumenta de tamanho */
+.carousel-item.active {
+  transform: scale(1.3);
+  z-index: 10;
 }

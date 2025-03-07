@@ -18,12 +18,26 @@
       <h1>
         Como você classificaria o ar de hoje ?
       </h1>
-      <p>
+      <p class="paragraph-content">
         Sua classificação, tipo e descrição serão armazenadas no nosso sistema
          e entraremos em contato posteriormente com as entidades reponsáveis. 
       </p>
-      <div class="carrousel">
-
+      <div class="carousel">
+        <div class="carousel-item" data-index="0">
+          <img src="./assets/emojis/emoji-muito-feliz.png" alt="Imagem 1">
+        </div>
+        <div class="carousel-item" data-index="1">
+          <img src="./assets/emojis/emoji-feliz.png" alt="Imagem 2">
+        </div>
+        <div class="carousel-item" data-index="2">
+          <img src="./assets/emojis/emoji-bravo.png" alt="Imagem 3">
+        </div>
+        <div class="carousel-item" data-index="3">
+          <img src="./assets/emojis/emoji-neutro.png" alt="Imagem 4">
+        </div>
+<!--         <div class="carousel-item" data-index="4">
+          <img src="https://via.placeholder.com/150/ff7fff" alt="Imagem 5">
+        </div> -->
       </div>
       <div class="feedback-selects">
         <div class="row-container">
@@ -38,9 +52,7 @@
             </option>
           </select>    
         </div>
-        <textarea id="textareaDescription" placeholder="" type="text">
-          Deixe aqui uma descrição sobre
-        </textarea>
+        <textarea placeholder="Deixe aqui uma descrição sobre" id="textareaDescription"></textarea>
         <button id="buttonDescription">
           Enviar
         </button>
@@ -49,3 +61,4 @@
   </div>
 </body>
 </html>
+<script src="./js/feedback.js"></script>
