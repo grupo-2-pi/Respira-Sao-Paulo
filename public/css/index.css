@@ -282,5 +282,44 @@ p {
   color: #333; /* Cor do texto */
 }
 
+.historia{
+  position: relative;
+  display: inline-block;
+}
+
+.cidade {
+  width: 100vw; /* Ajusta a largura da imagem */
+  display: block;
+}
+
+.historia h1 {
+  position: absolute;
+  top: 15%; /* Centraliza verticalmente */
+  left: 10%; /* Centraliza horizontalmente */
+  color: white; /* Cor do texto */
+  border-radius: 5px;
+  font-size: 40px;
+}
+
+.historia h3 {
+  position: absolute;
+  top: 30%; /* Ajusta a posição vertical */
+  left: 5%; /* Define a margem à esquerda */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  width: 40%; /* Define a largura do bloco de texto */
+  color: white; /* Cor do texto */
+  font-size: 18px; /* Ajusta o tamanho da fonte */
+  font-weight: bold; /* Deixa o texto em negrito */
+  background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para legibilidade */
+  padding: 10px 20px; /* Espaçamento interno */
+  border-radius: 5px; /* Cantos arredondados */
+}
+
+.pessoa{
+  position: absolute;
+}
+
+
+
 
 
