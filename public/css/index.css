@@ -77,16 +77,17 @@ body{
 }
 
 .logo-nav-container {
-  padding-right: 12%;
+  padding-right: 80%;
 }
 
 
 .main-container{
-  width: 100%;  
-  height: 100%;
+  width: 100vw;  
+  height: 100vh;
   background-image: url("../assets/bg-inicio.png");
   background-attachment: fixed;
-  background-size: auto;
+  background-size: cover;
+  background-position: center;
   display: flex;
   background-repeat: no-repeat;
 }
@@ -130,6 +131,7 @@ body{
 .row-marketing {
   width: 100%;
   padding-left: 40%;
+  margin-top: 80px;
 }
 
 .leftside-container button:hover{
@@ -192,6 +194,92 @@ body{
 .side-bar a {
   text-decoration: none !important;
   color: var(--primary-text);
+}
+
+/* Container do carrossel */
+.carousel {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto; /* Ativa a barra de rolagem horizontal */
+  display: flex;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Suaviza a rolagem no mobile */
+}
+
+/* Exibe a barra de rolagem */
+.carousel::-webkit-scrollbar {
+  height: 8px; /* Define altura da barra no Chrome/Safari */
+}
+
+.carousel::-webkit-scrollbar-track {
+  background: #ddd; /* Cor do fundo da barra */
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: #888; /* Cor do indicador da barra */
+  border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor ao passar o mouse */
+}
+
+/* Cada slide ocupa 100% da largura da tela */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Ajuste das imagens */
+.slide img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Texto sobreposto */
+.overlay-text {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px;
+  font-size: 1.2rem;
+  max-width: 40%;
+  border-radius: 5px;
+}
+
+.container{
+  background-color: #3F4F44;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  
+  background-color: white; /* Fundo branco dos cards */
+  border-radius: 40px; /* Bordas arredondadas */
+  padding: 20px; /* Espaçamento interno */
+  width: 250px; /* Largura dos cards */
+  height: 450px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+  margin-top: 0;  /* Remove a margem superior do título */
+}
+
+p {
+  color: #333; /* Cor do texto */
 }
 
 
