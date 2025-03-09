@@ -205,42 +205,39 @@ body {
   color: var(--primary-text);
 }
 
-/* Container do carrossel */
+
 .carousel {
   width: 100vw;
   height: 100vh;
   overflow-x: auto;
-  /* Ativa a barra de rolagem horizontal */
   display: flex;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  /* Suaviza a rolagem no mobile */
 }
 
-/* Exibe a barra de rolagem */
+
 .carousel::-webkit-scrollbar {
   height: 8px;
-  /* Define altura da barra no Chrome/Safari */
+  
 }
 
 .carousel::-webkit-scrollbar-track {
   background: #ddd;
-  /* Cor do fundo da barra */
+  
 }
 
 .carousel::-webkit-scrollbar-thumb {
   background: #888;
-  /* Cor do indicador da barra */
+ 
   border-radius: 10px;
 }
 
 .carousel::-webkit-scrollbar-thumb:hover {
   background: #555;
-  /* Cor ao passar o mouse */
 }
 
-/* Cada slide ocupa 100% da largura da tela */
+
 .slide {
   width: 100vw;
   height: 100vh;
@@ -249,14 +246,14 @@ body {
   position: relative;
 }
 
-/* Ajuste das imagens */
+
 .slide img {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
 
-/* Texto sobreposto */
+
 .overlay-text {
   position: absolute;
   bottom: 20%;
@@ -282,26 +279,20 @@ body {
 .card {
 
   background-color: white;
-  /* Fundo branco dos cards */
   border-radius: 40px;
-  /* Bordas arredondadas */
   padding: 20px;
-  /* Espaçamento interno */
   width: 250px;
-  /* Largura dos cards */
   height: 450px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
+  
 }
 
 h2 {
   margin-top: 0;
-  /* Remove a margem superior do título */
 }
 
 p {
   color: #333;
-  /* Cor do texto */
 }
 
 .historia {
@@ -311,19 +302,15 @@ p {
 
 .cidade {
   width: 100vw;
-  /* Ajusta a largura da imagem */
   display: block;
-  
+
 }
 
 .historia h1 {
   position: absolute;
   top: 25%;
-  /* Centraliza verticalmente */
   left: 16%;
-  /* Centraliza horizontalmente */
   color: white;
-  /* Cor do texto */
   border-radius: 5px;
   font-size: 40px;
 }
@@ -331,25 +318,25 @@ p {
 .historia h3 {
   position: absolute;
   top: 45%;
-  /* Ajusta a posição vertical */
+  
   left: 5%;
-  /* Define a margem à esquerda */
+ 
   transform: translateY(-50%);
-  /* Centraliza verticalmente */
+  
   width: 40%;
-  /* Define a largura do bloco de texto */
+ 
   color: white;
-  /* Cor do texto */
+  
   font-size: 18px;
-  /* Ajusta o tamanho da fonte */
+  
   font-weight: bold;
-  /* Deixa o texto em negrito */
+
   background: rgba(0, 0, 0, 0.5);
-  /* Fundo semi-transparente para legibilidade */
+  
   padding: 10px 20px;
-  /* Espaçamento interno */
+  
   border-radius: 15px;
-  /* Cantos arredondados */
+  
 }
 
 .pessoas {
@@ -360,38 +347,111 @@ p {
   border-radius: 40px;
 }
 
-.background{
-background-color: white;
-height: 100vh;
-width: 100vw;
+.background {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
 }
 
-.fundoperfil{
-background-color: rgba(196, 189, 189, 0.837);
-position: relative;
-top: 10%;
-left: 12%;
-height: 200px;
-width: 200px;
-border-radius: 100px;
-}
-
-.fundoperfil2{
+.fundoperfil {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  top: 30%;
+  top: 2%;
   left: 12%;
+  height: 140px;
+  width: 145px;
+  border-radius: 90px;
+}
+
+.fundoperfil h4 {
+  position: relative;
+  top: 110%;
+  left: 2%;
+}
+
+.fundoperfil2 h4{
+  position: relative;
+ top: 110%;
+ left: 12%;
+}
+
+.fundoperfil3 h4{
+  position: relative;
+  top: 110%;
+  left: 7%;
+}
+
+.fundoperfil4 h4{
+  position: relative;
+  top: 110%;
+  left: 12%;
+}
+
+.fundoperfil5 h4{
+  position: relative;
+  top: 110%;
+  left: 9%;
+}
+
+.fundoperfil6 h4{
+  position: relative;
+  top: 110%;
+  left: 15%;
+}
+
+.fundoperfil2 {
+  background-color: rgba(196, 189, 189, 0.837);
+  position: relative;
+  top: 21%;
+  left: 12%;
+  height: 140px;
+  width: 145px;
+  border-radius: 90px;
+}
+
+.fundoperfil3 {
+  background-color: rgba(196, 189, 189, 0.837);
+  position: relative;
+  bottom: 59%;
+  left: 40%;
+  height: 140px;
+  width: 145px;
+  border-radius: 90px;
+}
+
+.fundoperfil4 {
+  background-color: rgba(196, 189, 189, 0.837);
+  position: relative;
+  bottom: 39%;
+  left: 40%;
   height: 200px;
   width: 200px;
   border-radius: 100px;
-  }
+}
 
-  .fundoperfil3{
-    background-color: rgba(196, 189, 189, 0.837);
-    position: relative;
-    bottom: 45%;
-    left: 40%;
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-    }
+.fundoperfil5 {
+  background-color: rgba(196, 189, 189, 0.837);
+  position: relative;
+  bottom: 69%;
+  left: 70%;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+
+.fundoperfil6 {
+  background-color: rgba(196, 189, 189, 0.837);
+  position: relative;
+  bottom: 150%;
+  left: 70%;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+
+.footer{
+background-color: black;
+padding: 35px;
+width: 100vw;
+
+}
