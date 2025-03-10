@@ -498,7 +498,7 @@ p {
 .footer{
 background-color: black;
 position: relative;
-padding: 38px;
+padding: 23px;
 width: 100vw;
 margin-top: -75px;
 }
@@ -587,4 +587,10 @@ body {
 
 .scroll-animate.visible {
   animation: fadeInScroll 0.6s ease-out forwards;
+}
+
+.linkedin{
+  position: relative;
+  height: 50px;
+  left: 10%;
 }
