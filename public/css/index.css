@@ -38,6 +38,12 @@
 
   .row-button {
     padding-left: 0 !important;
+    justify-content: center !important;
+    display: flex;
+    width: 100%;
+  }
+  .row-button button {
+    width: fit-content;
   }
 }
 
@@ -148,17 +154,23 @@ body {
 .mobile-nav-bar {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 45px;
   color: var(--primary-text);
   /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
   background-color: var(--primary-bg);
-  padding: 10px;
   margin: 0;
   height: 10%;
   font-size: 20px;
 }
+
+.mobile-nav-bar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .mobile-nav-bar img {
   margin-left: 20px;
