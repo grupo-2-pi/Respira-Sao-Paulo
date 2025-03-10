@@ -485,7 +485,7 @@ p {
 
 .footer{
 background-color: black;
-position: relative;
+display: flex;
 padding: 23px;
 width: 100vw;
 margin-top: -75px;
@@ -577,8 +577,34 @@ body {
   animation: fadeInScroll 0.6s ease-out forwards;
 }
 
-.linkedin{
-  position: relative;
-  height: 50px;
-  left: 10%;
+.footer h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+  margin-left: 100px;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre ícone e texto */
+  margin-bottom: 10px;
+}
+
+.icon {
+  height: 30px; /* Ajuste o tamanho conforme necessário */
+  margin-left: 200px;
+  margin-top: 15px;
+}
+
+.iconwpp {
+  height: 40px; /* Ajuste o tamanho conforme necessário */
+  margin-left: 200px;
+  margin-top: 15px;
+}
+
+.text {
+  font-size: 15px;
+  color: white;
+  margin-right: 100px;
 }
