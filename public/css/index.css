@@ -13,6 +13,16 @@
 
   .mobile-nav-bar {
     display: flex !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    color: var(--primary-text);
+    /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
+    background-color: var(--primary-bg);
+    margin: 0;
+    height: 10%;
+    font-size: 20px;
   }
 
   .default-nav-bar {
@@ -45,6 +55,41 @@
   .row-button button {
     width: fit-content;
   }
+  .logo-nav-container {
+    padding-right: 0 !important;
+  }
+
+  .side-bar {
+    /* Deixa o container acima dos outros elementos html */
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    background-color: var(--primary-bg);
+    height: 100%;
+    width: 30%;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 40px;
+    gap: 20px;
+    /* transition: transform 0.5s ease-in-out;
+    transform: translateX(-100%); */
+  }
+
+  /* .open {
+    display: flex;
+  }
+  .side-bar.open {
+    animation: slideIn 0.5s ease-in-out forwards;
+  } */
+  
+  .side-bar a {
+    text-decoration: none !important;
+    color: var(--primary-text);
+  }
 }
 
 body {
@@ -56,7 +101,7 @@ body {
 
 .default-nav-bar {
   display: flex;
-  width: 108vw;
+  width: 100%;
   justify-content: center;
   align-items: center;
   gap: 45px;
@@ -88,12 +133,15 @@ body {
 }
 
 .logo-nav-container {
-  padding-right: 80%;
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  margin-left: 20px;
 }
 
 
 .main-container {
-  width: 108vw;
+  width: 100%;
   height: 100vh;
   background-image: url("../assets/bg-inicio.png");
   background-attachment: fixed;
@@ -151,20 +199,6 @@ body {
   opacity: 75%;
 }
 
-.mobile-nav-bar {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 45px;
-  color: var(--primary-text);
-  /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
-  background-color: var(--primary-bg);
-  margin: 0;
-  height: 10%;
-  font-size: 20px;
-}
-
 .mobile-nav-bar button {
   display: flex;
   align-items: center;
@@ -181,7 +215,7 @@ body {
   border: none;
   color: var(--primary-text);
   background-color: transparent;
-  width: 10%;
+  width: 20%;
   height: 10%;
   transition: 0.5s;
   margin-left: 20px;
@@ -194,28 +228,7 @@ body {
   transition: 0.5s;
 }
 
-.side-bar {
-  /* Deixa o container acima dos outros elementos html */
-  position: fixed;
-  z-index: 1000;
-  background-color: var(--primary-bg);
-  height: 100%;
-  width: 40%;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  padding-top: 40px;
-  gap: 20px;
-  transition: transform 0.5s ease-in-out;
-}
 
-.side-bar a {
-  text-decoration: none !important;
-  color: var(--primary-text);
-}
 
 
 .carousel {
@@ -497,21 +510,12 @@ p {
 }
 
 .footer{
-background-color: black;
-display: flex;
-padding: 23px;
-width: 100vw;
-margin-top: -75px;
+  background-color: black;
+  display: flex;
+  padding: 23px;
+  width: 100%;
+  margin-top: -75px;
 }
-
-
-:root {
-  --primary-bg: #3F4F44;
-  --primary-text: whitesmoke;
-  --muted-text: #DCD7C9;
-  --shadow: rgba(0, 0, 0, 0.5);
-}
-
 
 @keyframes fadeIn {
   from {
@@ -559,9 +563,6 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
-.default-nav-bar, .mobile-nav-bar {
-  animation: fadeIn 1.5s ease-in-out;
-}
 
 .leftside-container {
   animation: fadeIn 2s ease-in-out;
@@ -570,16 +571,6 @@ body {
 .leftside-container button:hover {
   animation: buttonScale 0.3s ease-in-out forwards;
 }
-
-.side-bar {
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-in-out;
-}
-
-.side-bar.open {
-  animation: slideIn 0.5s ease-in-out forwards;
-}
-
 .scroll-animate {
   opacity: 0;
   transform: translateY(20px);
@@ -592,32 +583,51 @@ body {
 
 .footer h5 {
   font-size: 18px;
-  margin-bottom: 10px;
+/*   margin-bottom: 10px; */
   color: white;
-  margin-left: 100px;
+/*   margin-left: 100px; */
 }
 
 .contact {
+  width: 20%;
   display: flex;
   align-items: center;
   gap: 10px; /* Espaço entre ícone e texto */
   margin-bottom: 10px;
+  font-size: small;
+  font-weight: normal;
+  justify-content: center;
+  height: fit-content;
 }
 
 .icon {
   height: 30px; /* Ajuste o tamanho conforme necessário */
-  margin-left: 200px;
-  margin-top: 15px;
 }
 
 .iconwpp {
   height: 40px; /* Ajuste o tamanho conforme necessário */
-  margin-left: 200px;
-  margin-top: 15px;
 }
 
 .text {
   font-size: 15px;
   color: white;
-  margin-right: 100px;
+/*   margin-right: 100px;
+ */}
+
+.talk-to-us-footer{
+  width: 50%;
+  display: flex; 
+  flex-direction: column;
+/*   padding-left: 20px; */
+  align-items: start;
+  justify-content: center;
+}
+
+.respira-footer-row {
+  display: flex;
+  align-items: center;
+  color: var(--primary-text);
+  font-weight: bold;
+  width: 100%;
+  gap: 10px;
 }
