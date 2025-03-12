@@ -23,3 +23,13 @@ var clickOutsideHandler = (event) => {
     document.removeEventListener('click', clickOutsideHandler);
   }
 };
+
+function goToHistory(){
+  var div = document.querySelector(".historia");
+  div.scrollIntoView({ behavior: "smooth" });
+}
+
+function goToCrenca(){
+  var div = document.querySelector(".container");
+  div.scrollIntoView({ behavior: "smooth" });
+}
