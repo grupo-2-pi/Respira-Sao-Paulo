@@ -73,7 +73,7 @@
         </h1>
       </div>
       <div class="row-button">
-        <button>
+        <button onclick="goToHistory()">
           conheça nosso projeto
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
             viewBox="0 0 16 16">
@@ -98,8 +98,19 @@
       <div class="overlay-text">emeoiwjrcnrijcnqeincrqicjcnreenircpircqpjqrc</div>
     </div>
   </div>
+  <div class="historia">
+    <img class="cidade" src="./assets/imgcid.png" alt="">
+    <h1>Nossa História</h1>
+    <h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam
+      nonummy auctor massa. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis,
+      felis ut adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis
+    </h3>
+    <img class="pessoas" src="./assets/imgpessoas.png" alt="">
+  </div>
   <div class="container">
     <div class="card">
+      <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/470/470222.png" alt="Icone alvo">
       <h2>Missão</h2>
       <p>A Respira SP tem como missão mitigar a emissão de gases poluentes, através do aumento da fiscalização, e
         minimizar seus impactos na qualidade de vida da população, com foco na minimização de problemas respiratórios.
@@ -107,11 +118,13 @@
         sustentáveis e ações eficazes para um futuro mais saudável.</p>
     </div>
     <div class="card">
+      <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/2991/2991566.png" alt="Icone telescopio">
       <h2>Visão</h2>
       <p>Ser referência na transformação ambiental por meio da tecnologia e do engajamento social, capacitando órgãos
         governamentais a promover um futuro mais sustentável e saudável.</p>
     </div>
     <div class="card">
+      <img class="card-icon" src="./assets/icone-solidario.png" alt="Icone valores">
       <h2>Valores</h2>
       <p><b>Sustentabilidade</b> – Compromisso com a preservação do meio ambiente e a promoção de práticas que garantam
         um
@@ -125,16 +138,6 @@
         nossas ações.
       </p>
     </div>
-  </div>
-  <div class="historia">
-    <img class="cidade" src="./assets/imgcid.png" alt="">
-    <h1>Nossa História</h1>
-    <h3>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam
-      nonummy auctor massa. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis,
-      felis ut adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis
-    </h3>
-    <img class="pessoas" src="./assets/imgpessoas.png" alt="">
   </div>
   <div class="background">
     <div class="fundoperfil">
@@ -155,6 +158,14 @@
     <div class="fundoperfil6">
       <h4>Lucas Hernandes Furquim</h4>
     </div>
+  </div>
+  <div class="feedback-container">
+    <p id="howToHelp">Como ajudar</p>
+    <h1>A sua contribuição pode fazer a diferença</h1>
+    <p id="helpRespira">Nos ajude com seu feedback a valorizar nossa cidade</p>
+    <button class="contribute-button" onclick="goToFeedbackPage()">
+      Quero contribuir
+    </button>
   </div>
   
   <footer class="footer">
@@ -192,6 +203,9 @@
       </div>
       <div class="contact" onclick="goToCrenca()">
         <p class="text">Nossa crença</p>
+      </div>
+      <div class="contact" onclick="goToFeedback()">
+        <p class="text">Feedback</p>
       </div>
     </div>
   </footer>

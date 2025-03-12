@@ -33,3 +33,11 @@ function goToCrenca(){
   var div = document.querySelector(".container");
   div.scrollIntoView({ behavior: "smooth" });
 }
+function goToFeedback(){
+  var div = document.querySelector(".feedback-container");
+  div.scrollIntoView({ behavior: "smooth" });
+}
+
+function goToFeedbackPage(){
+  location.replace(`/feedback.html`)
+}

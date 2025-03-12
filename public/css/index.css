@@ -1,6 +1,7 @@
 /* Criação das variaveis css, atribuindo elas para o root da aplicação inteira */
 :root {
   --primary-bg: #3F4F44;
+  --second-bg: #163f23;
   --primary-text: whitesmoke;
   --muted-text: #DCD7C9;
   --shadow: rgb(0, 0, 0, 0.5);
@@ -321,10 +322,10 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-.card img {
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 16px;
+.card-icon  {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 10px;
 }
 
 .card-title {
@@ -617,6 +618,7 @@ body {
  .text:hover {
   color: var(--primary-bg);
   transition: 0.2s;
+  cursor: pointer;
  }
 
 .talk-to-us-footer{
@@ -675,4 +677,46 @@ body {
   padding-left: 50px;
   align-items: start;
   justify-content: center;
+}
+
+.feedback-container{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  padding-top: 100px;
+  background-image: url("https://images.pexels.com/photos/311617/pexels-photo-311617.jpeg?cs=srgb&dl=pexels-vinipimenta-311617.jpg&fm=jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment:fixed;
+}
+
+#howToHelp{
+  color: var(--second-bg);
+  font-weight: bold;
+  font-size: large;
+}
+
+.contribute-button{
+  width: 20%;
+  height: 8%;
+  background-color: var(--primary-bg);
+  border: none;
+  color: var(--primary-text);
+  border-radius: 10px;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.contribute-button:hover{
+  cursor: pointer;
+  opacity: 90%;
+  transition: 0.2s;
+}
+
+#helpRespira {
+  color: var(--muted-text);
 }
