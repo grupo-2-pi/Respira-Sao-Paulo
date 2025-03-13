@@ -91,6 +91,23 @@
     height: 100vh;
     justify-content: center;
   }
+
+  .history-row{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .history-row p {
+    width: 80%;
+    color: var(--primary-text);
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 15px;
+  }
   
  /*  .cidade {
     width: 100% !important;
@@ -109,20 +126,28 @@
     font-size: 40px;
   }
   
-  .historia h3 {
-    transform: translateY(-50%);
-    width: 40%;
-    color: var(--primary-text);
-    font-size: 18px;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 15px;
-  }
-  
   .pessoas {
-    height: 350px;
+    height: 80%;
     border-radius: 40px;
+    width: 90%;
+  }
+
+  .container{
+    flex-direction: column !important;
+    height: 120vh !important;
+    display: flex !important;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .feedback-container h1{
+    font-size: 22px !important;
+  }
+  .contribute-button{
+    width: 50% !important;
   }
 }
 
@@ -329,7 +354,7 @@ body {
 .container {
   background-color: var(--primary-bg);
   height: 100vh;
-  width: 108vw;
+  width: 100%;
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -341,7 +366,7 @@ body {
   border-radius: 24px;
   padding: 24px;
   width: 260px;
-  height: 440px;
+  height: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
