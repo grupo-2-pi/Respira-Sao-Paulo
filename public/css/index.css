@@ -1,7 +1,7 @@
 /* Criação das variaveis css, atribuindo elas para o root da aplicação inteira */
 :root {
   --primary-bg: #3F4F44;
-  --second-bg: #163f23;
+  --second-bg: #2C3930;
   --primary-text: whitesmoke;
   --muted-text: #DCD7C9;
   --shadow: rgb(0, 0, 0, 0.5);
@@ -76,20 +76,53 @@
     justify-content: start;
     padding-top: 40px;
     gap: 20px;
-    /* transition: transform 0.5s ease-in-out;
-    transform: translateX(-100%); */
   }
-
-  /* .open {
-    display: flex;
-  }
-  .side-bar.open {
-    animation: slideIn 0.5s ease-in-out forwards;
-  } */
   
   .side-bar a {
     text-decoration: none !important;
     color: var(--primary-text);
+  }
+
+  .historia {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+ /*  .cidade {
+    width: 100% !important;
+    display: block !important;
+    height: 100vh !important;
+    background-image: url("./assets/imgcid.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment:fixed !important;
+  } */
+  
+  .historia h1 {
+    color: var(--primary-text);
+    border-radius: 5px;
+    font-size: 40px;
+  }
+  
+  .historia h3 {
+    transform: translateY(-50%);
+    width: 40%;
+    color: var(--primary-text);
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 15px;
+  }
+  
+  .pessoas {
+    height: 350px;
+    border-radius: 40px;
   }
 }
 
@@ -367,29 +400,34 @@ p {
 }
 
 .historia {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  align-items: center;
+  background-color: var(--primary-bg);
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment:fixed;
+  background-image: url("../assets/imgcid.png"); */
 }
 
 .cidade {
-  width: 107vw;
-  display: block;
-
+  width: 100%;
+  display: flex;
+  
 }
 
 .historia h1 {
-  position: absolute;
-  top: 25%;
-  left: 16%;
   color: var(--primary-text);
-  border-radius: 5px;
-  font-size: 40px;
+  padding-bottom: 50px;
 }
 
 .historia h3 {
-  position: absolute;
-  top: 45%;
-  left: 5%;
   transform: translateY(-50%);
   width: 40%;
   color: var(--primary-text);
@@ -401,24 +439,46 @@ p {
 }
 
 .pessoas {
-  position: absolute;
   height: 350px;
-  top: 30%;
-  left: 50%;
   border-radius: 40px;
+}
+
+.history-row{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .background {
   background-color: var(--primary-text);
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  background-color: var(--primary-bg);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding-bottom: 100px;
+}
+
+.background h1 {
+  color: var(--primary-text);
+}
+
+.background-row{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
 }
 
 .fundoperfil {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  top: 2%;
-  left: 12%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
@@ -426,45 +486,31 @@ p {
 
 .fundoperfil h4 {
   position: relative;
-  top: 110%;
-  left: 2%;
 }
 
 .fundoperfil2 h4{
   position: relative;
- top: 110%;
- left: 12%;
 }
 
 .fundoperfil3 h4{
   position: relative;
-  top: 110%;
-  left: 7%;
 }
 
 .fundoperfil4 h4{
   position: relative;
-  top: 110%;
-  left: 12%;
 }
 
 .fundoperfil5 h4{
   position: relative;
-  top: 110%;
-  left: 9%;
 }
 
 .fundoperfil6 h4{
   position: relative;
-  top: 110%;
-  left: 15%;
 }
 
 .fundoperfil2 {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  top: 21%;
-  left: 12%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
@@ -473,8 +519,6 @@ p {
 .fundoperfil3 {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  bottom: 43%;
-  left: 45%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
@@ -483,8 +527,6 @@ p {
 .fundoperfil4 {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  bottom: 23%;
-  left: 45%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
@@ -493,8 +535,6 @@ p {
 .fundoperfil5 {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  bottom: 45%;
-  left: 80%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
@@ -503,15 +543,13 @@ p {
 .fundoperfil6 {
   background-color: rgba(196, 189, 189, 0.837);
   position: relative;
-  bottom: 110%;
-  left: 80%;
   height: 140px;
   width: 145px;
   border-radius: 90px;
 }
 
 .footer{
-  background-color: var(--primary-bg);
+  background-color: var(--second-bg);
   display: flex;
   padding: 23px;
   width: 100%;
@@ -720,3 +758,9 @@ body {
 #helpRespira {
   color: var(--muted-text);
 }
+
+/* .separator-row{
+  width: 100%;
+  height: 10px
+  background-color: var(--primary-bg);
+} */
