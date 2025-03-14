@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/feedback.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Feedback</title>
+</head> 
+<body>
+  <div class="feedback-container">
+    <div class="header">
+      <h1>
+        Feedback
+      </h1>  
+    </div>
+    <div class="feedback-content">
+      <h1>
+        Como você classificaria o ar de hoje ?
+      </h1>
+      <p class="paragraph-content">
+        Sua classificação, tipo e descrição serão armazenadas no nosso sistema
+         e entraremos em contato posteriormente com as entidades reponsáveis. 
+      </p>
+      <div class="carousel">
+        <div class="carousel-item" data-index="0">
+          <img src="./assets/emojis/emoji-muito-feliz.png" alt="Imagem 1">
+        </div>
+        <div class="carousel-item" data-index="1">
+          <img src="./assets/emojis/emoji-feliz.png" alt="Imagem 2">
+        </div>
+        <div class="carousel-item" data-index="2">
+          <img src="./assets/emojis/emoji-bravo.png" alt="Imagem 3">
+        </div>
+        <div class="carousel-item" data-index="3">
+          <img src="./assets/emojis/emoji-neutro.png" alt="Imagem 4">
+        </div>
+<!--         <div class="carousel-item" data-index="4">
+          <img src="https://via.placeholder.com/150/ff7fff" alt="Imagem 5">
+        </div> -->
+      </div>
+      <div class="feedback-selects">
+        <div class="row-container">
+          <select name="" id="">
+            <option value="">
+              Escolha o tipo dessa população
+            </option>
+          </select>
+          <select name="" id="">
+            <option value="">
+              Qual seu municipio ?
+            </option>
+          </select>    
+        </div>
+        <textarea placeholder="Deixe aqui uma descrição sobre" id="textareaDescription"></textarea>
+        <button id="buttonDescription">
+          Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="./js/feedback.js"></script>
