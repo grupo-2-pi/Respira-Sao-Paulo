@@ -840,6 +840,10 @@ body {
   background-attachment:fixed;
 }
 
+.feedback-container h1 {
+  color: var(--primary-bg);
+}
+
 #howToHelp{
   color: var(--primary-green);
   font-weight: bold;
