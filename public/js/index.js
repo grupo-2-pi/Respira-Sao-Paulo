@@ -1,10 +1,15 @@
 var sidebar = sideBar;
 
 function openSidebar(){
+  var body  = document.querySelector(".body");
+
   if(sidebar.style.display === "flex"){
-    
+    body.classList.remove("overlay");
+
     sidebar.style.display = "none";
   }else{
+    body.classList.add("overlay");
+
     sidebar.style.display = "flex";
   
       // Adicionar o listener após um delay
@@ -40,4 +45,8 @@ function goToFeedback(){
 
 function goToFeedbackPage(){
   location.replace(`/feedback.html`)
+}
+
+function goToAuth(){
+  location.replace("/autenticacao.html");
 }

@@ -16,28 +16,37 @@
   <title>Início</title>
 </head>
 
-<body>
+<body class="body">
   <div class="default-nav-bar">
     <div class="logo-nav-container">
       <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
     </div>
-
-    <a href="./autenticacao.html">
-      Entrar
-    </a>
-    <a href="">
-      Sobre
-    </a>
-    <a href="">
-      Contatos
-    </a>
+    <div class="default-nav-links-container">
+      <a href="">
+        História
+      </a>
+      <a href="">
+        Crenças
+      </a>
+      <a href="">
+        Feedback
+      </a>
+    </div>
+    <div class="default-nav-auth-container">
+      <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+        Entrar
+      </button>
+      <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
+        Cadastrar
+      </button>
+    </div>
   </div>
   <div class="mobile-nav-bar" style="display: none;">
     <div class="logo-nav-container">
       <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
     </div>
     <button onclick="openSidebar()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
         class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
         <path
           d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
@@ -49,16 +58,25 @@
   <div class="main-container">
     <div id="sideBar" class="side-bar" style="display: none;">
       <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
-
-      <a href="/autenticacao.html">
-        Entrar
-      </a>
-      <a href="">
-        Sobre
-      </a>
-      <a href="">
-        Contatos
-      </a>
+      <div class="side-bar-links-container">
+        <a href="">
+          História
+        </a>
+        <a href="">
+          Crenças
+        </a>
+        <a href="">
+          Feedback
+        </a>
+      </div>
+      <div class="side-bar-auth-container">
+        <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+          Entrar
+        </button>
+        <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
+          Cadastrar
+        </button>
+      </div>
     </div>
     <div class="leftside-container">
       <div class="row-marketing">
@@ -68,8 +86,8 @@
             A maior cidade da <br>
             América Latina, <br>
           </b>
-          com o melhor ar <br>
-          padivra todos.
+          com o <span>melhor ar</span> <br>
+          para todos.
         </h1>
       </div>
       <div class="row-button">
@@ -82,6 +100,9 @@
           </svg>
         </button>
       </div>
+    </div>
+    <div class="rightside-container">
+      <img src="../assets/bg-inicio.png" alt="Fundo são paulo">
     </div>
   </div>
   <div class="carousel">
@@ -111,58 +132,111 @@
   </div>
 <!--   <hr class="separator-row"> !-->
   <div class="container">
-    <div class="card">
-      <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/470/470222.png" alt="Icone alvo">
-      <h2>Missão</h2>
-      <p>A Respira SP tem como missão mitigar a emissão de gases poluentes, através do aumento da fiscalização, e
-        minimizar seus impactos na qualidade de vida da população, com foco na minimização de problemas respiratórios.
-        Utilizamos buscas avançada para capturar dados precisos e gerar gráficos inteligentes, promovendo soluções
-        sustentáveis e ações eficazes para um futuro mais saudável.</p>
-    </div>
-    <div class="card">
-      <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/2991/2991566.png" alt="Icone telescopio">
-      <h2>Visão</h2>
-      <p>Ser referência na transformação ambiental por meio da tecnologia e do engajamento social, capacitando órgãos
-        governamentais a promover um futuro mais sustentável e saudável.</p>
-    </div>
-    <div class="card">
-      <img class="card-icon" src="./assets/icone-solidario.png" alt="Icone valores">
-      <h2>Valores</h2>
-      <p><b>Sustentabilidade</b> – Compromisso com a preservação do meio ambiente e a promoção de práticas que garantam
-        um
-        futuro mais saudável para as próximas gerações.
-        <b>Pensamento empreendedor</b> – Busca constante por inovação, criatividade e soluções eficazes para transformar
-        desafios em oportunidades.
-        <b>Inovação</b> – Utilização de tecnologia de ponta para desenvolver soluções eficientes no monitoramento
-        ambiental
-        <b>Transparência</b> – Comunicação clara e aberta com a sociedade, garantindo confiança e credibilidade em todas
-        as
-        nossas ações.
-      </p>
+    <h1>O que acreditamos</h1>
+    <div class="container-row">
+      <div class="card">
+        <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/470/470222.png" alt="Icone alvo">
+        <h2 class="card-header">Missão</h2>
+        <p>A Respira SP tem como missão mitigar a emissão de gases poluentes, através do aumento da fiscalização, e
+          minimizar seus impactos na qualidade de vida da população, com foco na minimização de problemas respiratórios.
+          Utilizamos buscas avançada para capturar dados precisos e gerar gráficos inteligentes, promovendo soluções
+          sustentáveis e ações eficazes para um futuro mais saudável.</p>
+      </div>
+      <div class="card">
+        <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/2991/2991566.png" alt="Icone telescopio">
+        <h2 class="card-header">Visão</h2>
+        <p>Ser referência na transformação ambiental por meio da tecnologia e do engajamento social, capacitando órgãos
+          governamentais a promover um futuro mais sustentável e saudável.</p>
+      </div>
+      <div class="card">
+        <img class="card-icon" src="./assets/icone-solidario.png" alt="Icone valores">
+        <h2 class="card-header">Valores</h2>
+        <p><b>Sustentabilidade</b> – Compromisso com a preservação do meio ambiente e a promoção de práticas que garantam
+          um
+          futuro mais saudável para as próximas gerações.
+          <b>Pensamento empreendedor</b> – Busca constante por inovação, criatividade e soluções eficazes para transformar
+          desafios em oportunidades.
+          <b>Inovação</b> – Utilização de tecnologia de ponta para desenvolver soluções eficientes no monitoramento
+          ambiental
+          <b>Transparência</b> – Comunicação clara e aberta com a sociedade, garantindo confiança e credibilidade em todas
+          as
+          nossas ações.
+        </p>
+      </div>
     </div>
   </div>
   <div class="background">
     <h1>Nosso time</h1>
-    <div class="background-row">
-      <div class="fundoperfil">
-        <h4>Guilherme Antonio Alves de Souza</h4>
+    <div class="background-row moldura-desktop">
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="Shirley Ferreira Lima"/>
+        <p>Shirley Ferreira Lima</p>
       </div>
-      <div class="fundoperfil2">
-        <h4>Rafael Barbosa Fernandes</h4>
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="Rafael Barbosa Fernandes"/>
+        <p>Rafael Barbosa Fernandes</p>
       </div>
-      <div class="fundoperfil3">
-        <h4>João Vitor Ohi Santos</h4>
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="João Vitor Ohi Santos"/>
+        <p>João Vitor Ohi Santos</p>
       </div>
     </div>
-    <div class="background-row">
-      <div class="fundoperfil4">
-        <h4>Ricardo de Oliveira Nicolau</h4>
+    <div class="background-row moldura-desktop">
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="Ricardo de Oliveira Nicolau"/>
+        <p>Ricardo de Oliveira Nicolau</p>
       </div>
-      <div class="fundoperfil5">
-        <h4>Shirley Ferreira Lima</h4>
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="Guilherme Antonio Alves de Souza"/>
+        <p>Guilherme Antonio Alves de Souza</p>
       </div>
-      <div class="fundoperfil6">
-        <h4>Lucas Hernandes Furquim</h4>
+      <div class="moldura-membro">
+        <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+        alt="Lucas Hernandes Furquim"/>
+        <p>Lucas Hernandes Furquim</p>
+      </div>
+    </div>
+    <div class="moldura-mobile">
+      <div class="mobile-moldura-row">
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="Shirley Ferreira Lima"/>
+          <p>Shirley Ferreira Lima</p>
+        </div>
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="Rafael Barbosa Fernandes"/>
+          <p>Rafael Barbosa Fernandes</p>
+        </div>
+      </div>
+      <div class="mobile-moldura-row">
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="João Vitor Ohi Santos">
+          <p>João Vitor Ohi Santos</p>
+        </div>
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="Ricardo de Oliveira Nicolau">
+          <p>Ricardo de Oliveira Nicolau</p>
+        </div>
+      </div>
+      <div class="mobile-moldura-row">
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="Guilherme Antonio Alves de Souza">
+          <p>Guilherme Antonio Alves de Souza</p>
+        </div>
+        <div class="moldura-membro">
+          <img class="imagem-membro" src="https://i.pinimg.com/236x/ac/85/ba/ac85ba6b0688888b7b5e3c9b739733b3.jpg" 
+          alt="Lucas Hernandes Furquim">
+          <p>Lucas Hernandes Furquim</p>
+        </div>
       </div>
     </div>
   </div>
