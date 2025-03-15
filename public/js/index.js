@@ -1,5 +1,20 @@
 var sidebar = sideBar;
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        } else {
+            entry.target.classList.remove("active");
+        }
+    });
+}, { threshold: 0.6 }); // Quando 60% da seção estiver visível
+
+sections.forEach(section => observer.observe(section));
+
+
+
+
 function openSidebar(){
   var body  = document.querySelector(".body");
 
