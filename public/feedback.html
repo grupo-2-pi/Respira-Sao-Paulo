@@ -5,18 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/feedback.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
   <title>Feedback</title>
+  <link rel="icon" href="./assets/logo.svg">
 </head> 
 <body>
-  <div class="feedback-container">
-    <div class="header">
-      <h1>
+  <div id="overlay"></div>
+  <div id="modal">
+    <h2>Feedback <span>enviado</span> com sucesso 🍃</h2>  
+      <p>Agradecemos pela colaboração, temos certeza que com este feedback estamos dando mais um passo para uma São Paulo melhor.</p>
+      <button id="close-modal">Concluído</button>
+  </div>
+  <div id="sideBar" class="side-bar">
+    <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+    <div class="side-bar-links-container">
+      <a onclick="goToHistory(); openSidebar();">
+        História
+      </a>
+      <a onclick="goToCrenca(); openSidebar();">
+        Crenças
+      </a>
+      <a onclick="goToFeedback(); openSidebar();">
         Feedback
-      </h1>  
+      </a>
+    </div>
+    <div class="side-bar-auth-container">
+      <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+        Entrar
+      </button>
+      <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
+        Cadastrar
+      </button>
+    </div>
+  </div>
+  <div class="feedback-container">
+    <div class="default-nav-bar">
+      <div class="logo-nav-container">
+        <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+      </div>
+      <div class="default-nav-links-container">
+        <a onclick="goToHistory()">
+          História
+        </a>
+        <a onclick="goToCrenca()">
+          Crenças
+        </a>
+        <a onclick="goToFeedback()">
+          Feedback
+        </a>
+      </div>
+      <div class="default-nav-auth-container">
+        <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+          Entrar
+        </button>
+        <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
+          Cadastrar
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav-bar" style="display: none;">
+      <div class="logo-nav-container">
+        <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+      </div>
+      <button onclick="openSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+          class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+          <path
+            d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+          <path
+            d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+        </svg>
+      </button>
     </div>
     <div class="feedback-content">
       <h1>
-        Como você classificaria o ar de hoje ?
+        Como você classificaria o <span>ar</span> de hoje ?
       </h1>
       <p class="paragraph-content">
         Sua classificação, tipo e descrição serão armazenadas no nosso sistema
@@ -24,41 +92,88 @@
       </p>
       <div class="carousel">
         <div class="carousel-item" data-index="0">
-          <img src="./assets/emojis/emoji-muito-feliz.png" alt="Imagem 1">
+          <img src="./assets/emojis/emoji-bravo.png" alt="Imagem 1">
         </div>
         <div class="carousel-item" data-index="1">
-          <img src="./assets/emojis/emoji-feliz.png" alt="Imagem 2">
+          <img src="./assets/emojis/emoji-triste.png" alt="Imagem 2">
         </div>
         <div class="carousel-item" data-index="2">
-          <img src="./assets/emojis/emoji-bravo.png" alt="Imagem 3">
+          <img src="./assets/emojis/emoji-neutro.png" alt="Imagem 3">
         </div>
         <div class="carousel-item" data-index="3">
-          <img src="./assets/emojis/emoji-neutro.png" alt="Imagem 4">
+          <img src="./assets/emojis/emoji-feliz.png" alt="Imagem 4">
         </div>
-<!--         <div class="carousel-item" data-index="4">
-          <img src="https://via.placeholder.com/150/ff7fff" alt="Imagem 5">
-        </div> -->
+        <div class="carousel-item" data-index="4">
+          <img src="./assets/emojis/emoji-muito-feliz.png" alt="Imagem 5">
+        </div>
       </div>
       <div class="feedback-selects">
         <div class="row-container">
-          <select name="" id="">
-            <option value="">
+          <select id="selectTipoPoluicao">
+            <option value="#">
               Escolha o tipo dessa população
             </option>
+            <option value="automoveis">
+                Automóveis
+            </option>
+            <option value="industrias">
+              Indústrias
+            </option>
           </select>
-          <select name="" id="">
-            <option value="">
+          <select id="selectMunicipios">
+            <option value="#">
               Qual seu municipio ?
             </option>
           </select>    
         </div>
         <textarea placeholder="Deixe aqui uma descrição sobre" id="textareaDescription"></textarea>
-        <button id="buttonDescription">
+        <button onclick="enviarFeedback(this)">
           Enviar
         </button>
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <div class="talk-to-us-footer">
+      <div class="respira-footer-row">
+        <img src="./assets/logo.svg" alt="">
+        Respira São Paulo
+      </div>
+      <p id="footer-header">Fale Conosco:</p>
+      <div class="contact">
+        <img class="icon" src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png" alt="Email">          
+        <p class="text">respirasp@sptech.school</p>
+      </div>
+      <div class="contact">
+        <img class="icon" src="https://www.iconpacks.net/icons/1/free-phone-icon-1-thumb.png" alt="WhatsApp">
+        <p class="text">11 996072890</p>
+      </div>
+      <p id="rightRespira">© 2025 Respira São Paulo</p>
+    </div>
+    <div class="our-social-media-footer">
+      <p id="footer-header">Nossas redes sociais</p>
+      <div class="contact">
+        <img class="icon" src="https://devicon-website.vercel.app/api/github/original.svg" alt="Logo github"/>
+        <a class="link-text" href="https://github.com/grupo-2-pi/Respira-Sao-Paulo">Github</a>
+      </div>
+      <div class="contact">
+        <img class="icon" src="https://devicon-website.vercel.app/api/linkedin/original.svg" alt="Logo linkedin"/>
+        <a class="link-text" href="#">Linkedin</a>
+      </div>
+    </div>
+    <div class="about-us-footer">
+      <p id="footer-header">Projeto</p>
+      <div class="contact" onclick="goToHistory()">
+        <p class="text">História</p>
+      </div>
+      <div class="contact" onclick="goToCrenca()">
+        <p class="text">Nossa crença</p>
+      </div>
+      <div class="contact" onclick="goToFeedback()">
+        <p class="text">Feedback</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 <script src="./js/feedback.js"></script>

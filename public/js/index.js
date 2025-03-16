@@ -1,11 +1,14 @@
-var sidebar = sideBar;
+var sideBar = document.querySelector(".side-bar");
 
 function openSidebar(){
-  if(sidebar.style.display === "flex"){
-    
-    sidebar.style.display = "none";
+  var body  = document.querySelector(".body");
+
+  if(sideBar.classList.contains("active")){
+
+    sideBar.classList.remove("active");
   }else{
-    sidebar.style.display = "flex";
+
+    sideBar.classList.add("active");
   
       // Adicionar o listener após um delay
     setTimeout(() => {
@@ -13,12 +16,12 @@ function openSidebar(){
     }, 50);
 }
 
-  console.log(sidebar);
+  console.log(sideBar);
 }
 
 var clickOutsideHandler = (event) => {
-  if (!sidebar.contains(event.target)) {
-    sidebar.style.display = "none";
+  if (!sideBar.contains(event.target)) {
+    sideBar.classList.remove("active");
     // Remover o listener após fechar a siedbar
     document.removeEventListener('click', clickOutsideHandler);
   }
@@ -40,4 +43,8 @@ function goToFeedback(){
 
 function goToFeedbackPage(){
   location.replace(`/feedback.html`)
+}
+
+function goToAuth(){
+  location.replace("/autenticacao.html");
 }
