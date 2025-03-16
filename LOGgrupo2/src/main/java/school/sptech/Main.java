@@ -14,6 +14,6 @@ public class Main {
 
         logFuncionado.exibirAtualizacao(tipos[tipo]);
 
-        }
     }
 }
+

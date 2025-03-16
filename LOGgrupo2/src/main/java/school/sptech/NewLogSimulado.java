@@ -19,8 +19,22 @@ public class NewLogSimulado {
     }
     void exibirAtualizacao(String tipo){
         String dataHora = registroLOG();
-        
-        System.out.println();
+
+        if(tipo == "[INFO]"){
+            for (int i = 0; i < 5; i++) {
+                System.out.println(dataHora + " " + tipo + ": Base de dados atualizada com SUCESSO!!");
+            }
+        }else if(tipo == "[WARNING]"){
+            for (int i = 0; i < 5; i++) {
+                System.out.println(dataHora + " " + tipo + ": AUSÊNCIA de dados em determinadas tabelas!!");
+            }
+        }else{
+            for (int i = 0; i < 5; i++) {
+                System.out.println(dataHora + " " + tipo + ": Banco de dados NÃO ENCONTRADO!! ");
+            }
+        }
+
+
     }
 
 
