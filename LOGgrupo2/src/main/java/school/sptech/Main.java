@@ -1,5 +1,7 @@
 package school.sptech;
 
+import school.sptech.entity.Logger;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
