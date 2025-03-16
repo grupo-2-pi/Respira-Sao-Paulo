@@ -22,13 +22,13 @@
       <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
     </div>
     <div class="default-nav-links-container">
-      <a href="">
+      <a onclick="goToHistory()">
         História
       </a>
-      <a href="">
+      <a onclick="goToCrenca()">
         Crenças
       </a>
-      <a href="">
+      <a onclick="goToFeedback()">
         Feedback
       </a>
     </div>
@@ -56,16 +56,16 @@
     </button>
   </div>
   <div class="main-container">
-    <div id="sideBar" class="side-bar" style="display: none;">
+    <div id="sideBar" class="side-bar">
       <img src="./assets/logo.svg" alt="Logo da Respira São Paulo">
       <div class="side-bar-links-container">
-        <a href="">
+        <a onclick="goToHistory(); openSidebar();">
           História
         </a>
-        <a href="">
+        <a onclick="goToCrenca(); openSidebar();">
           Crenças
         </a>
-        <a href="">
+        <a onclick="goToFeedback(); openSidebar();">
           Feedback
         </a>
       </div>
@@ -123,15 +123,16 @@
       <h1>Nossa História</h1>
       <div class="history-row">
         <p>
-          A Respira SP nasceu do encontro de seis jovens brasileiros apaixonados por inovação e qualidade de vida.
-          Durante sua trajetória acadêmica na São Paulo Tech School e experiência profissional na Stefanini, eles perceberam um desafio
-          em comum: a dificuldade de praticar atividades físicas devido à poluição do ar, especialmente no período da manhã, quando a qualidade do
-          ar era crítica. <br> <br>
-          Movidos por essa preocupação e conscientes de que esse problema afetava milhões de paulistanos, decidiram transformar essa dor em uma solução real.
-          Após extensas pesquisas e análises de dados junto a órgãos públicos, nasceu a Respira SP, uma plataforma inovadora voltada para a observação de dados. <br> <br>
-          Nosso objetivo é fornecer gráficos e insights estratégicos para que autoridades e tomadores de decisão possam implementar medidas eficazes de fiscalização e mitigação da poluição. Além disso, valorizamos a participação da população, oferecendo um canal aberto para que todos possam expressar suas preocupações e contribuir ativamente para a construção de um ambiente mais saudável.
+          A nossa empresa, Respira SP, nasceu do encontro de seis jovens brasileiros apaixonados por inovação. Durante nossa trajetória acadêmica na São Paulo Tech School e experiência profissional na Stefanini, 
+          percebemos um desafio em comum: a poluição do ar e seus impactos à qualidade de vida da população. <br> <br>
 
-          A Respira SP acredita que um ar mais puro significa uma vida melhor. Junte-se a nós nessa missão e respire um futuro mais sustentável para São Paulo!
+          Conscientes de que esse problema afeta milhões de paulistanos, decidimos transformar essa dor em uma solução real. 
+          Após extensas pesquisas e análises de dados, criamos a Respira SP. <br> <br>
+
+          Nosso objetivo é fornecer gráficos e insights estratégicos para que autoridades e tomadores de decisão possam implementar medidas eficazes de fiscalização e mitigação da poluição. 
+          Além disso, valorizamos a participação da população, oferecendo um canal aberto para que todos possam expressar suas preocupações e contribuir ativamente para a construção de um ambiente mais saudável. <br> <br>
+
+          Nós acreditamos que um ar mais puro significa uma vida melhor!
         </p>
         <img class="pessoas" src="./assets/imgpessoas.png" alt="">
       </div>
@@ -159,11 +160,9 @@
         <h2 class="card-header">Valores</h2>
         <p><b>Sustentabilidade</b> – Compromisso com a preservação do meio ambiente e a promoção de práticas que garantam
           um
-          futuro mais saudável para as próximas gerações.
-          <b>Pensamento empreendedor</b> – Busca constante por inovação, criatividade e soluções eficazes para transformar
-          desafios em oportunidades.
+          futuro mais saudável para as próximas gerações. <br> <br>
           <b>Inovação</b> – Utilização de tecnologia de ponta para desenvolver soluções eficientes no monitoramento
-          ambiental
+          ambiental <br> <br>
           <b>Transparência</b> – Comunicação clara e aberta com a sociedade, garantindo confiança e credibilidade em todas
           as
           nossas ações.

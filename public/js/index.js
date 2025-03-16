@@ -1,15 +1,14 @@
-var sidebar = sideBar;
+var sideBar = document.querySelector(".side-bar");
 
 function openSidebar(){
   var body  = document.querySelector(".body");
 
-  if(sidebar.style.display === "flex"){
+  if(sideBar.classList.contains("active")){
 
-    sidebar.style.display = "none";
+    sideBar.classList.remove("active");
   }else{
-    body.classList.add("overlay");
 
-    sidebar.style.display = "flex";
+    sideBar.classList.add("active");
   
       // Adicionar o listener após um delay
     setTimeout(() => {
@@ -17,12 +16,12 @@ function openSidebar(){
     }, 50);
 }
 
-  console.log(sidebar);
+  console.log(sideBar);
 }
 
 var clickOutsideHandler = (event) => {
-  if (!sidebar.contains(event.target)) {
-    sidebar.style.display = "none";
+  if (!sideBar.contains(event.target)) {
+    sideBar.classList.remove("active");
     // Remover o listener após fechar a siedbar
     document.removeEventListener('click', clickOutsideHandler);
   }

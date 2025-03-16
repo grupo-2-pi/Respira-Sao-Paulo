@@ -66,7 +66,7 @@
 
   .side-bar {
     /* Deixa o container acima dos outros elementos html */
-    display: none;
+    display: flex !important;
     position: fixed;
     z-index: 1000;
     background-color: var(--second-bg);
@@ -82,6 +82,12 @@
     gap: 20px;
     font-weight: bold;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+  }
+
+  .side-bar.active {
+    transform: translateX(0);
   }
 
   .side-bar a {
@@ -106,6 +112,10 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .side-bar-links-container a:hover {
+    cursor: pointer;
   }
 
   .historia {
@@ -211,6 +221,11 @@
 
   .rightside-container{
     display: none !important;
+  }
+
+  .log-button{
+    border: 1px solid var(--primary-text) !important;
+    color: var(--primary-text) !important;
   }
 }
 
@@ -880,4 +895,8 @@ body {
   display: flex;
   justify-content: center;
   font-weight: bold;
+}
+
+.side-bar {
+  display: none;
 }
