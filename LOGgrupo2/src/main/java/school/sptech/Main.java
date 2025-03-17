@@ -15,7 +15,8 @@ public class Main {
             Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
             logger.realizarLog(tipos[tipo]);
         }
-
+        
+        encerrarAplicacao();
     }
 
     static void iniciarAplicacao(){
@@ -32,6 +33,14 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------------------------");
 
         System.out.println(logger.formatarData() + " Aplicação iniciada");
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+    }
+
+    static void encerrarAplicacao(){
+        System.out.println("-----------------------------------------------------------------------------------------");
+
+        System.out.println(logger.formatarData() + " Aplicação encerrada");
 
         System.out.println("-----------------------------------------------------------------------------------------");
     }

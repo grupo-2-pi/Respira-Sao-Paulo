@@ -38,9 +38,9 @@ public class Automation {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(targetFile, true))) {
             writer.write(content);
             writer.newLine();
-            System.out.println(date + "[INFO] Arquivo de log atualizado: " + targetFile.getAbsolutePath());
+            System.out.println(date + " [INFO] Arquivo de log atualizado: " + targetFile.getAbsolutePath());
         } catch (IOException e) {
-            System.err.println(date + "[ERROR] Erro atualizar o arquivo de log: " + e.getMessage());
+            System.err.println(date + " [ERROR] Erro atualizar o arquivo de log: " + e.getMessage());
         }
 
     }
