@@ -1,17 +1,48 @@
 package school.sptech;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import school.sptech.entity.Logger;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.concurrent.ThreadLocalRandom;
+
+public class Main {
+    static Logger logger = new Logger();
+    static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
+
+    public static void main(String[] args) {
+        iniciarAplicacao();
+
+        for(var i = 0; i <= 20; i++){
+            Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
+            logger.realizarLog(tipos[tipo]);
         }
+        
+        encerrarAplicacao();
+    }
+
+    static void iniciarAplicacao(){
+        System.out.println("\n" +
+                "\n" +
+                " ____                 _             ____   /\\/|         ____             _       \n" +
+                "|  _ \\ ___  ___ _ __ (_)_ __ __ _  / ___| |/\\/_  ___   |  _ \\ __ _ _   _| | ___  \n" +
+                "| |_) / _ \\/ __| '_ \\| | '__/ _` | \\___ \\ / _` |/ _ \\  | |_) / _` | | | | |/ _ \\ \n" +
+                "|  _ <  __/\\__ \\ |_) | | | | (_| |  ___) | (_| | (_) | |  __/ (_| | |_| | | (_) |\n" +
+                "|_| \\_\\___||___/ .__/|_|_|  \\__,_| |____/ \\__,_|\\___/  |_|   \\__,_|\\__,_|_|\\___/ \n" +
+                "               |_|                                                               \n" +
+                "\n");
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+
+        System.out.println(logger.formatarData() + " Aplicação iniciada");
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+    }
+
+    static void encerrarAplicacao(){
+        System.out.println("-----------------------------------------------------------------------------------------");
+
+        System.out.println(logger.formatarData() + " Aplicação encerrada");
+
+        System.out.println("-----------------------------------------------------------------------------------------");
     }
 }
+
