@@ -228,6 +228,9 @@
     border: 1px solid var(--primary-text) !important;
     color: var(--primary-text) !important;
   }
+  body{
+    position: relative;
+  } 
 }
 
 body {
