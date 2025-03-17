@@ -6,6 +6,7 @@
   --muted-text: #DCD7C9;
   --black-text: #20341e;
   --primary-green: #9abe4a;
+  --second-green: #c7e487;
   --shadow: rgb(0, 0, 0, 0.5);
 }
 
@@ -123,7 +124,7 @@
     flex-direction: column !important;
     gap: 20px;
     width: 100%;
-    height: 180vh !important;
+    height: 210vh !important;
     justify-content: center;
   }
 
@@ -245,7 +246,7 @@ body {
   align-items: center;
   color: var(--black-text);
   /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
-  background-color: #c7e487;
+  background-color: var(--second-green);
   padding: 10px;
   margin: 0;
   height: 10%;
