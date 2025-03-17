@@ -236,6 +236,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 .default-nav-bar {
   display: flex;
   width: 100%;
@@ -243,7 +245,7 @@ body {
   align-items: center;
   color: var(--black-text);
   /* Utilizando a variavel criada ali em cima para não ficar repetindo ou adivinhando cores */
-  background-color: var(--primary-bg);
+  background-color: #c7e487;
   padding: 10px;
   margin: 0;
   height: 10%;
@@ -493,7 +495,7 @@ body {
 }
 
 .container {
-  background-color: var(--primary-bg);
+  background-color: #dbf3a7;
   height: 130vh;
   width: 100%;
   display: flex;
@@ -848,7 +850,7 @@ body {
   align-items: center;
   justify-content: start;
   padding-top: 100px;
-  background-image: url("https://images.pexels.com/photos/311617/pexels-photo-311617.jpeg?cs=srgb&dl=pexels-vinipimenta-311617.jpg&fm=jpg");
+  background-image: url("./fundo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
