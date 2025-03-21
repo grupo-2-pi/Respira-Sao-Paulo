@@ -136,6 +136,23 @@ body{
     color: var(--primary-text) !important;
   }
 
+  #modal {
+    width: 80% !important;
+  }
+
+  
+  #modal p {
+    font-size: 15px !important;
+  }
+
+  #modal h2 {
+    font-size: 17px !important;
+  }
+
+  #modal button {
+    height: 14% !important;
+  }
+
 }
 
 
