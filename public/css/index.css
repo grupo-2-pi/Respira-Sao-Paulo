@@ -597,11 +597,6 @@ p {
   padding-bottom: 20px;
   align-items: center;
   background-color: var(--primary-bg);
-  /* background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment:fixed;
-  background-image: url("../assets/imgcid.png"); */
 }
 
 .cidade {
@@ -617,10 +612,10 @@ p {
 
 .historia p {
   width: 40%;
-  color: var(--primary-text);
+  color: var(--primary-bg);
   font-size: 18px;
   font-weight: bold;
-  background: var(--black-text);
+  background-color: var(--black-text);
   padding: 10px 20px;
   border-radius: 15px;
 }
