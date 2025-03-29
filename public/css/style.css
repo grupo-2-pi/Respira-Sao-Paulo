@@ -6,4 +6,5 @@ body {
   display: flex;
   justify-content: center;
   font-family: "Rubik", sans-serif;
+  flex-direction: column;
 }
