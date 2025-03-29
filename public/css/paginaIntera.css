@@ -9,7 +9,8 @@
     --primary-text: #000000;
     --second-text: #EEEEEE;
     --muted-text: #DCD7C9;
-    --shadow: rgb(0, 0, 0, 0.5);
+    --shadow: rgba(0, 0, 0, 0.5) 0px 4px 6px;
+    ;
 }
 
 
@@ -125,34 +126,85 @@
     background-color: var(--primary-bg);
 }
 
+/*KPIS*/
+
 .kpis {
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100vw;
-    height: 30vh;
-    background-color: red;
+    height: 40vh;
     justify-content: center;
     align-items: center;
-    gap: 28px;
+    margin-top: 22px;
+}
+
+.primeira-divisao-kpi {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 50px;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
 
 }
+
 
 .primeira-kpi {
 
-    background-color: blue;
+    background-color: var(--primary-bg);
     width: 33%;
     height: 80%;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+
 }
 
 .segunda-kpi {
-    background-color: white;
+
+    background-color: var(--primary-bg);
+    ;
     width: 33%;
     height: 80%;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+
 }
 
 .terceira-kpi {
-    background-color: black;
+
+    background-color: var(--primary-bg);;
     width: 33%;
     height: 80%;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+
+}
+
+/*FILTRO*/
+
+.filtro {
+
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    margin-top: 5px;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.filtro-aplicado {
+
+    display: flex;
+    flex-direction: row;
+    width: 18%;
+    height: 50%;
+    background-color: var(--primary-bg);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    margin-right: 12%;
+
 }
