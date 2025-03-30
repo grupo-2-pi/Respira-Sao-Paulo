@@ -20,7 +20,7 @@
 
     <!-- MENU MOBILE -->
 
-    <div class="mobile-nav-bar">
+    <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
 
         <div class="logo-nav-container">
             <img id="id-logo-nav-bar" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
@@ -134,7 +134,7 @@
         <div class="filtro">
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-            <div class="filtro-aplicado">
+            <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
 
                 <div class="img-filtro">
                     <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
@@ -144,6 +144,42 @@
                     <h1>Filtro</h1>
                 </div>
 
+            </div>
+
+            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+                
+                <div class="escolher-filtro">
+
+                    <div class="btn-sair" onclick="fecharFiltro()">
+                        <img id="btn-sair-filtro" width="100%" src="./assets/img-x.png" alt="Sair do Filtro">
+                    </div>
+                    
+                    <div class="filtro-text">
+
+                    </div>
+                    <div class="filtro-text">
+                        
+                    </div>
+                    <div class="filtro-text">
+                        
+                    </div>
+                    <div class="filtro-text">
+                        
+                    </div>
+
+                    <div class="filtro-btn">
+                        <div class="filtro-btn-1">
+
+                        </div>
+                        <div class="filtro-btn-1">
+
+                        </div>
+                        <div class="filtro-btn-1">
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -170,6 +206,7 @@
 </html>
 
 <script src="./js/index.js"></script>
+<script src="./js/paginaPrincipal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
