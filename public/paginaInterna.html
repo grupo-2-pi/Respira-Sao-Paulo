@@ -26,6 +26,10 @@
             <img id="id-logo-nav-bar" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
         </div>
 
+        <div class="img-nav-alerta">
+            <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+        </div>
+
         <button id="id-button-nav-bar" onclick="openSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="60%" fill="currentColor"
                 class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
@@ -48,7 +52,7 @@
                     Página Inicial
                 </a>
                 <a onclick="goToComentarios(); openSidebar();">
-                    Comentarios
+                    Comentários
                 </a>
                 <a onclick="goToCadastrar(); openSidebar();">
                     Cadastrar
@@ -89,14 +93,38 @@
             <div class="primeira-divisao-kpi">
                 <div class="primeira-kpi">
 
+                    <div class="titulo-kpi">
+                        <h1>Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>São Paulo</h1>
+                    </div>
+
                 </div>
 
                 <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1>Munícipio com maior Indice de Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>São Paulo</h1>
+                    </div>
 
                 </div>
             </div>
             <div class="primeira-divisao-kpi">
                 <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1>Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>R$ 15.000,00</h1>
+                    </div>
 
                 </div>
             </div>
@@ -106,9 +134,17 @@
         <div class="filtro">
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-             <div class="filtro-aplicado">
+            <div class="filtro-aplicado">
 
-             </div>
+                <div class="img-filtro">
+                    <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
+                </div>
+
+                <div class="text-filtro">
+                    <h1>Filtro</h1>
+                </div>
+
+            </div>
 
         </div>
 
@@ -117,11 +153,11 @@
             <!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
 
             <div class="primeira-dashboard">
-
+                <canvas id="myChart"></canvas>
             </div>
 
             <div class="segunda-dashboard">
-
+                <canvas id="myChartB"></canvas>
             </div>
 
         </div>
@@ -134,3 +170,50 @@
 </html>
 
 <script src="./js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: 'Registro de Doenças Respiratórias por Munícipio',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+    const ctx2 = document.getElementById('myChartB');
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: 'Nível de Poluição por Município',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
