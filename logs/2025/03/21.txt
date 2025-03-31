@@ -1,0 +1,4 @@
+21/03/2025 12:38:15 [INFO]: Base de dados atualizada com SUCESSO!!
+21/03/2025 12:38:17 [WARNING]: AUSÊNCIA de dados em determinadas tabelas!!
+21/03/2025 12:38:17 [ERROR]: Banco de dados NÃO ENCONTRADO!! 
+21/03/2025 12:38:17 [WARNING]: AUSÊNCIA de dados em determinadas tabelas!!
