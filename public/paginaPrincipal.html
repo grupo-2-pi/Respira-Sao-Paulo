@@ -30,6 +30,37 @@
             <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
         </div>
 
+        <!-- NAV BAR DESKTOP -->
+
+        <div class="nav-bar-links-container" style="display: none;">
+
+            <a onclick="goToPaginaInicial(); openSidebar();">
+                Página Inicial
+            </a>
+            <a onclick="goToComentarios(); openSidebar();">
+                Comentários
+            </a>
+            <a onclick="goToCadastrar(); openSidebar();">
+                Cadastrar
+            </a>
+            <div class="contem-alerta">
+                <div class="img-nav-alerta2">
+                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+                        alt="Imagem de Notificações">
+                </div>
+                <a onclick="goToAlertas();">
+                    Notificações
+                </a>
+            </div>
+
+        </div>
+
+        <div class="img-user" style="display: none;">
+            <img id="id-img-user" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+        </div>
+
+        <!-- FIM NAV BAR -->
+
         <button id="id-button-nav-bar" onclick="openSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="60%" fill="currentColor"
                 class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
@@ -39,6 +70,7 @@
                     d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
             </svg>
         </button>
+
 
 
 
@@ -70,25 +102,13 @@
     </div>
 
 
-    <!-- MENU TABLET -->
-
-
-
-
-
-
-
-    <!-- MENU DESKTOP -->
-
-
-
-
-
     <!-- MAIN -->
 
     <div class="container">
 
         <div class="kpis">
+
+            <!-- MOBILE -->
 
             <div class="primeira-divisao-kpi">
                 <div class="primeira-kpi">
@@ -129,6 +149,48 @@
                 </div>
             </div>
 
+            <!-- DESKTOP -->
+
+            <div class="primeira-divisao-kpi2" style="display: none;">
+                <div class="primeira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1>Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1> Maior Indíce Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>São Paulo</h1>
+                    </div>
+
+                </div>
+            
+                <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1>Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1>R$ 15.000,00</h1>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FIM DESKTOP -->
+
         </div>
 
         <div class="filtro">
@@ -147,24 +209,24 @@
             </div>
 
             <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
-                
+
                 <div class="escolher-filtro">
 
                     <div class="btn-sair" onclick="fecharFiltro()">
                         <img id="btn-sair-filtro" width="100%" src="./assets/img-x.png" alt="Sair do Filtro">
                     </div>
-                    
+
                     <div class="filtro-text">
 
                     </div>
                     <div class="filtro-text">
-                        
+
                     </div>
                     <div class="filtro-text">
-                        
+
                     </div>
                     <div class="filtro-text">
-                        
+
                     </div>
 
                     <div class="filtro-btn">
