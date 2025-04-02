@@ -34,7 +34,7 @@
 
         <div class="nav-bar-links-container" style="display: none;">
 
-            <a onclick="goToPaginaInicial(); openSidebar();">
+            <a class="nav-selected" onclick="goToPaginaInicial(); openSidebar();">
                 Página Inicial
             </a>
             <a onclick="goToComentarios(); openSidebar();">
@@ -43,7 +43,7 @@
             <a onclick="goToCadastrar(); openSidebar();">
                 Cadastrar
             </a>
-            <div class="contem-alerta">
+            <div onmouseenter="showNotifications()"  class="contem-alerta">
                 <div class="img-nav-alerta2">
                     <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
                         alt="Imagem de Notificações">
@@ -51,12 +51,44 @@
                 <a onclick="goToAlertas();">
                     Notificações
                 </a>
+                <div class="notification-dropdown" onmouseleave="hideNotifications()">
+                    <div class="notification-dropdown-options">
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
 
-        <div class="img-user" style="display: none;">
-            <img id="id-img-user" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+        <div onmouseenter="showUserOptions()" class="img-user" style="display: none;">
+            <div class="user-container">
+                <img id="id-img-user" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                
+                <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+                    <button>Dados Pessoais</button>
+                    <button>Filtros Salvos</button>
+                    <button>Tema</button>
+                    <button>Desconectar</button>
+                </div>
+            
+            </div>
         </div>
 
         <!-- FIM NAV BAR -->
@@ -268,51 +300,5 @@
 </html>
 
 <script src="./js/index.js"></script>
-<script src="./js/paginaPrincipal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'Registro de Doenças Respiratórias por Munícipio',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-
-
-    const ctx2 = document.getElementById('myChartB');
-
-    new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'Nível de Poluição por Município',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+<script src="./js/paginaPrincipal.js"></script>
