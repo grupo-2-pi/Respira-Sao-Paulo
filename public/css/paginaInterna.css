@@ -492,8 +492,8 @@
     }
 
     .escolher-filtro{
-        width: 40%;
-        height: 51%;
+        width: 35%;
+        height: 47%;
     }
 
     .btn-sair {
@@ -501,7 +501,7 @@
     }
 
     #btn-sair-filtro {
-        width: 50%;
+        width: 35%;
         height: 73%;
     }
 

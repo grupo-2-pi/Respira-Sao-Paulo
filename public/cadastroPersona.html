@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/paginaInterna.css">
+    <link rel="stylesheet" href="./css/cadastroPersona.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./assets/logo.svg">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- MENU MOBILE -->
+
+    <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
+
+        <div class="logo-nav-container">
+            <img id="id-logo-nav-bar" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+        </div>
+
+        <div class="img-nav-alerta">
+            <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+        </div>
+
+        <!-- NAV BAR DESKTOP -->
+
+        <div class="nav-bar-links-container" style="display: none;">
+
+            <a onclick="goToPaginaInicial(); openSidebar();">
+                Página Inicial
+            </a>
+            <a onclick="goToComentarios(); openSidebar();">
+                Comentários
+            </a>
+            <a onclick="goToCadastrar(); openSidebar();">
+                Cadastrar
+            </a>
+            <div class="contem-alerta">
+                <div class="img-nav-alerta2">
+                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+                        alt="Imagem de Notificações">
+                </div>
+                <a onclick="goToAlertas();">
+                    Notificações
+                </a>
+            </div>
+
+        </div>
+
+        <div class="img-user" style="display: none;">
+            <img id="id-img-user" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+        </div>
+
+        <!-- FIM NAV BAR -->
+
+        <button id="id-button-nav-bar" onclick="openSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="60%" fill="currentColor"
+                class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+                <path
+                    d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+                <path
+                    d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+            </svg>
+        </button>
+
+
+
+
+        <div id="sideBar" class="side-bar">
+
+            <div class="img-side-bar">
+                <img width="40%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+            </div>
+            <div class="side-bar-links-container">
+                <a onclick="goToPaginaInicial(); openSidebar();">
+                    Página Inicial
+                </a>
+                <a onclick="goToComentarios(); openSidebar();">
+                    Comentários
+                </a>
+                <a onclick="goToCadastrar(); openSidebar();">
+                    Cadastrar
+                </a>
+                <a onclick="goToPerfil(); openSidebar();">
+                    Perfil
+                </a>
+                <a onclick="goToSair(); openSidebar();">
+                    Sair
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <div class="dados-funcionario">
+
+        </div>
+
+        <div class="linha-divisoria"></div>
+
+        <div class="dados-empresa">
+
+        </div>
+
+        <div class="botao-cadastrar">
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script src="./js/index.js"></script>
