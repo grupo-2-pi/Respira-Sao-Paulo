@@ -1,0 +1,38 @@
+/*MOBILE*/
+
+/*MAIN*/
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--primary-bg);
+    align-items: center;
+    gap: 3vh;
+}
+
+.dados-funcionario{
+    margin-top: 3vh;
+    width: 80vw;
+    height: 40vh;
+    background-color: red;
+}
+
+.linha-divisoria{
+    width: 70vw;
+    height: 0.3vw;
+    background-color: black;
+}
+
+.dados-empresa{
+    width: 80vw;
+    height: 30vh;
+    background-color: red;
+}
+
+.botao-cadastrar{
+    width: 80vw;
+    height: 5vh;
+    background-color: green;
+}
