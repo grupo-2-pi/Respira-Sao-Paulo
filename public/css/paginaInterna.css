@@ -11,14 +11,14 @@
     --muted-text: #DCD7C9;
     --shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;
     --dropdown-bg: #E7F3CB;
-    --dropdown-border: #2E482B
+    --dropdown-border: #2E482B;
+    --dropdown-letter: #20341E;
 }
 
 
 /*MENU MOBILE*/
 
 .mobile-nav-bar {
-
     display: flex !important;
     width: 100vw;
     background-color: var(--second-bg);
@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-
+    height: 80%;
 }
 
 .logo-nav-container {
@@ -221,7 +221,6 @@
 /*FILTRO*/
 
 .filtro {
-
     display: flex;
     width: 100vw;
     height: auto;
@@ -229,11 +228,9 @@
     margin-bottom: 10px;
     justify-content: flex-end;
     align-items: center;
-
 }
 
 .filtro-aplicado {
-
     display: flex;
     flex-direction: row;
     width: 18%;
@@ -245,7 +242,11 @@
     justify-content: flex-start;
     align-items: center;
     gap: 4%;
-
+    color: var(--dropdown-letter);
+    padding: 5px;
+}
+.filtro-aplicado:hover{
+    cursor: pointer;
 }
 
 .img-filtro {
@@ -283,6 +284,10 @@
     height: 4vh;
 }
 
+.btn-sair:hover {
+    cursor: pointer;
+}
+
 #btn-sair-filtro {
     width: 100%;
     height: 100%;
@@ -298,7 +303,7 @@
     box-shadow: var(--shadow);
     align-items: center;
     flex-direction: column;
-
+    padding: 10px;
 }
 
 .filtro-text {
@@ -367,7 +372,7 @@
     /*NAV BAR*/
 
     .mobile-nav-bar {
-        height: 8vh;
+        height: 10vh;
         gap: 0px;
         justify-content: space-evenly;
     }
@@ -428,8 +433,21 @@
         cursor:pointer;
         gap: 10px;
     }
+    .user-infos {
+        display: flex;
+        width: fit-content;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+    .user-infos span {
+        font-size: small;
+        color: var(--dropdown-letter);
+    }
 
     /*KPIS*/
+
 
 
     .kpis {
@@ -489,6 +507,7 @@
 
     .text-filtro {
         font-size: 10px;
+        color: var(--dropdown-letter);
     }
 
     .escolher-filtro{
@@ -502,7 +521,7 @@
 
     #btn-sair-filtro {
         width: 35%;
-        height: 73%;
+        height: 40%;
     }
 
     /*DASHBOARDS*/
@@ -535,7 +554,7 @@
     top: 100%;
     left: 0;
     background: var(--dropdown-bg);
-    color: black;
+    color: var(--dropdown-letter);
     width: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -576,6 +595,7 @@
 .notification-container button {
     background-color: transparent;
     border: none;
+    font-weight: bold;
 }
 
 .notification-container button:hover{
@@ -585,10 +605,10 @@
 .user-dropdown-options{
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 20;
     background: var(--dropdown-bg);
-    color: black;
-    width: 130px;
+    color: var(--dropdown-letter);
+    width: 160px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
@@ -599,15 +619,27 @@
     border: solid 1px var(--dropdown-border);
     border-radius: 5px;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
+}
+
+#options {
+    position: relative;
 }
 
 .user-dropdown-options button{
     background-color: transparent;
-    border: solid 2px var(--dropdown-bg);
-    padding: 5px;
+    border: solid 1px var(--dropdown-border);
+    padding: 8px;
     width: 100%;
     border-radius: 5px;
+    font-weight: bold;
+}
+.user-dropdown-options button:hover{
+    opacity: 85%;
+}
+
+#disconectButton:hover{
+    color: red;
 }
 
 .user-dropdown-options button:hover{
@@ -620,3 +652,62 @@
 .user-dropdown-options #id-img-user{
     width: 29%;
 }
+
+.user-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    position: relative;
+}
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+}
+  
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFF085;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+  
+.slider:before {
+   position: absolute;
+   content: "";
+   height: 20px;
+   width: 20px;
+   left: 4px;
+   bottom: 4px;
+   background-color: var(--primary-bg);
+   transition: 0.4s;
+   border-radius: 50%;
+}
+  
+input:checked + .slider {
+  background-color: #3C3D37;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+  
