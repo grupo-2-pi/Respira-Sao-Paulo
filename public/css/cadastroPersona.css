@@ -2,7 +2,7 @@
 
 /*MAIN*/
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -12,27 +12,92 @@
     gap: 3vh;
 }
 
-.dados-funcionario{
+/*FUNCIONÁRIO*/
+
+.dados-funcionario {
     margin-top: 3vh;
     width: 80vw;
-    height: 40vh;
-    background-color: red;
+    height: auto;
 }
 
-.linha-divisoria{
+.contem-tudo-dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.contem-placeholder {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.titulo-pagina {
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+    margin-top: -24px;
+}
+
+.contem-placeholder-dados {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+
+}
+
+.place-holder {
+    border: 1px solid #292929;
+    border-radius: 5px;
+}
+
+/*LINHA DIVISÓRIA*/
+
+.linha-divisoria {
     width: 70vw;
     height: 0.3vw;
     background-color: black;
 }
 
-.dados-empresa{
+/*EMPRESA*/
+
+.dados-empresa {
     width: 80vw;
-    height: 30vh;
-    background-color: red;
+    height: auto;
 }
 
-.botao-cadastrar{
-    width: 80vw;
+.contem-tudo-dados-empresa {
+    display: flex;
+    flex-direction: column;
+}
+
+.contem-placeholder-empresa {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contem-placeholder-dados-empresa {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+
+}
+
+.contem-placeholder-dados-empresa-checkbox {
+    display: flex;
+    flex-direction: line;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+}
+
+.botao-cadastrar {
+    display: flex;
+    width: 34vw;
+    border-radius: 25px;
     height: 5vh;
-    background-color: green;
+    background-color: var(--second-btn-bg);
+    align-items: center;
+    justify-content: center;
+    color: white;
 }

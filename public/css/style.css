@@ -392,6 +392,10 @@ body {
       width: 6%;
   }
 
+  .user-container{
+    display: flex !important;
+  }
+
   .nav-bar-links-container {
       display: flex !important;
       flex-direction: row;
