@@ -1,0 +1,120 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-bg);
+}
+
+.contem-troca-senha {
+    width: 78vw;
+    height: 70vh;
+    background-color: var(--primary-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 0.8rem !important;
+    color: var(--title-text) !important;
+}
+
+.contem-senhas {
+    display: flex;
+    height: 45vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 37px;
+    justify-content: center;
+}
+
+.nova-senhar {
+    display: flex;
+    width: 69vw;
+    flex-direction: column;
+    font-size: 0.8rem !important;
+    color: var(--title-text) !important;
+}
+
+.confirmar-senha {
+    display: flex;
+    width: 69vw;
+    flex-direction: column;
+    font-size: 0.8rem !important;
+    color: var(--title-text) !important;
+}
+
+.placeholder {
+    border: 1px solid #292929;
+    border-radius: 5px;
+}
+
+.button {
+    display: flex;
+    width: 34vw;
+    border-radius: 25px;
+    height: 5vh;
+    background-color: var(--second-btn-bg);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 17px;
+}
+
+/*DESKTOP*/
+
+@media(min-width: 1024px) {
+
+    .container {
+        flex-direction: row !important;
+        gap: 5vw;
+    }
+
+    .contem-logo {
+        display: flex !important;
+        width: 45vw;
+        height: 100vh;
+        background-color: var(--second-bg);
+        justify-content: center;
+        align-items: center;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+
+
+    .contem-troca-senha {
+        width: 45vw;
+        margin-right: 5vw;
+    }
+
+    .title {
+        margin-top: 20px;
+
+    }
+
+    .contem-senhas {
+        width: 70%;
+    }
+
+    .nova-senhar {
+        width: 100%;
+    }
+
+    .confirmar-senha {
+        width: 100%;
+    }
+
+    .button {
+        width: 11vw;
+    }
+
+
+
+}
