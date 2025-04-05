@@ -1,4 +1,4 @@
-package school.sptech.entity;
+package school.sptech.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;

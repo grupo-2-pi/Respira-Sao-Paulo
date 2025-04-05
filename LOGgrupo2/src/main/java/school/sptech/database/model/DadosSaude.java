@@ -1,6 +1,6 @@
-package school.sptech;
+package school.sptech.database.model;
 
-public class dadosSaude {
+public class DadosSaude {
     private Integer idDadosSaude;
     private Integer ano;
     private String mes;
@@ -10,7 +10,7 @@ public class dadosSaude {
     private String faixaIdade;
     private Integer idMunicipio;
 
-    public dadosSaude(Integer idDadosSaude, Integer ano, String mes, Double gastosTotais, Integer numeroInternacoes, Integer numeroObitos, String faixaIdade, Integer idMunicipio) {
+    public DadosSaude(Integer idDadosSaude, Integer ano, String mes, Double gastosTotais, Integer numeroInternacoes, Integer numeroObitos, String faixaIdade, Integer idMunicipio) {
         this.idDadosSaude = idDadosSaude;
         this.ano = ano;
         this.mes = mes;
@@ -21,7 +21,7 @@ public class dadosSaude {
         this.idMunicipio = idMunicipio;
     }
 
-    public dadosSaude() {
+    public DadosSaude() {
     }
 
     public Integer getIdDadosSaude() {

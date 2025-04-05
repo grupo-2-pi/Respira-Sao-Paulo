@@ -1,6 +1,6 @@
-package school.sptech;
+package school.sptech.database.model;
 
-public class poluicaoTransporte {
+public class PoluicaoTransporte {
     private Integer idPoluicaoTransporte;
     private String tipoTransporte;
     private Integer qtdTransporte;
@@ -10,7 +10,7 @@ public class poluicaoTransporte {
     private String tipoCombustivel;
     private Integer idMunicipio;
 
-    public poluicaoTransporte(Integer idPoluicaoTransporte, String tipoTransporte, Integer qtdTransporte, String tipoPoluicao, Double qtdPoluicao, Integer anoDado, String tipoCombustivel, Integer idMunicipio) {
+    public PoluicaoTransporte(Integer idPoluicaoTransporte, String tipoTransporte, Integer qtdTransporte, String tipoPoluicao, Double qtdPoluicao, Integer anoDado, String tipoCombustivel, Integer idMunicipio) {
         this.idPoluicaoTransporte = idPoluicaoTransporte;
         this.tipoTransporte = tipoTransporte;
         this.qtdTransporte = qtdTransporte;
@@ -21,7 +21,7 @@ public class poluicaoTransporte {
         this.idMunicipio = idMunicipio;
     }
 
-    public poluicaoTransporte() {
+    public PoluicaoTransporte() {
     }
 
     public Integer getIdPoluicaoTransporte() {

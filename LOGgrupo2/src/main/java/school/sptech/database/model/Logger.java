@@ -1,4 +1,6 @@
-package school.sptech.entity;
+package school.sptech.database.model;
+
+import school.sptech.utils.Automation;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,6 +40,12 @@ public class Logger {
         System.out.println(mensagem);
         automation.atualizarArquivoLog(mensagem, dataFormatada);
     }
+    public void info(String data){
+        String dataFormatada = formatarData();
+
+        System.out.println(dataFormatada + " " +  "[INFO]:");
+    }
+
 
 
 }

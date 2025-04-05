@@ -1,4 +1,4 @@
-package school.sptech;
+package school.sptech.database.model;
 
 public class Municipios {
     private Integer idMunicipios;
