@@ -153,6 +153,7 @@ body {
       align-items: center;
       justify-content: space-around;
       font-weight: bold;
+
   }
 
   .nav-bar-links-container a{
@@ -402,8 +403,8 @@ transform: translateX(26px);
 .icon-background {
   background-color: transparent;
   border-radius: 100%;
-  height: 10%;
-  width: 30%;
+  height: 40vh;
+  width: 100%;
 }
 
 .icon-background img {
@@ -519,7 +520,7 @@ select{
 
 .user-static-infos-container{
   display: flex;
-  width: 50%;
+  width: 20vw;
   flex-direction: column;
   align-items: start;
   gap: 10px;
