@@ -29,7 +29,7 @@
 
     <div class="nav-bar-links-container" style="display: none;">
 
-        <a class="nav-selected" onclick="goToPaginaInicial(); openSidebar();">
+        <a class="nav-selected" href="./paginaPrincipal.html">
             Página Inicial
         </a>
         <a onclick="goToComentarios(); openSidebar();">
@@ -78,7 +78,7 @@
             </div>
             
             <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
-                <button>Dados Pessoais</button>
+                <button onclick="goToPersonal()">Dados Pessoais</button>
                 <button>Filtros Salvos</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-toggle">
@@ -136,19 +136,66 @@
 </div>
 <div class="main-container">
     <div class="left-side-container">
-        <div class="icon-background">
-            <img height="100%" width="100%" src="https://bawclothing.vtexassets.com/arquivos/ids/268608/0069458046_02.jpg?v=638786183995330000" alt="Icone">
+        <div class="user-static-infos-container">
+            <div class="icon-background">
+                <img id="userIcon" height="80%" width="100%" src="https://bawclothing.vtexassets.com/arquivos/ids/268608/0069458046_02.jpg?v=638786183995330000" alt="Icone">
+            </div>
+            <div class="user-static-infos">
+                <h3 id="userName"></h3>
+                <p id="userEmail"></p>
+            </div>
+            <div class="file-upload-wrapper">
+                <label for="arquivo" class="custom-file-input">
+                  Trocar ícone
+                </label>
+                <input type="file" id="arquivo" name="arquivo" style="display: none;" onchange="handleFileChange(this)">
+            </div>
         </div>
-        <input placeholder="Trocar ícone" type="file" onchange="handleImageChange(this)">
     </div>
     <div class="right-side-container">
+        <div class="user-infos-header">
+            <h1>
+                Informações pessoais
+            </h1>
+            <p>
+                Altere suas informações, incluindo email, senha e nome.
+            </p>
+        </div>
         <div class="user-names-container">
-            <input disabled class="disabled" value="" id="inputNomeUsuario" type="text">
+            <div class="user-names-box">
+                <div style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                    <h1>Nome</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                </div>
+                <input disabled class="disabled" value="" id="inputNomeUsuario" type="text">
+            </div>
+            <div class="user-names-box">
+                <div style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                    <h1>Email</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                </div>
+                <input disabled class="disabled"  value="" id="inputEmailUsuario" type="text">
+            </div>
+        </div>
+        <div class="user-names-box">
+            <div style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                <h1>Cargo</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+            </div>
             <select disabled class="disabled" id="selectCargoUsuario">
                 <option value="donoDeTudo">Dono da porra toda</option>
             </select>
         </div>
-        <input disabled class="disabled"  value="" id="inputEmailUsuario" type="text">
+        
     </div>
 </div>
 

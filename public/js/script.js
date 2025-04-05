@@ -75,3 +75,8 @@ function switchTheme(event) {
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+
+function goToPersonal(){
+  location.replace("/personal.html")
+}
