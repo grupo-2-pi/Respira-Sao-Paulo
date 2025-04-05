@@ -15,6 +15,7 @@
   --dropdown-letter: #20341E;
   --primary-green: #9abe4a;
   --primary-grey: #373A40;
+  --black-text: #20341e;
 }
 
 body {
@@ -385,16 +386,17 @@ transform: translateX(26px);
 .main-container {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   align-items: start;
-  padding: 3%;
+  padding-top: 4%;
 }
 .left-side-container {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  padding-left: 10%;
 }
 
 .icon-background {
@@ -411,11 +413,12 @@ transform: translateX(26px);
 }
 
 .right-side-container{
-  width: 70%;
+  width: 65%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  padding-left: 6%;
   gap: 10px;
 }
 .right-side-container h1 {
@@ -466,9 +469,9 @@ select{
 .right-side-container input {
   border-radius: 5px;
   border: solid 1px var(--dropdown-letter);
-  padding: 10px;
+  padding: 10px 10px 10px 0;
   height: 15px;
-  width: 100%;
+  width: 20vw;
   color: var(--dropdown-letter);
   font-size: 15px;
 }
@@ -538,4 +541,166 @@ select{
 #userEmail{
   color: var(--primary-grey);
   opacity: 90%;
+}
+
+.save-infos-row{ 
+  width: 45vw;
+  display: flex;
+  justify-content: end;
+}
+
+#saveChangesButton{
+  border: none;
+  background-color: var(--second-btn-bg);
+  color: var(--primary-bg);
+  padding: 10px;
+  border-radius: 5px;
+  width: 5vw;
+  height: 6vh;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+#saveChangesButton:hover{
+  cursor: pointer;
+  opacity: 90%;
+  transition: 0.2s;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #fff;
+  padding: 20px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 10px;
+  background-color: var(--primary-bg);
+  width: 40%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--black-text);
+}
+
+#modal span {
+  color: var(--primary-green);
+}
+
+#modal p {
+  font-size: medium;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal button {
+  background-color: var(--black-text);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 40%;
+  height: 18%;
+  align-self: flex-end;
+}
+
+#modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.user-names-container svg:hover{
+  cursor: pointer;
+}
+
+
+
+#overlaySenha {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+#overlaySenha.active {
+  opacity: 1;
+  visibility: visible;
+}
+#modalSenha {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #fff;
+  padding: 20px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 10px;
+  background-color: var(--primary-bg);
+  width: 40%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--black-text);
+}
+
+#modalSenha span {
+  color: var(--primary-green);
+}
+
+#modalSenha p {
+  font-size: medium;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modalSenha button {
+  background-color: var(--black-text);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 40%;
+  height: 18%;
+  align-self: flex-end;
+}
+
+#modalSenha.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
