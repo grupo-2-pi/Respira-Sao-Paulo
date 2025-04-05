@@ -94,25 +94,32 @@
 
 .botao-cadastrar {
     display: flex;
-    width: 34vw;
+    width: 32vw;
     border-radius: 25px;
-    height: 5vh;
+    height: 3vh;
     background-color: var(--second-btn-bg);
     align-items: center;
     justify-content: center;
     color: white;
+    padding: 10px;
+}
+
+.botao-cadastrar:hover{
+    cursor:pointer;
+    opacity: 90%;
 }
 
 /*DESKTOP*/
 
 @media (min-width: 1024px) {
-
-    body{
-        overflow: hidden;
+    
+    input{
+        padding: 6px;
     }
 
     .container{
         gap: 5vh;
+        padding: 20px;
     }
 
     .dados-funcionario{

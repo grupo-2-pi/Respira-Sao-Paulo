@@ -34,13 +34,13 @@
 
         <div class="nav-bar-links-container" style="display: none;">
 
-            <a onclick="goToPaginaInicial(); openSidebar();">
+            <a href="./paginaPrincipal.html">
                 Página Inicial
             </a>
             <a onclick="goToComentarios(); openSidebar();">
                 Comentários
             </a>
-            <a onclick="goToCadastrar(); openSidebar();">
+            <a class="nav-selected"  onclick="goToCadastrar(); openSidebar();">
                 Cadastrar
             </a>
             <div onmouseenter="showNotifications()" class="contem-alerta">
@@ -83,7 +83,7 @@
             </div>
 
             <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
-                <button>Dados Pessoais</button>
+                <button onclick="goToPersonal()">Dados Pessoais</button>
                 <button>Filtros Salvos</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-toggle">
