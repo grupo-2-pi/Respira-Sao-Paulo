@@ -56,6 +56,7 @@
     width: 70vw;
     height: 0.3vw;
     background-color: black;
+    border-radius: 5px;
 }
 
 /*EMPRESA*/
@@ -100,4 +101,59 @@
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+/*DESKTOP*/
+
+@media (min-width: 1024px) {
+
+    body{
+        overflow: hidden;
+    }
+
+    .container{
+        gap: 5vh;
+    }
+
+    .dados-funcionario{
+        margin-top: 7vh;
+    }
+
+    .contem-placeholder {
+        gap: 5vh;
+    }
+
+    .contem-1 {
+        display: flex;
+        gap: 5vw;
+    }
+
+    .contem-2 {
+        display: flex;
+        gap: 5vw;
+    }
+
+    .contem-placeholder-dados {
+        width: 45vw;
+    }
+
+    .contem-placeholder-empresa {
+        gap: 7vh;
+    }
+
+    .contem-placeholder-dados-empresa{
+        width: 45vw;
+    }
+
+    .contem-3{
+        display: flex;
+        gap: 5vw;        
+    }
+
+    .linha-divisoria{
+        height: 0.2vh;
+    }
+
+
+
 }
