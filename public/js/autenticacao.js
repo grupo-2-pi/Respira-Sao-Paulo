@@ -118,7 +118,7 @@ function login(){
 // Recebe os dados das inputs e retorna um json pra vacilitar
 function receberDadosLogin(){
   return {
-    cnpj: inputCnpj.value,
+    email: inputCnpj.value,
     password: inputLoginPassword.value,
   };
 }
