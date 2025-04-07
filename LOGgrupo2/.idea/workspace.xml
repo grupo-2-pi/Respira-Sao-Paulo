@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="79e047d5-0b69-41f0-a2a4-9ab7bf5b6b64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/config/JDBCConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/DadosSaude.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/Empresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/FeedbackUsuarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/Funcionarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/Municipios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/PoluicaoTransporte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/school/sptech/service/EmpresaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/school/sptech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/school/sptech/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/school/sptech/entity/Automation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/school/sptech/utils/Automation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/school/sptech/entity/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/school/sptech/database/model/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/Conexao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/Empresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/FeedbackUsuarios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/Funcionarios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/Municipios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/dadosSaude.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conexaoBD/src/main/java/school/sptech/poluicaoTransporte.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2vJY1OiYgC0yQMEyliRvrwf23xC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "java-data",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/furqas/projects/Respira-Sao-Paulo/LOGgrupo2/src/main/java/school/sptech/database/model"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/school/sptech/database/model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="school.sptech.config" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79e047d5-0b69-41f0-a2a4-9ab7bf5b6b64" name="Changes" comment="" />
+      <created>1743864428737</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743864428737</updated>
+    </task>
+    <servers />
+  </component>
+</project>

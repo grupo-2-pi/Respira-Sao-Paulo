@@ -115,6 +115,8 @@
         width: 11vw;
     }
 
-
+    input {
+        padding: 8px;
+    }
 
 }
