@@ -1,3 +1,15 @@
+body {
+  padding: 0;
+  margin: 0;
+  /* height: 100vh; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: "Rubik", sans-serif;
+  flex-direction: column;
+}
+
+
 /* Criação das variaveis css, atribuindo elas para o root da aplicação inteira */
 :root {
   --primary-bg: #f3f7ea;
