@@ -46,6 +46,13 @@ public class Logger {
         System.out.println(dataFormatada + " " +  "[INFO]:");
     }
 
+    public void error(String data){
+        String dataFormatada = formatarData();
+
+        System.out.println(dataFormatada + " " +  "[ERROR]:");
+    }
+
+
 
 
 }
