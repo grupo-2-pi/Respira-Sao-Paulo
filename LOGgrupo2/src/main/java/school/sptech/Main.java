@@ -1,24 +1,52 @@
 package school.sptech;
-
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+//
+//import org.springframework.jdbc.core.BeanPropertyRowMapper;
+//import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
 import school.sptech.database.model.Logger;
-import school.sptech.service.EmpresaService;
 
+import java.io.FileInputStream;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     public static Logger logger = new Logger();
     public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
-    public static final JdbcTemplate template = jdbcConfig.getConnection();
-    public static final EmpresaService empresaService = new EmpresaService(template);
+//    public static final JdbcTemplate template = jdbcConfig.getConnection();
+//    public static final EmpresaService empresaService = new EmpresaService(template);
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         iniciarAplicacao();
+
+        try {
+            String caminhoArquivo = "./BaseDeDados-Respira-SP.xlsx";
+            InputStream arquivo = new FileInputStream(caminhoArquivo);
+
+            LeitorExcel leitor = new LeitorExcel();
+            List<Doenca> doencas = leitor.extrairDoencas(caminhoArquivo, arquivo);
+
+            System.out.println("\nDoenças extraídas:");
+            for (Doenca d : doencas) {
+                System.out.println(d);
+            }
+
+            InputStream arquivoSenatran = new FileInputStream(caminhoArquivo);
+            List<FluxoVeiculos> veiculos = leitor.extrairFluxoVeiculos(caminhoArquivo, arquivoSenatran);
+
+            System.out.println("\nFluxo de Veículos extraído da SENATRAN:");
+            for (FluxoVeiculos v : veiculos) {
+                System.out.println(v);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
 
         for(var i = 0; i <= 20; i++){
             Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
@@ -55,7 +83,7 @@ public class Main {
     }
 
     static void comecarTratativa(){
-        empresaService.comecarTratativa();
+//        empresaService.comecarTratativa();
 
 
 //        template.execute(
@@ -85,6 +113,9 @@ public class Main {
 //                dadosSaude + "\n" +
 //                feedbackUsuarios
 //        );
+
+
     }
+
 }
 
