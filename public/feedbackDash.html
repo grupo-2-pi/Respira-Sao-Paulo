@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/feedbackDash.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
@@ -300,11 +300,98 @@
                 <canvas id="myChart"></canvas>
             </div>
 
-            <div class="segunda-dashboard">
-                <canvas id="myChartB"></canvas>
+        </div>
+
+
+        <!-- BUTTON VER COMENTÁRIOS -->
+
+        <div class="button-see"onclick="abrirComentarios()">
+            <div class="dentro-button-see" id="button_see" >
+                <h3>Ver Comentários</h3>
+            </div>
+        </div>
+
+        <!-- COMENTÁRIOS ABERTOS -->
+
+        <div class="container-comentarios" id="container_comentarios" style="display: none;">
+
+            <!-- FILTRO COMENTÁRIOS -->
+
+            <div class="filtro">
+
+                <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
+                <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+
+                    <div class="img-filtro">
+                        <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
+                    </div>
+
+                    <div class="text-filtro">
+                        <h1>Filtro</h1>
+                    </div>
+
+                </div>
+                <!-- TALVEZ REMOVA -->
+                <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+
+                    <div class="escolher-filtro">
+
+                        <div class="btn-sair" onclick="fecharFiltro()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                            </svg>
+                        </div>
+
+                        <div class="filtro-text">
+
+                        </div>
+                        <div class="filtro-text">
+
+                        </div>
+                        <div class="filtro-text">
+
+                        </div>
+                        <div class="filtro-text">
+
+                        </div>
+
+                        <div class="filtro-btn">
+                            <div class="filtro-btn-1">
+
+                            </div>
+                            <div class="filtro-btn-1">
+
+                            </div>
+                            <div class="filtro-btn-1">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- EXIBIR COMENTÁRIOS -->
+
+            <div class="contem-comentarios">
+                <div class="cabecalho">
+                    <div class="cabecalho-municipio"> <a href="">Munícipio:</a> <a href="">texto</a></div>
+                    <div class="cabecalho-poluente"><a href="">Poluidor:</a> <a href="">texto</a></div>
+                </div>
+                <div class="descricao"><a>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</a></div>
             </div>
 
         </div>
+
+
+
+
+    </div>
+
+
 
     </div>
 
@@ -313,7 +400,8 @@
 
 </html>
 
-<script src="./js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./js/paginaPrincipal.js"></script>
+<script src="./js/index.js"></script>
 <script src="./js/script.js"></script>
+<script src="./js/paginaPrincipal.js"></script>
+<script src="./js/feedbackDash.js"></script>
