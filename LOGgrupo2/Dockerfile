@@ -1,7 +1,10 @@
 FROM maven:3.9.4-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY LOGgrupo2 /app
+COPY . /app
 RUN mvn clean package -f /app/pom.xml
 FROM openjdk:21
 COPY --from=build /app/target/LOGgrupo2-1.0-jar-with-dependencies.jar .
+ENV AWS_ACCESS_KEY_ID=ASIAYJ3SI57NNUREQTIM \
+    AWS_SECRET_ACCESS_KEY=pj9y7HguGH3z0HhZ1usY5FKJHteUn/7pMarqD2SY \
+    AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEJX//////////wEaCXVzLXdlc3QtMiJHMEUCIGNJCZF41cfEaF0rOLRpRzI74HfGyUYK3k42cK2Dp2O+AiEAxZXDFiedJlQ/3nvQByxPxdZVB0NI8RMhvRxnt5TxlRYqtQIIHhACGgw1NzA5MzM0NDA0NzQiDHzvKBYYB7ccyTn2ZiqSAi9eEEPCKkv087QojiQ+gdF96xvf7GidMDNDoAUY0xBZ6W5twuCKFoimvpmIxC5kYFZfA3XoS0EDp/o88Q1ZINE7IZQSzZVqzufT0SCrm4ECmSUdIi0fbRpQX+BQqKj0GnaZl4s1njd0fJK28ZYv7AgHdv4+RCmSuKv+WMhcgXFmf4kInCzpZOSnTYGNJ44AGp/KQkVKUhVe4/XjfJqFpoPaGWJLNb2lvE7ys6J2fmx2mRcSJg2IW0YVqlYNCr6ionyCYZX8x+uSCB/AY/DoUD9h1A7IBf5XHe8Q7wy2+FLnranOwPQFgxpwK0OMlqKcIDqPzA3K04m1+8rkSJLgGWs+LcSwqW/RhTpJsacZoL4pD8QwxN31vwY6nQF0/kmFl9Pg7CLjSWo7jtLRi1DupCYqttmHOw4s6r+/iGsNd8MxE4IN5JHCwKENaw9CmS/hv7FM4NzPjOZeTiaq+YtzeZmv3q9WKyoPEtdil5CZlSq02dWkukkgs6XEBqLVyAtkYzLUebIiFBdHlk+eyTHXCI+cpB/XesaDSo8MwnX8GX76mFhhsATgkT3z3nd1JVcvdJrKZlUKzXov
 ENTRYPOINT ["java", "-jar", "LOGgrupo2-1.0-jar-with-dependencies.jar"]

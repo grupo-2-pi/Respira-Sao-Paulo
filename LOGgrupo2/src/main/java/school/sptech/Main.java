@@ -3,10 +3,16 @@ package school.sptech;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
+import school.sptech.config.S3Provider;
 import school.sptech.database.model.Logger;
 import school.sptech.service.DoencasService;
 import school.sptech.service.FluxoVeiculosService;
+import school.sptech.service.S3Service;
 import school.sptech.utils.ExcelUtils;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.GetObjectResponse;
+import software.amazon.awssdk.services.s3.model.S3Object;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,20 +26,20 @@ public class Main {
     private final static ExcelUtils excelUtils = new ExcelUtils();
     private final static DoencasService doencasService = new DoencasService(logger, excelUtils,jdbcTemplate );
     private final static FluxoVeiculosService fluxoVeiculosService = new FluxoVeiculosService(logger, excelUtils,jdbcTemplate);
+    private static final S3Client s3Client = new S3Provider().getS3Client();
+    private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
 
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        String caminhoArquivo = "./BaseDeDados-Respira-SP.xlsx";
+        InputStream arquivoDoenca = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
 
-        InputStream arquivo = new FileInputStream(caminhoArquivo);
+        doencasService.extrairDoencas(arquivoDoenca, true);
 
-        doencasService.extrairDoencas(caminhoArquivo, arquivo);
+        InputStream arquivoFrota = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
 
-        InputStream arquivoSenatran = new FileInputStream(caminhoArquivo);
-
-        fluxoVeiculosService.extrairFluxoVeiculos(caminhoArquivo, arquivoSenatran);
+        fluxoVeiculosService.extrairFluxoVeiculos(arquivoFrota, true);
 
         encerrarAplicacao();
     }

@@ -27,12 +27,12 @@ public class DoencasService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void extrairDoencas(String nomeArquivo, InputStream arquivo) {
+    public void extrairDoencas(InputStream arquivo, Boolean xlsx) {
         try {
-            logger.info("Iniciando leitura do arquivo %s".formatted(nomeArquivo));
+            logger.info("Iniciando leitura do arquivo de doenças");
 
             Workbook workbook;
-            if (nomeArquivo.endsWith(".xlsx")) {
+            if (xlsx) {
                 workbook = new XSSFWorkbook(arquivo);
             } else {
                 workbook = new HSSFWorkbook(arquivo);

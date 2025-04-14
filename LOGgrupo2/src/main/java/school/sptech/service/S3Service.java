@@ -40,15 +40,14 @@ public class S3Service  {
         return buckets;
     }
 
-    public List<S3Object> getBucketObjects(){
+    public InputStream getBucketObjects(String key){
         try{
-            ListObjectsRequest listObjects = ListObjectsRequest.builder()
+            GetObjectRequest get = GetObjectRequest.builder()
                     .bucket(BUCKET_NAME)
+                    .key(key)
                     .build();
 
-            List<S3Object> objects = s3Client.listObjects(listObjects).contents();
-
-            return objects;
+            return s3Client.getObject(get);
         }catch (S3Exception e){
             logger.error("Erro ao buscar os objetos do bucket " + e.getMessage());
         }
@@ -71,25 +70,24 @@ public class S3Service  {
 
     }
 
-    public void downloadObjectsFromBucket(){
-        List<S3Object> objects = getBucketObjects();
-        for (S3Object object : objects) {
-            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(object.key())
-                    .build();
-
-            try{
-                InputStream objectContent = s3Client.getObject(getObjectRequest, ResponseTransformer.toInputStream());
-                Files.copy(objectContent, new File(object.key()).toPath());
-
-                logger.info("Download do arquivo realizado com sucesso: " + object.key());
-
-            }catch (IOException e){
-                logger.error("Erro ao realizar download do arquivo vindo do bucket " + e.getMessage() + Arrays.toString(e.getStackTrace()));
-            }
-        }
-    }
+//    public void downloadObjectsFromBucket(){
+//        for (S3Object object : objects) {
+//            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+//                    .bucket(BUCKET_NAME)
+//                    .key(object.key())
+//                    .build();
+//
+//            try{
+//                InputStream objectContent = s3Client.getObject(getObjectRequest, ResponseTransformer.toInputStream());
+//                Files.copy(objectContent, new File(object.key()).toPath());
+//
+//                logger.info("Download do arquivo realizado com sucesso: " + object.key());
+//
+//            }catch (IOException e){
+//                logger.error("Erro ao realizar download do arquivo vindo do bucket " + e.getMessage() + Arrays.toString(e.getStackTrace()));
+//            }
+//        }
+//    }
 
     public void deleteObject(String objectKey){
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()

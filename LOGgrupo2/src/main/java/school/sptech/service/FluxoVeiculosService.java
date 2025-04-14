@@ -27,12 +27,12 @@ public class FluxoVeiculosService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<FluxoVeiculos> extrairFluxoVeiculos(String nomeArquivo, InputStream arquivo) {
+    public List<FluxoVeiculos> extrairFluxoVeiculos(InputStream arquivo, Boolean xlsx) {
         try {
             logger.info("Iniciando leitura da planilha SENATRAN\n");
 
             Workbook workbook;
-            if (nomeArquivo.endsWith(".xlsx")) {
+            if (xlsx) {
                 workbook = new XSSFWorkbook(arquivo);
             } else {
                 workbook = new HSSFWorkbook(arquivo);
