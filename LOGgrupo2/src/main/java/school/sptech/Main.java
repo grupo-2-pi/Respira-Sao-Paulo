@@ -1,58 +1,40 @@
 package school.sptech;
-//
-//import org.springframework.jdbc.core.BeanPropertyRowMapper;
-//import org.springframework.jdbc.core.JdbcTemplate;
+
+
+import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
 import school.sptech.database.model.Logger;
+import school.sptech.service.DoencasService;
+import school.sptech.service.FluxoVeiculosService;
+import school.sptech.utils.ExcelUtils;
 
 import java.io.FileInputStream;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class Main {
     public static Logger logger = new Logger();
     public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
-//    public static final JdbcTemplate template = jdbcConfig.getConnection();
-//    public static final EmpresaService empresaService = new EmpresaService(template);
+    private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
+    private final static ExcelUtils excelUtils = new ExcelUtils();
+    private final static DoencasService doencasService = new DoencasService(logger, excelUtils,jdbcTemplate );
+    private final static FluxoVeiculosService fluxoVeiculosService = new FluxoVeiculosService(logger, excelUtils,jdbcTemplate);
 
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        try {
-            String caminhoArquivo = "./BaseDeDados-Respira-SP.xlsx";
-            InputStream arquivo = new FileInputStream(caminhoArquivo);
+        String caminhoArquivo = "./BaseDeDados-Respira-SP.xlsx";
 
-            LeitorExcel leitor = new LeitorExcel();
-            List<Doenca> doencas = leitor.extrairDoencas(caminhoArquivo, arquivo);
+        InputStream arquivo = new FileInputStream(caminhoArquivo);
 
-            System.out.println("\nDoenças extraídas:");
-            for (Doenca d : doencas) {
-                System.out.println(d);
-            }
+        doencasService.extrairDoencas(caminhoArquivo, arquivo);
 
-            InputStream arquivoSenatran = new FileInputStream(caminhoArquivo);
-            List<FluxoVeiculos> veiculos = leitor.extrairFluxoVeiculos(caminhoArquivo, arquivoSenatran);
+        InputStream arquivoSenatran = new FileInputStream(caminhoArquivo);
 
-            System.out.println("\nFluxo de Veículos extraído da SENATRAN:");
-            for (FluxoVeiculos v : veiculos) {
-                System.out.println(v);
-            }
+        fluxoVeiculosService.extrairFluxoVeiculos(caminhoArquivo, arquivoSenatran);
 
-        } catch (Exception e) {
-            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-        }
-
-        for(var i = 0; i <= 20; i++){
-            Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
-            logger.realizarLog(tipos[tipo]);
-        }
-        
         encerrarAplicacao();
     }
 
@@ -80,41 +62,6 @@ public class Main {
         System.out.println(logger.formatarData() + " Aplicação encerrada");
 
         System.out.println("-----------------------------------------------------------------------------------------");
-    }
-
-    static void comecarTratativa(){
-//        empresaService.comecarTratativa();
-
-
-//        template.execute(
-//                "INSERT INTO Empresa VALUES (" +
-//                        "DEFAULT, " +
-//                        "'12345678901234', " +
-//                        "'TesteTech', " +
-//                        "10, " +
-//                        "'2001-01-01', " +
-//                        "'2001-01-02')"
-//        );
-
-
-
-
-//        List<Funcionarios> funcionarios = template.query("SELECT * FROM Funcionarios", new BeanPropertyRowMapper<>(Funcionarios.class));
-//        List<Municipios> municipios = template.query("SELECT * FROM Municipios", new BeanPropertyRowMapper<>(Municipios.class));
-//        List<PoluicaoTransporte> poluicaoTransportes = template.query("SELECT * FROM poluicaoTransporte", new BeanPropertyRowMapper<>(PoluicaoTransporte.class));
-//        List<DadosSaude> dadosSaude = template.query("SELECT * FROM dadosSaude", new BeanPropertyRowMapper<>(DadosSaude.class));
-//        List<FeedbackUsuarios> feedbackUsuarios = template.query("SELECT * FROM FeedbackUsuarios", new BeanPropertyRowMapper<>(FeedbackUsuarios.class));
-
-//
-//        System.out.println(empresas + "\n" +
-//                funcionarios + "\n" +
-//                municipios + "\n" +
-//                poluicaoTransportes + "\n" +
-//                dadosSaude + "\n" +
-//                feedbackUsuarios
-//        );
-
-
     }
 
 }
