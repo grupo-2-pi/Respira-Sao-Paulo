@@ -24,16 +24,15 @@ CREATE TABLE dadosCETESB (
 );
 
 
-CREATE TABLE dadosCOVISA (
+CREATE TABLE DadosCOVISA (
     iddadosCOVISA INT AUTO_INCREMENT PRIMARY KEY,
-    dta DATE,
+    mes_ano VARCHAR(45),
     municipio VARCHAR(45),
-    faixaEtaria VARCHAR(45),
     valorTotal DOUBLE,
-    numeroInternacoes INT,
+    numeroInternacoes DOUBLE,
     numeroObitos INT,
     taxaMortalidade DOUBLE,
-    nomeDoenca VARCHAR(45)
+    regiao VARCHAR(100)
 );
 
 CREATE TABLE Empresa (
@@ -55,7 +54,6 @@ CREATE TABLE Funcionario (
     idGerente TINYINT,
     cpfFuncionario CHAR(11) UNIQUE,
     isFirstLogin TINYINT,
-    idEmpresa INT,
     FOREIGN KEY (idGerente) REFERENCES Funcionario(idFuncionario),
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
