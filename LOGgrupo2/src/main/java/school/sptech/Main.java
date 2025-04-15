@@ -7,6 +7,7 @@ import school.sptech.config.S3Provider;
 import school.sptech.database.model.Logger;
 import school.sptech.service.DoencasService;
 import school.sptech.service.FluxoVeiculosService;
+import school.sptech.service.MortalidadeRespiratoriaService;
 import school.sptech.service.S3Service;
 import school.sptech.utils.ExcelUtils;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -24,8 +25,7 @@ public class Main {
     public static JDBCConfig jdbcConfig = new JDBCConfig();
     private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
     private final static ExcelUtils excelUtils = new ExcelUtils();
-    private final static DoencasService doencasService = new DoencasService(logger, excelUtils,jdbcTemplate );
-    private final static FluxoVeiculosService fluxoVeiculosService = new FluxoVeiculosService(logger, excelUtils,jdbcTemplate);
+    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate);
     private static final S3Client s3Client = new S3Provider().getS3Client();
     private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
 
@@ -33,13 +33,13 @@ public class Main {
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        InputStream arquivoDoenca = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
+        InputStream arquivoMortalidade = s3Service.getBucketObjects("Bibilioteca dados - CONVISA JAN-2022.xlsx");
 
-        doencasService.extrairDoencas(arquivoDoenca, true);
+        mortalidadeService.extrairDados(arquivoMortalidade, true);
 
-        InputStream arquivoFrota = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
-
-        fluxoVeiculosService.extrairFluxoVeiculos(arquivoFrota, true);
+//        InputStream arquivoFrota = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
+//
+//        fluxoVeiculosService.extrairFluxoVeiculos(arquivoFrota, true);
 
         encerrarAplicacao();
     }

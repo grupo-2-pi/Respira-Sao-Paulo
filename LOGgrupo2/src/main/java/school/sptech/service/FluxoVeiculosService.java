@@ -29,7 +29,7 @@ public class FluxoVeiculosService {
 
     public List<FluxoVeiculos> extrairFluxoVeiculos(InputStream arquivo, Boolean xlsx) {
         try {
-            logger.info("Iniciando leitura da planilha SENATRAN\n");
+            logger.info("Iniciando leitura da planilha relacionada a fluxo de veiculos");
 
             Workbook workbook;
             if (xlsx) {
