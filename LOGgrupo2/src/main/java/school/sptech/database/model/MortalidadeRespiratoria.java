@@ -4,13 +4,13 @@ public class MortalidadeRespiratoria {
 
     private String mesAno;
     private String municipio;
-    private String valorTotal;
-    private String numeroInternacoes;
-    private String numeroObitos;
-    private String taxaMortalidade;
+    private Double valorTotal;
+    private Double numeroInternacoes;
+    private Integer numeroObitos;
+    private Double taxaMortalidade;
     private String regiao;
 
-    public MortalidadeRespiratoria(String municipio, String valorTotal, String numeroInternacoes, String numeroObitos, String taxaMortalidade, String regiao) {
+    public MortalidadeRespiratoria(String municipio, Double valorTotal, Double numeroInternacoes, Integer numeroObitos, Double taxaMortalidade, String regiao) {
         this.municipio = municipio;
         this.valorTotal = valorTotal;
         this.numeroInternacoes = numeroInternacoes;
@@ -34,35 +34,35 @@ public class MortalidadeRespiratoria {
         this.municipio = municipio;
     }
 
-    public String getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(String valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public String getNumeroInternacoes() {
+    public Double getNumeroInternacoes() {
         return numeroInternacoes;
     }
 
-    public void setNumeroInternacoes(String numeroInternacoes) {
+    public void setNumeroInternacoes(Double numeroInternacoes) {
         this.numeroInternacoes = numeroInternacoes;
     }
 
-    public String getNumeroObitos() {
+    public Integer getNumeroObitos() {
         return numeroObitos;
     }
 
-    public void setNumeroObitos(String numeroObitos) {
+    public void setNumeroObitos(Integer numeroObitos) {
         this.numeroObitos = numeroObitos;
     }
 
-    public String getTaxaMortalidade() {
+    public Double getTaxaMortalidade() {
         return taxaMortalidade;
     }
 
-    public void setTaxaMortalidade(String taxaMortalidade) {
+    public void setTaxaMortalidade(Double taxaMortalidade) {
         this.taxaMortalidade = taxaMortalidade;
     }
 

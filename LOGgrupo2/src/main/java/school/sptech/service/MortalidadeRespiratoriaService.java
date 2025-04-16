@@ -58,12 +58,21 @@ public class MortalidadeRespiratoriaService {
 
                 logger.info("Realizando leitura da linha " + row.getRowNum());
 
+                String valorTotalSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(3)).replace(".", "");
+                String valorTotalFormatado = valorTotalSemPonto.replaceAll(",", ".");
+
+                String internacoesSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(2)).replace(".", "");
+                String obitosSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(4)).replace(".","");
+                String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
+                String taxaFormatada =taxaSemPonto.replace(",", ".");
+
+
                 MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
                         excelUtils.getValorCelulaComoTexto(row.getCell(0)),
-                        excelUtils.getValorCelulaComoTexto(row.getCell(3)),
-                        excelUtils.getValorCelulaComoTexto(row.getCell(2)),
-                        excelUtils.getValorCelulaComoTexto(row.getCell(4)),
-                        excelUtils.getValorCelulaComoTexto(row.getCell(5)),
+                        valorTotalFormatado.equals("-") ? null : Double.valueOf(valorTotalFormatado),
+                        internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
+                        obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
+                        taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
                         ""
                 );
 
@@ -79,7 +88,7 @@ public class MortalidadeRespiratoriaService {
             workbook.close();
 
             logger.info("Leitura finalizada com sucesso\n");
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage());
         }
     }

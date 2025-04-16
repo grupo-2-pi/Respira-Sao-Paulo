@@ -15,13 +15,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FluxoVeiculosService {
+public class FrotaCirulanteService {
 
     private final Logger logger;
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
 
-    public FluxoVeiculosService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+    public FrotaCirulanteService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
