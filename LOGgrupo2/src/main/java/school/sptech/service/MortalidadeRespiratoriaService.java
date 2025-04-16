@@ -48,6 +48,10 @@ public class MortalidadeRespiratoriaService {
             logger.info("Ultima linha " + sheet.getLastRowNum());
 
             for (Row row : sheet ) {
+                if(excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Fonte")){
+                    break;
+                }
+
                 if(row.getRowNum() == 1 || row.getRowNum() == 0){
                     continue;
                 }
@@ -55,14 +59,17 @@ public class MortalidadeRespiratoriaService {
                 logger.info("Realizando leitura da linha " + row.getRowNum());
 
                 MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
-                        excelUtils.getValorCelulaComoTexto(row.getCell(0)).substring(0,6),
-                        row.getCell(3).getNumericCellValue(),
-                        (int) row.getCell(2).getNumericCellValue(),
-                        (int) row.getCell(4).getNumericCellValue(),
-                        row.getCell(5).getNumericCellValue(),
+                        excelUtils.getValorCelulaComoTexto(row.getCell(0)),
+                        excelUtils.getValorCelulaComoTexto(row.getCell(3)),
+                        excelUtils.getValorCelulaComoTexto(row.getCell(2)),
+                        excelUtils.getValorCelulaComoTexto(row.getCell(4)),
+                        excelUtils.getValorCelulaComoTexto(row.getCell(5)),
                         ""
                 );
 
+                String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));
+
+                mortalidadeRespiratoria.setMesAno(mesAno);
 
                 logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
 
