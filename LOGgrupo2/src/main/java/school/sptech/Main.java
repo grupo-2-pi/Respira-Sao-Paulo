@@ -1,30 +1,45 @@
 package school.sptech;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
+import school.sptech.config.S3Provider;
 import school.sptech.database.model.Logger;
-import school.sptech.service.EmpresaService;
+import school.sptech.service.MortalidadeRespiratoriaService;
+import school.sptech.service.S3Service;
+import school.sptech.utils.ExcelUtils;
+import software.amazon.awssdk.services.s3.S3Client;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static Logger logger = new Logger();
     public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
-    public static final JdbcTemplate template = jdbcConfig.getConnection();
-    public static final EmpresaService empresaService = new EmpresaService(template);
+    private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
+    private final static ExcelUtils excelUtils = new ExcelUtils();
+    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate);
+    private static final S3Client s3Client = new S3Provider().getS3Client();
+    private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
+    private static final String[] listaMes = new String[]{"JAN", "FEV", "MAR","ABR","MAI", "JUN", "JUL", "AGO", "SET", "OUT","NOV","DEZ"};
 
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        for(var i = 0; i <= 20; i++){
-            Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
-            logger.realizarLog(tipos[tipo]);
+
+        for(int i=0; i < listaMes.length; i++){
+            List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria");
+            mortalidadeService.extrairDados(arquivosMortalidade, true);
         }
-        
+
+//        InputStream arquivoFrota = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
+//
+//        fluxoVeiculosService.extrairFluxoVeiculos(arquivoFrota, true);
+
         encerrarAplicacao();
     }
 
@@ -54,37 +69,5 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------------------------");
     }
 
-    static void comecarTratativa(){
-        empresaService.comecarTratativa();
-
-
-//        template.execute(
-//                "INSERT INTO Empresa VALUES (" +
-//                        "DEFAULT, " +
-//                        "'12345678901234', " +
-//                        "'TesteTech', " +
-//                        "10, " +
-//                        "'2001-01-01', " +
-//                        "'2001-01-02')"
-//        );
-
-
-
-
-//        List<Funcionarios> funcionarios = template.query("SELECT * FROM Funcionarios", new BeanPropertyRowMapper<>(Funcionarios.class));
-//        List<Municipios> municipios = template.query("SELECT * FROM Municipios", new BeanPropertyRowMapper<>(Municipios.class));
-//        List<PoluicaoTransporte> poluicaoTransportes = template.query("SELECT * FROM poluicaoTransporte", new BeanPropertyRowMapper<>(PoluicaoTransporte.class));
-//        List<DadosSaude> dadosSaude = template.query("SELECT * FROM dadosSaude", new BeanPropertyRowMapper<>(DadosSaude.class));
-//        List<FeedbackUsuarios> feedbackUsuarios = template.query("SELECT * FROM FeedbackUsuarios", new BeanPropertyRowMapper<>(FeedbackUsuarios.class));
-
-//
-//        System.out.println(empresas + "\n" +
-//                funcionarios + "\n" +
-//                municipios + "\n" +
-//                poluicaoTransportes + "\n" +
-//                dadosSaude + "\n" +
-//                feedbackUsuarios
-//        );
-    }
 }
 

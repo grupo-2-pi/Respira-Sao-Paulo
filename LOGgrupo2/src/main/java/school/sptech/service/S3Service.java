@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -40,15 +41,30 @@ public class S3Service  {
         return buckets;
     }
 
-    public List<S3Object> getBucketObjects(){
+    public List<InputStream> getBucketObjects(String prefix){
         try{
-            ListObjectsRequest listObjects = ListObjectsRequest.builder()
+            ListObjectsV2Request listRequest = ListObjectsV2Request.builder()
                     .bucket(BUCKET_NAME)
+                    .prefix(prefix)
                     .build();
 
-            List<S3Object> objects = s3Client.listObjects(listObjects).contents();
+            ListObjectsV2Response listResponse = s3Client.listObjectsV2(listRequest);
 
-            return objects;
+            List<InputStream> inputStreams = new ArrayList<>();
+
+            for (S3Object s3Object : listResponse.contents()) {
+                String key = s3Object.key();
+
+                GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                        .bucket(BUCKET_NAME)
+                        .key(key)
+                        .build();
+
+                InputStream inputStream = s3Client.getObject(getObjectRequest);
+                inputStreams.add(inputStream);
+            }
+
+            return inputStreams;
         }catch (S3Exception e){
             logger.error("Erro ao buscar os objetos do bucket " + e.getMessage());
         }
@@ -71,25 +87,24 @@ public class S3Service  {
 
     }
 
-    public void downloadObjectsFromBucket(){
-        List<S3Object> objects = getBucketObjects();
-        for (S3Object object : objects) {
-            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(object.key())
-                    .build();
-
-            try{
-                InputStream objectContent = s3Client.getObject(getObjectRequest, ResponseTransformer.toInputStream());
-                Files.copy(objectContent, new File(object.key()).toPath());
-
-                logger.info("Download do arquivo realizado com sucesso: " + object.key());
-
-            }catch (IOException e){
-                logger.error("Erro ao realizar download do arquivo vindo do bucket " + e.getMessage() + Arrays.toString(e.getStackTrace()));
-            }
-        }
-    }
+//    public void downloadObjectsFromBucket(){
+//        for (S3Object object : objects) {
+//            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+//                    .bucket(BUCKET_NAME)
+//                    .key(object.key())
+//                    .build();
+//
+//            try{
+//                InputStream objectContent = s3Client.getObject(getObjectRequest, ResponseTransformer.toInputStream());
+//                Files.copy(objectContent, new File(object.key()).toPath());
+//
+//                logger.info("Download do arquivo realizado com sucesso: " + object.key());
+//
+//            }catch (IOException e){
+//                logger.error("Erro ao realizar download do arquivo vindo do bucket " + e.getMessage() + Arrays.toString(e.getStackTrace()));
+//            }
+//        }
+//    }
 
     public void deleteObject(String objectKey){
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()

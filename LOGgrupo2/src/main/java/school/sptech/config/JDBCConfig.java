@@ -15,7 +15,7 @@ public class JDBCConfig {
 
         // Configurações para MySQL
         driver.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        driver.setUrl("jdbc:mysql://" + host + ":3306/respira?useTimezone=true&serverTimezone=UTC");
+        driver.setUrl("jdbc:mysql://" + host + ":3306/Respira?useTimezone=true&serverTimezone=UTC");
         driver.setUsername("root");
         driver.setPassword("urubu100");
 

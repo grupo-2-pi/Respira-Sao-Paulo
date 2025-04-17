@@ -14,7 +14,7 @@ public class S3Provider {
 
     public S3Provider(){
         this.credentials = AwsSessionCredentials.create(
-                System.getenv("AWS_ACESS_KEY_ID"),
+                System.getenv("AWS_ACCESS_KEY_ID"),
                 System.getenv("AWS_SECRET_ACCESS_KEY"),
                 System.getenv("AWS_SESSION_TOKEN")
         );
