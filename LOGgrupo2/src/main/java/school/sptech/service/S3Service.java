@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -40,14 +41,30 @@ public class S3Service  {
         return buckets;
     }
 
-    public InputStream getBucketObjects(String key){
+    public List<InputStream> getBucketObjects(String prefix){
         try{
-            GetObjectRequest get = GetObjectRequest.builder()
+            ListObjectsV2Request listRequest = ListObjectsV2Request.builder()
                     .bucket(BUCKET_NAME)
-                    .key(key)
+                    .prefix(prefix)
                     .build();
 
-            return s3Client.getObject(get);
+            ListObjectsV2Response listResponse = s3Client.listObjectsV2(listRequest);
+
+            List<InputStream> inputStreams = new ArrayList<>();
+
+            for (S3Object s3Object : listResponse.contents()) {
+                String key = s3Object.key();
+
+                GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                        .bucket(BUCKET_NAME)
+                        .key(key)
+                        .build();
+
+                InputStream inputStream = s3Client.getObject(getObjectRequest);
+                inputStreams.add(inputStream);
+            }
+
+            return inputStreams;
         }catch (S3Exception e){
             logger.error("Erro ao buscar os objetos do bucket " + e.getMessage());
         }

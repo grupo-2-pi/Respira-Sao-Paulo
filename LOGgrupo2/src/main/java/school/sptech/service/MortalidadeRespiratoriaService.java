@@ -12,7 +12,6 @@ import school.sptech.database.model.MortalidadeRespiratoria;
 import school.sptech.database.model.dao.MortalidadeDao;
 import school.sptech.utils.ExcelUtils;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,63 +30,65 @@ public class MortalidadeRespiratoriaService {
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
     }
 
-    public void extrairDados(InputStream arquivo, Boolean xlsx) {
+    public void extrairDados(List<InputStream> arquivos, Boolean xlsx) {
         try {
-            logger.info("Iniciando leitura do arquivo de mortalidade");
+            for (InputStream arquivo : arquivos) {
+                logger.info("Iniciando leitura do arquivo de mortalidade");
 
-            Workbook workbook;
-            if (xlsx) {
-                workbook = new XSSFWorkbook(arquivo);
-            } else {
-                workbook = new HSSFWorkbook(arquivo);
-            }
-
-            Sheet sheet = workbook.getSheetAt(0);
-            List<Doenca> doencasExtraidas = new ArrayList<>();
-
-            logger.info("Ultima linha " + sheet.getLastRowNum());
-
-            for (Row row : sheet ) {
-                if(excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Fonte")){
-                    break;
+                Workbook workbook;
+                if (xlsx) {
+                    workbook = new XSSFWorkbook(arquivo);
+                } else {
+                    workbook = new HSSFWorkbook(arquivo);
                 }
 
-                if(row.getRowNum() == 1 || row.getRowNum() == 0){
-                    continue;
+                Sheet sheet = workbook.getSheetAt(0);
+                List<Doenca> doencasExtraidas = new ArrayList<>();
+
+                logger.info("Ultima linha " + sheet.getLastRowNum());
+
+                for (Row row : sheet ) {
+                    if(excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Fonte")){
+                        break;
+                    }
+
+                    if(row.getRowNum() == 1 || row.getRowNum() == 0){
+                        continue;
+                    }
+
+                    logger.info("Realizando leitura da linha " + row.getRowNum());
+
+                    String valorTotalSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(3)).replace(".", "");
+                    String valorTotalFormatado = valorTotalSemPonto.replaceAll(",", ".");
+
+                    String internacoesSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(2)).replace(".", "");
+                    String obitosSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(4)).replace(".","");
+                    String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
+                    String taxaFormatada =taxaSemPonto.replace(",", ".");
+
+
+                    MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
+                            excelUtils.getValorCelulaComoTexto(row.getCell(0)),
+                            valorTotalFormatado.equals("-") ? null : Double.valueOf(valorTotalFormatado),
+                            internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
+                            obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
+                            taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
+                            ""
+                    );
+
+                    String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));
+
+                    mortalidadeRespiratoria.setMesAno(mesAno);
+
+                    logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
+
+                    mortalidadeDao.save(mortalidadeRespiratoria);
                 }
 
-                logger.info("Realizando leitura da linha " + row.getRowNum());
+                workbook.close();
 
-                String valorTotalSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(3)).replace(".", "");
-                String valorTotalFormatado = valorTotalSemPonto.replaceAll(",", ".");
-
-                String internacoesSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(2)).replace(".", "");
-                String obitosSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(4)).replace(".","");
-                String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
-                String taxaFormatada =taxaSemPonto.replace(",", ".");
-
-
-                MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
-                        excelUtils.getValorCelulaComoTexto(row.getCell(0)),
-                        valorTotalFormatado.equals("-") ? null : Double.valueOf(valorTotalFormatado),
-                        internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
-                        obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
-                        taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
-                        ""
-                );
-
-                String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));
-
-                mortalidadeRespiratoria.setMesAno(mesAno);
-
-                logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
-
-                mortalidadeDao.save(mortalidadeRespiratoria);
+                logger.info("Leitura finalizada com sucesso\n");
             }
-
-            workbook.close();
-
-            logger.info("Leitura finalizada com sucesso\n");
         } catch (Exception e) {
             logger.error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage());
         }

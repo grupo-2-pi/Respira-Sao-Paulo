@@ -12,6 +12,7 @@ import software.amazon.awssdk.services.s3.S3Client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class Main {
     public static Logger logger = new Logger();
@@ -31,8 +32,8 @@ public class Main {
 
 
         for(int i=0; i < listaMes.length; i++){
-            InputStream arquivoMortalidade = s3Service.getBucketObjects("Bibilioteca dados - CONVISA " + listaMes[i] + "-2022.xlsx");
-            mortalidadeService.extrairDados(arquivoMortalidade, true);
+            List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria");
+            mortalidadeService.extrairDados(arquivosMortalidade, true);
         }
 
 //        InputStream arquivoFrota = s3Service.getBucketObjects("BaseDeDados-Respira-SP.xlsx");
