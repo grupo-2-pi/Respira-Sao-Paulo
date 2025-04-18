@@ -21,6 +21,7 @@ CREATE TABLE FrotaCirculante (
     onibus INT,
     motos INT,
     ano VARCHAR(45),
+    mes VARCHAR(45),
     total INT
 );
 
