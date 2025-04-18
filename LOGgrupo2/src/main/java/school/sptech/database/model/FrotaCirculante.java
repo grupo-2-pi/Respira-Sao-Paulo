@@ -11,8 +11,9 @@ public class FrotaCirculante {
     private Integer motos;
     private Double total;
     private String ano;
+    private String mes;
 
-    public FrotaCirculante(String municipio, String regiao, Integer automoveis, Integer comerciaisLeves, Integer caminhoes, Integer onibus, Integer motos, Double total, String ano) {
+    public FrotaCirculante(String municipio, String regiao, Integer automoveis, Integer comerciaisLeves, Integer caminhoes, Integer onibus, Integer motos, String ano,String mes, Double total) {
         this.municipio = municipio;
         this.regiao = regiao;
         this.automoveis = automoveis;
@@ -21,6 +22,7 @@ public class FrotaCirculante {
         this.onibus = onibus;
         this.motos = motos;
         this.ano = ano;
+        this.mes = mes;
         this.total = total;
     }
 
@@ -96,6 +98,14 @@ public class FrotaCirculante {
         this.ano = ano;
     }
 
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
     @Override
     public String toString() {
         return "FrotaCirculante{" +
@@ -108,6 +118,7 @@ public class FrotaCirculante {
                 ", motos=" + motos +
                 ", total=" + total +
                 ", ano='" + ano + '\'' +
+                ", mes='" + mes + '\'' +
                 '}';
     }
 }

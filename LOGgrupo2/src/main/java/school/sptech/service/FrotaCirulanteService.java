@@ -1,18 +1,18 @@
 package school.sptech.service;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.jdbc.core.JdbcTemplate;
-import school.sptech.database.model.FluxoVeiculos;
+import school.sptech.database.model.FrotaCirculante;
 import school.sptech.database.model.Logger;
+import school.sptech.database.model.dao.FrotaCirculanteDao;
 import school.sptech.utils.ExcelUtils;
-
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FrotaCirulanteService {
@@ -20,64 +20,76 @@ public class FrotaCirulanteService {
     private final Logger logger;
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
+    private final FrotaCirculanteDao frotaCirculanteDao;
 
     public FrotaCirulanteService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
+        this.frotaCirculanteDao = new FrotaCirculanteDao(jdbcTemplate);
     }
 
-    public List<FluxoVeiculos> extrairFluxoVeiculos(InputStream arquivo, Boolean xlsx) {
+    public void extrairFluxoVeiculos(List<InputStream> arquivos) {
         try {
-            logger.info("Iniciando leitura da planilha relacionada a fluxo de veiculos");
+            for (InputStream arquivo : arquivos) {
 
-            Workbook workbook;
-            if (xlsx) {
-                workbook = new XSSFWorkbook(arquivo);
-            } else {
-                workbook = new HSSFWorkbook(arquivo);
-            }
+                byte[] fileBytes = arquivo.readAllBytes();
 
-            Sheet sheet = workbook.getSheet("SENATRAN");
-            List<FluxoVeiculos> veiculosExtraidos = new ArrayList<>();
+                logger.info("Iniciando leitura do arquivo de fluxo veiculos");
 
-            for (int i = 0; i < sheet.getLastRowNum(); i++) {
-                Row headerRow = sheet.getRow(i);
-                Row dataRow = sheet.getRow(i + 1);
-
-                if (headerRow == null || dataRow == null) continue;
-
-                String mesRaw = excelUtils.getValorCelulaComoTexto(headerRow.getCell(0));
-                if (!mesRaw.contains("/")) continue;
-
-                String[] partes = mesRaw.split("/");
-                String mes = partes.length >= 2 ? partes[1].trim() : "Indefinido";
-
-                for (int col = 2; col < headerRow.getLastCellNum(); col++) {
-                    String tipo = excelUtils.getValorCelulaComoTexto(headerRow.getCell(col));
-                    String qtdStr = excelUtils.getValorCelulaComoTexto(dataRow.getCell(col));
-                    Integer qtd = qtdStr.isEmpty() ? 0 : Integer.parseInt(qtdStr);
-
-                    FluxoVeiculos fluxo = new FluxoVeiculos(mes, tipo, qtd);
-
-                    logger.info("Fluxo extraido: " + fluxo.toString());
-
-                    veiculosExtraidos.add(fluxo);
+                Workbook workbook;
+                try {
+                    workbook = new XSSFWorkbook(new ByteArrayInputStream(fileBytes));
+                    logger.info("Arquivo xlsx encontrado");
+                } catch (OLE2NotOfficeXmlFileException e) {
+                    workbook = new HSSFWorkbook(new ByteArrayInputStream(fileBytes));
+                    logger.info("Arquivo xls encontrado");
                 }
 
-                i++;
+                Sheet sheet = workbook.getSheetAt(0);
+                String[] nomePlanilha = sheet.getSheetName().split("_");
+
+                String ano = nomePlanilha[1];
+                String mes = nomePlanilha[0];
+
+                logger.info("Ano atual " + ano);
+                logger.info("Mes atual " + mes);
+
+                for (int i = 4789; i < 5435; i++) {
+                    Row linhaAtual = sheet.getRow(i);
+                    String municipio = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(1));
+
+                    Integer comerciaisLeves =
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(7))) +
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(8))) +
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(9))) +
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(23)));
+
+
+                    FrotaCirculante frotaCirculante = new FrotaCirculante(
+                            municipio,
+                            "",
+                            Integer.valueOf(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3))),
+                            comerciaisLeves,
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(5))),
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(14))),
+                            Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(12))),
+                            ano,
+                            mes,
+                            linhaAtual.getCell(2).getNumericCellValue()
+                    );
+
+                    logger.info("Frota circulante extraida: " + frotaCirculante.toString());
+
+                    frotaCirculanteDao.save(frotaCirculante);
+                    logger.info("Frota inserida no banco");
+                }
+
+                workbook.close();
+
             }
-
-            workbook.close();
-
-            logger.info("Leitura da planilha SENATRAN finalizada\n");
-
-            return veiculosExtraidos;
-
-        } catch (IOException e) {
-            logger.error("Erro ao realizar a leitura da planilha SENATRAN " + e.getMessage());
-
-            return null;
+        } catch (Exception e) {
+            logger.error("Erro ao realizar a leitura da planilha de fluxo " + e.getMessage());
         }
     }
 }

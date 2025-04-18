@@ -52,13 +52,24 @@ public class S3Service  {
 
             List<InputStream> inputStreams = new ArrayList<>();
 
+            logger.info("List encontrado:  " + listResponse.toString());
+
             for (S3Object s3Object : listResponse.contents()) {
                 String key = s3Object.key();
+
+                if (s3Object.size() == 0 || key.endsWith("/")) {
+                    logger.info("Pulando prefixo/pasta vazio: " + key);
+                    continue;
+                }
+
+                logger.info("Arquivo atual encontrado no prefixo: " + s3Object.toString());
 
                 GetObjectRequest getObjectRequest = GetObjectRequest.builder()
                         .bucket(BUCKET_NAME)
                         .key(key)
                         .build();
+
+                logger.info("Request da busca do objeto: " + getObjectRequest.toString());
 
                 InputStream inputStream = s3Client.getObject(getObjectRequest);
                 inputStreams.add(inputStream);

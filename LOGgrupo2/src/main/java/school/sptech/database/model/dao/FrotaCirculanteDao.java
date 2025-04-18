@@ -14,16 +14,17 @@ public class FrotaCirculanteDao {
     public void save(FrotaCirculante frotaCirculante){
         jdbcTemplate.update(
                 "INSERT INTO FrotaCirculante " +
-                        "(municipio, regiao, automoveis, comerciais_leves, caminhoes, onibus, motos, ano, total)" +
-                        "VALUES (?,?,?,?,?,?,?,?,?)",
+                        "(municipio, regiao, automoveis, comerciais_leves, caminhoes, onibus, motos, ano,mes, total)" +
+                        "VALUES (?,?,?,?,?,?,?,?,?,?)",
                         frotaCirculante.getMunicipio(),
-                        null,
+                        frotaCirculante.getRegiao(),
                         frotaCirculante.getAutomoveis(),
                         frotaCirculante.getComerciaisLeves(),
                         frotaCirculante.getCaminhoes(),
                         frotaCirculante.getOnibus(),
                         frotaCirculante.getMotos(),
                         frotaCirculante.getAno(),
+                        frotaCirculante.getMes(),
                         frotaCirculante.getTotal()
         );
     }
