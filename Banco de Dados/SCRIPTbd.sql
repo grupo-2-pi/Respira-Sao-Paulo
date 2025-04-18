@@ -40,7 +40,8 @@ CREATE TABLE EmissaoVeicular(
 
 CREATE TABLE MortalidadeRespiratoria (
     iddadosCOVISA INT AUTO_INCREMENT PRIMARY KEY,
-    mes_ano VARCHAR(45),
+    mes VARCHAR(45),
+    ano VARCHAR(45),
     municipio VARCHAR(45),
     valorTotal DOUBLE,
     numeroInternacoes DOUBLE,
