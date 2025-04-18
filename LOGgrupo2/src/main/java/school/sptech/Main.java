@@ -1,21 +1,41 @@
 package school.sptech;
 
-import school.sptech.entity.Logger;
 
-import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.config.JDBCConfig;
+import school.sptech.config.S3Provider;
+import school.sptech.database.model.Logger;
+import school.sptech.service.FrotaCirulanteService;
+import school.sptech.service.MortalidadeRespiratoriaService;
+import school.sptech.service.S3Service;
+import school.sptech.utils.ExcelUtils;
+import software.amazon.awssdk.services.s3.S3Client;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 public class Main {
-    static Logger logger = new Logger();
-    static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
+    public static Logger logger = new Logger();
+    public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
+    public static JDBCConfig jdbcConfig = new JDBCConfig();
+    private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
+    private final static ExcelUtils excelUtils = new ExcelUtils();
+    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate);
+    private static final S3Client s3Client = new S3Provider().getS3Client();
+    private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
+    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        for(var i = 0; i <= 20; i++){
-            Integer tipo = ThreadLocalRandom.current().nextInt(0, 3);
-            logger.realizarLog(tipos[tipo]);
-        }
-        
+        List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+        mortalidadeService.extrairDados(arquivosMortalidade, true);
+
+        List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+
+        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+
         encerrarAplicacao();
     }
 
@@ -44,5 +64,6 @@ public class Main {
 
         System.out.println("-----------------------------------------------------------------------------------------");
     }
+
 }
 
