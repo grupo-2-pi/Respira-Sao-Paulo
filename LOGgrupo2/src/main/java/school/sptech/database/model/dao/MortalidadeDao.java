@@ -14,9 +14,10 @@ public class MortalidadeDao {
     public void save(MortalidadeRespiratoria mortalidadeRespiratoria){
         jdbcTemplate.update(
                 "INSERT INTO MortalidadeRespiratoria " +
-                        "(mes_ano, municipio, valorTotal, numeroInternacoes, numeroObitos, taxaMortalidade, regiao)" +
-                        "VALUES (?,?,?,?,?,?,?)",
+                        "(mes,ano, municipio, valorTotal, numeroInternacoes, numeroObitos, taxaMortalidade, regiao)" +
+                        "VALUES (?,?,?,?,?,?,?,?)",
                 mortalidadeRespiratoria.getMesAno(),
+                mortalidadeRespiratoria.getAno(),
                 mortalidadeRespiratoria.getMunicipio(),
                 mortalidadeRespiratoria.getValorTotal(),
                 mortalidadeRespiratoria.getNumeroInternacoes(),

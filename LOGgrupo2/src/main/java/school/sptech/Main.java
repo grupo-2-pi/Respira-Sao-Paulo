@@ -10,9 +10,9 @@ import school.sptech.service.MortalidadeRespiratoriaService;
 import school.sptech.service.S3Service;
 import school.sptech.utils.ExcelUtils;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.S3Object;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class Main {
@@ -21,18 +21,18 @@ public class Main {
     public static JDBCConfig jdbcConfig = new JDBCConfig();
     private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
     private final static ExcelUtils excelUtils = new ExcelUtils();
-    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate);
     private static final S3Client s3Client = new S3Provider().getS3Client();
     private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
-    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate);
+    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate, s3Service);
+    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate, s3Service);
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+        List<S3Object> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
         mortalidadeService.extrairDados(arquivosMortalidade, true);
 
-        List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+        List<S3Object> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
 
         frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
 

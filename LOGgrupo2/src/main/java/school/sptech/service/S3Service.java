@@ -41,7 +41,7 @@ public class S3Service  {
         return buckets;
     }
 
-    public List<InputStream> getBucketObjects(String prefix){
+    public List<S3Object> getBucketObjects(String prefix){
         try{
             ListObjectsV2Request listRequest = ListObjectsV2Request.builder()
                     .bucket(BUCKET_NAME)
@@ -50,38 +50,40 @@ public class S3Service  {
 
             ListObjectsV2Response listResponse = s3Client.listObjectsV2(listRequest);
 
-            List<InputStream> inputStreams = new ArrayList<>();
 
             logger.info("List encontrado:  " + listResponse.toString());
+            // Vou deixar aqui o codigo para converter para input stream caso seja necessario no futuro.
+//            List<InputStream> inputStreams = new ArrayList<>();
+//
 
-            for (S3Object s3Object : listResponse.contents()) {
-                String key = s3Object.key();
-
-                if (s3Object.size() == 0 || key.endsWith("/")) {
-                    logger.info("Pulando prefixo/pasta vazio: " + key);
-                    continue;
-                }
-
-                logger.info("Arquivo atual encontrado no prefixo: " + s3Object.toString());
-
-                GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                        .bucket(BUCKET_NAME)
-                        .key(key)
-                        .build();
-
-                logger.info("Request da busca do objeto: " + getObjectRequest.toString());
-
-                InputStream inputStream = s3Client.getObject(getObjectRequest);
-                inputStreams.add(inputStream);
-            }
-
-            return inputStreams;
+            return listResponse.contents();
         }catch (S3Exception e){
             logger.error("Erro ao buscar os objetos do bucket " + e.getMessage());
         }
 
         return null;
     }
+
+    public InputStream convertObjectToInputStream(S3Object object){
+        String key = object.key();
+
+        if (object.size() == 0 || key.endsWith("/")) {
+            logger.info("Pulando prefixo/pasta vazio: " + key);
+            return null;
+        }
+
+        logger.info("Arquivo atual encontrado no prefixo: " + object.toString());
+
+        GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                .bucket(BUCKET_NAME)
+                .key(key)
+                .build();
+
+        logger.info("Request da busca do objeto: " + getObjectRequest.toString());
+
+        return s3Client.getObject(getObjectRequest);
+    }
+
 
     public void uploadObjectToBucket(File file){
 

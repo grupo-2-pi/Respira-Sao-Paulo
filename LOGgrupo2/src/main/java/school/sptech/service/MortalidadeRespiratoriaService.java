@@ -11,9 +11,11 @@ import school.sptech.database.model.Logger;
 import school.sptech.database.model.MortalidadeRespiratoria;
 import school.sptech.database.model.dao.MortalidadeDao;
 import school.sptech.utils.ExcelUtils;
+import software.amazon.awssdk.services.s3.model.S3Object;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MortalidadeRespiratoriaService {
@@ -22,18 +24,24 @@ public class MortalidadeRespiratoriaService {
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
     private final MortalidadeDao mortalidadeDao;
+    private final S3Service s3Service;
 
-    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, S3Service s3Service) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
+        this.s3Service = s3Service;
     }
 
-    public void extrairDados(List<InputStream> arquivos, Boolean xlsx) {
+    public void extrairDados(List<S3Object> objetos, Boolean xlsx) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (S3Object objeto : objetos) {
                 logger.info("Iniciando leitura do arquivo de mortalidade");
+
+                InputStream arquivo = s3Service.convertObjectToInputStream(objeto);
+
+                if(arquivo == null) continue;
 
                 Workbook workbook;
                 if (xlsx) {
@@ -48,7 +56,8 @@ public class MortalidadeRespiratoriaService {
                 logger.info("Ultima linha " + sheet.getLastRowNum());
 
                 for (Row row : sheet ) {
-                    if(excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Fonte")){
+                    String celulaMunicipio = excelUtils.getValorCelulaComoTexto(row.getCell(0));
+                    if(celulaMunicipio.startsWith("Fonte") || celulaMunicipio.startsWith("Total")){
                         break;
                     }
 
@@ -66,6 +75,9 @@ public class MortalidadeRespiratoriaService {
                     String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
                     String taxaFormatada =taxaSemPonto.replace(",", ".");
 
+                    String data = objeto.key().split("mortalidade-respiratoria/Biblioteca dados - CONVISA ")[1];
+                    String mes = data.split("-")[0];
+                    String ano = data.split("-")[1].split(".xlsx")[0];
 
                     MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
                             excelUtils.getValorCelulaComoTexto(row.getCell(0)),
@@ -73,7 +85,9 @@ public class MortalidadeRespiratoriaService {
                             internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
                             obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
                             taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
-                            ""
+                            "",
+                            mes,
+                            ano
                     );
 
                     String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));
@@ -90,7 +104,7 @@ public class MortalidadeRespiratoriaService {
                 logger.info("Leitura finalizada com sucesso\n");
             }
         } catch (Exception e) {
-            logger.error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage());
+            logger.error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage()  + Arrays.toString(e.getStackTrace()));
         }
     }
 }
