@@ -14,12 +14,14 @@ jobs:
             - name: Login Docker Hub
               run: sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
-            - name: Realiza o build da imagem do java
-              run: docker build \
+            - name: Realiza o build da imagem do Java
+              run: |
+                docker build \
                   --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
                   --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
                   --build-arg AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }} \
-                  -t furqas/respira-java-data -f ./LOGgrupo2/Dockerfile .
+                  -t furqas/respira-java-data \
+                  -f ./LOGgrupo2/Dockerfile .
 
             - name: Push image docker
               run: sudo docker push furqas/respira-java-data
