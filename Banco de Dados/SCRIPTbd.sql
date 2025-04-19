@@ -32,11 +32,11 @@ CREATE TABLE EmissaoVeicular(
     valorCO DOUBLE,
     valorHC DOUBLE,
     valorNOX DOUBLE,
+    valorCO2 DOUBLE,
     valorRCHO DOUBLE,
     valorMP DOUBLE,
     valorN2O DOUBLE
 );
-
 
 CREATE TABLE MortalidadeRespiratoria (
     iddadosCOVISA INT AUTO_INCREMENT PRIMARY KEY,
