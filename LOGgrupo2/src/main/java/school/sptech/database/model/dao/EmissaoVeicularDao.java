@@ -13,8 +13,8 @@ public class EmissaoVeicularDao {
     public void save(EmissaoVeicular emissaoVeicular){
         jdbcTemplate.update(
                 "INSERT INTO EmissaoVeicular " +
-                        "(tipoVeiculo, ano, valorCO, valorHC, valorNOX, valorCO2, valorCO2, valorRCHO, valorMP, valorN2O)" +
-                        "VALUES (?,?,?,?,?,?,?,?,?,?)",
+                        "(tipoVeiculo, ano, valorCO, valorHC, valorNOX, valorCO2, valorRCHO, valorMP, valorN2O)" +
+                        " VALUES (?,?,?,?,?,?,?,?,?)",
                 emissaoVeicular.getTipoVeiculo(),
                 emissaoVeicular.getAno(),
                 emissaoVeicular.getValorCO(),
