@@ -21,8 +21,7 @@ public class MortalidadeDao {
                 mortalidadeRespiratoria.getValorTotal(),
                 mortalidadeRespiratoria.getNumeroInternacoes(),
                 mortalidadeRespiratoria.getNumeroObitos(),
-                mortalidadeRespiratoria.getTaxaMortalidade(),
-                null
+                mortalidadeRespiratoria.getTaxaMortalidade()
         );
     }
 
