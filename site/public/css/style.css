@@ -353,7 +353,7 @@ body {
   width: 100vw;
   flex-direction: column;
   height: auto;
-  display: flex;
+  display: ruby; /*Eu troquei o flex por ruby só para o terceiro gráfico ficar embaixo, não sei se é a melhor opção */
   background-color: var(--primary-bg);
   justify-content: center;
   align-items: center;
@@ -376,6 +376,13 @@ body {
   box-shadow: var(--shadow);
 }
 
+.terceira-dashboard {
+  width: 50vw;
+  height: auto;
+  background-color: var(--primary-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
 
 /*TELA MAIOR*/
 
