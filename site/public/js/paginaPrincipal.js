@@ -196,7 +196,7 @@ if (persona == 'saude') {
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
-    new Chart(ctx3, {
+    new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Carro', 'Moto', 'Caminhão', 'Ônibus'],
@@ -224,7 +224,7 @@ if (persona == 'saude') {
         }
     });
 
-    new Chart(ctx2, {
+    new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: municipios.slice(0, 10),
@@ -259,7 +259,7 @@ if (persona == 'saude') {
         }
     });
 
-    new Chart(ctx, {
+    new Chart(ctx2, {
         type: 'line',
         data: {
             labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
