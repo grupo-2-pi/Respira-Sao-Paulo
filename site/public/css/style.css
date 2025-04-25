@@ -241,6 +241,11 @@ body {
   align-items: center;
 }
 
+.filtroSelecionado {
+  width: 100vw;
+  margin-left: 10%;  
+}
+
 .filtro-aplicado {
   display: flex;
   flex-direction: row;
@@ -733,4 +738,5 @@ background-color: #3C3D37;
 input:checked + .slider:before {
 transform: translateX(26px);
 }
+
 

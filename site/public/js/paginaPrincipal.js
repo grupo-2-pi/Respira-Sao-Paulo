@@ -10,6 +10,8 @@ function gerarDadosAleatorios(quantidade, min, max) {
 }
 
 
+
+
 function switchPersona(persona) {
     localStorage.setItem('personaSelecionada', persona);
     location.reload(); // Recarrega a página para aplicar a nova persona
@@ -25,28 +27,45 @@ const ctx3 = document.getElementById('myChartC');
 
 const municipios = ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',
     'Mauá', 'Diadema', 'Carapicuíba', 'Barueri', 'Itaquaquecetuba'];
+    
+    function aplicarEstiloKPI(id, valorTexto) {
+        var elemento = document.getElementById(id);
+        var valorNumerico = parseFloat(valorTexto); // ignora o %
+    
+        if (valorNumerico > 0) {
+            elemento.textContent = valorNumerico + '% ▲';
+            elemento.style.color = 'red';
+        } else if (valorNumerico < 0) {
+            elemento.textContent = Math.abs(valorNumerico) + '% ▼';
+            elemento.style.color = 'green';
+        } else {
+            elemento.textContent = '0%';
+            elemento.style.color = 'black';
+        }
+    }
 
 
 if (persona == 'saude') {
-    // KPI'S saude
-    document.getElementById('kpi1-title').textContent = '% de variação nas internações por doenças respiratórias*';
-    document.getElementById('kpi1-value').textContent = '5% ^';
-    document.getElementById('kpi2-title').textContent = 'Tendência da estação';
+
+    // KPI
+    document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
+    aplicarEstiloKPI('kpi1-value', -5);
+    document.getElementById('kpi2-title').textContent = 'Tendência do perigo da estação atual';
     document.getElementById('kpi2-value').textContent = '(velocimetro)';
-    document.getElementById('kpi3-title').textContent = 'Tendência futura';
-    document.getElementById('kpi3-value').textContent = '3% ^';
+    document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
+    document.getElementById('kpi3-value').textContent = '4%';
     document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias*';
-    document.getElementById('m-kpi1-value').textContent = '5% ^';
+    aplicarEstiloKPI('m-kpi1-value', 5);
     document.getElementById('m-kpi2-title').textContent = 'Tendência da estação';
-    document.getElementById('m-kpi2-value').textContent = '(velocimetro)'
-    document.getElementById('m-kpi3-title').textContent = 'Tendência futura';
-    document.getElementById('m-kpi3-value').textContent = '3% ^';
+    document.getElementById('m-kpi2-value').textContent = '(velocimetro)';
+    document.getElementById('m-kpi3-title').textContent = 'Taxa de mortalidade do último mês';
+    document.getElementById('m-kpi3-value').textContent = '4%';
 
     // Gráficos para persona da Saúde
 
     // Gráfico de barra - Do lado esquedo tem o número de internações, do lado direito, a qualidade do ar.
     // Baseado nos filtros, a pessoa poderá selecionar o periodo e os estados que gostaria de ver 
-    new Chart(ctx, {
+    new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: municipios.slice(0, 10),
@@ -119,7 +138,7 @@ if (persona == 'saude') {
                 }}}
     });
 
-    new Chart(ctx3, {
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
@@ -163,21 +182,21 @@ if (persona == 'saude') {
 } else {
 
     // KPIS AMBIENTAL
-    document.getElementById('kpi1-title').textContent = 'regiões maior nível de poluição';
+    document.getElementById('kpi1-title').textContent = 'região com maior nível de poluição*';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('kpi2-title').textContent = 'região com maior quantidade de transporte';
+    document.getElementById('kpi2-title').textContent = 'região com maior quantidade de transporte*';
     document.getElementById('kpi2-value').textContent = 'São Paulo';
-    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
+    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente*';
     document.getElementById('kpi3-value').textContent = 'CO2';
-    document.getElementById('m-kpi1-title').textContent = 'regiões maior nível de poluição';
+    document.getElementById('m-kpi1-title').textContent = 'regiões maior nível de poluição*';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('m-kpi2-title').textContent = 'região com maior quantidade de transporte';
+    document.getElementById('m-kpi2-title').textContent = 'região com maior nível de poluição*';
     document.getElementById('m-kpi2-value').textContent = 'São Paulo'
-    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente'
+    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente*'
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
-    new Chart(ctx, {
+    new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: ['Carro', 'Moto', 'Caminhão', 'Ônibus'],
@@ -240,7 +259,7 @@ if (persona == 'saude') {
         }
     });
 
-    new Chart(ctx3, {
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
