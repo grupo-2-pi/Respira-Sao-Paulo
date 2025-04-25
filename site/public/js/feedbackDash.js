@@ -41,7 +41,7 @@ new Chart(myChart, {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Quantidade de múnicipios'
+                    text: 'Quantidade de comentários'
                 }
             },
             x: {
