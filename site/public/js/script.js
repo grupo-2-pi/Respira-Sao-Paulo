@@ -4,7 +4,7 @@ var timesUserClickedOnNotifications = 0;
 function showNotifications(button){
 
   if(button){
-    var container = document.querySelector(".notification-dropdown-options.mob");
+    var container = document.querySelector(".notification-dropdown-options");
 
     container.style.opacity = "1";
   
@@ -113,3 +113,24 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 function goToPersonal(){
   location.replace("/personal.html")
 }
+
+function goToNotification(){
+  location.replace("/notificacoes.html")
+}
+
+function goToHome(){
+  location.replace("/");
+}
+
+function goToPaginaInicial(){
+  location.replace("/paginaPrincipal.html");
+}
+
+function goToCadastrar(){
+  location.replace("/cadastroPersona.html");
+}
+
+function goToPerfil(){
+  location.replace("/personal.html");
+}
+

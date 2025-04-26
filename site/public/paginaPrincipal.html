@@ -11,7 +11,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="./assets/logo.svg">
+    <link rel="icon" href="./assets/logo-sem-bg.svg">
     <title>Dashboard</title>
 </head>
 
@@ -21,36 +21,14 @@
 
     <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
 
-        <div class="logo-nav-container">
+        <div class="logo-nav-container" onclick="goToHome()">
             <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
         </div>
 
-        <div onclick="showNotifications(this)" class="contem-alerta not">
+        <div onclick="goToNotification()" class="contem-alerta">
             <div class="img-nav-alerta2">
                 <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
                     alt="Imagem de Notificações">
-            </div>
-            <div class="notification-dropdown mob">
-                <div class="notification-dropdown-options mob">
-                    <div class="notification-container">
-                        <span>27/02/2025 13:26</span>
-                        <button>
-                            Acontecimento muito louco doido explodiu tudo
-                        </button>
-                    </div>
-                    <div class="notification-container">
-                        <span>27/02/2025 13:26</span>
-                        <button>
-                            Acontecimento muito louco doido explodiu tudo
-                        </button>
-                    </div>
-                    <div class="notification-container">
-                        <span>27/02/2025 13:26</span>
-                        <button>
-                            Acontecimento muito louco doido explodiu tudo
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -124,9 +102,6 @@
                 </div>
                 <button id="disconectButton">Desconectar</button>
             </div>
-        
-
-
         </div>
         <!-- FIM NAV BAR -->
 
@@ -136,7 +111,7 @@
         </div>
 
         <button id="id-button-nav-bar" onclick="openSidebar()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="60%" fill="currentColor"
+            <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
                 class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
                 <path
                     d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
@@ -150,7 +125,7 @@
 
         <div id="sideBar" class="side-bar">
 
-            <div class="img-side-bar">
+            <div class="img-side-bar" onclick="goToHome()">
                 <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
             </div>
             <div class="side-bar-links-container">
@@ -162,6 +137,12 @@
                 </a>
                 <a onclick="goToCadastrar(); openSidebar();">
                     Cadastrar
+                </a>
+                <a onclick="goToPerfil(); openSidebar();">
+                    Perfil
+                </a>
+                <a onclick="goToSair(); openSidebar();">
+                    Sair
                 </a>
                 <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
                     <div class="user-infos">

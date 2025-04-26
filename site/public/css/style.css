@@ -752,10 +752,3 @@ input:checked + .slider:before {
 transform: translateX(26px);
 }
 
-<<<<<<< HEAD
-=======
-.contem-alerta.not{
-  display: flex;
-}
->>>>>>> 859207e904e2194293d8ab7e9b2f6da22862152e
-
