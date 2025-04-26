@@ -6,10 +6,7 @@ import school.sptech.config.JDBCConfig;
 import school.sptech.config.S3Provider;
 import school.sptech.database.model.EmissaoVeicular;
 import school.sptech.database.model.Logger;
-import school.sptech.service.EmissaoVeicularService;
-import school.sptech.service.FrotaCirulanteService;
-import school.sptech.service.MortalidadeRespiratoriaService;
-import school.sptech.service.S3Service;
+import school.sptech.service.*;
 import school.sptech.utils.ExcelUtils;
 import software.amazon.awssdk.services.s3.S3Client;
 
@@ -30,7 +27,7 @@ public class Main {
    private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate);
       private static final EmissaoVeicularService emissaoVeicularService = new EmissaoVeicularService(logger, excelUtils, jdbcTemplate);
-
+private static final QualidadeArService qualidadeArService = new QualidadeArService(logger, excelUtils, jdbcTemplate);
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
@@ -44,6 +41,9 @@ public class Main {
         List<InputStream> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
         emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
 
+        String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
+        List<InputStream> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
+        qualidadeArService.extrairDadosQualidadeAr(nomeArquivo, arquivoEmissao);
         encerrarAplicacao();
     }
 
