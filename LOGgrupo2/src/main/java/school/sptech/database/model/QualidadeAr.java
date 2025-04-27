@@ -1,26 +1,36 @@
 package school.sptech.database.model;
 
 public class QualidadeAr {
-    private String mesAno;
+    private String mes;
+    private String ano;
     private String municipio;
     private String poluente;
     private Double valor;
     private String unidade;
 
-    public QualidadeAr(String mesAno, String municipio, String poluente, Double valor, String unidade) {
-        this.mesAno = mesAno;
+    public QualidadeAr(String mes, String ano, String municipio, String poluente, Double valor, String unidade) {
+        this.mes = mes;
+        this.ano = ano;
         this.municipio = municipio;
         this.poluente = poluente;
         this.valor = valor;
         this.unidade = unidade;
     }
 
-    public String getMesAno() {
-        return mesAno;
+    public String getMes() {
+        return mes;
     }
 
-    public void setMesAno(String mesAno) {
-        this.mesAno = mesAno;
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
     public String getMunicipio() {
@@ -55,10 +65,12 @@ public class QualidadeAr {
         this.unidade = unidade;
     }
 
+
     @Override
     public String toString() {
         return "QualidadeAr{" +
-                "mesAno='" + mesAno + '\'' +
+                "mes='" + mes + '\'' +
+                ", ano='" + ano + '\'' +
                 ", municipio='" + municipio + '\'' +
                 ", poluente='" + poluente + '\'' +
                 ", valor=" + valor +

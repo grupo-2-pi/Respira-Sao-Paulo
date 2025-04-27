@@ -47,13 +47,19 @@ public class QualidadeArService {
                     Row linhaAtual = sheet.getRow(i);
                     if (linhaAtual == null) continue;
 
-                    String data = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(0));
+                    String[] data = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(0)).split("-");
+
+                    String mes = data[1];
+                    String ano = data[0];
+
                     String municipio = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(1));
                     String poluente = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(2));
                     Double valor = Double.valueOf(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3)));
                     String unidade = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(4));
 
-                    QualidadeAr qualidade = new QualidadeAr(data, municipio, poluente, valor, unidade);
+                    QualidadeAr qualidade = new
+                            QualidadeAr
+                            (mes,ano, municipio, poluente, valor, unidade);
                     logger.info("Leitura realizada: " + qualidade.toString());
                     qualidadeArDao.save(qualidade);
                     logger.info("Registro salvo no banco");
