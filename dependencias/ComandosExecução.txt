@@ -1,4 +1,11 @@
-git clone https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
+Entrar na pasta dependências: 
+
 cd Respira-Sao-Paulo/dependencias
+
+Tornar o arquivo executável: 
+
 chmod +x ShellRespiraSP
+
+Executar o Shell Script:
+
 ./ShellRespiraSP
