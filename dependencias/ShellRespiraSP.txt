@@ -1,0 +1,59 @@
+#!/bin/bash
+
+echo "=========Iniciando Respira São Paulo========="
+
+echo "Verificando Java..."
+java -version &>/dev/null
+if [ $? -eq 0 ]; then
+    echo "Java instalado"
+else
+    echo "Instalando Java"
+    sudo apt update
+    sudo apt install -y openjdk-17-jre
+fi
+
+echo "Verificando Docker..."
+docker --version &>/dev/null
+if [ $? -eq 0 ]; then
+    echo "Docker instalado"
+else
+    echo "Instalando Docker"
+    sudo apt update
+    sudo apt install -y docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
+fi
+
+echo "Verificando Git..."
+git --version &>/dev/null
+if [ $? -eq 0 ]; then
+    echo "Git instalado"
+else
+    echo "Instalando Git"
+    sudo apt update
+    sudo apt install -y git
+fi
+
+echo "Atualizando código Respira-Sao-Paulo..."
+if [ -d "Respira-Sao-Paulo" ]; then
+    cd Respira-Sao-Paulo
+    echo "Pasta existe, fazendo git pull"
+    git pull
+    cd ..
+else
+    echo "Clonando repositório"
+    git clone https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
+fi
+
+echo "Baixando imagens Docker..."
+docker pull furqas/respira-java-data
+echo "Imagem baixada: furqas/respira-java-data"
+docker pull furqas/respira-web
+echo "Imagem baixada: furqas/respira-web"
+
+echo "Iniciando containers..."
+docker run -d --name respira-backend -p 8080:8080 furqas/respira-java-data
+docker run -d --name respira-web    -p 3000:3000 furqas/respira-web
+
+echo "Instalação concluído"
+echo "Acesse http://localhost:3000"
