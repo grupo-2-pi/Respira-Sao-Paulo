@@ -1,15 +1,20 @@
+  GNU nano 7.2                                                                             ShellRespiraSP
 #!/bin/bash
 
-echo "=========Iniciando Respira São Paulo========="
+echo "========= Iniciando Respira São Paulo ========"
 
 echo "Verificando Java..."
 java -version &>/dev/null
 if [ $? -eq 0 ]; then
     echo "Java instalado"
 else
-    echo "Instalando Java"
+    echo "Instalando Java..."
     sudo apt update
     sudo apt install -y openjdk-17-jre
+    if [ $? -ne 0 ]; then
+        echo "Erro ao instalar o Java."
+        exit 1
+    fi
 fi
 
 echo "Verificando Docker..."
@@ -17,9 +22,13 @@ docker --version &>/dev/null
 if [ $? -eq 0 ]; then
     echo "Docker instalado"
 else
-    echo "Instalando Docker"
+    echo "Instalando Docker..."
     sudo apt update
     sudo apt install -y docker.io
+    if [ $? -ne 0 ]; then
+        echo "Erro ao instalar o Docker."
+        exit 1
+    fi
     sudo systemctl start docker
     sudo systemctl enable docker
 fi
@@ -29,31 +38,64 @@ git --version &>/dev/null
 if [ $? -eq 0 ]; then
     echo "Git instalado"
 else
-    echo "Instalando Git"
+    echo "Instalando Git..."
     sudo apt update
     sudo apt install -y git
+    if [ $? -ne 0 ]; then
+        echo "Erro ao instalar o Git."
+        exit 1
+    fi
 fi
+
 
 echo "Atualizando código Respira-Sao-Paulo..."
 if [ -d "Respira-Sao-Paulo" ]; then
     cd Respira-Sao-Paulo
-    echo "Pasta existe, fazendo git pull"
-    git pull
+    echo "Pasta existe, fazendo git pull..."
+    git fetch origin
+    git checkout dev
+    git pull origin dev
+    if [ $? -ne 0 ]; then
+        echo "Erro ao atualizar a branch dev."
+        exit 1
+    fi
     cd ..
 else
-    echo "Clonando repositório"
-    git clone https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
+    echo "Clonando repositório..."
+    git clone -b dev https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
+    if [ $? -ne 0 ]; then
+        echo "Erro ao clonar o repositório."
+        exit 1
+    fi
 fi
 
 echo "Baixando imagens Docker..."
 docker pull furqas/respira-java-data
+if [ $? -ne 0 ]; then
+    echo "Erro ao baixar a imagem furqas/respira-java-data."
+    exit 1
+fi
 echo "Imagem baixada: furqas/respira-java-data"
+
 docker pull furqas/respira-web
+if [ $? -ne 0 ]; then
+    echo "Erro ao baixar a imagem furqas/respira-web."
+    exit 1
+fi
 echo "Imagem baixada: furqas/respira-web"
 
-echo "Iniciando containers..."
-docker run -d --name respira-backend -p 8080:8080 furqas/respira-java-data
-docker run -d --name respira-web    -p 3000:3000 furqas/respira-web
+echo "Limpando containers"
+docker rm -f respira-backend respira-web &>/dev/null
 
-echo "Instalação concluído"
-echo "Acesse http://localhost:3000"
+echo "Iniciando containers"
+docker run -d --name respira-backend -p 8080:8080 furqas/respira-java-data
+docker run -d --name respira-web -p 3001:3001 furqas/respira-web
+
+
+echo "Executando o npm na pasta do projeto"
+cd Respira-Sao-Paulo/site
+
+npm install
+npm start
+
+echo "Instalação concluída."
