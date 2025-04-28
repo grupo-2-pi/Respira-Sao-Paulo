@@ -148,6 +148,119 @@
 
     <div class="container">
 
+        <div class="filtro">
+
+            <div class="filtroSelecionado">
+                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
+            </div>
+
+            <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
+            <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+
+                <div class="img-filtro">
+                    <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
+                </div>
+
+                <div class="text-filtro">
+                    <h1>Filtro</h1>
+                </div>
+
+            </div>
+
+            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+
+                <div class="escolher-filtro">
+
+                    <div class="btn-sair" onclick="fecharFiltro()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                    </div>
+
+                    <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
+
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Município Principal</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt">
+                                <option value="#"></option>
+                                <option value="">São Paulo</option>
+                                <option value="">Santo Andre</option>
+                                <option value="">São Caetano</option>
+                                <option value="">Campinas</option>
+                                <option value="">Piracicaba</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Região Desejada</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt">
+                                <option value="#"></option>
+                                <option value="">Sul</option>
+                                <option value="">Centro-Oeste</option>
+                                <option value="">Norte</option>
+                                <option value="">Nordeste</option>
+                                <option value="">Leste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Ano Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt">
+                                <option value="#"></option>
+                                <option value="">2024</option>
+                                <option value="">2023</option>
+                                <option value="">2022</option>
+                                <option value="">2021</option>
+                                <option value="">2020</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Mês Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt">
+                                <option value="#"></option>
+                                <option value="">Janeiro</option>
+                                <option value="">Fevereiro</option>
+                                <option value="">Março</option>
+                                <option value="">Abril</option>
+                                <option value="">Maio</option>
+                                <option value="">Junho</option>
+                                <option value="">Julho</option>
+                                <option value="">Agosto</option>
+                                <option value="">Setembro</option>
+                                <option value="">Outubro</option>
+                                <option value="">Novembro</option>
+                                <option value="">Dezembro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filtro-btn">
+                        
+                        <h1>Adicionar Filtro</h1>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
         <div class="kpis">
 
             <!-- MOBILE -->
@@ -232,67 +345,6 @@
             </div>
 
             <!-- FIM DESKTOP -->
-
-        </div>
-
-        <div class="filtro">
-
-            <div class ="filtroSelecionado">
-                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
-            </div>
-
-            <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-            <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
-
-                <div class="img-filtro">
-                    <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
-                </div>
-
-                <div class="text-filtro">
-                    <h1>Filtro</h1>
-                </div>
-
-            </div>
-
-            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
-
-                <div class="escolher-filtro">
-
-                    <div class="btn-sair" onclick="fecharFiltro()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg>
-                    </div>
-
-                    <div class="filtro-text">
-
-                    </div>
-                    <div class="filtro-text">
-
-                    </div>
-                    <div class="filtro-text">
-
-                    </div>
-                    <div class="filtro-text">
-
-                    </div>
-
-                    <div class="filtro-btn">
-                        <div class="filtro-btn-1">
-
-                        </div>
-                        <div class="filtro-btn-1">
-
-                        </div>
-                        <div class="filtro-btn-1">
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
 

@@ -30,6 +30,8 @@ new Chart(myChart, {
         }]
     },
     options: {
+        maintainAspectRatio: false,
+        responsive: true,
         plugins: {
             title: {
                 display: true,
@@ -54,14 +56,14 @@ new Chart(myChart, {
     }
 });
 
-function abrirComentarios(){
+function abrirComentarios() {
 
 
-    if(contador == 0){
+    if (contador == 0) {
         button_see.style.background = "#C0E39D";
         container_comentarios.style.display = "flex";
         contador = 1;
-    }else{
+    } else {
         button_see.style.background = "#f3f7ea";
         container_comentarios.style.display = "none";
         contador = 0;

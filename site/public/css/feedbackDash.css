@@ -161,7 +161,6 @@ body {
   height: 40vh;
   justify-content: center;
   align-items: center;
-  margin-top: 22px;
 }
 
 .primeira-divisao-kpi {
@@ -236,7 +235,7 @@ body {
   display: flex;
   width: 100vw;
   height: auto;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 10px;
   justify-content: flex-end;
   align-items: center;
@@ -244,13 +243,14 @@ body {
 
 .filtroSelecionado {
   width: 100vw;
-  margin-left: 10%;  
+  margin-left: 10%;
+  font-size: 0.5rem;
 }
 
 .filtro-aplicado {
   display: flex;
   flex-direction: row;
-  width: 18%;
+  width: 20%;
   height: 5vh;
   background-color: var(--primary-bg);
   border-radius: 5px;
@@ -276,7 +276,7 @@ body {
 }
 
 .text-filtro {
-  font-size: 2.005vw;
+  font-size: 0.4rem;
   color: var(--title-text);
 }
 
@@ -314,7 +314,7 @@ body {
 .escolher-filtro {
   display: flex;
   width: 80vw;
-  height: 69vw;
+  height: 60vh;
   background-color: white;
   position: fixed;
   border-radius: 10px;
@@ -322,36 +322,49 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  margin-top: 80%;
 }
 
 .filtro-text {
+  display: flex;
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
   margin-top: 18px;
   width: 80%;
-  height: 12.5%;
+  height: 15.5%;
+  font-size: 0.4rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
 }
 
 .filtro-btn {
   display: flex;
   width: 68%;
-  height: 20.5%;
+  height: 7vh;
   margin-top: 12px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
-
-.filtro-btn-1 {
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
-  width: 30%;
-  height: 80%;
+  font-size: 0.4rem;
+}
 
+.contem-escolhe-filtro {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.select-opt {
+  border: 1px solid black;
+  width: 65%;
+  overflow-y: auto;
 }
 
 /*DASHBOARDS*/
@@ -621,12 +634,16 @@ body {
 
   .filtro {
     margin-top: 22px;
-    margin-bottom: 26px;
+  }
+
+  .filtroSelecionado {
+    font-size: 1rem;
   }
 
   .filtro-aplicado {
-    width: 6%;
+    width: 9%;
     height: 57%;
+    gap: 10px;
   }
 
   .img-filtro {
@@ -640,7 +657,8 @@ body {
 
   .escolher-filtro {
     width: 35%;
-    height: 47%;
+    height: 50%;
+    margin-top: 30%;
   }
 
   .btn-sair {
@@ -652,14 +670,21 @@ body {
     height: 40%;
   }
 
+  .filtro-btn{
+    width: 32% !important;
+    cursor: pointer;
+  }
+
   /*DASHBOARDS*/
 
   .dashboards {
     flex-direction: row;
+    margin-top: 33px !important;
   }
 
   .primeira-dashboard {
     width: 45vw;
+    height: 45vh;
   }
 
   .segunda-dashboard {
