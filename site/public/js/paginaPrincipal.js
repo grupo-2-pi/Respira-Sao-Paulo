@@ -85,6 +85,8 @@ if (persona == 'saude') {
             ]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -128,6 +130,8 @@ if (persona == 'saude') {
             ]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -156,6 +160,8 @@ if (persona == 'saude') {
             ]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -207,6 +213,8 @@ if (persona == 'saude') {
             }]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             scales: {
                 y: {
                     title: {
@@ -235,6 +243,8 @@ if (persona == 'saude') {
             }]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -285,6 +295,7 @@ if (persona == 'saude') {
             ]
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             plugins: {
                 title: {
