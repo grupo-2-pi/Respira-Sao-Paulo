@@ -1,6 +1,31 @@
-function showNotifications(){
+var timesUserClickedOnOptions = 0;
+var timesUserClickedOnNotifications = 0;
+
+function showNotifications(button){
+
+  if(button){
+    var container = document.querySelector(".notification-dropdown-options");
+
+    container.style.opacity = "1";
+  
+    container.style.visibility = "visible";
+  
+    container.style.transform = "translateY(0)";
+
+    container.style.display = "flex";
+
+  }
+
   console.log("dentro");
 
+  if(timesUserClickedOnNotifications > 0){
+    hideNotifications();
+    timesUserClickedOnNotifications = 0;
+
+    return;
+  }
+
+  timesUserClickedOnNotifications++;
 
   var dropdown = document.querySelector(".notification-dropdown");
   dropdown.style.opacity = "1";
@@ -27,6 +52,14 @@ function hideNotifications(){
 function showUserOptions(){
   console.log("dentro");
 
+  if(timesUserClickedOnOptions > 0){
+    hideUserOptions();
+    timesUserClickedOnOptions = 0;
+
+    return;
+  }
+
+  timesUserClickedOnOptions++;
 
   var dropdown = document.querySelector(".user-dropdown-options");
   dropdown.style.opacity = "1";
@@ -80,3 +113,24 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 function goToPersonal(){
   location.replace("/personal.html")
 }
+
+function goToNotification(){
+  location.replace("/notificacoes.html")
+}
+
+function goToHome(){
+  location.replace("/");
+}
+
+function goToPaginaInicial(){
+  location.replace("/paginaPrincipal.html");
+}
+
+function goToCadastrar(){
+  location.replace("/cadastroPersona.html");
+}
+
+function goToPerfil(){
+  location.replace("/personal.html");
+}
+

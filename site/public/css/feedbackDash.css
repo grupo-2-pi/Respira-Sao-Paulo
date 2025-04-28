@@ -242,6 +242,11 @@ body {
   align-items: center;
 }
 
+.filtroSelecionado {
+  width: 100vw;
+  margin-left: 10%;  
+}
+
 .filtro-aplicado {
   display: flex;
   flex-direction: row;

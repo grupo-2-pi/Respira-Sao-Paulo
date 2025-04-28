@@ -128,11 +128,16 @@ body {
 .side-bar-links-container {
   display: flex;
   flex-direction: column;
-  gap: 70px;
-  height: 88%;
+  gap: 50px;
+  height: 100%;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  margin-top: 60px;
+}
+
+.side-bar-links-container a{
+  font-size: 15px;
 }
 
 .side-bar-links-container a:hover {
@@ -239,6 +244,11 @@ body {
   margin-bottom: 10px;
   justify-content: flex-end;
   align-items: center;
+}
+
+.filtroSelecionado {
+  width: 100vw;
+  margin-left: 10%;  
 }
 
 .filtro-aplicado {
@@ -353,7 +363,7 @@ body {
   width: 100vw;
   flex-direction: column;
   height: auto;
-  display: flex;
+  display: ruby; /*Eu troquei o flex por ruby só para o terceiro gráfico ficar embaixo, não sei se é a melhor opção */
   background-color: var(--primary-bg);
   justify-content: center;
   align-items: center;
@@ -376,6 +386,13 @@ body {
   box-shadow: var(--shadow);
 }
 
+.terceira-dashboard {
+  width: 50vw;
+  height: auto;
+  background-color: var(--primary-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
 
 /*TELA MAIOR*/
 
@@ -552,6 +569,14 @@ body {
 
   .segunda-dashboard{
       width: 45vw;
+  }
+
+  .side-bar.user-container{
+    display: flex !important; 
+  }
+
+  .contem-alerta.not{
+    display: none !important;
   }
 }
 
