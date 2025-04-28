@@ -19,7 +19,9 @@ jobs:
             
             - name: Realiza o build da imagem do site
               run: docker build -t furqas/respira-web -f ./site/Dockerfile ./site
-    
-            - name: Envia a imagem para o dockerhub
-              run: sudo docker push furqas/respira-java-data && sudo docker push furqas/respira-web
 
+            - name: Realiza o build da imagem do banco
+              run: docker build -t furqas/respira-bd -f './Banco de Dados/Dockerfile' './Banco de Dados'
+              
+            - name: Envia as imagens para o dockerhub
+              run: sudo docker push furqas/respira-java-data && sudo docker push furqas/respira-web && sudo docker push furqas/respira-bd
