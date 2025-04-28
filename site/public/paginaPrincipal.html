@@ -27,8 +27,7 @@
 
         <div onclick="goToNotification()" class="contem-alerta">
             <div class="img-nav-alerta2">
-                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
-                    alt="Imagem de Notificações">
+                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
             </div>
         </div>
 
@@ -149,7 +148,7 @@
                         <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
                         <span>Dono de tudo</span>
                     </div>
-        
+
                     <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
                         <button onclick="goToPersonal()">Dados Pessoais</button>
                         <button>Filtros Salvos</button>
@@ -168,9 +167,9 @@
                         </div>
                         <button id="disconectButton">Desconectar</button>
                     </div>
-        
+
                 </div>
-               <!--  <a onclick="goToPerfil(); openSidebar();">
+                <!--  <a onclick="goToPerfil(); openSidebar();">
                     Perfil
                 </a>
                 <a onclick="goToSair(); openSidebar();">
@@ -188,100 +187,11 @@
 
     <div class="container">
 
-        <div class="kpis">
-
-            <!-- MOBILE -->
-
-            <div class="primeira-divisao-kpi">
-                <div class="primeira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi1-title">Munícipio mais Poluído</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi1-value">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi2-title">Munícipio com maior Indice de Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi2-value">São Paulo</h1>
-                    </div>
-
-                </div>
-            </div>
-            <div class="primeira-divisao-kpi">
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi3-title" >Valor Gasto com Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi3-value">R$ 15.000,00</h1>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- DESKTOP -->
-
-            <div class="primeira-divisao-kpi2" style="display: none;">
-                <div class="primeira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id='kpi1-title'>Munícipio mais Poluído</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="kpi1-value">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id='kpi2-title'> Maior Indíce Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="kpi2-value">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id='kpi3-title'>Valor Gasto com Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="kpi3-value">R$ 15.000,00</h1>
-                    </div>
-
-                </div>
-            </div>
-
-
-            
-            <!-- FIM DESKTOP -->
-
-        </div>
-
         <div class="filtro">
 
-                <div class ="filtroSelecionado">
-                    <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
-                </div>
+            <div class="filtroSelecionado">
+                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
+            </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
             <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
@@ -321,7 +231,7 @@
                                 <option value="Santo André">Santo André</option>
                             </select>
                         </div>
-                        
+
                     </div>
                     <div class="filtro-text">
                         <div id="municipio-secundario">
@@ -384,23 +294,116 @@
 
         </div>
 
+        <div class="kpis">
+
+            <!-- MOBILE -->
+
+            <div class="primeira-divisao-kpi">
+                <div class="primeira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi1-title">Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi1-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi2-title">Munícipio com maior Indice de Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi2-value">São Paulo</h1>
+                    </div>
+
+                </div>
+            </div>
+            <div class="primeira-divisao-kpi">
+                <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi3-title">Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi3-value">R$ 15.000,00</h1>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DESKTOP -->
+
+            <div class="primeira-divisao-kpi2" style="display: none;">
+                <div class="primeira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi1-title'>Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi1-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi2-title'> Maior Indíce Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi2-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi3-title'>Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi3-value">R$ 15.000,00</h1>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- FIM DESKTOP -->
+
+        </div>
+
         <div class="dashboards">
 
             <!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
 
             <div class="primeira-dashboard">
-                <canvas id="myChart"></canvas>
+                <div class="tamanho-dash"><canvas id="myChart"></canvas></div>
             </div>
 
             <div class="segunda-dashboard">
-                <canvas id="myChartB"></canvas>
+                <div class="tamanho-dash"><canvas id="myChartB"></canvas></div>
             </div>
 
-            <div class="terceira-dashboard">
-                <canvas id="myChartC"></canvas>
-            </div>
 
         </div>
+
+        <div class="dashboards">
+            <div class="terceira-dashboard">
+                <div class="tamanho-dash"><canvas id="myChartC"></canvas></div>
+            </div>
+        </div>
+
 
     </div>
 
