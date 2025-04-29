@@ -9,6 +9,17 @@ function gerarDadosAleatorios(quantidade, min, max) {
     return resultado;
 }
 
+function gerarDadosAleatorios2(quantidade, min, max) {
+    var resultado = [];
+
+    for (var i = 0; i < quantidade; i++) {
+        var numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+        resultado.push(numeroAleatorio);
+    }
+
+    return resultado;
+}
+
 
 
 

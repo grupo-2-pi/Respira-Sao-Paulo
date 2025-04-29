@@ -186,7 +186,7 @@
                             <h1>Município Principal</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
+                            <select name="" class="select-opt" id="municipioPrincipal">
                                 <option value="#"></option>
                                 <option value="">São Paulo</option>
                                 <option value="">Santo Andre</option>
@@ -201,13 +201,13 @@
                             <h1>Região Desejada</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
+                            <select name="" class="select-opt" id="regiaoDesejada">
                                 <option value="#"></option>
-                                <option value="">Sul</option>
+                                <option value="Sul">Sul</option>
                                 <option value="">Centro-Oeste</option>
                                 <option value="">Norte</option>
                                 <option value="">Nordeste</option>
-                                <option value="">Leste</option>
+                                <option value="Leste">Leste</option>
                             </select>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                             <h1>Ano Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
+                            <select name="" class="select-opt" id="anoDesejado">
                                 <option value="#"></option>
                                 <option value="">2024</option>
                                 <option value="">2023</option>
@@ -231,7 +231,7 @@
                             <h1>Mês Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
+                            <select name="" class="select-opt" id="mesDesejado">
                                 <option value="#"></option>
                                 <option value="">Janeiro</option>
                                 <option value="">Fevereiro</option>
@@ -249,7 +249,7 @@
                         </div>
                     </div>
 
-                    <div class="filtro-btn">
+                    <div class="filtro-btn" onclick="atualizarDash()">
                         
                         <h1>Adicionar Filtro</h1>
                         
@@ -353,7 +353,7 @@
             <!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
 
             <div class="primeira-dashboard">
-                <canvas id="myChart"></canvas>
+                <canvas id="myChartXX"></canvas>
             </div>
 
         </div>
