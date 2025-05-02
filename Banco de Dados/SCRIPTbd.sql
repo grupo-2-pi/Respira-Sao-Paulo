@@ -73,7 +73,16 @@ CREATE TABLE Funcionario (
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-
+CREATE TABLE QualidadeAr (
+     mes VARCHAR(45),
+     ano VARCHAR(45),
+     municipio VARCHAR(45),
+     poluente VARCHAR(45),
+     valor DOUBLE,
+     unidade VARCHAR(45),
+     regiao VARCHAR(45)
+);
+    
 CREATE TABLE LogRestrito (
     idLogRestrito INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(45),
