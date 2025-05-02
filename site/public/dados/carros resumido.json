@@ -1,0 +1,139 @@
+// Utilizado no gráfico "quantidade de transporte por região" //
+// Utilizado no KPI região com maior quantidade de transporte
+
+[
+ {
+  "Municipio": "CARAPICUIBA",
+  "Ano": 2023,
+  "Gasolina": 4,
+  "Flex": 787,
+  "Leve gasolina": 30,
+  "Leve flex": 250,
+  "Leve diesel": 78,
+  "Moto flex": 1059,
+  "Moto gasolina": 945,
+  "Onibus urbano": 1464760005
+ },
+ {
+  "Municipio": "DIADEMA",
+  "Ano": 2023,
+  "Gasolina": 21,
+  "Flex": 1152,
+  "Leve gasolina": 49,
+  "Leve flex": 357,
+  "Leve diesel": 118,
+  "Moto flex": 1141,
+  "Moto gasolina": 1345,
+  "Onibus urbano": 1361365182
+ },
+ {
+  "Municipio": "GUARULHOS",
+  "Ano": 2023,
+  "Gasolina": 94,
+  "Flex": 5005,
+  "Leve gasolina": 255,
+  "Leve flex": 1868,
+  "Leve diesel": 564,
+  "Moto flex": 4331,
+  "Moto gasolina": 3334,
+  "Onibus urbano": 1292435299
+ },
+ {
+  "Municipio": "MAUA",
+  "Ano": 2023,
+  "Gasolina": 11,
+  "Flex": 1212,
+  "Leve gasolina": 36,
+  "Leve flex": 282,
+  "Leve diesel": 90,
+  "Moto flex": 1066,
+  "Moto gasolina": 895,
+  "Onibus urbano": 4911254136
+ },
+ {
+  "Municipio": "MOGI DAS CRUZES",
+  "Ano": 2023,
+  "Gasolina": 74,
+  "Flex": 2962,
+  "Leve gasolina": 124,
+  "Leve flex": 982,
+  "Leve diesel": 291,
+  "Moto flex": 1069,
+  "Moto gasolina": 949,
+  "Onibus urbano": 5342065902
+ },
+ {
+  "Municipio": "OSASCO",
+  "Ano": 2023,
+  "Gasolina": 53,
+  "Flex": 3447,
+  "Leve gasolina": 108,
+  "Leve flex": 1025,
+  "Leve diesel": 268,
+  "Moto flex": 1791,
+  "Moto gasolina": 2194,
+  "Onibus urbano": 766844944
+ },
+ {
+  "Municipio": "SANTO ANDRE",
+  "Ano": 2023,
+  "Gasolina": 131,
+  "Flex": 5850,
+  "Leve gasolina": 269,
+  "Leve flex": 1560,
+  "Leve diesel": 325,
+  "Moto flex": 1782,
+  "Moto gasolina": 2561,
+  "Onibus urbano": 2240221185
+ },
+ {
+  "Municipio": "SAO BERNARDO DO CAMPO",
+  "Ano": 2023,
+  "Gasolina": 131,
+  "Etanol": 1,
+  "Flex": 5832,
+  "Leve gasolina": 302,
+  "Leve flex": 1660,
+  "Leve diesel": 397,
+  "Moto flex": 1917,
+  "Moto gasolina": 2671,
+  "Onibus urbano": 9133209446
+ },
+ {
+  "Municipio": "SAO CAETANO DO SUL",
+  "Ano": 2023,
+  "Gasolina": 60,
+  "Flex": 2757,
+  "Leve gasolina": 240,
+  "Leve flex": 943,
+  "Leve diesel": 251,
+  "Moto flex": 284,
+  "Moto gasolina": 652,
+  "Onibus urbano": 1809409418
+ },
+ {
+  "Municipio": "SAO PAULO",
+  "Ano": 2023,
+  "Gasolina": 2450,
+  "Etanol": 1,
+  "Flex": 182630,
+  "Leve gasolina": 6035,
+  "Leve flex": 45408,
+  "Leve diesel": 8049,
+  "Moto flex": 31811,
+  "Moto gasolina": 58601,
+  "Onibus urbano": 1044287722
+ },
+ {
+  "Municipio": "TABOAO DA SERRA",
+  "Ano": 2023,
+  "Gasolina": 12,
+  "Flex": 916,
+  "Leve gasolina": 30,
+  "Leve flex": 311,
+  "Leve diesel": 82,
+  "Moto flex": 980,
+  "Moto gasolina": 1080,
+  "Onibus urbano": 1120110592
+ }
+]

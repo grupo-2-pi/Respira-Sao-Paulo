@@ -82,61 +82,59 @@ if (persona == 'saude') {
             labels: municipios.slice(0, 10),
             datasets: [
                 {
-                    label: 'Internações respiratórias',
+                    label: 'Internações (quantidade)',
                     data: gerarDadosAleatorios(10, 100, 1000),
                     backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    yAxisID: 'y'
+                    xAxisID: 'internacoes'
                 },
                 {
-                    label: 'Índice de poluição do ar',
+                    label: 'Poluição (µg/m³)',
                     data: gerarDadosAleatorios(10, 50, 200),
                     backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                    yAxisID: 'y1'
+                    xAxisID: 'poluicao'
                 }
             ]
         },
         options: {
-            maintainAspectRatio: false,
+            indexAxis: 'y',
             responsive: true,
             plugins: {
                 title: {
                     display: true,
-                    text: '(Mês) de (Ano)',
+                    text: 'Internações Respiratórias X Poluição do Ar - (Mês) de (Ano)',
                     font: {
                         size: 18
                     }
-                }},
+                }
+            },
             scales: {
-                y1: {
-                    beginAtZero: true,
-                    position: 'right',
-                    grid: {
-                        drawOnChartArea: false // evita linhas cruzadas
-                    }
+                internacoes: {
+                    position: 'bottom',
+                    title: { display: true, text: 'Internações' }
+                },
+                poluicao: {
+                    position: 'top',
+                    title: { display: true, text: 'Poluição' }
                 }
             }
         }
     });
     
+        //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
     new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: Array.from({ length: 24 }, (_, i) => `${i + 1} semanas atrás`).reverse(),
+            labels: ['Setembro','Outubro','Novembro', 'Dezembro'],
             datasets: [
                 {
-                    label: 'Internações por semana',
-                    data: gerarDadosAleatorios(24, 50, 200),
+                    label: 'Internações últimos 4 meses',
+                    data: gerarDadosAleatorios(4, 50, 200),
                     borderColor: 'rgba(54, 162, 235, 1)'
                 },
                 {
-                    label: 'Alerta (10% acima)',
-                    data: Array(24).fill(100),
+                    label: 'Média do último ano',
+                    data: Array(4).fill(100),
                     borderColor: 'rgba(255, 206, 86, 1)'
-                },
-                {
-                    label: 'Alerta crítico (20% acima)',
-                    data: Array(24).fill(140),
-                    borderColor: 'rgba(255, 99, 132, 1)'
                 }
             ]
         },
@@ -146,13 +144,13 @@ if (persona == 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: '(Municipio Principal)',
+                    text: 'Variação Mensal de Internações vs. Média Anual - (Municipio Principal)',
                     font: {
                         size: 18
                     }
                 }}}
     });
-
+    //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
     new Chart(ctx, {
         type: 'line',
         data: {
@@ -176,7 +174,7 @@ if (persona == 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: '(Municipio Principal)',
+                    text: 'Evolução Anual de Gastos: 2023 vs. 2024 (Municipio Principal)',
                     font: {
                         size: 18
                     }}},
@@ -224,6 +222,15 @@ if (persona == 'saude') {
             }]
         },
         options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Emissão de CO₂ por Tipo de Veículo',
+                    font: {
+                        size: 14
+                    }
+                }
+            },
             maintainAspectRatio: false,
             responsive: true,
             scales: {
@@ -259,7 +266,10 @@ if (persona == 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Quantidade de transporte por região'
+                    text: 'Quantidade de transporte por região',
+                    font: {
+                        size: 14
+                    }
                 }
             },
             scales: {
@@ -280,6 +290,7 @@ if (persona == 'saude') {
         }
     });
 
+        //Talvez o ideal é deixar os dados aleatórios, já que temos só 2 meses
     new Chart(ctx2, {
         type: 'line',
         data: {
@@ -311,7 +322,10 @@ if (persona == 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Evolução mensal do nível de poluição por município'
+                    text: 'Evolução mensal do nível de poluição por município',
+                    font: {
+                        size: 14
+                    }
                 }
             },
             scales: {
@@ -343,3 +357,4 @@ function abrirFiltro() {
 function fecharFiltro() {
     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
 }
+

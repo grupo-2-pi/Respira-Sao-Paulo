@@ -1,0 +1,495 @@
+// utilizado no gráfico 'Evolução mensal do nivel de poluição', 'Indice de poluição ar'
+// Utilizado na KPI 'Região com maior nível de poluição'
+
+[
+ {
+  "municipio": "Carapicuíba",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 38.53333333333333
+ },
+ {
+  "municipio": "Carapicuíba",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 22.23018292682927
+ },
+ {
+  "municipio": "Carapicuíba",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 32.80551724137931
+ },
+ {
+  "municipio": "Carapicuíba",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 18.56586021505376
+ },
+ {
+  "municipio": "Carapicuíba",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "CO",
+  "Valor": 403.1167086278687
+ },
+ {
+  "municipio": "Diadema",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 40.11224489795919
+ },
+ {
+  "municipio": "Diadema",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 19.12083333333333
+ },
+ {
+  "municipio": "Diadema",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 34.34831460674157
+ },
+ {
+  "municipio": "Diadema",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 17.375
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "SO2",
+  "Valor": 2.149059334298119
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 49.23882681564246
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "NO2",
+  "Valor": 17.73976608187134
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 10.51182197496523
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 21.57361111111112
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "CO",
+  "Valor": 461.2513842057458
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "SO2",
+  "Valor": 1.799438990182328
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 55.0497311827957
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "NO2",
+  "Valor": 17.75069637883009
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 10.20295698924731
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 20.83602150537634
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "CO",
+  "Valor": 514.1572670450463
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 41.82865168539326
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 11.87323943661972
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 21.9066852367688
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 33.87918486171761
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 11.33835616438356
+ },
+ {
+  "municipio": "Guarulhos",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 18.32602739726028
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 42.61990950226244
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 10.4985294117647
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 31.35080058224163
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 38.00985915492958
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 9.76319350473613
+ },
+ {
+  "municipio": "Mauá",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 30.25182481751825
+ },
+ {
+  "municipio": "Mooca",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 54.12222222222222
+ },
+ {
+  "municipio": "Mooca",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 13.14721723518851
+ },
+ {
+  "municipio": "Mooca",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 49.67881241565452
+ },
+ {
+  "municipio": "Mooca",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 11.63440860215054
+ },
+ {
+  "municipio": "Mooca",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "CO",
+  "Valor": 255.0529199597926
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "SO2",
+  "Valor": 2.036231884057971
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "PTS",
+  "Valor": 54
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "NO2",
+  "Valor": 43.3463768115942
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 15.82777777777778
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 31.91328671328672
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "CO",
+  "Valor": 663.6112456021432
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "SO2",
+  "Valor": 1.826086956521739
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "PTS",
+  "Valor": 39
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "NO2",
+  "Valor": 41.41994382022472
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 14.15745856353591
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 28.96231493943472
+ },
+ {
+  "municipio": "Osasco",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "CO",
+  "Valor": 690.3974721105686
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "SO2",
+  "Valor": 3.167621776504298
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "PTS",
+  "Valor": 25.5
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "O3",
+  "Valor": 50.74031007751938
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "NO2",
+  "Valor": 19.38719512195122
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP2.5",
+  "Valor": 8.2
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "MP10",
+  "Valor": 23.52891156462585
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "SO2",
+  "Valor": 2.29608938547486
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "PTS",
+  "Valor": 26.5
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 45.91725105189341
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "NO2",
+  "Valor": 18.87964338781575
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 7.5
+ },
+ {
+  "municipio": "Santo Andre",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP10",
+  "Valor": 21.34883720930232
+ },
+ {
+  "municipio": "São Bernardo do Campo",
+  "Ano": 2023,
+  "Mês": 11,
+  "Poluente": "PTS",
+  "Valor": 40
+ },
+ {
+  "municipio": "São Bernardo do Campo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "PTS",
+  "Valor": 29.5
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "PTS",
+  "Valor": 24.5
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "NO2",
+  "Valor": 14.59747545582048
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "SO2",
+  "Valor": 1.083844580777096
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "MP2.5",
+  "Valor": 9.418786692759296
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "O3",
+  "Valor": 45.72695035460993
+ },
+ {
+  "municipio": "Sao Paulo",
+  "Ano": 2023,
+  "Mês": 12,
+  "Poluente": "FMC",
+  "Valor": 10
+ }
+]
