@@ -8,7 +8,9 @@ import school.sptech.database.model.QualidadeAr;
 import school.sptech.database.model.dao.QualidadeArDao;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.database.model.Logger;
+import school.sptech.utils.MapaMunicipiosSP;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -18,11 +20,13 @@ public class QualidadeArService {
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
     private final QualidadeArDao qualidadeArDao;
+    private final MapaMunicipiosSP mapaMunicipiosSP;
 
-    public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+    public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
+        this.mapaMunicipiosSP = mapaMunicipiosSP;
         this.qualidadeArDao = new QualidadeArDao(jdbcTemplate);
     }
 
@@ -31,12 +35,14 @@ public class QualidadeArService {
             for (InputStream arquivo : arquivos) {
                 logger.info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
 
+                byte[] fileBytes = arquivo.readAllBytes();
+
                 Workbook workbook;
                 if (nomeArquivo.endsWith(".xlsx")) {
-                    workbook = new XSSFWorkbook(arquivo);
+                    workbook = new XSSFWorkbook(new ByteArrayInputStream(fileBytes));
                     logger.info("Arquivo xlsx encontrado");
                 } else {
-                    workbook = new HSSFWorkbook(arquivo);
+                    workbook = new HSSFWorkbook(new ByteArrayInputStream(fileBytes));
                     logger.info("Arquivo xls encontrado");
                 }
 
@@ -59,7 +65,7 @@ public class QualidadeArService {
 
                     QualidadeAr qualidade = new
                             QualidadeAr
-                            (mes,ano, municipio, poluente, valor, unidade);
+                            (mes,ano, municipio, poluente, valor, unidade, mapaMunicipiosSP.pegarMunicipio(municipio));
                     logger.info("Leitura realizada: " + qualidade.toString());
                     qualidadeArDao.save(qualidade);
                     logger.info("Registro salvo no banco");

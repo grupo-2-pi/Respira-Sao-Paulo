@@ -11,6 +11,7 @@ import school.sptech.database.model.Logger;
 import school.sptech.database.model.MortalidadeRespiratoria;
 import school.sptech.database.model.dao.MortalidadeDao;
 import school.sptech.utils.ExcelUtils;
+import school.sptech.utils.MapaMunicipiosSP;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ public class MortalidadeRespiratoriaService {
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
     private final MortalidadeDao mortalidadeDao;
+    private final MapaMunicipiosSP mapaMunicipiosSP;
 
-    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
+        this.mapaMunicipiosSP = mapaMunicipiosSP;
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
     }
 
@@ -73,7 +76,7 @@ public class MortalidadeRespiratoriaService {
                             internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
                             obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
                             taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
-                            ""
+                            mapaMunicipiosSP.pegarMunicipio(excelUtils.getValorCelulaComoTexto(row.getCell(0)))
                     );
 
                     String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));

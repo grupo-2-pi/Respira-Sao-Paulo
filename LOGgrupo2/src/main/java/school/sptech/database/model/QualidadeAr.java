@@ -7,14 +7,16 @@ public class QualidadeAr {
     private String poluente;
     private Double valor;
     private String unidade;
+    private String regiao;
 
-    public QualidadeAr(String mes, String ano, String municipio, String poluente, Double valor, String unidade) {
+    public QualidadeAr(String mes, String ano, String municipio, String poluente, Double valor, String unidade, String regiao) {
         this.mes = mes;
         this.ano = ano;
         this.municipio = municipio;
         this.poluente = poluente;
         this.valor = valor;
         this.unidade = unidade;
+        this.regiao = regiao;
     }
 
     public String getMes() {
@@ -65,6 +67,13 @@ public class QualidadeAr {
         this.unidade = unidade;
     }
 
+    public String getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(String regiao) {
+        this.regiao = regiao;
+    }
 
     @Override
     public String toString() {
