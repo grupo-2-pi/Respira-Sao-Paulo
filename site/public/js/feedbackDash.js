@@ -94,25 +94,41 @@ function abrirComentarios() {
 }
 
 function atualizarDash() {
-    alert(listaResultado)
-    alert('entrei aq')
+
     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
     lista = gerarDadosAleatorios2(10, 0, 20);
 
     var regiao = regiaoDesejada.value;
+    var municipioPrincipalA = municipioPrincipal.value;
+    var anoPrincipalA = anoDesejado.value;
+    var mesPrincipalA = mesDesejado.value;
 
-    alert(lista)
-    mudarChartJs(lista, regiao);
+    if(municipioPrincipalA == ''){
+        municipioFeedback.innerHTML = 'São Paulo';
+    }else{
+        municipioFeedback.innerHTML = municipioPrincipalA;
+    }
+    if(anoPrincipalA == ''){
+        anoFeedback.innerHTML = '2024';
+    }else{
+        anoFeedback.innerHTML = anoPrincipalA;
+    }
+    if(mesPrincipalA == ''){
+        mesFeedback.innerHTML = 'Janeiro';
+    }else{
+        mesFeedback.innerHTML = mesPrincipalA;
+    }
+
+    mudarChartJs(regiao);
+
 }
 
-function mudarChartJs(lista, regiao) {
-    alert('entrei aqui 2')
+function mudarChartJs(regiao) {
 
     if (regiao == 'Sul') {
 
         var municipios = Object.keys(regiaoSul);
         var valores = Object.values(regiaoSul);
-        alert('entrei aqui 3')
 
         myChartXX.data.datasets[0].data[0] = valores[0];
         myChartXX.data.datasets[0].data[1] = valores[1];
@@ -124,13 +140,8 @@ function mudarChartJs(lista, regiao) {
         myChartXX.data.datasets[0].data[7] = valores[7];
         myChartXX.data.datasets[0].data[8] = valores[8];
         myChartXX.data.datasets[0].data[9] = valores[9];
-        alert(valores[0])
-        alert(valores[1])
-        alert(valores[2])
-        alert(valores[3])
 
-
-        myChartXX.data.labels = municipios;
+        myChartXX.data.datasets[0].labels = municipios;
         myChartXX.update();
         return;
 
