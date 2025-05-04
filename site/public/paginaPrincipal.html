@@ -190,7 +190,7 @@
         <div class="filtro">
 
             <div class="filtroSelecionado">
-                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
+                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
             </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
@@ -225,13 +225,13 @@
                             <h1>Município Principal</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
-                                <option value="#"></option>
-                                <option value="">São Paulo</option>
-                                <option value="">Santo Andre</option>
-                                <option value="">São Caetano</option>
-                                <option value="">Campinas</option>
-                                <option value="">Piracicaba</option>
+                            <select name="" class="select-opt" id="municipioPrincipal">
+                                <option></option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Santo Andre">Santo Andre</option>
+                                <option value="São Caetano">São Caetano</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Piracicaba">Piracicaba</option>
                             </select>
                         </div>
                     </div>
@@ -240,13 +240,13 @@
                             <h1>Região Desejada</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
-                                <option value="#"></option>
-                                <option value="">Sul</option>
+                            <select name="" class="select-opt" id="regiaoDesejada">
+                                <option></option>
+                                <option value="Sul">Sul</option>
                                 <option value="">Centro-Oeste</option>
                                 <option value="">Norte</option>
                                 <option value="">Nordeste</option>
-                                <option value="">Leste</option>
+                                <option value="Leste">Leste</option>
                             </select>
                         </div>
                     </div>
@@ -255,13 +255,13 @@
                             <h1>Ano Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
-                                <option value="#"></option>
-                                <option value="">2024</option>
-                                <option value="">2023</option>
-                                <option value="">2022</option>
-                                <option value="">2021</option>
-                                <option value="">2020</option>
+                            <select name="" class="select-opt" id="anoDesejado">
+                                <option></option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
                             </select>
                         </div>
                     </div>
@@ -270,25 +270,25 @@
                             <h1>Mês Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt">
-                                <option value="#"></option>
-                                <option value="">Janeiro</option>
-                                <option value="">Fevereiro</option>
-                                <option value="">Março</option>
-                                <option value="">Abril</option>
-                                <option value="">Maio</option>
-                                <option value="">Junho</option>
-                                <option value="">Julho</option>
-                                <option value="">Agosto</option>
-                                <option value="">Setembro</option>
-                                <option value="">Outubro</option>
-                                <option value="">Novembro</option>
-                                <option value="">Dezembro</option>
+                            <select name="" class="select-opt" id="mesDesejado">
+                                <option></option>
+                                <option value="Janeiro">Janeiro</option>
+                                <option value="Fevereiro">Fevereiro</option>
+                                <option value="Março">Março</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Maio">Maio</option>
+                                <option value="Junho">Junho</option>
+                                <option value="Julho">Julho</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Setembro">Setembro</option>
+                                <option value="Outubro">Outubro</option>
+                                <option value="Novembro">Novembro</option>
+                                <option value="Dezembro">Dezembro</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="filtro-btn">
+                    <div class="filtro-btn" onclick="atualizarDash()">
                         
                         <h1>Adicionar Filtro</h1>
                         

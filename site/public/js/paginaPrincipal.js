@@ -358,3 +358,33 @@ function fecharFiltro() {
     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
 }
 
+
+function atualizarDash() {
+
+    document.getElementById('id_fundo_escolher_filtro').style.display = "none";
+    lista = gerarDadosAleatorios2(10, 0, 20);
+
+    var regiao = regiaoDesejada.value;
+    var municipioPrincipalA = municipioPrincipal.value;
+    var anoPrincipalA = anoDesejado.value;
+    var mesPrincipalA = mesDesejado.value;
+
+    if(municipioPrincipalA == ''){
+        municipioFeedback.innerHTML = 'São Paulo';
+    }else{
+        municipioFeedback.innerHTML = municipioPrincipalA;
+    }
+    if(anoPrincipalA == ''){
+        anoFeedback.innerHTML = '2024';
+    }else{
+        anoFeedback.innerHTML = anoPrincipalA;
+    }
+    if(mesPrincipalA == ''){
+        mesFeedback.innerHTML = 'Janeiro';
+    }else{
+        mesFeedback.innerHTML = mesPrincipalA;
+    }
+
+    mudarChartJs(regiao);
+
+}
