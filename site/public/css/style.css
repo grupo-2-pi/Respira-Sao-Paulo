@@ -469,7 +469,7 @@ body {
   }
 
   .contem-alerta {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -654,16 +654,16 @@ body {
     display: flex !important;
   }
 
-  .contem-alerta.not {
-    display: none !important;
-  }
-
   .tamanho-dash {
     width: 80% !important;
     height: 80% !important;
   }
 
 
+}
+
+.contem-alerta {
+  display:none;
 }
 
 .nav-selected {
