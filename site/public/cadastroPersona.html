@@ -80,8 +80,8 @@
         </div>
         <div onclick="showUserOptions()" class="user-container" style="display: none;">
             <div class="user-infos">
-                <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
-                <span>Dono de tudo</span>
+                <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                <span>Rosim</span>
             </div>
 
             <div class="user-dropdown-options">
@@ -100,15 +100,10 @@
                         </svg>
                     </span>
                 </div>
-                <button id="disconectButton">Desconectar</button>
+                <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
             </div>
         </div>
         <!-- FIM NAV BAR -->
-
-        <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
-            <button onclick="switchPersona('saude')">Modo Saúde</button>
-            <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
-        </div>
 
         <button id="id-button-nav-bar" onclick="openSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"

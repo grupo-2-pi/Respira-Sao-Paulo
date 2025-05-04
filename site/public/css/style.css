@@ -510,8 +510,12 @@ body {
     gap: 5px;
   }
 
+  .user-infos:hover{
+    cursor: pointer;
+  }
+
   .user-infos span {
-    font-size: small;
+    font-size: medium;
     color: var(--dropdown-letter);
   }
 

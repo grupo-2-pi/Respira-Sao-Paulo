@@ -134,3 +134,6 @@ function goToPerfil(){
   location.replace("/personal.html");
 }
 
+function disconnectAccount(){
+  location.replace("/autenticacao.html");
+}

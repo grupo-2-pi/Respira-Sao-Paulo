@@ -13,7 +13,7 @@
 <body>
   <div class="default-nav-bar">
     <div class="logo-nav-container">
-      <img width="20%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+      <img width="20%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
     </div>
     <div class="default-nav-links-container">
       <a onclick="goToHistory()">
@@ -27,11 +27,8 @@
       </a>
     </div>
     <div class="default-nav-auth-container">
-      <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+      <button onclick="switchPage(this)" class="log-button">
         Entrar
-      </button>
-      <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
-        Cadastrar
       </button>
     </div>
   </div>
@@ -77,34 +74,16 @@
       <div class="image-container" id="imageContainer">
         <img src="./assets/screenshots/image.png" alt="Screenshot do inicio do Respira Sâo Paulo">
       </div>
-      <!-- <div class="buttons-row">
-        <span onclick="switchPage(this)" id="btnSignUp" class="btn-switch btn-clicked"></span>
-        <span onclick="switchPage(this)" id="btnSignIn" class="btn-switch"></span>
-      </div> -->
     </div>
     <div class="sign-up-rightside">
       <div class="sign-up-form" id="form">
-        <h1 id="formHeader">
-          Criar uma conta
-          <span style="display: none;" id="spanLogoHeader">
-            <object 
-            data="./assets/logo.svg" 
-            type="image/svg+xml">
-            Logo da Respira São Paulo
-            </object>
-          </span>
-        </h1>
-        <p class="alredy-signed" id="signIn" onclick="switchPage(this)">
-          Ja <span>possui</span> uma conta?
-        </p>
-        <div class="name-row">
-          <input id="inputRazaoSocial" placeholder="Razão social" type="text">
-          <input id="inputNomeFantasia" placeholder="Nome fantasia" type="text">
-        </div>
-        <input placeholder="Email" type="text">
-        <input placeholder="Insira sua senha" type="password">
-        <button>  
-          Criar conta
+        <h1 id="formHeader">Entrar</h1>
+        <input id="inputCnpj" placeholder="Cnpj" type="text">
+        <span class="error-span" id="cnpjErrorSpan"></span>
+        <input id="inputLoginPassword" placeholder="Insira sua senha" type="password">
+        <span class="error-span" id="passwordErrorSpan"></span>
+        <button onclick="login()">  
+          Entrar
         </button>
       </div>
     </div>
