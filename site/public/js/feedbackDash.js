@@ -145,17 +145,6 @@ function mudarChartJs(regiao) {
         myChartXX.update();
         return;
 
-    } else if (regiao == "Leste") {
-
-        var municipios = Object.keys(regiaoLeste);
-        var valores = Object.keys(regiaoLeste);
-
-        for (i = 0; i < regiaoSul.length; i++) {
-
-            myChartXX.data.datasets[0].data[i] = valores[i];
-            myChartXX.data.datasets[0].labels[i] = municipios[i];
-
-        }
     }
 
     myChartXX.update();
