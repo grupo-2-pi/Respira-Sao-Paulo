@@ -524,7 +524,7 @@ body {
     display: flex !important;
     flex-direction: row;
     width: 50vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
     align-items: center;
     justify-content: space-around;
     font-weight: bold;
@@ -551,7 +551,7 @@ body {
   }
 
   .img-nav-alerta2 {
-    display: flex;
+    display: none;
     flex-direction: row;
     width: 12%;
     height: 36%;
@@ -584,7 +584,7 @@ body {
   }
 
   .user-infos span {
-    font-size: small;
+    font-size: medium;
     color: var(--dropdown-letter);
   }
 
