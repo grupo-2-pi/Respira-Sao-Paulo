@@ -3,6 +3,7 @@ package school.sptech.service;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.QualidadeAr;
 import school.sptech.database.model.dao.QualidadeArDao;
@@ -12,10 +13,12 @@ import school.sptech.utils.MapaMunicipiosSP;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.text.Normalizer;
 import java.util.List;
 
 public class QualidadeArService {
 
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(QualidadeArService.class);
     private final Logger logger;
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
@@ -63,9 +66,21 @@ public class QualidadeArService {
                     Double valor = Double.valueOf(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3)));
                     String unidade = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(4));
 
+                    String municipioSemTraco = municipio;
+
+                    if(municipio.contains("-")){
+                        municipioSemTraco = municipio.split("-")[0];
+                    }
+
+                    String municipioTratado = formatarMunicipio(municipioSemTraco);
+
+                    if(municipioTratado.endsWith(" ")){
+                        municipioTratado = municipioTratado.substring(0, municipioTratado.length() - 1);
+                    }
+
                     QualidadeAr qualidade = new
                             QualidadeAr
-                            (mes,ano, municipio, poluente, valor, unidade, mapaMunicipiosSP.pegarMunicipio(municipio));
+                            (mes,ano, municipioTratado, poluente, valor, unidade, mapaMunicipiosSP.pegarMunicipio(municipioTratado));
                     logger.info("Leitura realizada: " + qualidade.toString());
                     qualidadeArDao.save(qualidade);
                     logger.info("Registro salvo no banco");
@@ -78,5 +93,14 @@ public class QualidadeArService {
         } catch (Exception e) {
             logger.error("Erro ao realizar a leitura da planilha de qualidade do ar: " + e.getMessage());
         }
+    }
+
+    private static String formatarMunicipio(String texto) {
+        // Normaliza para decompor caracteres acentuados em base + acento
+        String textoNormalizado = Normalizer.normalize(texto, Normalizer.Form.NFD);
+        // Remove caracteres diacríticos (acentos)
+        return textoNormalizado.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "")
+                .replaceAll("ç", "c")
+                .replaceAll("Ç", "C").toUpperCase();
     }
 }

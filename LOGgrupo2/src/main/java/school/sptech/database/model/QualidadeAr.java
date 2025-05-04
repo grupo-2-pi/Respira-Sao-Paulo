@@ -84,6 +84,7 @@ public class QualidadeAr {
                 ", poluente='" + poluente + '\'' +
                 ", valor=" + valor +
                 ", unidade='" + unidade + '\'' +
+                ", regiao='" + regiao + '\'' +
                 '}';
     }
 }

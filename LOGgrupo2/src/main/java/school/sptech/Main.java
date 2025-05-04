@@ -32,15 +32,15 @@ public class Main {
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
-        mortalidadeService.extrairDados(arquivosMortalidade, true);
-
-        List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
-        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
-
-        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
-        List<InputStream> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
-        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
+//        List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+//        mortalidadeService.extrairDados(arquivosMortalidade, true);
+//
+//        List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+//        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+//
+//        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
+//        List<InputStream> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
+//        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
 
         String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
         List<InputStream> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
