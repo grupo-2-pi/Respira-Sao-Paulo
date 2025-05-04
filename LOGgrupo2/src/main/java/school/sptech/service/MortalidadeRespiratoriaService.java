@@ -7,13 +7,13 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.Doenca;
+import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
 import school.sptech.database.model.MortalidadeRespiratoria;
 import school.sptech.database.model.dao.MortalidadeDao;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.utils.MapaMunicipiosSP;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,16 +33,16 @@ public class MortalidadeRespiratoriaService {
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
     }
 
-    public void extrairDados(List<InputStream> arquivos, Boolean xlsx) {
+    public void extrairDados(List<File> arquivos, Boolean xlsx) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (File arquivo : arquivos) {
                 logger.info("Iniciando leitura do arquivo de mortalidade");
 
                 Workbook workbook;
                 if (xlsx) {
-                    workbook = new XSSFWorkbook(arquivo);
+                    workbook = new XSSFWorkbook(arquivo.getInputStream());
                 } else {
-                    workbook = new HSSFWorkbook(arquivo);
+                    workbook = new HSSFWorkbook(arquivo.getInputStream());
                 }
 
                 Sheet sheet = workbook.getSheetAt(0);
@@ -51,10 +51,16 @@ public class MortalidadeRespiratoriaService {
                 logger.info("Ultima linha " + sheet.getLastRowNum());
 
                 for (Row row : sheet ) {
-                    if(excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Fonte")){
+                    logger.info("Linha " + excelUtils.getValorCelulaComoTexto(row.getCell(0)));
+
+                    if(
+                            excelUtils.getValorCelulaComoTexto(row.getCell(0)).contains("Fonte")||
+                                    excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Total")
+                    ){
+
+                        logger.info("Caiu no if");
                         break;
                     }
-
                     if(row.getRowNum() == 1 || row.getRowNum() == 0){
                         continue;
                     }
@@ -69,19 +75,27 @@ public class MortalidadeRespiratoriaService {
                     String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
                     String taxaFormatada =taxaSemPonto.replace(",", ".");
 
+                    String municipio = excelUtils.getValorCelulaComoTexto(row.getCell(0));
+
+                    Integer ultimoIndexMunicipio = municipio.length();
+
+                    String[] mesAno = arquivo.getFileName().split("CONVISA")[1].split("-");
+
+                    String mes = mesAno[0].replace(" ", "");
+                    String ano = mesAno[1].replace(".xlsx", "");
+
+                    String municipioFormatado = municipio.substring(7, ultimoIndexMunicipio);
 
                     MortalidadeRespiratoria mortalidadeRespiratoria = new MortalidadeRespiratoria(
-                            excelUtils.getValorCelulaComoTexto(row.getCell(0)),
+                            mes,
+                            ano,
+                            municipioFormatado,
                             valorTotalFormatado.equals("-") ? null : Double.valueOf(valorTotalFormatado),
                             internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
                             obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
                             taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
-                            mapaMunicipiosSP.pegarMunicipio(excelUtils.getValorCelulaComoTexto(row.getCell(0)))
+                            mapaMunicipiosSP.pegarMunicipio(municipioFormatado)
                     );
-
-                    String mesAno = excelUtils.getValorCelulaComoTexto(sheet.getRow(0).getCell(1));
-
-                    mortalidadeRespiratoria.setMesAno(mesAno);
 
                     logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
 

@@ -4,6 +4,7 @@ package school.sptech;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
 import school.sptech.config.S3Provider;
+import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
 import school.sptech.service.*;
 import school.sptech.utils.ExcelUtils;
@@ -32,18 +33,18 @@ public class Main {
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-//        List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
-//        mortalidadeService.extrairDados(arquivosMortalidade, true);
-//
-//        List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
-//        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
-//
-//        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
-//        List<InputStream> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
-//        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
+        List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+        mortalidadeService.extrairDados(arquivosMortalidade, true);
+
+        List<File> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+
+        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
+        List<File> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
+        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
 
         String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
-        List<InputStream> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
+        List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
         qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
 
        encerrarAplicacao();

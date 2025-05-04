@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.database.model.File;
 import school.sptech.database.model.FrotaCirculante;
 import school.sptech.database.model.Logger;
 import school.sptech.database.model.dao.FrotaCirculanteDao;
@@ -33,11 +34,11 @@ public class FrotaCirulanteService {
         this.mapaMunicipiosSP = mapaMunicipiosSP;
     }
 
-    public void extrairFluxoVeiculos(List<InputStream> arquivos) {
+    public void extrairFluxoVeiculos(List<File> arquivos) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (File arquivo : arquivos) {
 
-                byte[] fileBytes = arquivo.readAllBytes();
+                byte[] fileBytes = arquivo.getInputStream().readAllBytes();
 
                 logger.info("Iniciando leitura do arquivo de fluxo veiculos");
 

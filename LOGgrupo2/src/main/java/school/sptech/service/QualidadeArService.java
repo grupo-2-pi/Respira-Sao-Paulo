@@ -5,6 +5,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.database.model.File;
 import school.sptech.database.model.QualidadeAr;
 import school.sptech.database.model.dao.QualidadeArDao;
 import school.sptech.utils.ExcelUtils;
@@ -12,7 +13,6 @@ import school.sptech.database.model.Logger;
 import school.sptech.utils.MapaMunicipiosSP;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.List;
 
@@ -33,12 +33,12 @@ public class QualidadeArService {
         this.qualidadeArDao = new QualidadeArDao(jdbcTemplate);
     }
 
-    public void extrairDadosQualidadeAr(String nomeArquivo, List<InputStream> arquivos) {
+    public void extrairDadosQualidadeAr(String nomeArquivo, List<File> arquivos) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (File arquivo : arquivos) {
                 logger.info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
 
-                byte[] fileBytes = arquivo.readAllBytes();
+                byte[] fileBytes = arquivo.getInputStream().readAllBytes();
 
                 Workbook workbook;
                 if (nomeArquivo.endsWith(".xlsx")) {
@@ -88,7 +88,7 @@ public class QualidadeArService {
 
                 workbook.close();
                 logger.info("\nLeitura do arquivo finalizada\n");
-                arquivo.close();
+                arquivo.getInputStream().close();
             }
         } catch (Exception e) {
             logger.error("Erro ao realizar a leitura da planilha de qualidade do ar: " + e.getMessage());
