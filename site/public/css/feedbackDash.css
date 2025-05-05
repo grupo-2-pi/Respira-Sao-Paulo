@@ -441,25 +441,32 @@ body {
 
 .contem-comentarios {
   display: flex;
-  height: auto;
+  height: 100%;
   width: 80vw;
-  background-color: var(--fourth-bg);
-  box-shadow: var(--shadow);
+  gap: 20px;
+  padding: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.comentario {
+  background-color: var(--fourth-bg);
+  box-shadow: var(--shadow);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .cabecalho {
   display: flex;
-  flex-direction: row;
   width: 90%;
   height: 14%;
   font-size: 0.8rem;
-  justify-content: space-between;
-  align-content: center;
+  justify-content: start;
   align-items: center;
-  margin-top: 10px;
 }
 
 .cabecalho-municipio {
@@ -472,7 +479,7 @@ body {
 
 }
 
-.cabecalho a {
+.cabecalho p {
   text-decoration: none;
   color: var(--dropdown-letter);
   font-weight: bold;
@@ -493,7 +500,6 @@ body {
   font-size: 0.8rem;
   width: 90%;
   height: 80%;
-  text-align: justify;
 }
 
 .descricao a {
@@ -642,7 +648,7 @@ body {
   }
 
   .filtro-aplicado {
-    width: 9%;
+    width: 12%;
     height: 57%;
     gap: 10px;
   }
@@ -652,7 +658,7 @@ body {
   }
 
   .text-filtro {
-    font-size: 10px;
+    font-size: 0.8rem;
     color: var(--dropdown-letter);
   }
 
@@ -716,7 +722,6 @@ body {
   .descricao{
     font-size: 1.2rem;
   }
-
 
 }
 

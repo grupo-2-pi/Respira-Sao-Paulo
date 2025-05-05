@@ -23,8 +23,10 @@ function gerarDadosAleatorios2(quantidade, min, max) {
 
 
 
-function switchPersona(persona) {
-    localStorage.setItem('personaSelecionada', persona);
+function switchPersona(select) {
+    const value = select.value;
+
+    localStorage.setItem('personaSelecionada', value);
     location.reload(); // Recarrega a página para aplicar a nova persona
 }
 
@@ -201,15 +203,15 @@ if (persona == 'saude') {
 
 } else {
     // KPIS AMBIENTAL
-    document.getElementById('kpi1-title').textContent = 'região com maior nível de poluição*';
+    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição*';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('kpi2-title').textContent = 'região com maior quantidade de transporte*';
+    document.getElementById('kpi2-title').textContent = 'Região com maior quantidade de transporte*';
     document.getElementById('kpi2-value').textContent = 'São Paulo';
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente*';
     document.getElementById('kpi3-value').textContent = 'CO2';
-    document.getElementById('m-kpi1-title').textContent = 'regiões maior nível de poluição*';
+    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição*';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('m-kpi2-title').textContent = 'região com maior nível de poluição*';
+    document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição*';
     document.getElementById('m-kpi2-value').textContent = 'São Paulo'
     document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente*'
     document.getElementById('m-kpi3-value').textContent = 'CO2';

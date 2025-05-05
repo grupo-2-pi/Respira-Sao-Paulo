@@ -104,11 +104,6 @@
         </div>
         <!-- FIM NAV BAR -->
 
-        <div class="persona-switcher">
-            <button onclick="switchPersona('saude')">Modo Saúde</button>
-            <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
-        </div>
-
         <button id="id-button-nav-bar" onclick="openSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
                 class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
@@ -193,13 +188,19 @@
                 <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
             </div>
 
+            <div class="switch-select-container">
+                <select  onchange="switchPersona(this)">
+                    <option value="saude">Modo Saúde</option>
+                    <option value="ambiental">Modo Ambiental</option>
+                </select>
+            </div>
+
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
             <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
 
                 <div class="img-filtro">
                     <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
                 </div>
-
                 <div class="text-filtro">
                     <h1>Filtros</h1>
                 </div>

@@ -250,6 +250,7 @@ body {
 .filtroSelecionado{
   width: 100vw;
   margin-left: 10%;
+  font-size: 0.8rem;
 }
 
 .filtroSelecionado h1  {
@@ -284,7 +285,7 @@ body {
   align-items: center;
 }
 
-.text-filtro {
+.text-filtro h1 {
   font-size: 0.4rem;
   color: var(--title-text);
 }
@@ -544,6 +545,7 @@ body {
     height: 100%;
     align-items: center;
     justify-content: center;
+    font-size: 10px;
   }
 
   .primeira-kpi {
@@ -573,11 +575,11 @@ body {
   }
 
   .filtroSelecionado {
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 
   .filtro-aplicado {
-    width: 9%;
+    width: 12%;
     height: 57%;
     gap: 10px;
   }
@@ -586,8 +588,8 @@ body {
     width: 22%;
   }
 
-  .text-filtro {
-    font-size: 10px;
+  .text-filtro h1 {
+    font-size: 0.8rem;
     color: var(--dropdown-letter);
   }
 
@@ -862,4 +864,21 @@ input:checked+.slider:before {
 
 .persona-switcher button:hover{
   cursor: pointer;
+}
+
+.switch-select-container {
+  width: 30%;
+}
+
+.switch-select-container select {
+  border: none;
+  background-color: var(--primary-bg);
+  color: var(--title-text);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  font-weight: bold;
 }
