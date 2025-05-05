@@ -1,7 +1,7 @@
 name: Builda as imagens do projeto e faz o push para o docker hub
 
 on:
-    pull_request:
+    push:
         branches: ["dev"]
 
 jobs:
