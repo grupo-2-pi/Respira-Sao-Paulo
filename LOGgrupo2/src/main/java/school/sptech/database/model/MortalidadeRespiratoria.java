@@ -3,31 +3,33 @@ package school.sptech.database.model;
 public class MortalidadeRespiratoria {
 
     private String mes;
+    private String ano;
     private String municipio;
     private Double valorTotal;
     private Double numeroInternacoes;
     private Integer numeroObitos;
     private Double taxaMortalidade;
     private String regiao;
-    private String ano;
 
-    public MortalidadeRespiratoria(String municipio, Double valorTotal, Double numeroInternacoes, Integer numeroObitos, Double taxaMortalidade, String regiao,String mes, String ano) {
+    public MortalidadeRespiratoria(String mes,String ano, String municipio,Double valorTotal, Double numeroInternacoes, Integer numeroObitos, Double taxaMortalidade, String regiao) {
+        this.mes = mes;
+        this.ano = ano;
         this.municipio = municipio;
         this.valorTotal = valorTotal;
         this.numeroInternacoes = numeroInternacoes;
         this.numeroObitos = numeroObitos;
         this.taxaMortalidade = taxaMortalidade;
-        this.mes = mes;
-        this.ano = ano;
+        this.regiao = regiao;
     }
 
-    public String getMesAno() {
+    public String getMes() {
         return mes;
     }
 
-    public void setMesAno(String mes) {
-        this.mes = MortalidadeRespiratoria.this.mes;
+    public void setMes(String mes) {
+        this.mes = mes;
     }
+data
 
     public String getMunicipio() {
         return municipio;
@@ -90,11 +92,12 @@ public class MortalidadeRespiratoria {
     public String toString() {
         return "MortalidadeRespiratoria{" +
                 "mes='" + mes + '\'' +
+                ", ano='" + ano + '\'' +
                 ", municipio='" + municipio + '\'' +
-                ", valorTotal='" + valorTotal + '\'' +
-                ", numeroInternacoes='" + numeroInternacoes + '\'' +
-                ", numeroObitos='" + numeroObitos + '\'' +
-                ", taxaMortalidade='" + taxaMortalidade + '\'' +
+                ", valorTotal=" + valorTotal +
+                ", numeroInternacoes=" + numeroInternacoes +
+                ", numeroObitos=" + numeroObitos +
+                ", taxaMortalidade=" + taxaMortalidade +
                 ", regiao='" + regiao + '\'' +
                 '}';
     }

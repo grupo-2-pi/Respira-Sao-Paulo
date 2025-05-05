@@ -14,13 +14,15 @@ public class QualidadeArDao {
         public void save(QualidadeAr qualidadeAr){
             jdbcTemplate.update(
                     "INSERT INTO QualidadeAr " +
-                            "(mesAno, municipio, poluente, valor, unidade)" +
-                            " VALUES (?,?,?,?,?,?,?,?,?)",
-                    qualidadeAr.getMesAno(),
+                            "(mes,ano, municipio, poluente, valor, unidade, regiao)" +
+                            " VALUES (?,?,?,?,?,?,?)",
+                    qualidadeAr.getMes(),
+                    qualidadeAr.getAno(),
                     qualidadeAr.getMunicipio(),
                     qualidadeAr.getPoluente(),
                     qualidadeAr.getValor(),
-                    qualidadeAr.getUnidade()
+                    qualidadeAr.getUnidade(),
+                    qualidadeAr.getRegiao()
             );
         }
 

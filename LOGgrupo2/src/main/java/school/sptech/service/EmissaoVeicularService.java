@@ -1,19 +1,17 @@
 package school.sptech.service;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.EmissaoVeicular;
-import school.sptech.database.model.EmissaoVeicular;
+import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
 import school.sptech.database.model.dao.EmissaoVeicularDao;
 import school.sptech.utils.ExcelUtils;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+
 import java.util.List;
 
 public class EmissaoVeicularService {
@@ -30,17 +28,17 @@ public class EmissaoVeicularService {
         this.emissaoVeicularDao = new EmissaoVeicularDao(jdbcTemplate);
     }
 
-    public void extrairDadosEmissao(String nomeArquivo, List<InputStream> arquivos) {
+    public void extrairDadosEmissao(String nomeArquivo, List<File> arquivos) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (File arquivo : arquivos) {
                 logger.info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
 
                 Workbook workbook;
                 if (nomeArquivo.endsWith(".xlsx")) {
-                    workbook = new XSSFWorkbook(arquivo);
+                    workbook = new XSSFWorkbook(arquivo.getInputStream());
                     logger.info("Arquivo xlsx encontrado");
                 } else {
-                    workbook = new HSSFWorkbook(arquivo);
+                    workbook = new HSSFWorkbook(arquivo.getInputStream());
                     logger.info("Arquivo xls encontrado");
                 }
 
@@ -75,7 +73,7 @@ public class EmissaoVeicularService {
 
                 workbook.close();
                 logger.info("\nLeitura do arquivo finalizada\n");
-                arquivo.close();
+                arquivo.getInputStream().close();
             }
         } catch (Exception e) {
             logger.error("Erro ao realizar a leitura da planilha de emissão veicular: " + e.getMessage());

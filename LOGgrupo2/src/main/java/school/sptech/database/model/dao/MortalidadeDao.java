@@ -16,13 +16,14 @@ public class MortalidadeDao {
                 "INSERT INTO MortalidadeRespiratoria " +
                         "(mes,ano, municipio, valorTotal, numeroInternacoes, numeroObitos, taxaMortalidade, regiao)" +
                         "VALUES (?,?,?,?,?,?,?,?)",
-                mortalidadeRespiratoria.getMesAno(),
+                mortalidadeRespiratoria.getMes(),
                 mortalidadeRespiratoria.getAno(),
                 mortalidadeRespiratoria.getMunicipio(),
                 mortalidadeRespiratoria.getValorTotal(),
                 mortalidadeRespiratoria.getNumeroInternacoes(),
                 mortalidadeRespiratoria.getNumeroObitos(),
-                mortalidadeRespiratoria.getTaxaMortalidade()
+                mortalidadeRespiratoria.getTaxaMortalidade(),
+                mortalidadeRespiratoria.getRegiao()
         );
     }
 
