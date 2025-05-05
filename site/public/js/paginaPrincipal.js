@@ -56,10 +56,10 @@ function aplicarEstiloKPI(id, valorTexto) {
 }
 
 
-if (persona == 'saude') {
+if (persona === 'saude') {
 
     // KPI
-    document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
+    document.getElementById('kpi1-title').textContent = 'Variação de internações mensais';
     aplicarEstiloKPI('kpi1-value', -5);
     document.getElementById('kpi2-title').textContent = 'Tendência do perigo da estação atual';
     document.getElementById('kpi2-value').textContent = '(velocimetro)';
