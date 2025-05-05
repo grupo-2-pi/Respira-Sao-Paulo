@@ -18,6 +18,7 @@ body {
   --primary-btn-bg: #C0E39D;
   --second-btn-bg: #2e482b;
   --title-text: #20341e;
+  --primary-green: #9abe4a;
   --primary-text: #000000;
   --second-text: #EEEEEE;
   --muted-text: #DCD7C9;
@@ -88,7 +89,7 @@ body {
   display: flex !important;
   position: fixed;
   z-index: 1000;
-  background-color: var(--primary-bg);
+  background-color: #2C3930;
   height: 100vh;
   width: 35%;
   /*  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); */
@@ -96,7 +97,7 @@ body {
   left: 0;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   font-weight: bold;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
@@ -109,7 +110,6 @@ body {
 
 .side-bar a {
   text-decoration: none !important;
-  color: var(--primary-text);
   font-size: 4vw;
 }
 
@@ -126,19 +126,25 @@ body {
 
 .img-side-bar {
   display: flex;
-  height: 10%;
+  height: 20%;
   align-items: center;
   justify-content: center;
 }
 
+.img-side-bar:hover{
+  cursor: pointer;
+}
+
+
 .side-bar-links-container {
   display: flex;
   flex-direction: column;
+  color: var(--primary-bg);
   gap: 50px;
   height: 100%;
   width: 100%;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   margin-top: 60px;
 }
 
@@ -310,7 +316,7 @@ body {
 
 .btn-sair {
   margin-top: 1%;
-  margin-right: 92%;
+  margin-right: 85%;
   position: absolute;
   width: 5vw;
   height: 4vh;
@@ -341,9 +347,7 @@ body {
 
 .filtro-text {
   display: flex;
-  background-color: var(--primary-bg);
   border-radius: 5px;
-  box-shadow: var(--shadow);
   margin-top: 18px;
   width: 80%;
   height: 15.5%;
@@ -358,7 +362,7 @@ body {
   display: flex;
   width: 68%;
   height: 7vh;
-  margin-top: 12px;
+  margin-top: 25px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -375,8 +379,13 @@ body {
   justify-content: center;
 }
 
+
+
 .select-opt {
-  border: 1px solid black;
+  border: 1px solid var(--primary-green);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--title-text);
   width: 65%;
   overflow-y: auto;
 }
@@ -606,10 +615,11 @@ body {
     width: 35%;
     height: 50%;
     margin-top: 30%;
+    padding: 20px;
   }
 
   .btn-sair {
-    margin-right: 85%;
+    margin-right: 80%;
   }
 
   #btn-sair-filtro {

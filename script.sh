@@ -101,12 +101,14 @@ if [ -d "Respira-Sao-Paulo" ]; then
 
 else
     echo "Clonando repositório..."
-    git clone -b java-data https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
+    git clone -b dev https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
 
     if [ $? -ne 0 ]; then
         echo "Erro ao clonar o repositório."
         exit 1
     fi
+
+    cd Respira-Sao-Paulo
 
     echo "Compilando o java.."
 
@@ -114,9 +116,9 @@ else
 
     cd LOGgrupo2
 
-    mvn clean package -f ./pom.xml
-
     ls
+
+    mvn clean package -f ./pom.xml    
 fi
 
 echo "Iniciando containers"
