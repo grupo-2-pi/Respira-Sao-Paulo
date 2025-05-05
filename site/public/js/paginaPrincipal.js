@@ -101,7 +101,7 @@ if (persona == 'saude') {
     
     document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
     document.getElementById('kpi3-value').textContent = '4%';
-    document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias*';
+    document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
     aplicarEstiloKPI('m-kpi1-value', 5);
 
     new Chart(document.getElementById('m-velocimetro'), {
@@ -265,17 +265,17 @@ if (persona == 'saude') {
 
 } else {
     // KPIS AMBIENTAL
-    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição*';
+    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('kpi2-title').textContent = 'Região com maior nível de poluição*';
+    document.getElementById('kpi2-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('kpi2-value').textContent = 'São Paulo'
-    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente*';
+    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
     document.getElementById('kpi3-value').textContent = 'CO2';
-    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição*';
+    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição*';
+    document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('m-kpi2-value').textContent = 'São Paulo'
-    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente*'
+    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente'
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
