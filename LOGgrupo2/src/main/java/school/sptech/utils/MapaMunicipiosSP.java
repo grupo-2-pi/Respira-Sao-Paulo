@@ -4,29 +4,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapaMunicipiosSP {
-        Map<String, String> municipiosRegioes = new HashMap<>();
+    Map<String, String> municipiosRegioes = new HashMap<>();
 
-        public MapaMunicipiosSP() {
-            // Região Metropolitana (Grande São Paulo e ABC)
-            adicionarABC(municipiosRegioes);
-            adicionarGrandeSaoPaulo(municipiosRegioes);
+    public MapaMunicipiosSP() {
+        // Região Metropolitana (Grande São Paulo e ABC)
+        adicionarABC(municipiosRegioes);
+        adicionarGrandeSaoPaulo(municipiosRegioes);
 
-            // Interior e outras regiões
-            adicionarValeParaiba(municipiosRegioes);
-            adicionarCampinas(municipiosRegioes);
-            adicionarSorocaba(municipiosRegioes);
-            adicionarBaixadaSantista(municipiosRegioes);
-            adicionarRibeiraoPreto(municipiosRegioes);
-            adicionarSaoCarlos(municipiosRegioes);
-            adicionarBauru(municipiosRegioes);
-            adicionarMarilia(municipiosRegioes);
-            adicionarAracatuba(municipiosRegioes);
-            adicionarPresidentePrudente(municipiosRegioes);
-            adicionarSaoJoseRioPreto(municipiosRegioes);
-            adicionarPiracicaba(municipiosRegioes);
-            adicionarOutrasRegioes(municipiosRegioes);
+        // Interior e outras regiões
+        adicionarValeParaiba(municipiosRegioes);
+        adicionarCampinas(municipiosRegioes);
+        adicionarSorocaba(municipiosRegioes);
+        adicionarBaixadaSantista(municipiosRegioes);
+        adicionarRibeiraoPreto(municipiosRegioes);
+        adicionarSaoCarlos(municipiosRegioes);
+        adicionarBauru(municipiosRegioes);
+        adicionarMarilia(municipiosRegioes);
+        adicionarAracatuba(municipiosRegioes);
+        adicionarPresidentePrudente(municipiosRegioes);
+        adicionarSaoJoseRioPreto(municipiosRegioes);
+        adicionarPiracicaba(municipiosRegioes);
+        adicionarOutrasRegioes(municipiosRegioes);
 
-        }
+    }
     private void adicionarABC(Map<String, String> map) {
         map.put("SANTO ANDRE", "ABC");
         map.put("SAO BERNARDO DO CAMPO", "ABC");
@@ -179,6 +179,6 @@ public class MapaMunicipiosSP {
     }
 
     public String pegarMunicipio(String municipio){
-            return this.municipiosRegioes.get(municipio);
+        return this.municipiosRegioes.get(municipio);
     }
 }
