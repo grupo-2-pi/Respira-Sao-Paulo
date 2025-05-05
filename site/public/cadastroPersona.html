@@ -26,8 +26,11 @@
             <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
         </div>
 
-        <div class="img-nav-alerta" onclick="goToNotification()">
-            <img id="id-img-nav-alerta" width="40%" height="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+        
+        <div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
+            <div class="img-nav-alerta2">
+                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+            </div>
         </div>
 
         <!-- NAV BAR DESKTOP -->
@@ -37,10 +40,10 @@
             <a href="./paginaPrincipal.html">
                 Página Inicial
             </a>
-            <a onclick="goToComentarios(); openSidebar();">
+            <a onclick="goToComentarios()">
                 Comentários
             </a>
-            <a class="nav-selected"  onclick="goToCadastrar(); openSidebar();">
+            <a class="nav-selected" href="./cadastroPersona.html">
                 Cadastrar
             </a>
             <div onclick="showNotifications()" class="contem-alerta">
@@ -78,8 +81,8 @@
         </div>
         <div onclick="showUserOptions()" class="user-container" style="display: none;">
             <div class="user-infos">
-                <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
-                <span>Dono de tudo</span>
+                <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                <span>Rosim</span>
             </div>
 
             <div class="user-dropdown-options">
@@ -98,7 +101,7 @@
                         </svg>
                     </span>
                 </div>
-                <button id="disconectButton">Desconectar</button>
+                <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
             </div>
         </div>
         <!-- FIM NAV BAR -->
@@ -122,27 +125,61 @@
                 <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
             </div>
             <div class="side-bar-links-container">
-                <a onclick="goToPaginaInicial(); openSidebar();">
+                <a onclick="goToPaginaInicial()">
                     Página Inicial
                 </a>
-                <a onclick="goToComentarios(); openSidebar();">
+                <a onclick="goToComentarios()">
                     Comentários
                 </a>
-                <a onclick="goToCadastrar(); openSidebar();">
+                <a onclick="goToCadastrar()">
                     Cadastrar
                 </a>
-                <a onclick="goToPerfil(); openSidebar();">
+                <a onclick="goToPerfil()">
+                    Perfil
+                </a>
+                <a onclick="goToSair()">
+                    Sair
+                </a>
+                <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
+                    <div class="user-infos">
+                        <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                        <span>Dono de tudo</span>
+                    </div>
+
+                    <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+                        <button onclick="goToPersonal()">Dados Pessoais</button>
+                        <button>Filtros Salvos</button>
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="theme-toggle">
+                                <input type="checkbox" id="theme-toggle">
+                                <div class="slider round"></div>
+                            </label>
+                            <span id="theme-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-brightness-high" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                                </svg>
+                            </span>
+                        </div>
+                        <button id="disconectButton">Desconectar</button>
+                    </div>
+
+                </div>
+                <!--  <a onclick="goToPerfil(); openSidebar();">
                     Perfil
                 </a>
                 <a onclick="goToSair(); openSidebar();">
                     Sair
-                </a>
+                </a> -->
+
             </div>
 
         </div>
 
     </div>
 
+    
     <!-- MAIN -->
 
     <div class="container">
@@ -207,7 +244,7 @@
                     </div>
 
                     <div class="contem-placeholder-dados-empresa-checkbox">
-                        <input type="checkbox">
+                        <input id="inputGerente" type="checkbox">
                         <h3>O usuário deve ter acesso de gerente.</h3>
                     </div>
 
@@ -233,8 +270,4 @@
 
 <script src="./js/index.js"></script>
 <script src="./js/script.js"></script>
-<script>
-    function goToAlertas(){
-        window.location.href = "./notificacoes.html"
-    }
-</script>
+<script src="./js/navegarSite.js"></script>

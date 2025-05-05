@@ -1,0 +1,1290 @@
+[
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 294.4885169923267,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 13,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 12.25134408602151,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 17.49326145552561,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 53.15094339622642,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 308.7530918682582,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 6.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 11.24553571428571,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 19.87014925373134,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 47.76716417910448,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 305.1194460688557,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 5.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 12.59034482758621,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 19.31792717086835,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 55.30446927374302,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 217.3527900109847,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 5.4,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 9.135416666666666,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 16.00555555555556,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 44.0125,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 480.0638135659357,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 9.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 17.09066666666667,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 30.52220726783311,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 37.3989218328841,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 456.9560133630289,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 9,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 17.88061797752809,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 28.45694444444445,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 36.88472222222222,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 521.2005172785401,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 11.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 9.613333333333332,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 34.4758064516129,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 44.11155913978494,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 492.3477025362178,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 17.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 23.65331010452962,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 34.13728129205922,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 50.35800807537012,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 452.6522871822658,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 14.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 26.02849002849003,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 32.08130081300813,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "O3",
+  "Valor": 56.64227642276423,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 307.2198673276337,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 7.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 12.54976303317536,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 269.6276818076897,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 3.4,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 13.09691629955947,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 287.5965422218867,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 3,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 14.83177570093458,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 21.4,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP10",
+  "Valor": 33.41185185185185,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 19.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 43.59212376933896,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "PTS",
+  "Valor": 62.8,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 2.267857142857143,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 618.1509407180347,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 27.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP10",
+  "Valor": 34.55,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 19.8,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 39.428125,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "PTS",
+  "Valor": 67.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 1.761329305135952,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 3,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 495.4793538642705,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 12.4,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP10",
+  "Valor": 17.47990543735225,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 11.6,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 29.8483547925608,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "PTS",
+  "Valor": 35.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 0.8793103448275862,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 3,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 467.2327557491722,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 6.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP10",
+  "Valor": 21.31564245810056,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 7.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 29.09104258443465,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "PTS",
+  "Valor": 28,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 1.42687074829932,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "CO",
+  "Valor": 465.0534772815925,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "FMC",
+  "Valor": 5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP10",
+  "Valor": 17.3606998654105,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "MP2.5",
+  "Valor": 7,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "NO2",
+  "Valor": 27.87780898876404,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "PTS",
+  "Valor": 26,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Sao Paulo",
+  "Poluente": "SO2",
+  "Valor": 1.053045186640472,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 23.33152173913044,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 17.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 22.47860538827258,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 43.09682080924856,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 45.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 1,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 2.132102272727273,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 20.34939759036144,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 10.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 23.22712933753943,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 39.38317757009346,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 34.66666666666666,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 2,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 3.503937007874016,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 24.32839838492598,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 11.83333333333333,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 23.34285714285714,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 44.24821683309558,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 38.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 3,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 1.919354838709677,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 21.52407932011332,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 7.8,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 18.96141975308642,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 33.28100470957614,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 27,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 4,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 2.953051643192488,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 36.6263440860215,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 14.6,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 33.46616541353384,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 35.92192192192192,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 47.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 5,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 3.328212290502793,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 31.52916666666667,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 7.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 36.1865671641791,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 44.32753623188406,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 32.33333333333334,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 6,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 2.526388888888889,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 39.60956790123457,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 24.33333333333333,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 37.97932330827068,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 49.86816269284712,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 49,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 7,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 3.978171896316507,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 39.25945945945946,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 23.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 33.70206489675516,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 49.69964664310954,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 60.4,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 8,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 3.872972972972973,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 38.46666666666667,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 21.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 30.40860215053764,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 46.36488812392427,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 59.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 9,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 2.810393258426966,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 19.44337016574586,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 10.8,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 22.79912023460411,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 28.75,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 10,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 1.973118279569892,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 23.52891156462585,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 8.2,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 19.38719512195122,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 50.74031007751938,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 25.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 11,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 3.167621776504298,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "MP10",
+  "Valor": 21.34883720930232,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "MP2.5",
+  "Valor": 7.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "NO2",
+  "Valor": 18.87964338781575,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "O3",
+  "Valor": 45.91725105189341,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "PTS",
+  "Valor": 26.5,
+  "Unidade": "ug\/m3"
+ },
+ {
+  "ano": 2023,
+  "mes": 12,
+  "municipio": "Santo Andre",
+  "Poluente": "SO2",
+  "Valor": 2.29608938547486,
+  "Unidade": "ug\/m3"
+ }
+]

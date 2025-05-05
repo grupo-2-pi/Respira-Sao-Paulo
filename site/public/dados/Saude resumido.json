@@ -1,0 +1,203 @@
+// Utilizado na KPI 'Variação Mensal dos últimos 2 meses', 'Taxa de mortalidade'
+// Utilizado no gráfico 'Internação últimos meses' - MychartB || Gastos - Mychart || Internações respiratórias - MychartC
+
+[
+ {
+  "Município": "CARAPICUIBA",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 118,
+  "Valor_total": 173494.18,
+  "Óbitos": 5,
+  "Taxa_mortalidade": 4.24
+ },
+ {
+  "Município": "DIADEMA",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 224,
+  "Valor_total": 210329.53,
+  "Óbitos": 12,
+  "Taxa_mortalidade": 5.36
+ },
+ {
+  "Município": "GUARULHOS",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 354,
+  "Valor_total": 454139.05,
+  "Óbitos": 43,
+  "Taxa_mortalidade": 12.15
+ },
+ {
+  "Município": "MAUA",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 78,
+  "Valor_total": 165023.32,
+  "Óbitos": 13,
+  "Taxa_mortalidade": 16.67
+ },
+ {
+  "Município": "MOGI DAS CRUZES",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 250,
+  "Valor_total": 372961.88,
+  "Óbitos": 14,
+  "Taxa_mortalidade": 5.6
+ },
+ {
+  "Município": "OSASCO",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 198,
+  "Valor_total": 246997.51,
+  "Óbitos": 36,
+  "Taxa_mortalidade": 18.18
+ },
+ {
+  "Município": "SANTO ANDRE",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 430,
+  "Valor_total": 606650.43,
+  "Óbitos": 61,
+  "Taxa_mortalidade": 14.19
+ },
+ {
+  "Município": "SAO BERNARDO DO CAMPO",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 192,
+  "Valor_total": 466651.17,
+  "Óbitos": 12,
+  "Taxa_mortalidade": 6.25
+ },
+ {
+  "Município": "SAO CAETANO DO SUL",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 120,
+  "Valor_total": 171902.89,
+  "Óbitos": 16,
+  "Taxa_mortalidade": 13.33
+ },
+ {
+  "Município": "SAO PAULO",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 4699,
+  "Valor_total": 7906561.72,
+  "Óbitos": 380,
+  "Taxa_mortalidade": 8.09
+ },
+ {
+  "Município": "TABOAO DA SERRA",
+  "Ano": 2023,
+  "Mês": "Nov",
+  "Internações": 171,
+  "Valor_total": 171804.86,
+  "Óbitos": 5,
+  "Taxa_mortalidade": 2.92
+ },
+ {
+  "Município": "CARAPICUIBA",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 113,
+  "Valor_total": 175238.52,
+  "Óbitos": 8,
+  "Taxa_mortalidade": 7.08
+ },
+ {
+  "Município": "DIADEMA",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 244,
+  "Valor_total": 379459.05,
+  "Óbitos": 18,
+  "Taxa_mortalidade": 7.38
+ },
+ {
+  "Município": "GUARULHOS",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 373,
+  "Valor_total": 594378.68,
+  "Óbitos": 47,
+  "Taxa_mortalidade": 12.6
+ },
+ {
+  "Município": "MAUA",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 53,
+  "Valor_total": 89193.02,
+  "Óbitos": 13,
+  "Taxa_mortalidade": 24.53
+ },
+ {
+  "Município": "MOGI DAS CRUZES",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 244,
+  "Valor_total": 427191.41,
+  "Óbitos": 16,
+  "Taxa_mortalidade": 6.56
+ },
+ {
+  "Município": "OSASCO",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 175,
+  "Valor_total": 260284.26,
+  "Óbitos": 32,
+  "Taxa_mortalidade": 18.29
+ },
+ {
+  "Município": "SANTO ANDRE",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 420,
+  "Valor_total": 643225.91,
+  "Óbitos": 50,
+  "Taxa_mortalidade": 11.9
+ },
+ {
+  "Município": "SAO BERNARDO DO CAMPO",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 161,
+  "Valor_total": 379323.4,
+  "Óbitos": 7,
+  "Taxa_mortalidade": 4.35
+ },
+ {
+  "Município": "SAO CAETANO DO SUL",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 102,
+  "Valor_total": 142058.49,
+  "Óbitos": 6,
+  "Taxa_mortalidade": 5.88
+ },
+ {
+  "Município": "SAO PAULO",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 4211,
+  "Valor_total": 6784631.36,
+  "Óbitos": 305,
+  "Taxa_mortalidade": 7.24
+ },
+ {
+  "Município": "TABOAO DA SERRA",
+  "Ano": 2023,
+  "Mês": "DEZ",
+  "Internações": 222,
+  "Valor_total": 226209.2,
+  "Óbitos": 18,
+  "Taxa_mortalidade": 8.11
+ }
+]

@@ -161,7 +161,6 @@ body {
   height: 40vh;
   justify-content: center;
   align-items: center;
-  margin-top: 22px;
 }
 
 .primeira-divisao-kpi {
@@ -227,7 +226,8 @@ body {
 }
 
 .dado-kpi {
-  font-size: 2.0vw;
+  margin-top: -13px;
+  font-size: 0.5rem;
 }
 
 /*FILTRO*/
@@ -236,7 +236,7 @@ body {
   display: flex;
   width: 100vw;
   height: auto;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 10px;
   justify-content: flex-end;
   align-items: center;
@@ -244,13 +244,14 @@ body {
 
 .filtroSelecionado {
   width: 100vw;
-  margin-left: 10%;  
+  margin-left: 10%;
+  font-size: 0.5rem;
 }
 
 .filtro-aplicado {
   display: flex;
   flex-direction: row;
-  width: 18%;
+  width: 20%;
   height: 5vh;
   background-color: var(--primary-bg);
   border-radius: 5px;
@@ -276,7 +277,7 @@ body {
 }
 
 .text-filtro {
-  font-size: 2.005vw;
+  font-size: 0.4rem;
   color: var(--title-text);
 }
 
@@ -314,7 +315,7 @@ body {
 .escolher-filtro {
   display: flex;
   width: 80vw;
-  height: 69vw;
+  height: 60vh;
   background-color: white;
   position: fixed;
   border-radius: 10px;
@@ -322,36 +323,49 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  margin-top: 80%;
 }
 
 .filtro-text {
+  display: flex;
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
   margin-top: 18px;
   width: 80%;
-  height: 12.5%;
+  height: 15.5%;
+  font-size: 0.4rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
 }
 
 .filtro-btn {
   display: flex;
   width: 68%;
-  height: 20.5%;
+  height: 7vh;
   margin-top: 12px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
-
-.filtro-btn-1 {
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
-  width: 30%;
-  height: 80%;
+  font-size: 0.4rem;
+}
 
+.contem-escolhe-filtro {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.select-opt {
+  border: 1px solid black;
+  width: 65%;
+  overflow-y: auto;
 }
 
 /*DASHBOARDS*/
@@ -368,9 +382,9 @@ body {
   gap: 15px;
 }
 
-.primeira-dashboard {
+.primeira-dashboardF {
   width: 80vw;
-  height: auto;
+  height: 330px;
   background-color: var(--primary-bg);
   border-radius: 16px;
   box-shadow: var(--shadow);
@@ -427,25 +441,32 @@ body {
 
 .contem-comentarios {
   display: flex;
-  height: auto;
+  height: 100%;
   width: 80vw;
-  background-color: var(--fourth-bg);
-  box-shadow: var(--shadow);
+  gap: 20px;
+  padding: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.comentario {
+  background-color: var(--fourth-bg);
+  box-shadow: var(--shadow);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .cabecalho {
   display: flex;
-  flex-direction: row;
   width: 90%;
   height: 14%;
   font-size: 0.8rem;
-  justify-content: space-between;
-  align-content: center;
+  justify-content: start;
   align-items: center;
-  margin-top: 10px;
 }
 
 .cabecalho-municipio {
@@ -458,7 +479,7 @@ body {
 
 }
 
-.cabecalho a {
+.cabecalho p {
   text-decoration: none;
   color: var(--dropdown-letter);
   font-weight: bold;
@@ -479,7 +500,6 @@ body {
   font-size: 0.8rem;
   width: 90%;
   height: 80%;
-  text-align: justify;
 }
 
 .descricao a {
@@ -510,7 +530,7 @@ body {
     display: flex !important;
     flex-direction: row;
     width: 50vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
     align-items: center;
     justify-content: space-around;
     font-weight: bold;
@@ -537,7 +557,7 @@ body {
   }
 
   .img-nav-alerta2 {
-    display: flex;
+    display: none;
     flex-direction: row;
     width: 12%;
     height: 36%;
@@ -570,7 +590,7 @@ body {
   }
 
   .user-infos span {
-    font-size: small;
+    font-size: medium;
     color: var(--dropdown-letter);
   }
 
@@ -621,12 +641,16 @@ body {
 
   .filtro {
     margin-top: 22px;
-    margin-bottom: 26px;
+  }
+
+  .filtroSelecionado {
+    font-size: 1rem;
   }
 
   .filtro-aplicado {
-    width: 6%;
+    width: 12%;
     height: 57%;
+    gap: 10px;
   }
 
   .img-filtro {
@@ -634,13 +658,14 @@ body {
   }
 
   .text-filtro {
-    font-size: 10px;
+    font-size: 0.8rem;
     color: var(--dropdown-letter);
   }
 
   .escolher-filtro {
     width: 35%;
-    height: 47%;
+    height: 50%;
+    margin-top: 30%;
   }
 
   .btn-sair {
@@ -652,14 +677,21 @@ body {
     height: 40%;
   }
 
+  .filtro-btn{
+    width: 32% !important;
+    cursor: pointer;
+  }
+
   /*DASHBOARDS*/
 
   .dashboards {
     flex-direction: row;
+    margin-top: 33px !important;
   }
 
   .primeira-dashboard {
     width: 45vw;
+    height: 45vh;
   }
 
   .segunda-dashboard {
@@ -690,7 +722,6 @@ body {
   .descricao{
     font-size: 1.2rem;
   }
-
 
 }
 

@@ -35,6 +35,9 @@
     font-size: 0.89rem !important;
     color: var(--title-text) !important;
     margin-top: -24px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 .contem-placeholder-dados {
@@ -53,7 +56,7 @@
 /*LINHA DIVISÓRIA*/
 
 .linha-divisoria {
-    width: 70vw;
+    width: 65vw;
     height: 0.3vw;
     background-color: black;
     border-radius: 5px;
@@ -90,6 +93,9 @@
     flex-direction: line;
     font-size: 0.89rem !important;
     color: var(--title-text) !important;
+}
+.contem-placeholder-dados-empresa-checkbox:hover{
+    cursor: pointer;
 }
 
 .botao-cadastrar {
@@ -132,16 +138,18 @@
 
     .contem-1 {
         display: flex;
+        justify-content: center;
         gap: 5vw;
     }
 
     .contem-2 {
         display: flex;
+        justify-content: center;
         gap: 5vw;
     }
 
     .contem-placeholder-dados {
-        width: 45vw;
+        width: 30vw;
     }
 
     .contem-placeholder-empresa {
@@ -149,11 +157,12 @@
     }
 
     .contem-placeholder-dados-empresa{
-        width: 45vw;
+        width: 30vw;
     }
 
     .contem-3{
         display: flex;
+        justify-content: center;
         gap: 5vw;        
     }
 

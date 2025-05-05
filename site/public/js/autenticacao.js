@@ -42,83 +42,22 @@ function goToFeedback(){
   location.href = "/#feedback"
 }
 
-
-function switchPage(tag) {
-  const container = document.querySelector('.sign-up-container');
-  const buttons = document.querySelectorAll('.btn-switch');
-  
-  buttons.forEach(btn => btn.classList.remove('btn-clicked'));
-  
-  if (tag.id === 'signIn') {
-    container.classList.add('reverse');
-    
-    showSignInForm();
-  } else {
-    container.classList.remove('reverse');
-    showSignUpForm();
-  }
-}
-
-function showSignInForm() {
-  form.innerHTML =  `
-        <h1 id="formHeader">Entrar</h1>
-        <p class="alredy-signed" id="signUp" onclick="switchPage(this)">
-          Não <span>possui</span> uma conta?
-        </p>
-        <input id="inputCnpj" placeholder="Cnpj" type="text">
-        <span class="error-span" id="cnpjErrorSpan"></span>
-        <input id="inputLoginPassword" placeholder="Insira sua senha" type="password">
-        <span class="error-span" id="passwordErrorSpan"></span>
-        <button onclick="login()">  
-          Entrar
-        </button>
-  `
-}
-
-function showSignUpForm(){
-  form.innerHTML = `
-     <h1 id="formHeader">
-          Criar uma conta
-          <span style="display: none;" id="spanLogoHeader">
-            <object 
-            data="./assets/logo.svg" 
-            type="image/svg+xml">
-            Logo da Respira São Paulo
-            </object>
-          </span>
-        </h1>
-        <p class="alredy-signed" id="signIn" onclick="switchPage(this)">
-          Ja <span>possui</span> uma conta?
-        </p>
-        <div class="name-row">
-          <input id="inputRazaoSocial" placeholder="Razão social" type="text">
-          <input id="inputNomeFantasia" placeholder="Nome fantasia" type="text">
-        </div>
-        <input placeholder="Email" type="text">
-        <input placeholder="Insira sua senha" type="password">
-        <button>  
-          Criar conta
-        </button>
-  `
-}
-
-
 function login(){
   var credentials = receberDadosLogin();
 
   var isLoginValid = validateLoginCredentials(credentials);
 
   if(isLoginValid){
-    console.log("valido");
+    location.replace("/paginaPrincipal.html");
   }else{
-    console.log("Invalido")
+    console.log("Login invalido")
   }
 }
 
 // Recebe os dados das inputs e retorna um json pra vacilitar
 function receberDadosLogin(){
   return {
-    email: inputCnpj.value,
+    cnpj: inputCnpj.value,
     password: inputLoginPassword.value,
   };
 }
@@ -129,6 +68,11 @@ function validateLoginCredentials(dados){
   
   var getAFalse = false;
 
+  const staticLogin = {
+    cnpj: "12345678912345",
+    password: "respiraSp"
+  };
+
   var lowerCasePassword = dados.password.toLowerCase();
   var cnpjLength = dados.cnpj.length;
   var cnpjNumber = Number(dados.cnpj)
@@ -136,7 +80,7 @@ function validateLoginCredentials(dados){
   // Valida se o cnpj tem alguma letra (se tiver a conversão pra numero vai retornar nan)
   if(
     cnpjNumber === NaN || 
-    cnpjLength !== 147
+    cnpjLength !== 14
   ){
     cnpjErrorSpan.innerHTML = "Cnpj inválido.";
     
@@ -150,6 +94,10 @@ function validateLoginCredentials(dados){
   ){
     passwordErrorSpan.innerHTML = "Senha inválida.";
 
+    getAFalse = true;
+  }
+
+  if(dados.cnpj !== staticLogin.cnpj || dados.password !== staticLogin.password){
     getAFalse = true;
   }
 

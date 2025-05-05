@@ -25,7 +25,7 @@
             <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
         </div>
 
-        <div onclick="goToNotification()" class="contem-alerta">
+        <div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
             <div class="img-nav-alerta2">
                 <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
             </div>
@@ -38,7 +38,7 @@
             <a class="nav-selected" href="./paginaPrincipal.html">
                 Página Inicial
             </a>
-            <a onclick="goToComentarios(); openSidebar();">
+            <a onclick="goToComentarios()">
                 Comentários
             </a>
             <a href="./cadastroPersona.html">
@@ -49,7 +49,7 @@
                     <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
                         alt="Imagem de Notificações">
                 </div>
-                <a href="./notificacoes.html">
+                <a>
                     Notificações
                 </a>
                 <div class="notification-dropdown">
@@ -79,8 +79,8 @@
         </div>
         <div onclick="showUserOptions()" class="user-container" style="display: none;">
             <div class="user-infos">
-                <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
-                <span>Dono de tudo</span>
+                <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                <span>Rosim</span>
             </div>
 
             <div class="user-dropdown-options">
@@ -99,15 +99,10 @@
                         </svg>
                     </span>
                 </div>
-                <button id="disconectButton">Desconectar</button>
+                <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
             </div>
         </div>
         <!-- FIM NAV BAR -->
-
-        <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
-            <button onclick="switchPersona('saude')">Modo Saúde</button>
-            <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
-        </div>
 
         <button id="id-button-nav-bar" onclick="openSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
@@ -128,19 +123,19 @@
                 <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
             </div>
             <div class="side-bar-links-container">
-                <a onclick="goToPaginaInicial(); openSidebar();">
+                <a onclick="goToPaginaInicial()">
                     Página Inicial
                 </a>
-                <a onclick="goToComentarios(); openSidebar();">
+                <a onclick="goToComentarios()">
                     Comentários
                 </a>
-                <a onclick="goToCadastrar(); openSidebar();">
+                <a onclick="goToCadastrar()">
                     Cadastrar
                 </a>
-                <a onclick="goToPerfil(); openSidebar();">
+                <a onclick="goToPerfil()">
                     Perfil
                 </a>
-                <a onclick="goToSair(); openSidebar();">
+                <a onclick="goToSair()">
                     Sair
                 </a>
                 <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
@@ -190,7 +185,14 @@
         <div class="filtro">
 
             <div class="filtroSelecionado">
-                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
+                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
+            </div>
+
+            <div class="switch-select-container">
+                <select  onchange="switchPersona(this)">
+                    <option value="saude">Modo Saúde</option>
+                    <option value="ambiental">Modo Ambiental</option>
+                </select>
             </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
@@ -199,9 +201,8 @@
                 <div class="img-filtro">
                     <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
                 </div>
-
                 <div class="text-filtro">
-                    <h1>Filtro</h1>
+                    <h1>Filtros</h1>
                 </div>
 
             </div>
@@ -221,35 +222,57 @@
                     <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
 
                     <div class="filtro-text">
-                        <div id="municipio-principal">
-                            <label>Região principal:</label>
-                            <select id="regiao-principal">
-                                <option disabled selected>Selecione</option>
-                                <option value="São Paulo">São Paulo</option>
-                                <option value="Guarulhos">Guarulhos</option>
-                                <option value="São Bernado">São Bernado</option>
-                                <option value="Santo André">Santo André</option>
-                            </select>
+                        <div class="titulo-filtro">
+                            <h1>Município Principal</h1>
                         </div>
-
-                    </div>
-                    <div class="filtro-text">
-                        <div id="municipio-secundario">
-                            <label>Regiões secundárias:</label>
-                            <select multiple size="4" id="regioes-secundarias">
-                                <option disabled selected>Selecione</option>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="municipioPrincipal">
+                                <option></option>
                                 <option value="São Paulo">São Paulo</option>
-                                <option value="Guarulhos">Guarulhos</option>
-                                <option value="São Bernado">São Bernado</option>
-                                <option value="Santo André">Santo André</option>
+                                <option value="Santo Andre">Santo Andre</option>
+                                <option value="São Caetano">São Caetano</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Piracicaba">Piracicaba</option>
                             </select>
                         </div>
                     </div>
                     <div class="filtro-text">
-                        <div id="div-mes">
-                            <label>Mês:</label>
-                            <select id="select-mes">
-                                <option disabled selected>Selecione</option>
+                        <div class="titulo-filtro">
+                            <h1>Região Desejada</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="regiaoDesejada">
+                                <option></option>
+                                <option value="Sul">Sul</option>
+                                <option value="">Centro-Oeste</option>
+                                <option value="">Norte</option>
+                                <option value="">Nordeste</option>
+                                <option value="Leste">Leste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Ano Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="anoDesejado">
+                                <option></option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Mês Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="mesDesejado">
+                                <option></option>
                                 <option value="Janeiro">Janeiro</option>
                                 <option value="Fevereiro">Fevereiro</option>
                                 <option value="Março">Março</option>
@@ -265,28 +288,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="filtro-text">
-                        <div id="div-ano">
-                            <label>Ano</label>
-                            <select id="select-ano">
-                                <option disabled selected>Selecione</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="filtro-btn">
-                        <div class="filtro-btn-1">
-
-                        </div>
-                        <div class="filtro-btn-1">
-
-                        </div>
-                        <div class="filtro-btn-1">
-
-                        </div>
+                    <div class="filtro-btn" onclick="atualizarDash()">
+                        
+                        <h1>Adicionar Filtro</h1>
+                        
                     </div>
 
                 </div>
@@ -416,3 +422,4 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./js/paginaPrincipal.js"></script>
 <script src="./js/script.js"></script>
+<script src="./js/navegarSite.js"></script>

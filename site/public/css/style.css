@@ -42,6 +42,10 @@ body {
   height: 80%;
 }
 
+.contem-alerta2{
+  display: flex !important;
+}
+
 .logo-nav-container {
   width: 13%;
   height: 100%;
@@ -54,6 +58,7 @@ body {
 }
 
 .img-nav-alerta {
+  display: flex !important;
   width: 5%;
   height: 100%;
   padding-right: 0 !important;
@@ -246,10 +251,14 @@ body {
   align-items: center;
 }
 
-.filtroSelecionado {
+.filtroSelecionado{
   width: 100vw;
   margin-left: 10%;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.filtroSelecionado h1  {
+  font-size: 1.2rem;
 }
 
 .filtro-aplicado {
@@ -280,7 +289,7 @@ body {
   align-items: center;
 }
 
-.text-filtro {
+.text-filtro h1 {
   font-size: 0.4rem;
   color: var(--title-text);
 }
@@ -319,7 +328,7 @@ body {
 .escolher-filtro {
   display: flex;
   width: 80vw;
-  height: 69vw;
+  height: 60vh;
   background-color: white;
   position: fixed;
   border-radius: 10px;
@@ -327,37 +336,51 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  margin-top: 80%;
 }
 
 .filtro-text {
+  display: flex;
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
   margin-top: 18px;
   width: 80%;
-  height: 12.5%;
+  height: 15.5%;
+  font-size: 0.4rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
 }
 
 .filtro-btn {
   display: flex;
   width: 68%;
-  height: 20.5%;
+  height: 7vh;
   margin-top: 12px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
-
-.filtro-btn-1 {
   background-color: var(--primary-bg);
   border-radius: 5px;
   box-shadow: var(--shadow);
-  width: 30%;
-  height: 80%;
-
+  font-size: 0.4rem;
 }
+
+.contem-escolhe-filtro {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.select-opt {
+  border: 1px solid black;
+  width: 65%;
+  overflow-y: auto;
+}
+
 
 /*DASHBOARDS*/
 
@@ -418,6 +441,11 @@ body {
 
 @media (min-width: 1024px) {
   /*NAV BAR*/
+  
+  .contem-alerta2{
+    display: none !important;
+  }
+  
 
   .mobile-nav-bar {
     height: 10vh;
@@ -437,7 +465,7 @@ body {
     display: flex !important;
     flex-direction: row;
     width: 50vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
     align-items: center;
     justify-content: space-around;
     font-weight: bold;
@@ -464,7 +492,7 @@ body {
   }
 
   .img-nav-alerta2 {
-    display: flex;
+    display: none;
     flex-direction: row;
     width: 12%;
     height: 36%;
@@ -496,8 +524,12 @@ body {
     gap: 5px;
   }
 
+  .user-infos:hover{
+    cursor: pointer;
+  }
+
   .user-infos span {
-    font-size: small;
+    font-size: medium;
     color: var(--dropdown-letter);
   }
 
@@ -522,6 +554,7 @@ body {
     height: 100%;
     align-items: center;
     justify-content: center;
+    font-size: 10px;
   }
 
   .primeira-kpi {
@@ -551,11 +584,11 @@ body {
   }
 
   .filtroSelecionado {
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 
   .filtro-aplicado {
-    width: 9%;
+    width: 12%;
     height: 57%;
     gap: 10px;
   }
@@ -564,14 +597,15 @@ body {
     width: 22%;
   }
 
-  .text-filtro {
-    font-size: 10px;
+  .text-filtro h1 {
+    font-size: 0.8rem;
     color: var(--dropdown-letter);
   }
 
   .escolher-filtro {
     width: 35%;
-    height: 47%;
+    height: 50%;
+    margin-top: 30%;
   }
 
   .btn-sair {
@@ -581,6 +615,11 @@ body {
   #btn-sair-filtro {
     width: 35%;
     height: 40%;
+  }
+
+  .filtro-btn{
+    width: 32% !important;
+    cursor: pointer;
   }
 
   /*DASHBOARDS*/
@@ -634,18 +673,13 @@ body {
     display: flex !important;
   }
 
-  .contem-alerta.not {
-    display: none !important;
-  }
-
   .tamanho-dash {
-    width: 80% !important;
-    height: 80% !important;
+    width: 90% !important;
+    height: 100% !important;
   }
 
 
 }
-
 .nav-selected {
   text-decoration: underline !important;
 }
@@ -823,4 +857,37 @@ input:checked+.slider {
 
 input:checked+.slider:before {
   transform: translateX(26px);
+}
+
+.persona-switcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.persona-switcher button {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.persona-switcher button:hover{
+  cursor: pointer;
+}
+
+.switch-select-container {
+  width: 30%;
+}
+
+.switch-select-container select {
+  border: none;
+  background-color: var(--primary-bg);
+  color: var(--title-text);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  font-weight: bold;
 }
