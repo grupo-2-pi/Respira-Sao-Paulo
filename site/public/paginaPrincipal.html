@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./assets/logo-sem-bg.svg">
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <!-- MENU MOBILE -->
+
+    <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
+
+        <div class="logo-nav-container" onclick="goToHome()">
+            <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+        </div>
+
+        <div onclick="goToNotification()" class="contem-alerta">
+            <div class="img-nav-alerta2">
+                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+            </div>
+        </div>
+
+        <!-- NAV BAR DESKTOP -->
+
+        <div class="nav-bar-links-container" style="display: none;">
+
+            <a class="nav-selected" href="./paginaPrincipal.html">
+                Página Inicial
+            </a>
+            <a onclick="goToComentarios(); openSidebar();">
+                Comentários
+            </a>
+            <a href="./cadastroPersona.html">
+                Cadastrar
+            </a>
+            <div onclick="showNotifications()" class="contem-alerta">
+                <div class="img-nav-alerta2">
+                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+                        alt="Imagem de Notificações">
+                </div>
+                <a href="./notificacoes.html">
+                    Notificações
+                </a>
+                <div class="notification-dropdown">
+                    <div class="notification-dropdown-options">
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div onclick="showUserOptions()" class="user-container" style="display: none;">
+            <div class="user-infos">
+                <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                <span>Dono de tudo</span>
+            </div>
+
+            <div class="user-dropdown-options">
+                <button onclick="goToPersonal()">Dados Pessoais</button>
+                <button>Filtros Salvos</button>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <div class="slider round"></div>
+                    </label>
+                    <span id="theme-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-brightness-high" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </span>
+                </div>
+                <button id="disconectButton">Desconectar</button>
+            </div>
+        </div>
+        <!-- FIM NAV BAR -->
+
+        <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
+            <button onclick="switchPersona('saude')">Modo Saúde</button>
+            <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
+        </div>
+
+        <button id="id-button-nav-bar" onclick="openSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
+                class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+                <path
+                    d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+                <path
+                    d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+            </svg>
+        </button>
+
+
+
+
+        <div id="sideBar" class="side-bar">
+
+            <div class="img-side-bar" onclick="goToHome()">
+                <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+            </div>
+            <div class="side-bar-links-container">
+                <a onclick="goToPaginaInicial(); openSidebar();">
+                    Página Inicial
+                </a>
+                <a onclick="goToComentarios(); openSidebar();">
+                    Comentários
+                </a>
+                <a onclick="goToCadastrar(); openSidebar();">
+                    Cadastrar
+                </a>
+                <a onclick="goToPerfil(); openSidebar();">
+                    Perfil
+                </a>
+                <a onclick="goToSair(); openSidebar();">
+                    Sair
+                </a>
+                <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
+                    <div class="user-infos">
+                        <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                        <span>Dono de tudo</span>
+                    </div>
+
+                    <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+                        <button onclick="goToPersonal()">Dados Pessoais</button>
+                        <button>Filtros Salvos</button>
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="theme-toggle">
+                                <input type="checkbox" id="theme-toggle">
+                                <div class="slider round"></div>
+                            </label>
+                            <span id="theme-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-brightness-high" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                                </svg>
+                            </span>
+                        </div>
+                        <button id="disconectButton">Desconectar</button>
+                    </div>
+
+                </div>
+                <!--  <a onclick="goToPerfil(); openSidebar();">
+                    Perfil
+                </a>
+                <a onclick="goToSair(); openSidebar();">
+                    Sair
+                </a> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <div class="filtro">
+
+            <div class="filtroSelecionado">
+                <h1>(MÊS) (ANO) (MUNICIPIO PRINCIAL)</h1>
+            </div>
+
+            <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
+            <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+
+                <div class="img-filtro">
+                    <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
+                </div>
+
+                <div class="text-filtro">
+                    <h1>Filtro</h1>
+                </div>
+
+            </div>
+
+            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+
+                <div class="escolher-filtro">
+
+                    <div class="btn-sair" onclick="fecharFiltro()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                    </div>
+
+                    <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
+
+                    <div class="filtro-text">
+                        <div id="municipio-principal">
+                            <label>Região principal:</label>
+                            <select id="regiao-principal">
+                                <option disabled selected>Selecione</option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Guarulhos">Guarulhos</option>
+                                <option value="São Bernado">São Bernado</option>
+                                <option value="Santo André">Santo André</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="filtro-text">
+                        <div id="municipio-secundario">
+                            <label>Regiões secundárias:</label>
+                            <select multiple size="4" id="regioes-secundarias">
+                                <option disabled selected>Selecione</option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Guarulhos">Guarulhos</option>
+                                <option value="São Bernado">São Bernado</option>
+                                <option value="Santo André">Santo André</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div id="div-mes">
+                            <label>Mês:</label>
+                            <select id="select-mes">
+                                <option disabled selected>Selecione</option>
+                                <option value="Janeiro">Janeiro</option>
+                                <option value="Fevereiro">Fevereiro</option>
+                                <option value="Março">Março</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Maio">Maio</option>
+                                <option value="Junho">Junho</option>
+                                <option value="Julho">Julho</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Setembro">Setembro</option>
+                                <option value="Outubro">Outubro</option>
+                                <option value="Novembro">Novembro</option>
+                                <option value="Dezembro">Dezembro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div id="div-ano">
+                            <label>Ano</label>
+                            <select id="select-ano">
+                                <option disabled selected>Selecione</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filtro-btn">
+                        <div class="filtro-btn-1">
+
+                        </div>
+                        <div class="filtro-btn-1">
+
+                        </div>
+                        <div class="filtro-btn-1">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="kpis">
+
+            <!-- MOBILE -->
+
+            <div class="primeira-divisao-kpi">
+                <div class="primeira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi1-title">Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi1-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi2-title">Munícipio com maior Indice de Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi2-value">São Paulo</h1>
+                    </div>
+
+                </div>
+            </div>
+            <div class="primeira-divisao-kpi">
+                <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id="m-kpi3-title">Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="m-kpi3-value">R$ 15.000,00</h1>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DESKTOP -->
+
+            <div class="primeira-divisao-kpi2" style="display: none;">
+                <div class="primeira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi1-title'>Munícipio mais Poluído</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi1-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="segunda-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi2-title'> Maior Indíce Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi2-value">São Paulo</h1>
+                    </div>
+
+                </div>
+
+                <div class="terceira-kpi">
+
+                    <div class="titulo-kpi">
+                        <h1 id='kpi3-title'>Valor Gasto com Doenças Respiratórias</h1>
+                    </div>
+
+                    <div class="dado-kpi">
+                        <h1 id="kpi3-value">R$ 15.000,00</h1>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- FIM DESKTOP -->
+
+        </div>
+
+        <div class="dashboards">
+
+            <!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
+
+            <div class="primeira-dashboard">
+                <div class="tamanho-dash"><canvas id="myChart"></canvas></div>
+            </div>
+
+            <div class="segunda-dashboard">
+                <div class="tamanho-dash"><canvas id="myChartB"></canvas></div>
+            </div>
+
+
+        </div>
+
+        <div class="dashboards">
+            <div class="terceira-dashboard">
+                <div class="tamanho-dash"><canvas id="myChartC"></canvas></div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script src="./js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/paginaPrincipal.js"></script>
+<script src="./js/script.js"></script>

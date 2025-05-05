@@ -1,0 +1,168 @@
+/*MOBILE*/
+
+/*MAIN*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--primary-bg);
+    align-items: center;
+    gap: 3vh;
+}
+
+/*FUNCIONÁRIO*/
+
+.dados-funcionario {
+    margin-top: 3vh;
+    width: 80vw;
+    height: auto;
+}
+
+.contem-tudo-dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.contem-placeholder {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.titulo-pagina {
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+    margin-top: -24px;
+}
+
+.contem-placeholder-dados {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+
+}
+
+.place-holder {
+    border: 1px solid #292929;
+    border-radius: 5px;
+}
+
+/*LINHA DIVISÓRIA*/
+
+.linha-divisoria {
+    width: 70vw;
+    height: 0.3vw;
+    background-color: black;
+    border-radius: 5px;
+}
+
+/*EMPRESA*/
+
+.dados-empresa {
+    width: 80vw;
+    height: auto;
+}
+
+.contem-tudo-dados-empresa {
+    display: flex;
+    flex-direction: column;
+}
+
+.contem-placeholder-empresa {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contem-placeholder-dados-empresa {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+
+}
+
+.contem-placeholder-dados-empresa-checkbox {
+    display: flex;
+    flex-direction: line;
+    font-size: 0.89rem !important;
+    color: var(--title-text) !important;
+}
+
+.botao-cadastrar {
+    display: flex;
+    width: 32vw;
+    border-radius: 25px;
+    height: 3vh;
+    background-color: var(--second-btn-bg);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+}
+
+.botao-cadastrar:hover{
+    cursor:pointer;
+    opacity: 90%;
+}
+
+/*DESKTOP*/
+
+@media (min-width: 1024px) {
+    
+    input{
+        padding: 6px;
+    }
+
+    .container{
+        gap: 5vh;
+        padding: 20px 0 20px 0;
+    }
+
+    .dados-funcionario{
+        margin-top: 7vh;
+    }
+
+    .contem-placeholder {
+        gap: 5vh;
+    }
+
+    .contem-1 {
+        display: flex;
+        gap: 5vw;
+    }
+
+    .contem-2 {
+        display: flex;
+        gap: 5vw;
+    }
+
+    .contem-placeholder-dados {
+        width: 45vw;
+    }
+
+    .contem-placeholder-empresa {
+        gap: 7vh;
+    }
+
+    .contem-placeholder-dados-empresa{
+        width: 45vw;
+    }
+
+    .contem-3{
+        display: flex;
+        gap: 5vw;        
+    }
+
+    .linha-divisoria{
+        height: 0.2vh;
+    }
+
+    .botao-cadastrar{
+        width: 15vw;
+    }
+
+}
