@@ -188,11 +188,9 @@
                 <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
             </div>
 
-            <div class="switch-select-container">
-                <select  onchange="switchPersona(this)">
-                    <option value="saude">Modo Saúde</option>
-                    <option value="ambiental">Modo Ambiental</option>
-                </select>
+            <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
+                <button onclick="switchPersona('saude')">Modo Saúde</button>
+                <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
             </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
