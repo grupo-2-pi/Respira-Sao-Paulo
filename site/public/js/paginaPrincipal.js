@@ -23,10 +23,8 @@ function gerarDadosAleatorios2(quantidade, min, max) {
 
 
 
-function switchPersona(select) {
-    const value = select.value;
-
-    localStorage.setItem('personaSelecionada', value);
+function switchPersona(persona) {
+    localStorage.setItem('personaSelecionada', persona);
     location.reload(); // Recarrega a página para aplicar a nova persona
 }
 
