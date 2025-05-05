@@ -12,7 +12,6 @@ import school.sptech.utils.MapaMunicipiosSP;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class Main {

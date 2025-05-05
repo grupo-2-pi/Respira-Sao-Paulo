@@ -20,12 +20,14 @@ public class EmissaoVeicularService {
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
     private final EmissaoVeicularDao emissaoVeicularDao;
+    private final LogService logService;
 
     public EmissaoVeicularService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
         this.emissaoVeicularDao = new EmissaoVeicularDao(jdbcTemplate);
+        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairDadosEmissao(String nomeArquivo, List<File> arquivos) {
@@ -67,6 +69,7 @@ public class EmissaoVeicularService {
                     );
 
                     logger.info("Emissão veicular extraída: " + emissao.toString());
+                    logService.salvarLog("INFO" , "Emissão veicular extraída: " + emissao.toString());
                     emissaoVeicularDao.save(emissao);
                     logger.info("Emissão veicular salva no banco");
                 }

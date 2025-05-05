@@ -24,6 +24,7 @@ public class MortalidadeRespiratoriaService {
     private final JdbcTemplate jdbcTemplate;
     private final MortalidadeDao mortalidadeDao;
     private final MapaMunicipiosSP mapaMunicipiosSP;
+    private final LogService logService;
 
     public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
@@ -31,6 +32,7 @@ public class MortalidadeRespiratoriaService {
         this.jdbcTemplate = jdbcTemplate;
         this.mapaMunicipiosSP = mapaMunicipiosSP;
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
+        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairDados(List<File> arquivos, Boolean xlsx) {
@@ -98,6 +100,8 @@ public class MortalidadeRespiratoriaService {
                     );
 
                     logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
+
+                    logService.salvarLog("INFO","Mortalidade extraida: " + mortalidadeRespiratoria.toString());
 
                     mortalidadeDao.save(mortalidadeRespiratoria);
                 }

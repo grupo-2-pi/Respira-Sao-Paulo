@@ -24,6 +24,8 @@ public class QualidadeArService {
     private final JdbcTemplate jdbcTemplate;
     private final QualidadeArDao qualidadeArDao;
     private final MapaMunicipiosSP mapaMunicipiosSP;
+    private final LogService logService;
+
 
     public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
@@ -31,6 +33,7 @@ public class QualidadeArService {
         this.jdbcTemplate = jdbcTemplate;
         this.mapaMunicipiosSP = mapaMunicipiosSP;
         this.qualidadeArDao = new QualidadeArDao(jdbcTemplate);
+        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairDadosQualidadeAr(String nomeArquivo, List<File> arquivos) {
@@ -82,6 +85,9 @@ public class QualidadeArService {
                             QualidadeAr
                             (mes,ano, municipioTratado, poluente, valor, unidade, mapaMunicipiosSP.pegarMunicipio(municipioTratado));
                     logger.info("Leitura realizada: " + qualidade.toString());
+
+                    logService.salvarLog("INFO", "Leitura realizada: " + qualidade.toString());
+
                     qualidadeArDao.save(qualidade);
                     logger.info("Registro salvo no banco");
                 }

@@ -25,6 +25,7 @@ public class FrotaCirulanteService {
     private final JdbcTemplate jdbcTemplate;
     private final FrotaCirculanteDao frotaCirculanteDao;
     private final MapaMunicipiosSP mapaMunicipiosSP;
+    private final LogService logService;
 
     public FrotaCirulanteService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
@@ -32,6 +33,7 @@ public class FrotaCirulanteService {
         this.jdbcTemplate = jdbcTemplate;
         this.frotaCirculanteDao = new FrotaCirculanteDao(jdbcTemplate);
         this.mapaMunicipiosSP = mapaMunicipiosSP;
+        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairFluxoVeiculos(List<File> arquivos) {
@@ -85,6 +87,8 @@ public class FrotaCirulanteService {
                     );
 
                     logger.info("Frota circulante extraida: " + frotaCirculante.toString());
+
+                    logService.salvarLog("INFO", "Frota circulante extraida: " + frotaCirculante.toString());
 
                     frotaCirculanteDao.save(frotaCirculante);
                     logger.info("Frota inserida no banco");
