@@ -22,14 +22,6 @@ else
     sudo systemctl enable docker
 fi
 
-echo "Baixando imagens Docker..."
-sudo docker pull furqas/respira-java-data
-if [ $? -ne 0 ]; then
-    echo "Erro ao baixar a imagem furqas/respira-java-data."
-    exit 1
-fi
-echo "Imagem baixada: furqas/respira-java-data"
-
 sudo docker pull furqas/respira-web
 if [ $? -ne 0 ]; then
     echo "Erro ao baixar a imagem furqas/respira-web."
@@ -37,9 +29,16 @@ if [ $? -ne 0 ]; then
 fi
 echo "Imagem baixada: furqas/respira-web"
 
+sudo docker pull furqas/respira-bd
+if [ $? -ne 0 ]; then
+    echo "Erro ao baixar a imagem furqas/respira-bd."
+    exit 1
+fi
+echo "Imagem baixada: furqas/respira-bd"
+
 echo "Limpando containers"
-sudo docker rm -f respira-backend respira-web &>/dev/null
+sudo docker rm -f respira-web &>/dev/null
 
 echo "Iniciando containers"
-sudo docker run -d --name respira-java -p 8080:8080 furqas/respira-java-data
 sudo docker run -d --name respira-web -p 3000:3000 furqas/respira-web
+sudo docker run -d --name respira-bd -p 3306:3306 furqas/respira-bd
