@@ -21,4 +21,4 @@ jobs:
               run: docker build -t furqas/respira-bd -f './Banco de Dados/Dockerfile' './Banco de Dados'
               
             - name: Envia as imagens para o dockerhub
-              run: sudo docker push furqas/respira-java-data && sudo docker push furqas/respira-web && sudo docker push furqas/respira-bd
+              run: sudo docker push furqas/respira-web && sudo docker push furqas/respira-bd
