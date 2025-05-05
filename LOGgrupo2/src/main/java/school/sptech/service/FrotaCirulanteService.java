@@ -7,10 +7,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.database.model.File;
 import school.sptech.database.model.FrotaCirculante;
 import school.sptech.database.model.Logger;
 import school.sptech.database.model.dao.FrotaCirculanteDao;
 import school.sptech.utils.ExcelUtils;
+import school.sptech.utils.MapaMunicipiosSP;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -21,19 +24,21 @@ public class FrotaCirulanteService {
     private final ExcelUtils excelUtils;
     private final JdbcTemplate jdbcTemplate;
     private final FrotaCirculanteDao frotaCirculanteDao;
+    private final MapaMunicipiosSP mapaMunicipiosSP;
 
-    public FrotaCirulanteService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+    public FrotaCirulanteService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
         this.logger = logger;
         this.excelUtils = excelUtils;
         this.jdbcTemplate = jdbcTemplate;
         this.frotaCirculanteDao = new FrotaCirculanteDao(jdbcTemplate);
+        this.mapaMunicipiosSP = mapaMunicipiosSP;
     }
 
-    public void extrairFluxoVeiculos(List<InputStream> arquivos) {
+    public void extrairFluxoVeiculos(List<File> arquivos) {
         try {
-            for (InputStream arquivo : arquivos) {
+            for (File arquivo : arquivos) {
 
-                byte[] fileBytes = arquivo.readAllBytes();
+                byte[] fileBytes = arquivo.getInputStream().readAllBytes();
 
                 logger.info("Iniciando leitura do arquivo de fluxo veiculos");
 
@@ -68,7 +73,7 @@ public class FrotaCirulanteService {
 
                     FrotaCirculante frotaCirculante = new FrotaCirculante(
                             municipio,
-                            "",
+                            mapaMunicipiosSP.pegarMunicipio(municipio),
                             Integer.valueOf(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3))),
                             comerciaisLeves,
                             Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(5))),

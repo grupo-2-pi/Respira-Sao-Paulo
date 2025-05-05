@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+  <title>Admin - Login</title>
+</head>
+<body>
+  <nav>
+    <img width="fit-content" height="80%" src="../assets/logo-sem-bg.svg" alt="logo da Respira São Paulo">
+  </nav>
+  <div class="main-container">
+    <div class="form-container">
+      <h1>Entrar com conta admin</h1>
+      <input id="inputEmail" placeholder="Email" type="text">
+      <span class="error-span" id="emailErrorSpan"></span>
+      <input id="inputSenha" placeholder="Senha" type="password">
+      <span class="error-span" id="passwordErrorSpan"></span>
+      <span class="button-span">
+        <button onclick="login()">  
+          Entrar
+        </button>
+      </span>
+    </div>
+  </div>
+</body>
+</html>
+<script src="./index.js"></script>

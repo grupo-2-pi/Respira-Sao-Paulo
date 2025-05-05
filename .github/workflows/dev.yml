@@ -1,0 +1,24 @@
+name: Builda as imagens do projeto e faz o push para o docker hub
+
+on:
+    push:
+        branches: ["dev"]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Login Docker Hub
+              run: sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
+            - name: Realiza o build da imagem do site
+              run: docker build -t furqas/respira-web -f ./site/Dockerfile ./site
+
+            - name: Realiza o build da imagem do banco
+              run: docker build -t furqas/respira-bd -f './Banco de Dados/Dockerfile' './Banco de Dados'
+              
+            - name: Envia as imagens para o dockerhub
+              run: sudo docker push furqas/respira-web && sudo docker push furqas/respira-bd

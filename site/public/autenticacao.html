@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autenticação</title>
+  <link rel="stylesheet" href="./css/autentiticacao.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="./assets/logo.svg">
+</head>
+<body>
+  <div class="default-nav-bar">
+    <div class="logo-nav-container">
+      <img width="20%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+    </div>
+    <div class="default-nav-links-container">
+      <a onclick="goToHistory()">
+        História
+      </a>
+      <a onclick="goToCrenca()">
+        Crenças
+      </a>
+      <a onclick="goToFeedback()">
+        Feedback
+      </a>
+    </div>
+    <div class="default-nav-auth-container">
+      <button onclick="switchPage(this)" class="log-button">
+        Entrar
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav-bar" style="display: none;">
+    <div class="logo-nav-container">
+      <img width="20%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+    </div>
+    <button onclick="openSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+        class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+        <path
+          d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+        <path
+          d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+      </svg>
+    </button>
+  </div>
+  <div class="sign-up-container">
+    <div id="sideBar" class="side-bar">
+      <img width="20%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+      <div class="side-bar-links-container">
+        <a onclick="goToHistory(); openSidebar();">
+          História
+        </a>
+        <a onclick="goToCrenca(); openSidebar();">
+          Crenças
+        </a>
+        <a onclick="goToFeedback(); openSidebar();">
+          Feedback
+        </a>
+      </div>
+      <div class="side-bar-auth-container">
+        <button onclick="goToAuth()" class="log-button" href="./autenticacao.html">
+          Entrar
+        </button>
+        <button onclick="goToAuth()" class="sign-button" href="./autenticacao.html">
+          Cadastrar
+        </button>
+      </div>
+    </div>
+    <div class="sign-up-leftside" id="leftsideContainer">
+      <h1>Vamos mudar o ar de São Paulo <span>juntos</span></h1>
+      <div class="image-container" id="imageContainer">
+        <img src="./assets/screenshots/image.png" alt="Screenshot do inicio do Respira Sâo Paulo">
+      </div>
+    </div>
+    <div class="sign-up-rightside">
+      <div class="sign-up-form" id="form">
+        <h1 id="formHeader">Entrar</h1>
+        <input id="inputCnpj" placeholder="Cnpj" type="text">
+        <span class="error-span" id="cnpjErrorSpan"></span>
+        <input id="inputLoginPassword" placeholder="Insira sua senha" type="password">
+        <span class="error-span" id="passwordErrorSpan"></span>
+        <button onclick="login()">  
+          Entrar
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="talk-to-us-footer">
+      <div class="respira-footer-row">
+        <img width="20%" src="./assets/logo.svg" alt="">
+        Respira São Paulo
+      </div>
+      <p id="footer-header">Fale Conosco:</p>
+      <div class="contact">
+        <img class="icon" src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png" alt="Email">          
+        <p class="text">respirasp@sptech.school</p>
+      </div>
+      <div class="contact">
+        <img class="icon" src="https://www.iconpacks.net/icons/1/free-phone-icon-1-thumb.png" alt="WhatsApp">
+        <p class="text">11 996072890</p>
+      </div>
+      <p id="rightRespira">© 2025 Respira São Paulo</p>
+    </div>
+    <div class="our-social-media-footer">
+      <p id="footer-header">Nossas redes sociais</p>
+      <div class="contact">
+        <img class="icon" src="https://devicon-website.vercel.app/api/github/original.svg" alt="Logo github"/>
+        <a class="link-text" href="https://github.com/grupo-2-pi/Respira-Sao-Paulo">Github</a>
+      </div>
+      <div class="contact">
+        <img class="icon" src="https://devicon-website.vercel.app/api/linkedin/original.svg" alt="Logo linkedin"/>
+        <a class="link-text" href="#">Linkedin</a>
+      </div>
+    </div>
+    <div class="about-us-footer">
+      <p id="footer-header">Projeto</p>
+      <div class="contact" onclick="goToHistory()">
+        <p class="text">História</p>
+      </div>
+      <div class="contact" onclick="goToCrenca()">
+        <p class="text">Nossa crença</p>
+      </div>
+      <div class="contact" onclick="goToFeedback()">
+        <p class="text">Feedback</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<script src="./js/autenticacao.js"></script>

@@ -1,7 +1,7 @@
 package school.sptech.database.model;
 
 public class Doenca {
-    private String categoria;
+    private String nomeDoenca;
     private String cidMes;
     private String altoDoTiete;
     private String francoDaRocha;
@@ -11,13 +11,10 @@ public class Doenca {
     private String saoPaulo;
     private String total;
 
-    public Doenca() {
-    }
-
-    public Doenca(String categoria, String cidMes, String altoDoTiete,
+    public Doenca(String nomeDoenca, String cidMes, String altoDoTiete,
                   String francoDaRocha, String mananciais, String rotaDosBandeirantes,
                   String grandeAbc, String saoPaulo, String total) {
-        this.categoria = categoria;
+        this.nomeDoenca = nomeDoenca;
         this.cidMes = cidMes;
         this.altoDoTiete = altoDoTiete;
         this.francoDaRocha = francoDaRocha;
@@ -29,11 +26,11 @@ public class Doenca {
     }
 
     public String getCategoria() {
-        return categoria;
+        return nomeDoenca;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoria(String nomeDoenca) {
+        this.nomeDoenca = nomeDoenca;
     }
 
     public String getCidMes() {
@@ -103,7 +100,7 @@ public class Doenca {
     @Override
     public String toString() {
         return "Doenca{" +
-                "categoria='" + categoria + '\'' +
+                "nomeDoenca='" + nomeDoenca + '\'' +
                 ", cidMes='" + cidMes + '\'' +
                 ", altoDoTiete='" + altoDoTiete + '\'' +
                 ", francoDaRocha='" + francoDaRocha + '\'' +

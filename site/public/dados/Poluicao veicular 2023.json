@@ -1,0 +1,60 @@
+// Utilizado no gráfico 'Emissão média CO2. Coloquei outros gases nesse gráfico, mas ficou ruim já que CO2 é 100x superior a qualquer outro gás'
+// E na KPI ranking gás poluente
+
+[
+ {
+  "TIPO DE VEÍCULO": "Veículo leve",
+  "Ano": 2023,
+  "CO (g\/km)": 0.7141226355177052,
+  "Total HC (g\/km)": 0.10681954559756181,
+  "NOx (g\/km)": 0.037801075292391864,
+  "CO2   (g\/km)": 467.46495508581734,
+  "RCHO (g\/km)": 0.008246031874278735,
+  "MP (g\/km)": 0.002,
+  "N2O (g\/km) (3)": 0.055
+ },
+ {
+  "TIPO DE VEÍCULO": "Comerciais leves",
+  "Ano": 2023,
+  "CO (g\/km)": 0.8332911052303339,
+  "Total HC (g\/km)": 0.12526573374409777,
+  "NOx (g\/km)": 0.25381840406727196,
+  "CO2   (g\/km)": 778.7437040727298,
+  "RCHO (g\/km)": 0.010524711723016184,
+  "MP (g\/km)": 0.01098241789839049,
+  "N2O (g\/km) (3)": 0.083
+ },
+ {
+  "TIPO DE VEÍCULO": "Motos",
+  "Ano": 2023,
+  "CO (g\/km)": 3.8162897029704292,
+  "Total HC (g\/km)": 0.6482369954434233,
+  "NOx (g\/km)": 0.2056189394739705,
+  "CO2   (g\/km)": 273.7685881472666,
+  "RCHO (g\/km)": 0,
+  "MP (g\/km)": 0.021,
+  "N2O (g\/km) (3)": 0.004
+ },
+ {
+  "TIPO DE VEÍCULO": "Caminhões",
+  "Ano": 2023,
+  "CO (g\/km)": 0.6490875817241928,
+  "Total HC (g\/km)": 0.06853984640881228,
+  "NOx (g\/km)": 6.265901906173431,
+  "CO2   (g\/km)": 1023.3187851,
+  "RCHO (g\/km)": 0,
+  "MP (g\/km)": 0.04919587200690724,
+  "N2O (g\/km) (3)": 0.15
+ },
+ {
+  "TIPO DE VEÍCULO": "Ônibus",
+  "Ano": 2023,
+  "CO (g\/km)": 0.6942534162164176,
+  "Total HC (g\/km)": 0.05918873505032362,
+  "NOx (g\/km)": 5.397218566329004,
+  "CO2   (g\/km)": 843.33124567164,
+  "RCHO (g\/km)": 0,
+  "MP (g\/km)": 0.04677549364580378,
+  "N2O (g\/km) (3)": 0.09
+ }
+]

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/personal.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./assets/logo-sem-bg.svg">
+    <title>Perfil</title>
+</head>
+
+<body onload="carregarDadosPerfil()">
+
+    <div id="overlay"></div>
+    <div id="modal">
+        <h2 id="spanTitle">
+            Alterações realizadas com
+            <span id="spanStatus">
+                sucesso
+            </span>
+            🍃
+        </h2>
+
+        <p id="changesDescription">
+            Estamos felizes que conseguiu realizar suas alterações, mas note que a conta adm relacionada a você receberá
+            uma notificação relacionada a alteração.
+        </p>
+        <button id="close-modal">
+            Concluído
+        </button>
+
+    </div>
+    <div id="overlaySenha"></div>
+    <div id="modalSenha">
+        <h2 id="spanTitleSenha">
+            Verifique a senha 🔒
+        </h2>
+        <p>
+            Antes de realizarmos a alteração da senha, por favor insira a confirmação dela abaixo.
+        </p>
+        <input id="inputPasswordConfirmation" type="password">
+        <button onclick="sendPasswordConfirmation()">
+            Enviar
+        </button>
+    </div>
+
+    <div class="mobile-nav-bar" id="mobile_nav_bar">
+
+        <div class="logo-nav-container" onclick="goToHome()">
+            <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+        </div>
+
+        
+        <div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
+            <div class="img-nav-alerta2">
+                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+            </div>
+        </div>
+
+        <!-- NAV BAR DESKTOP -->
+
+        <div class="nav-bar-links-container" style="display: none;">
+
+            <a href="./paginaPrincipal.html">
+                Página Inicial
+            </a>
+            <a href="./cadastroPersona.html">
+                Comentários
+            </a>
+            <a onclick="goToCadastrar()">
+                Cadastrar
+            </a>
+            <div onclick="showNotifications()" class="contem-alerta">
+                <div class="img-nav-alerta2">
+                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+                        alt="Imagem de Notificações">
+                </div>
+                <a>
+                    Notificações
+                </a>
+                <div class="notification-dropdown">
+                    <div class="notification-dropdown-options">
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                        <div class="notification-container">
+                            <span>27/02/2025 13:26</span>
+                            <button>
+                                Acontecimento muito louco doido explodiu tudo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div onclick="showUserOptions()" class="user-container" style="display: none;">
+            <div class="user-infos">
+                <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
+                <span>Rosim</span>
+            </div>
+            <div class="user-dropdown-options">
+                <button onclick="goToPersonal()">Dados Pessoais</button>
+                <button>Filtros Salvos</button>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <div class="slider round"></div>
+                    </label>
+                    <span id="theme-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-brightness-high" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </span>
+                </div>
+                <button id="disconectButton">Desconectar</button>
+            </div>
+        </div>
+        <!-- FIM NAV BAR -->
+
+        <button id="id-button-nav-bar" onclick="openSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
+                class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+                <path
+                    d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+                <path
+                    d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+            </svg>
+        </button>
+
+
+
+
+        <div id="sideBar" class="side-bar">
+
+            <div class="logo-nav-container" onclick="goToHome()">
+                <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+            </div>
+            <div class="side-bar-links-container">
+                <a onclick="goToPaginaInicial()">
+                    Página Inicial
+                </a>
+                <a onclick="goToComentarios()">
+                    Comentários
+                </a>
+                <a onclick="goToCadastrar()">
+                    Cadastrar
+                </a>
+                <a onclick="goToPerfil()">
+                    Perfil
+                </a>
+                <a onclick="goToSair()">
+                    Sair
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="left-side-container">
+            <div class="user-static-infos-container">
+                <div class="icon-background">
+                    <img id="userIcon"
+                        src="https://bawclothing.vtexassets.com/arquivos/ids/268608/0069458046_02.jpg?v=638786183995330000"
+                        alt="Icone">
+                </div>
+                <div class="user-static-infos">
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+                <div class="file-upload-wrapper">
+                    <label for="arquivo" class="custom-file-input">
+                        Trocar ícone
+                    </label>
+                    <input type="file" id="arquivo" name="arquivo" style="display: none;"
+                        onchange="handleFileChange(this)">
+                </div>
+            </div>
+        </div>
+        <div class="right-side-container">
+            <div class="user-infos-header">
+                <h1>
+                    Informações pessoais
+                </h1>
+                <p>
+                    Altere suas informações, incluindo email, senha e nome.
+                </p>
+            </div>
+            <div class="user-names-container">
+                <div class="user-names-box">
+                    <div
+                        style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                        <h1>Nome</h1>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path onclick="changeUserName()"
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                        </svg>
+                    </div>
+                    <input disabled class="disabled" id="inputNomeUsuario" type="text">
+                </div>
+                <div class="user-names-box">
+                    <div
+                        style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                        <h1>Email</h1>
+                        <svg onclick="changeUserEmail()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                        </svg>
+                    </div>
+                    <input disabled class="disabled" id="inputEmailUsuario" type="text">
+                </div>
+            </div>
+            <div class="user-names-container">
+                <div class="user-names-box">
+                    <div
+                        style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                        <h1>Cargo</h1>
+                        <svg onclick="changeUserRole()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                        </svg>
+                    </div>
+                    <select disabled class="disabled" id="selectCargoUsuario">
+                        <option value="donoDeTudo">Gerente</option>
+                    </select>
+                </div>
+                <div class="user-names-box">
+                    <div
+                        style="width: 100%; display: flex; gap: 30px; align-items: center; justify-content: space-between;">
+                        <h1>Senha</h1>
+                        <svg onclick="changeUserPassword()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                        </svg>
+                    </div>
+                    <input disabled class="disabled" id="inputSenhaUsuario" type="password">
+                </div>
+            </div>
+            <div class="save-infos-row">
+                <button id="saveChangesButton" onclick="saveChanges()">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="./js/script.js"></script>
+<script src="./js/personal.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/navegarSite.js"></script>

@@ -1,19 +1,12 @@
 package school.sptech.service;
 
+import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
-import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
-
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 public class S3Service  {
 
@@ -41,7 +34,7 @@ public class S3Service  {
         return buckets;
     }
 
-    public List<InputStream> getBucketObjects(String prefix){
+    public List<File> getBucketObjects(String prefix){
         try{
             ListObjectsV2Request listRequest = ListObjectsV2Request.builder()
                     .bucket(BUCKET_NAME)
@@ -50,7 +43,7 @@ public class S3Service  {
 
             ListObjectsV2Response listResponse = s3Client.listObjectsV2(listRequest);
 
-            List<InputStream> inputStreams = new ArrayList<>();
+            List<File> inputStreams = new ArrayList<>();
 
             logger.info("List encontrado:  " + listResponse.toString());
 
@@ -72,7 +65,12 @@ public class S3Service  {
                 logger.info("Request da busca do objeto: " + getObjectRequest.toString());
 
                 InputStream inputStream = s3Client.getObject(getObjectRequest);
-                inputStreams.add(inputStream);
+                inputStreams.add(
+                        new File(
+                                s3Object.key(),
+                                inputStream
+                        )
+                );
             }
 
             return inputStreams;
@@ -82,40 +80,6 @@ public class S3Service  {
 
         return null;
     }
-
-    public void uploadObjectToBucket(File file){
-
-        try{
-            PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(UUID.randomUUID().toString())
-                    .build();
-
-            s3Client.putObject(putObjectRequest, RequestBody.fromFile(file));
-        }catch (S3Exception e){
-            logger.error("Erro ao colocar objeto no bucket " + e.getMessage());
-        }
-
-    }
-
-//    public void downloadObjectsFromBucket(){
-//        for (S3Object object : objects) {
-//            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-//                    .bucket(BUCKET_NAME)
-//                    .key(object.key())
-//                    .build();
-//
-//            try{
-//                InputStream objectContent = s3Client.getObject(getObjectRequest, ResponseTransformer.toInputStream());
-//                Files.copy(objectContent, new File(object.key()).toPath());
-//
-//                logger.info("Download do arquivo realizado com sucesso: " + object.key());
-//
-//            }catch (IOException e){
-//                logger.error("Erro ao realizar download do arquivo vindo do bucket " + e.getMessage() + Arrays.toString(e.getStackTrace()));
-//            }
-//        }
-//    }
 
     public void deleteObject(String objectKey){
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
