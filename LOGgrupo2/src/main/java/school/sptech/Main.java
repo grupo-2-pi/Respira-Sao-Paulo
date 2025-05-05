@@ -4,18 +4,21 @@ package school.sptech;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.config.JDBCConfig;
 import school.sptech.config.S3Provider;
+import school.sptech.database.model.EmissaoVeicular;
 import school.sptech.database.model.Logger;
-import school.sptech.service.FrotaCirulanteService;
-import school.sptech.service.MortalidadeRespiratoriaService;
-import school.sptech.service.S3Service;
+import school.sptech.service.*;
 import school.sptech.utils.ExcelUtils;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
     public static Logger logger = new Logger();
     public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
@@ -23,20 +26,27 @@ public class Main {
     private final static ExcelUtils excelUtils = new ExcelUtils();
     private static final S3Client s3Client = new S3Provider().getS3Client();
     private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
-    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate, s3Service);
-    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate, s3Service);
+    private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate);
+    private static final EmissaoVeicularService emissaoVeicularService = new EmissaoVeicularService(logger, excelUtils, jdbcTemplate);
+    private static final QualidadeArService qualidadeArService = new QualidadeArService(logger, excelUtils, jdbcTemplate);
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        List<S3Object> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
-        mortalidadeService.extrairDados(arquivosMortalidade, true);
+       List<InputStream> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+       mortalidadeService.extrairDados(arquivosMortalidade, true);
 
-        List<S3Object> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+       List<InputStream> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+       frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
 
-        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+       String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
+       List<InputStream> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
+       emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
 
-        encerrarAplicacao();
+       String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
+       List<InputStream> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
+       qualidadeArService.extrairDadosQualidadeAr(nomeArquivo, arquivoEmissao);
+       encerrarAplicacao();
     }
 
     static void iniciarAplicacao(){

@@ -31,4 +31,6 @@ public class Logger {
 
         System.out.println(dataFormatada + " " +  "[ERROR]: " + data);
     }
+
+
 }
