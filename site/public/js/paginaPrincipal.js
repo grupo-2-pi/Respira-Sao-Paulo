@@ -35,6 +35,8 @@ const persona = localStorage.getItem('personaSelecionada');
 const ctx = document.getElementById('myChart');
 const ctx2 = document.getElementById('myChartB');
 const ctx3 = document.getElementById('myChartC');
+const ctx4 = document.getElementById("segunda-kpi");
+const ctx5 = document.getElementById("m-segunda-kpi");
 
 const municipios = ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',
     'Mauá', 'Diadema', 'Carapicuíba', 'Barueri', 'Itaquaquecetuba'];
@@ -56,19 +58,81 @@ function aplicarEstiloKPI(id, valorTexto) {
 }
 
 
-if (persona === 'saude') {
+if (persona == 'saude') {
+
+    document.getElementById("segunda-kpi").innerHTML = '<canvas id="velocimetro"></canvas>';
+    document.getElementById("m-segunda-kpi").innerHTML = '<canvas id="m-velocimetro"></canvas>';
 
     // KPI
-    document.getElementById('kpi1-title').textContent = 'Variação de internações mensais';
+    document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
     aplicarEstiloKPI('kpi1-value', -5);
-    document.getElementById('kpi2-title').textContent = 'Tendência do perigo da estação atual';
-    document.getElementById('kpi2-value').textContent = '(velocimetro)';
+
+    new Chart(document.getElementById('velocimetro'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Risco'],
+            datasets: [{
+                data: [30, 70], // ajuste o valor aqui
+                backgroundColor: ['orange', '#eee'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            rotation: -90,
+            circumference: 180,
+            cutout: '75%',
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Risco de Internações - Estação Atual',
+                    font: {
+                        size: 15,
+                        weight: 'bold'
+                    },
+                    padding: {
+                        top: 20,
+                        bottom: 20
+                    }
+                }
+            }
+        }
+    });
+    
+    
     document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
     document.getElementById('kpi3-value').textContent = '4%';
-    document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias*';
+    document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
     aplicarEstiloKPI('m-kpi1-value', 5);
-    document.getElementById('m-kpi2-title').textContent = 'Tendência da estação';
-    document.getElementById('m-kpi2-value').textContent = '(velocimetro)';
+
+    new Chart(document.getElementById('m-velocimetro'), {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [30, 70], // ajuste o valor aqui
+                backgroundColor: ['orange', '#eee'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            rotation: -90,
+            circumference: 180,
+            cutout: '75%',
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Risco de Internações - Estação Atual',
+                    font: {
+                        size: 15,
+                        weight: 'bold'
+                    },
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        }
+    });
     document.getElementById('m-kpi3-title').textContent = 'Taxa de mortalidade do último mês';
     document.getElementById('m-kpi3-value').textContent = '4%';
 
@@ -101,7 +165,7 @@ if (persona === 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Internações Respiratórias X Poluição do Ar - (Mês) de (Ano)',
+                    text: 'Internações Respiratórias X Poluição do Ar',
                     font: {
                         size: 18
                     }
@@ -128,7 +192,7 @@ if (persona === 'saude') {
             datasets: [
                 {
                     label: 'Internações últimos 4 meses',
-                    data: gerarDadosAleatorios(4, 50, 200),
+                    data: gerarDadosAleatorios(4, 50, 150),
                     borderColor: 'rgba(54, 162, 235, 1)'
                 },
                 {
@@ -144,7 +208,7 @@ if (persona === 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Variação Mensal de Internações vs. Média Anual - (Municipio Principal)',
+                    text: 'Variação Mensal de Internações vs. Média Anual',
                     font: {
                         size: 18
                     }
@@ -176,7 +240,7 @@ if (persona === 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Evolução Anual de Gastos: 2023 vs. 2024 (Municipio Principal)',
+                    text: 'Evolução Anual de Gastos: 2023 vs. 2024',
                     font: {
                         size: 18
                     }
@@ -201,17 +265,17 @@ if (persona === 'saude') {
 
 } else {
     // KPIS AMBIENTAL
-    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição*';
+    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('kpi2-title').textContent = 'Região com maior quantidade de transporte*';
-    document.getElementById('kpi2-value').textContent = 'São Paulo';
-    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente*';
+    document.getElementById('kpi2-title').textContent = 'Região com maior nível de poluição';
+    document.getElementById('kpi2-value').textContent = 'São Paulo'
+    document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
     document.getElementById('kpi3-value').textContent = 'CO2';
-    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição*';
+    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição*';
+    document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('m-kpi2-value').textContent = 'São Paulo'
-    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente*'
+    document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente'
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
