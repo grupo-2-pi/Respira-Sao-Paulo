@@ -891,3 +891,25 @@ input:checked+.slider:before {
   box-shadow: var(--shadow);
   font-weight: bold;
 }
+
+
+.msg-erro {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-error {
+  border-color: red !important;
+  background-color: #ffe6e6;
+}
+
+.input-valid {
+  border-color: green !important;
+  background-color: #e6ffe6;
+}
+
+
+
+
