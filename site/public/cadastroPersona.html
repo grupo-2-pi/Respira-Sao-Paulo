@@ -184,84 +184,91 @@
 
     <div class="container">
 
-
         <div class="dados-funcionario">
-
+    
             <div class="contem-tudo-dados">
-
+    
                 <div class="titulo-pagina">
                     <h1>Novo Registro</h1>
                 </div>
+    
                 <div class="contem-placeholder">
-
+    
                     <div class="contem-1">
                         <div class="contem-placeholder-dados">
                             <h3>Nome Completo</h3>
-                            <input type="text" class="place-holder">
+                            <input type="text" id="nomeCompleto" name="nomeCompleto" class="place-holder" placeholder="Exemplo: João Silva">
+                            <span id="erro-nome" class="msg-erro">O nome deve ter pelo menos 3 caracteres e não pode conter números.</span>
                         </div>
-
+    
                         <div class="contem-placeholder-dados">
                             <h3>CPF</h3>
-                            <input type="text" class="place-holder">
+                            <input type="text" id="cpf" name="cpf" class="place-holder" placeholder="Exemplo: 12345678901">
+                            <span id="erro-cpf" class="msg-erro">CPF inválido. Deve ter 11 dígitos numéricos.</span>
                         </div>
                     </div>
+    
                     <div class="contem-2">
                         <div class="contem-placeholder-dados">
                             <h3>Cargo</h3>
-                            <input type="text" class="place-holder">
+                            <input type="text" id="cargo" name="cargo" class="place-holder" placeholder="Exemplo: Desenvolvedor">
+                            <span id="erro-cargo" class="msg-erro">O cargo deve ter pelo menos 2 caracteres.</span>
                         </div>
-
+    
                         <div class="contem-placeholder-dados">
                             <h3>E-mail</h3>
-                            <input type="text" class="place-holder">
+                            <input type="email" id="email" name="email" class="place-holder" placeholder="Exemplo: joao.silva@sptech.school">
+                            <span id="erro-email" class="msg-erro">E-mail inválido.</span>
                         </div>
                     </div>
-
+    
                 </div>
-
+    
             </div>
+    
         </div>
-
+    
         <div class="linha-divisoria"></div>
-
+    
         <div class="dados-empresa">
+    
             <div class="contem-tudo-dados-empresa">
-
+    
                 <div class="contem-placeholder-empresa">
-
+    
                     <div class="contem-3">
-
+    
                         <div class="contem-placeholder-dados-empresa">
                             <h3>Nome da Empresa</h3>
-                            <input type="text" class="place-holder">
+                            <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="place-holder" placeholder="Exemplo: SPTech">
+                            <span id="erro-empresa" class="msg-erro">O nome da empresa deve ter pelo menos 2 caracteres.</span>
                         </div>
-
+    
                         <div class="contem-placeholder-dados-empresa">
                             <h3>CNPJ</h3>
-                            <input type="text" class="place-holder">
+                            <input type="text" id="cnpj" name="cnpj" class="place-holder" placeholder="Exemplo: 12345678000199">
+                            <span id="erro-cnpj" class="msg-erro">CNPJ inválido. Deve ter 14 dígitos numéricos.</span>
                         </div>
-
+    
                     </div>
-
+    
                     <div class="contem-placeholder-dados-empresa-checkbox">
                         <input id="inputGerente" type="checkbox">
                         <h3>O usuário deve ter acesso de gerente.</h3>
                     </div>
-
+    
                 </div>
-
+    
             </div>
+    
         </div>
-
+    
         <div class="botao-cadastrar">
             <h3>CADASTRAR</h3>
         </div>
-
-
-
-
-
+    
     </div>
+    
 
 
 </body>
