@@ -910,7 +910,6 @@ input:checked+.slider:before {
   background-color: #e6ffe6;
 }
 
-/* CONTAINER DOS BOTÕES NO MODAL DE FILTROS */
 .modal-botoes-container {
     display: flex;
     gap: 10px;
@@ -920,7 +919,6 @@ input:checked+.slider:before {
     width: 90%;
 }
 
-/* BOTÃO SALVAR FILTRO */
 .btn-salvar-filtro,
 .btn-adicionar-filtro {
     flex: 1;
@@ -943,5 +941,70 @@ input:checked+.slider:before {
     color: var(--second-text);
 }
 
+/* FILTROS PERSONALIZADOS -------------------------------------------------------------------------------------- */
+.filtro-personalizado-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.filtro-personalizado-btn {
+    background-color: #548a54;
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
+.filtro-personalizado-btn:hover {
+    background-color: #659067;
+    transform: scale(1.05);
+}
+
+.filtro-personalizado-lista {
+    margin-top: 8px;
+    width: 180px;
+    background-color: #f0f7ec;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid #78a678;
+}
+
+.filtro-personalizado-lista ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filtro-personalizado-lista li {
+    padding: 8px 12px;
+    color: #2e482b;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.filtro-personalizado-lista li:hover {
+    background-color: #d8e7d5;
+    color: #1d361b;
+}
+
+.filtro-personalizado-lista.active {
+    max-height: 200px;
+    opacity: 1;
+    visibility: visible;
+}
