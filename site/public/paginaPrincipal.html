@@ -125,7 +125,7 @@
                         <span>Dono de tudo</span>
                     </div>
 
-                    
+
 
                 </div>
                 <!--  <a onclick="goToPerfil(); openSidebar();">
@@ -149,11 +149,12 @@
         <div class="filtro">
 
             <div class="filtroSelecionado">
-                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
+                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São
+                        Paulo</a></h1>
             </div>
 
             <div class="switch-select-container">
-                <select  onchange="switchPersona(this)">
+                <select onchange="switchPersona(this)">
                     <option value="saude">Modo Saúde</option>
                     <option value="ambiental">Modo Ambiental</option>
                 </select>
@@ -200,6 +201,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Região Desejada</h1>
@@ -208,13 +210,14 @@
                             <select name="" class="select-opt" id="regiaoDesejada">
                                 <option></option>
                                 <option value="Sul">Sul</option>
-                                <option value="">Centro-Oeste</option>
-                                <option value="">Norte</option>
-                                <option value="">Nordeste</option>
+                                <option value="Centro-Oeste">Centro-Oeste</option>
+                                <option value="Norte">Norte</option>
+                                <option value="Nordeste">Nordeste</option>
                                 <option value="Leste">Leste</option>
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Ano Desejado</h1>
@@ -230,6 +233,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Mês Desejado</h1>
@@ -253,16 +257,16 @@
                         </div>
                     </div>
 
-                    <div class="filtro-btn" onclick="atualizarDash()">
-                        
-                        <h1>Adicionar Filtro</h1>
-                        
+                    <div class="modal-botoes-container">
+                        <button class="btn-salvar-filtro" onclick="salvarFiltro()">Salvar Filtro</button>
+                        <button class="btn-adicionar-filtro" onclick="atualizarDash()">Aplicar Filtro</button>
                     </div>
+
 
                 </div>
             </div>
-
         </div>
+
 
         <div class="kpis">
 

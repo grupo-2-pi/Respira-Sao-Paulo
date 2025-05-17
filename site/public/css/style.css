@@ -910,6 +910,38 @@ input:checked+.slider:before {
   background-color: #e6ffe6;
 }
 
+/* CONTAINER DOS BOTÕES NO MODAL DE FILTROS */
+.modal-botoes-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    width: 90%;
+}
+
+/* BOTÃO SALVAR FILTRO */
+.btn-salvar-filtro,
+.btn-adicionar-filtro {
+    flex: 1;
+    padding: 8px 0;
+    background-color: var(--primary-btn-bg);
+    border: none;
+    border-radius: 5px;
+    color: var(--title-text);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.btn-salvar-filtro:hover,
+.btn-adicionar-filtro:hover {
+    background-color: var(--second-btn-bg);
+    color: var(--second-text);
+}
 
 
 
