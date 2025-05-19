@@ -29,7 +29,14 @@ public class MortalidadeRespiratoria {
     public void setMes(String mes) {
         this.mes = mes;
     }
-data
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
 
     public String getMunicipio() {
         return municipio;
@@ -77,15 +84,6 @@ data
 
     public void setRegiao(String regiao) {
         this.regiao = regiao;
-    }
-
-
-    public String getAno() {
-        return ano;
-    }
-
-    public void setAno(String ano) {
-        this.ano = ano;
     }
 
     @Override

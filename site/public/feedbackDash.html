@@ -59,19 +59,19 @@
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizadas
                             </button>
                         </div>
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizadas
                             </button>
                         </div>
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizadas
                             </button>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
 
             <div class="user-dropdown-options">
                 <button onclick="goToPersonal()">Dados Pessoais</button>
-                <button>Filtros Salvos</button>
+               <!--  <button>Filtros Salvos</button> -->
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-toggle">
                         <input type="checkbox" id="theme-toggle">
@@ -127,7 +127,7 @@
         <div id="sideBar" class="side-bar">
 
             <div class="img-side-bar" onclick="goToHome()">
-                <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+                <img width="100%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
             </div>
             <div class="side-bar-links-container">
                 <a onclick="goToPaginaInicial()">
@@ -153,7 +153,7 @@
 
                     <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
                         <button onclick="goToPersonal()">Dados Pessoais</button>
-                        <button>Filtros Salvos</button>
+                        <!-- <button>Filtros Salvos</button> -->
                         <div class="theme-switch-wrapper">
                             <label class="theme-switch" for="theme-toggle">
                                 <input type="checkbox" id="theme-toggle">
@@ -418,17 +418,17 @@
             <div class="filtro">
 
                 <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-                <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+<!--                 <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
 
                     <div class="img-filtro">
-                        <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
+                        <img id="id-img-filtro" width="80%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
                     </div>
 
                     <div class="text-filtro">
                         <h1>Filtro</h1>
                     </div>
 
-                </div>
+                </div> -->
                 <!-- TALVEZ REMOVA -->
                 <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
 
@@ -476,43 +476,47 @@
 
             <div class="contem-comentarios">
                <div class="comentario">
-                <div class="cabecalho">
-                    <div class="cabecalho-municipio">
-                       <p>Munícipio:</a>
-                       <p>São Caetano do Sul</a>
+                    <div class="cabecalho">
+                        <div class="cabecalho-municipio">
+                            <p>Munícipio:</p>
+                            <p>São Caetano do Sul</p>
+                        </div>
+                        <div class="cabecalho-poluente">
+                            <p>Poluidor:</p>
+                            <p>CO2</p>
+                        </div>
                     </div>
-                    <div class="cabecalho-poluente">
-                       <p>Poluidor:</a>
-                       <p>CO2</a>
+                    <div class="descricao">
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.
+                        </p>
                     </div>
                 </div>
-                <div class="descricao"><a>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</a></div>
+               <div class="comentario">
+                <div class="cabecalho">
+                    <div class="cabecalho-municipio">
+                       <p>Munícipio:</p>
+                       <p>São Caetano do Sul</p>
+                    </div>
+                    <div class="cabecalho-poluente">
+                       <p>Poluidor:</p>
+                       <p>CO2</p>
+                    </div>
+                </div>
+                <div class="descricao"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</p></div>
                </div>
                <div class="comentario">
                 <div class="cabecalho">
                     <div class="cabecalho-municipio">
-                       <p>Munícipio:</a>
-                       <p>São Caetano do Sul</a>
+                       <p>Munícipio:</p>
+                       <p>São Caetano do Sul</p>
                     </div>
                     <div class="cabecalho-poluente">
-                       <p>Poluidor:</a>
-                       <p>CO2</a>
+                       <p>Poluidor:</p>
+                       <p>CO2</p>
                     </div>
                 </div>
-                <div class="descricao"><a>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</a></div>
-               </div>
-               <div class="comentario">
-                <div class="cabecalho">
-                    <div class="cabecalho-municipio">
-                       <p>Munícipio:</a>
-                       <p>São Caetano do Sul</a>
-                    </div>
-                    <div class="cabecalho-poluente">
-                       <p>Poluidor:</a>
-                       <p>CO2</a>
-                    </div>
-                </div>
-                <div class="descricao"><a>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</a></div>
+                <div class="descricao"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestias magnam, tempora illum optio deleniti ipsum, itaque iusto dolorem aliquid delectus quo sint ratione odio est quis unde veritatis cumque.</p></div>
                </div>
             </div>
 

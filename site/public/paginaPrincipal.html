@@ -57,19 +57,19 @@
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizada
                             </button>
                         </div>
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizada
                             </button>
                         </div>
                         <div class="notification-container">
                             <span>27/02/2025 13:26</span>
                             <button>
-                                Acontecimento muito louco doido explodiu tudo
+                                Base de dados atualizada
                             </button>
                         </div>
                     </div>
@@ -81,6 +81,25 @@
             <div class="user-infos">
                 <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
                 <span>Rosim</span>
+            </div>
+
+            <div class="user-dropdown-options">
+                <button onclick="goToPersonal()">Dados Pessoais</button>
+                <!-- <button>Filtros Salvos</button> -->
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <div class="slider round"></div>
+                    </label>
+                    <span id="theme-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-brightness-high" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </span>
+                </div>
+                <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
             </div>
         </div>
         <!-- FIM NAV BAR -->
@@ -101,7 +120,7 @@
         <div id="sideBar" class="side-bar">
 
             <div class="img-side-bar" onclick="goToHome()">
-                <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+                <img width="100%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
             </div>
             <div class="side-bar-links-container">
                 <a onclick="goToPaginaInicial()">
@@ -125,7 +144,24 @@
                         <span>Dono de tudo</span>
                     </div>
 
-
+                    <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+                        <button onclick="goToPersonal()">Dados Pessoais</button>
+                        <!-- <button>Filtros Salvos</button> -->
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="theme-toggle">
+                                <input type="checkbox" id="theme-toggle">
+                                <div class="slider round"></div>
+                            </label>
+                            <span id="theme-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-brightness-high" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                                </svg>
+                            </span>
+                        </div>
+                        <button id="disconectButton">Desconectar</button>
+                    </div>
 
                 </div>
                 <!--  <a onclick="goToPerfil(); openSidebar();">
@@ -153,12 +189,11 @@
                         Paulo</a></h1>
             </div>
 
-            <div class="switch-select-container">
-                <select onchange="switchPersona(this)">
-                    <option value="saude">Modo Saúde</option>
-                    <option value="ambiental">Modo Ambiental</option>
-                </select>
-            </div>
+
+           <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
+              <button onclick="switchPersona('saude')">Modo Saúde</button>
+              <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
+          </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
             <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
@@ -177,7 +212,7 @@
                 <div class="escolher-filtro">
 
                     <div class="btn-sair" onclick="fecharFiltro()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-x-lg" viewBox="0 0 16 16">
                             <path
                                 d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
@@ -297,7 +332,7 @@
 
                 </div>
 
-                <div class="segunda-kpi">
+                <div class="segunda-kpi" id="m-segunda-kpi">
 
                     <div class="titulo-kpi">
                         <h1 id="m-kpi2-title">Munícipio com maior Indice de Doenças Respiratórias</h1>
@@ -338,7 +373,7 @@
 
                 </div>
 
-                <div class="segunda-kpi">
+                <div class="segunda-kpi" id="segunda-kpi">
 
                     <div class="titulo-kpi">
                         <h1 id='kpi2-title'> Maior Indíce Doenças Respiratórias</h1>

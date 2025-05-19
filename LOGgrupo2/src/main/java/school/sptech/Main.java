@@ -2,17 +2,18 @@ package school.sptech;
 
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.client.NotificationClient;
 import school.sptech.config.JDBCConfig;
 import school.sptech.config.S3Provider;
 import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
+import school.sptech.dto.NotificacaoDto;
 import school.sptech.service.*;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.utils.MapaMunicipiosSP;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class Main {
@@ -46,6 +47,17 @@ public class Main {
         String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
         List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
         qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
+
+        NotificacaoDto noti = new NotificacaoDto(
+                "Chegou mensagem ola"
+        );
+
+        NotificationClient client = new NotificationClient(
+                "https://hooks.slack.com/services/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",
+                new Logger()
+        );
+
+        client.sendMessage(noti);
 
        encerrarAplicacao();
     }
