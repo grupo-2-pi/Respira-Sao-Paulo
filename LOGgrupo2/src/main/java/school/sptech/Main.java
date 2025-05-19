@@ -2,10 +2,12 @@ package school.sptech;
 
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import school.sptech.client.NotificationClient;
 import school.sptech.config.JDBCConfig;
 import school.sptech.config.S3Provider;
 import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
+import school.sptech.dto.NotificacaoDto;
 import school.sptech.service.*;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.utils.MapaMunicipiosSP;
@@ -31,20 +33,31 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
+//
+//        List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+//        mortalidadeService.extrairDados(arquivosMortalidade, true);
+//
+//        List<File> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+//        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+//
+//        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
+//        List<File> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
+//        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
+//
+//        String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
+//        List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
+//        qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
 
-        List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
-        mortalidadeService.extrairDados(arquivosMortalidade, true);
+        NotificacaoDto noti = new NotificacaoDto(
+                "Chegou mensagem ola"
+        );
 
-        List<File> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
-        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+        NotificationClient client = new NotificationClient(
+                "https://hooks.slack.com/services/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",
+                new Logger()
+        );
 
-        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
-        List<File> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
-        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
-
-        String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
-        List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
-        qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
+        client.sendMessage(noti);
 
        encerrarAplicacao();
     }
