@@ -1,0 +1,11 @@
+Entrar na pasta dependências: 
+
+cd Respira-Sao-Paulo/dependencias
+
+Tornar o arquivo executável: 
+
+chmod +x ShellRespiraSP
+
+Executar o Shell Script:
+
+./ShellRespiraSP

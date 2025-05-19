@@ -185,13 +185,15 @@
         <div class="filtro">
 
             <div class="filtroSelecionado">
-                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
+                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São
+                        Paulo</a></h1>
             </div>
 
-         <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
-            <button onclick="switchPersona('saude')">Modo Saúde</button>
-            <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
-        </div>
+
+           <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
+              <button onclick="switchPersona('saude')">Modo Saúde</button>
+              <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
+          </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
             <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
@@ -234,6 +236,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Região Desejada</h1>
@@ -242,13 +245,14 @@
                             <select name="" class="select-opt" id="regiaoDesejada">
                                 <option></option>
                                 <option value="Sul">Sul</option>
-                                <option value="">Centro-Oeste</option>
-                                <option value="">Norte</option>
-                                <option value="">Nordeste</option>
+                                <option value="Centro-Oeste">Centro-Oeste</option>
+                                <option value="Norte">Norte</option>
+                                <option value="Nordeste">Nordeste</option>
                                 <option value="Leste">Leste</option>
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Ano Desejado</h1>
@@ -264,6 +268,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Mês Desejado</h1>
@@ -287,16 +292,28 @@
                         </div>
                     </div>
 
-                    <div class="filtro-btn" onclick="atualizarDash()">
-                        
-                        <h1>Adicionar Filtro</h1>
-                        
+                    <div class="modal-botoes-container">
+                        <button class="btn-salvar-filtro" onclick="salvarFiltro()">Salvar Filtro</button>
+                        <button class="btn-adicionar-filtro" onclick="atualizarDash()">Aplicar Filtro</button>
                     </div>
 
+
                 </div>
+
+
+
+
+
             </div>
 
+
+
+
         </div>
+
+
+
+
 
         <div class="kpis">
 
@@ -411,6 +428,16 @@
 
     </div>
 
+    <div class="filtro-personalizado-container" id="filtroPersonalizadoContainer">
+        <button class="filtro-personalizado-btn" onclick="toggleFiltroPersonalizado()">Filtros Salvos ⤴︎</button>
+        <div class="filtro-personalizado-lista" id="filtroPersonalizadoLista">
+            <ul id="listaFiltrosPersonalizados">
+                <li>Filtro Exemplo 1</li>
+                <li>Filtro Exemplo 2</li>
+            </ul>
+        </div>
+    </div>
+
 
 </body>
 
@@ -421,3 +448,5 @@
 <script src="./js/paginaPrincipal.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/navegarSite.js"></script>
+<script src="./js/filtrosPersonalizados.js"></script>
+
