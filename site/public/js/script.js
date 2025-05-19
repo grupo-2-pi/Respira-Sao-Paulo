@@ -135,5 +135,5 @@ function goToPerfil(){
 }
 
 function disconnectAccount(){
-  location.replace("/autenticacao.html");
+  location.replace("../public/autenticacao.html");
 }
