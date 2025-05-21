@@ -15,7 +15,7 @@ CREATE TABLE FeedbackPopulacao (
   descricao VARCHAR(45),
   tipoPoluicao VARCHAR(45),
   municipio VARCHAR(45),
-  data DATE,
+  dtEnvio DATE,
   classificacao INT
 );
 
