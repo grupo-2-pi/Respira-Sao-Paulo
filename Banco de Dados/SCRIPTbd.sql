@@ -16,7 +16,7 @@ CREATE TABLE FeedbackPopulacao (
   tipoPoluicao VARCHAR(45),
   municipio VARCHAR(45),
   data DATE,
-  classificacao VARCHAR(45)
+  classificacao INT
 );
 
 CREATE TABLE FrotaCirculante (
