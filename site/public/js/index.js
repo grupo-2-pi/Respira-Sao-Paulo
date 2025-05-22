@@ -1,6 +1,6 @@
 var sideBar = document.querySelector(".side-bar");
 
-function openSidebar(){
+export function openSidebar(){
   var body  = document.querySelector(".body");
 
   if(sideBar.classList.contains("active")){
@@ -27,24 +27,29 @@ var clickOutsideHandler = (event) => {
   }
 };
 
-function goToHistory(){
+export function goToHistory(){
   var div = document.querySelector(".historia");
   div.scrollIntoView({ behavior: "smooth" });
 }
 
-function goToCrenca(){
+export function goToCrenca(){
   var div = document.querySelector(".container");
   div.scrollIntoView({ behavior: "smooth" });
 }
-function goToFeedback(){
+export function goToFeedback(){
   var div = document.querySelector(".feedback-container");
   div.scrollIntoView({ behavior: "smooth" });
 }
 
-function goToFeedbackPage(){
+export function goToFeedbackPage(){
   location.replace(`/feedback.html`)
 }
 
-function goToAuth(){
+export function goToAuth(){
   location.replace("/autenticacao.html");
 }
+
+export const envVars = {
+  appHost: "localhost",
+  appPort: 3000
+};

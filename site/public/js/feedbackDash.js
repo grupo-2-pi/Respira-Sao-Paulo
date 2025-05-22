@@ -1,85 +1,34 @@
+import { envVars } from "./index.js";
+
+
+const regioes = [
+    "ABC",
+    "Centro",
+    "Grande São Paulo",
+    "Vale do Paraíba",
+    "Campinas",
+    "Sorocaba",
+    "Baixada Santista",
+    "Ribeirão Preto",
+    "São Carlos",
+    "Bauru",
+    "Marília",
+    "Araçatuba",
+    "Presidente Prudente",
+    "São José do Rio Preto",
+    "Piracicaba",
+    "Macro Região",
+    "Vale do Ribeira"
+];
+
+const estadoUsuario = "São Paulo";
 var contador = 0;
-var listaResultado = gerarDadosAleatorios(10, 0, 20);
-var mobileKPIs = document.querySelectorAll('.primeira-divisao-kpi h1');
-mobileKPIs[0].innerText = 'Índice de Satisfação Ambiental';
-mobileKPIs[1].innerText = 'Velocimetro';
-mobileKPIs[2].innerText = 'Causa dominante ';
-mobileKPIs[3].innerText = 'Indústrias';
-mobileKPIs[4].innerText = 'Total de Comentários por Município (Últimos 30 Dias)*';
-mobileKPIs[5].innerText = 'São Paulo - 10 comentários';
-
-// Altera os valores das KPIs da versão DESKTOP
-var desktopKPIs = document.querySelectorAll('.primeira-divisao-kpi2 h1');
-desktopKPIs[0].innerText = 'Índice de Satisfação Ambiental';
-desktopKPIs[1].innerText = '(Velocimetro)';
-desktopKPIs[2].innerText = 'Causa dominante ';
-desktopKPIs[3].innerText = 'Indústrias';
-desktopKPIs[4].innerText = 'Total de Comentários (Últimos 30 Dias)*';
-desktopKPIs[5].innerText = 'São Paulo - 10 comentários';
-
-
-const regiaoSul = {
-    "São Paulo": 500,
-    "Guarulhos": 300,
-    "Bernardo": 225,
-    "Santo Andre": 200,
-    "Osasco": 45,
-    "Mauá": 15,
-    "Diadema": 33,
-    "Carapicuíba": 10,
-    "Barueri": 112,
-    "Itaquaquecetuba": 10
-}
-
-const regiaoLeste = {
-    "Campinas": 200,
-    "Piracicaba": 100,
-    "Limeira": 75
-}
-
-
 
 const myChart = document.getElementById('myChartXX');
 
+const myChartXX = null;
 
-const myChartXX = new Chart(myChart, {
-    type: 'bar',
-    data: {
-        labels: municipios.slice(0, 10),
-        datasets: [{
-            label: 'Quantidade de comentários',
-            data: listaResultado,
-            backgroundColor: 'rgba(255, 159, 64, 0.7)'
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Quantidade de Comentários por região'
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Quantidade de comentários'
-                }
-            },
-            x: {
-                title: {
-                    display: true,
-                    text: 'Municipios'
-                }
-            }
-        }
-    }
-});
-
-function abrirComentarios() {
+export function abrirComentarios() {
 
 
     if (contador == 0) {
@@ -92,8 +41,8 @@ function abrirComentarios() {
         contador = 0;
     }
 }
-
-function atualizarDash() {
+/* 
+export function atualizarDash() {
 
     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
     lista = gerarDadosAleatorios2(10, 0, 20);
@@ -103,19 +52,19 @@ function atualizarDash() {
     var anoPrincipalA = anoDesejado.value;
     var mesPrincipalA = mesDesejado.value;
 
-    if(municipioPrincipalA == ''){
+    if (municipioPrincipalA == '') {
         municipioFeedback.innerHTML = 'São Paulo';
-    }else{
+    } else {
         municipioFeedback.innerHTML = municipioPrincipalA;
     }
-    if(anoPrincipalA == ''){
+    if (anoPrincipalA == '') {
         anoFeedback.innerHTML = '2024';
-    }else{
+    } else {
         anoFeedback.innerHTML = anoPrincipalA;
     }
-    if(mesPrincipalA == ''){
+    if (mesPrincipalA == '') {
         mesFeedback.innerHTML = 'Janeiro';
-    }else{
+    } else {
         mesFeedback.innerHTML = mesPrincipalA;
     }
 
@@ -123,7 +72,7 @@ function atualizarDash() {
 
 }
 
-function mudarChartJs(regiao) {
+export function mudarChartJs(regiao) {
 
     if (regiao == 'Sul') {
 
@@ -148,4 +97,94 @@ function mudarChartJs(regiao) {
     }
 
     myChartXX.update();
+} */
+
+export async function buscarDados() {
+    try {
+        // Buscar filtros antes quando estiver implementado
+
+        const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/feedback/buscar/${estadoUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        );
+
+        const jsonData = await response.json();
+
+        const { graficos } = jsonData;
+
+        const { kpis } = jsonData;
+
+        causaDominante.innerHTML = kpis.causaDominante;
+        totalComentarios.innerHTML = kpis.totalComentarios;
+
+        causaDominanteMobile.innerHTML = kpis.causaDominante;
+        totalComentariosMobile.innerHTML = kpis.totalComentarios;
+
+        const rating = Number(kpis.notaTotal).toFixed(0);
+
+        const starsDesktop = document.querySelectorAll('#ratingMobile .star svg');
+
+        console.log(rating);
+
+        starsDesktop.forEach((star, index) => {
+            console.log("A");
+            if (index < rating) {
+                star.classList.add("filled");
+                console.log(star)
+            }
+        });
+
+        const dadosGrafico = graficos.responseGrafico.map((g) => {
+            return g.totalComentarios
+        });
+
+        myChartXX = new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: regioes,
+                datasets: [{
+                    label: 'Quantidade de comentários',
+                    data: dadosGrafico,
+                    backgroundColor: 'rgba(255, 159, 64, 0.7)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Quantidade de Comentários por região'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantidade de comentários'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Municipios'
+                        }
+                    }
+                }
+            }
+        });
+
+        console.log(kpis);
+
+        console.log(jsonData);
+
+    } catch (e) {
+        console.log(e);
+    }
 }
+
+document.addEventListener('DOMContentLoaded', buscarDados);
