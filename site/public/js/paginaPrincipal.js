@@ -140,82 +140,53 @@ if (persona == 'saude') {
 
     // Gráfico de barra - Do lado esquedo tem o número de internações, do lado direito, a qualidade do ar.
     // Baseado nos filtros, a pessoa poderá selecionar o periodo e os estados que gostaria de ver 
-    new Chart(ctx3, {
-        type: 'bar',
-        data: {
-            labels: municipios.slice(0, 10),
-            datasets: [
-                {
-                    label: 'Internações (quantidade)',
-                    data: gerarDadosAleatorios(10, 100, 1000),
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    xAxisID: 'internacoes'
-                },
-                {
-                    label: 'Poluição (µg/m³)',
-                    data: gerarDadosAleatorios(10, 50, 200),
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                    xAxisID: 'poluicao'
-                }
-            ]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Internações Respiratórias X Poluição do Ar',
-                    font: {
-                        size: 18
-                    }
-                }
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: municipios.slice(0, 10),
+        datasets: [
+            {
+                label: 'Internações (quantidade)',
+                data: gerarDadosAleatorios(10, 100, 1000),
+                backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                yAxisID: 'internacoes',
+                barThickness: 20
             },
-            scales: {
-                internacoes: {
-                    position: 'bottom',
-                    title: { display: true, text: 'Internações' }
-                },
-                poluicao: {
-                    position: 'top',
-                    title: { display: true, text: 'Poluição' }
-                }
+            {
+                label: 'Poluição (µg/m³)',
+                data: gerarDadosAleatorios(10, 50, 200),
+                type: 'line', // muda para linha
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                yAxisID: 'poluicao'
             }
-        }
-    });
-
-    //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
-    new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: ['Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-            datasets: [
-                {
-                    label: 'Internações últimos 4 meses',
-                    data: gerarDadosAleatorios(4, 50, 150),
-                    borderColor: 'rgba(54, 162, 235, 1)'
-                },
-                {
-                    label: 'Média do último ano',
-                    data: Array(4).fill(100),
-                    borderColor: 'rgba(255, 206, 86, 1)'
-                }
-            ]
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Internações Respiratórias X Poluição do Ar ℹ️',
+                font: { size: 18 }
+            }
         },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Variação Mensal de Internações vs. Média Anual',
-                    font: {
-                        size: 18
-                    }
-                }
+        onClick: () => alert('Este gráfico mostra a relação entre internações respiratórias com a qualidade do ar.'),
+        scales: {
+            internacoes: {
+                type: 'linear',
+                position: 'left',
+                title: { display: true, text: 'Internações' }
+            },
+            poluicao: {
+                type: 'linear',
+                position: 'right',
+                title: { display: true, text: 'Poluição (µg/m³)' },
+                grid: { drawOnChartArea: false } // remove linhas duplicadas
             }
         }
-    });
+    }
+});
     //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
     new Chart(ctx, {
         type: 'line',
@@ -231,7 +202,14 @@ if (persona == 'saude') {
                     label: 'Gastos 2024',
                     data: gerarDadosAleatorios(12, 10, 20),
                     borderColor: 'rgba(255, 99, 132, 1)'
-                }
+                },
+                {
+                label: 'Média dos Gastos',
+                data: [15,15,15,15,15,15,15,15,15,15,15,15,15],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderDash: [5, 5],
+                fill: false
+            }
             ]
         },
         options: {
@@ -240,12 +218,13 @@ if (persona == 'saude') {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Evolução Anual de Gastos: 2023 vs. 2024',
+                    text: 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️',
                     font: {
                         size: 18
                     }
                 }
-            },
+            }, 
+            onClick: () => alert('Este gráfico mostra os gastos mensais em dois anos e uma linha média para comparação.'),
             scales: {
                 y: {
                     title: {

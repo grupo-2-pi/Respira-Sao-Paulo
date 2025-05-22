@@ -49,31 +49,10 @@
                     <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
                         alt="Imagem de Notificações">
                 </div>
-                <a>
-                    Notificações
+                <a href="./verUsuario.html">
+                    Ver Usuário
                 </a>
-                <div class="notification-dropdown">
-                    <div class="notification-dropdown-options">
-                        <div class="notification-container">
-                            <span>27/02/2025 13:26</span>
-                            <button>
-                                Base de dados atualizada
-                            </button>
-                        </div>
-                        <div class="notification-container">
-                            <span>27/02/2025 13:26</span>
-                            <button>
-                                Base de dados atualizada
-                            </button>
-                        </div>
-                        <div class="notification-container">
-                            <span>27/02/2025 13:26</span>
-                            <button>
-                                Base de dados atualizada
-                            </button>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
 
         </div>
@@ -402,16 +381,18 @@
 
         </div>
 
-        <div class="dashboards">
-            <div class="terceira-dashboard">
-                <div class="tamanho-dash"><canvas id="myChartC"></canvas></div>
-            </div>
-        </div>
 
 
     </div>
 
-
+  <div class="filtro-personalizado-container" id="filtroPersonalizadoContainer">
+        <button class="filtro-personalizado-btn" onclick="toggleFiltroPersonalizado()">Filtros Salvos ⤴︎</button>
+        <div class="filtro-personalizado-lista" id="filtroPersonalizadoLista">
+            <ul id="listaFiltrosPersonalizados">
+              
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -421,3 +402,4 @@
 <script src="./js/paginaPrincipal.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/navegarSite.js"></script>
+<script src="./js/filtrosPersonalizados.js"></script>

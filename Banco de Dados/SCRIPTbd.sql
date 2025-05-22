@@ -10,6 +10,14 @@ CREATE TABLE Admin (
     senha VARCHAR(45)
 );
 
+CREATE TABLE FeedbackPopulacao (
+  idFeedbackPopulacao INT AUTO_INCREMENT PRIMARY KEY,
+  descricao VARCHAR(45),
+  tipoPoluicao VARCHAR(45),
+  municipio VARCHAR(45),
+  dtEnvio DATE,
+  classificacao INT
+);
 
 CREATE TABLE FrotaCirculante (
     iddadosCETESB INT AUTO_INCREMENT PRIMARY KEY,

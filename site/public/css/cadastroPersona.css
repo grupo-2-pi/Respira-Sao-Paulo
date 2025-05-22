@@ -166,6 +166,13 @@
         gap: 5vw;        
     }
 
+    .contem-extra{
+        display: flex;
+        justify-content: left;
+        margin-left: 10%;
+        gap: 5vw;        
+    }
+
     .linha-divisoria{
         height: 0.2vh;
     }
