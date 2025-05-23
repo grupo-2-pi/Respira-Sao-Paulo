@@ -155,7 +155,7 @@ if (persona == 'saude') {
             {
                 label: 'Poluição (µg/m³)',
                 data: gerarDadosAleatorios(10, 50, 200),
-                type: 'line', // muda para linha
+                type: 'line',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 yAxisID: 'poluicao'
@@ -244,13 +244,13 @@ if (persona == 'saude') {
 
 } else {
     // KPIS AMBIENTAL
-    document.getElementById('kpi1-title').textContent = 'Região com maior nível de poluição';
+    document.getElementById('kpi1-title').textContent = 'Municipio com maior nível de poluição';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
-    document.getElementById('kpi2-title').textContent = 'Região com maior nível de poluição';
-    document.getElementById('kpi2-value').textContent = 'São Paulo'
+    document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
+    aplicarEstiloKPI('kpi2-value', -5);
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
     document.getElementById('kpi3-value').textContent = 'CO2';
-    document.getElementById('m-kpi1-title').textContent = 'Regiões maior nível de poluição';
+    document.getElementById('m-kpi1-title').textContent = 'Municipio maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
     document.getElementById('m-kpi2-title').textContent = 'Região com maior nível de poluição';
     document.getElementById('m-kpi2-value').textContent = 'São Paulo'
@@ -259,84 +259,61 @@ if (persona == 'saude') {
 
     // Gráficos para persona Ambiental
     const ctx = document.getElementById('myChart');
-    const ctxx = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Carro', 'Moto', 'Caminhão', 'Ônibus'],
-            datasets: [{
-                label: 'Emissão média de CO₂',
-                data: gerarDadosAleatorios(4, 100, 300),
-                backgroundColor: 'rgba(75, 192, 192, 0.7)'
-            }]
+ new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',
+                 'Mauá', 'Diadema', 'Carapicuíba', 'Barueri', 'Itaquaquecetuba'],
+        datasets: [
+            {
+                label: 'Carro',
+                data: gerarDadosAleatorios(10,50,100),
+                backgroundColor: 'rgba(75, 192, 192, .7)'  
+            },
+            {
+                label: 'Moto',
+                data: gerarDadosAleatorios(10,50,100),
+                backgroundColor: 'rgba(153, 12, 255, .7)'
+            },
+            {
+                label: 'Caminhão',
+                data: gerarDadosAleatorios(10,50,100),
+                backgroundColor: 'rgba(255, 99, 132, .7)'
+            },
+            {
+                label: 'Ônibus',
+                data: gerarDadosAleatorios(10,50,100),
+                backgroundColor: 'rgba(255, 26, 86, 0.7)'
+            }
+        ]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Emissão total de CO₂ por município e tipo de veículo'
+            }
         },
-        options: {
-            plugins: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                stacked: true,
                 title: {
                     display: true,
-                    text: 'Emissão de CO₂ por Tipo de Veículo',
-                    font: {
-                        size: 14
-                    }
+                    text: 'Municípios'
                 }
             },
-            maintainAspectRatio: false,
-            responsive: true,
-            scales: {
-                y: {
-                    title: {
-                        display: true,
-                        text: '(g/km)'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Automóveis'
-                    }
+            y: {
+                stacked: true,
+                title: {
+                    display: true,
+                    text: 'Emissão total (em milhares de gramas)'
                 }
             }
         }
-    });
-    const ctx3 = document.getElementById('myChartC');
-    const toPuto = new Chart(ctx3, {
-        type: 'bar',
-        data: {
-            labels: municipios.slice(0, 10),
-            datasets: [{
-                label: 'Quantidade de veículos',
-                data: gerarDadosAleatorios(10, 10000, 30000),
-                backgroundColor: 'rgba(255, 159, 64, 0.7)'
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Quantidade de transporte por região',
-                    font: {
-                        size: 14
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Quantidade de veículos'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Municipios'
-                    }
-                }
-            }
-        }
-    });
+    }
+});
 
     //Talvez o ideal é deixar os dados aleatórios, já que temos só 2 meses
     new Chart(ctx2, {
@@ -361,7 +338,15 @@ if (persona == 'saude') {
                     data: gerarDadosAleatorios(12, 50, 100),
                     borderColor: 'rgba(255, 206, 86, 1)',
                     backgroundColor: 'rgba(255, 206, 86, 0.2)'
-                }
+                },
+                                {
+                label: 'Média dos Gastos',
+                data: gerarDadosAleatorios(12,75,75),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderDash: [5, 5],
+                fill: false
+            }
+
             ]
         },
         options: {
