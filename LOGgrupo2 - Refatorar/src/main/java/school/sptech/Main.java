@@ -21,10 +21,9 @@ public class Main {
     public static Logger logger = new Logger();
     public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
-    private static final MapaMunicipiosSP mapaMunicipios = new MapaMunicipiosSP();
     private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
     private final static ExcelUtils excelUtils = new ExcelUtils();
-    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaService(logger, excelUtils, jdbcTemplate,mapaMunicipios);
+    private final static MortalidadeRespiratoriaService mortalidadeService = new MortalidadeRespiratoriaServi(logger, excelUtils, jdbcTemplate);
     private static final S3Client s3Client = new S3Provider().getS3Client();
     private static final S3Service s3Service = new S3Service(s3Client, "respirasp-bucket", logger);
     private static final FrotaCirulanteService frotaCirculante = new FrotaCirulanteService(logger, excelUtils, jdbcTemplate);

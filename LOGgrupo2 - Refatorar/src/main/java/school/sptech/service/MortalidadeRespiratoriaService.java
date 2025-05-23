@@ -9,34 +9,29 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.File;
 import school.sptech.database.model.Logger;
 import school.sptech.database.model.MortalidadeRespiratoria;
+import school.sptech.database.model.dao.FrotaCirculanteDao;
 import school.sptech.database.model.dao.MortalidadeDao;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.utils.MapaMunicipiosSP;
 
 import java.util.List;
 
-public class MortalidadeRespiratoriaService {
+public class MortalidadeRespiratoriaService extends Services{
 
-    private final Logger logger;
-    private final ExcelUtils excelUtils;
-    private final JdbcTemplate jdbcTemplate;
     private final MortalidadeDao mortalidadeDao;
-    private final MapaMunicipiosSP mapaMunicipiosSP;
-    private final LogService logService;
 
-    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
-        this.logger = logger;
-        this.excelUtils = excelUtils;
-        this.jdbcTemplate = jdbcTemplate;
-        this.mapaMunicipiosSP = mapaMunicipiosSP;
+
+    public MortalidadeRespiratoriaService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+        super(logger, excelUtils, jdbcTemplate);
         this.mortalidadeDao = new MortalidadeDao(jdbcTemplate);
-        this.logService = new LogService(this.jdbcTemplate);
     }
+
+
 
     public void extrairDados(List<File> arquivos, Boolean xlsx) {
         try {
             for (File arquivo : arquivos) {
-                logger.info("Iniciando leitura do arquivo de mortalidade");
+                super.getLogger().info("Iniciando leitura do arquivo de mortalidade");
 
                 Workbook workbook;
                 if (xlsx) {
@@ -47,34 +42,34 @@ public class MortalidadeRespiratoriaService {
 
                 Sheet sheet = workbook.getSheetAt(0);
 
-                logger.info("Ultima linha " + sheet.getLastRowNum());
+                super.getLogger().info("Ultima linha " + sheet.getLastRowNum());
 
                 for (Row row : sheet ) {
-                    logger.info("Linha " + excelUtils.getValorCelulaComoTexto(row.getCell(0)));
+                    super.getLogger().info("Linha " + super.getExcelUtils().getValorCelulaComoTexto(row.getCell(0)));
 
                     if(
-                            excelUtils.getValorCelulaComoTexto(row.getCell(0)).contains("Fonte")||
-                                    excelUtils.getValorCelulaComoTexto(row.getCell(0)).startsWith("Total")
+                            super.getExcelUtils().getValorCelulaComoTexto(row.getCell(0)).contains("Fonte")||
+                                    super.getExcelUtils().getValorCelulaComoTexto(row.getCell(0)).startsWith("Total")
                     ){
 
-                        logger.info("Caiu no if");
+                        super.getLogger().info("Caiu no if");
                         break;
                     }
                     if(row.getRowNum() == 1 || row.getRowNum() == 0){
                         continue;
                     }
 
-                    logger.info("Realizando leitura da linha " + row.getRowNum());
+                    super.getLogger().info("Realizando leitura da linha " + row.getRowNum());
 
-                    String valorTotalSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(3)).replace(".", "");
+                    String valorTotalSemPonto = super.getExcelUtils().getValorCelulaComoTexto(row.getCell(3)).replace(".", "");
                     String valorTotalFormatado = valorTotalSemPonto.replaceAll(",", ".");
 
-                    String internacoesSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(2)).replace(".", "");
-                    String obitosSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(4)).replace(".","");
-                    String taxaSemPonto = excelUtils.getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
+                    String internacoesSemPonto = super.getExcelUtils().getValorCelulaComoTexto(row.getCell(2)).replace(".", "");
+                    String obitosSemPonto = super.getExcelUtils().getValorCelulaComoTexto(row.getCell(4)).replace(".","");
+                    String taxaSemPonto = super.getExcelUtils().getValorCelulaComoTexto(row.getCell(5)).replace(".", "");
                     String taxaFormatada =taxaSemPonto.replace(",", ".");
 
-                    String municipio = excelUtils.getValorCelulaComoTexto(row.getCell(0));
+                    String municipio = super.getExcelUtils().getValorCelulaComoTexto(row.getCell(0));
 
                     Integer ultimoIndexMunicipio = municipio.length();
 
@@ -93,22 +88,22 @@ public class MortalidadeRespiratoriaService {
                             internacoesSemPonto.equals("-") ? null : Double.valueOf(internacoesSemPonto),
                             obitosSemPonto.equals("-") ? null : Integer.valueOf(obitosSemPonto),
                             taxaFormatada.equals("-") ? null : Double.valueOf(taxaFormatada),
-                            mapaMunicipiosSP.pegarMunicipio(municipioFormatado)
+                            super.getMapaMunicipiosSP().pegarMunicipio(municipioFormatado)
                     );
 
-                    logger.info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
+                    super.getLogger().info("Mortalidade extraida: " + mortalidadeRespiratoria.toString());
 
-                    logService.salvarLog("INFO","Mortalidade extraida: " + mortalidadeRespiratoria.toString());
+                    super.getLogService().salvarLog("INFO","Mortalidade extraida: " + mortalidadeRespiratoria.toString());
 
                     mortalidadeDao.save(mortalidadeRespiratoria);
                 }
 
                 workbook.close();
 
-                logger.info("Leitura finalizada com sucesso\n");
+                super.getLogger().info("Leitura finalizada com sucesso\n");
             }
         } catch (Exception e) {
-            logger.error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage());
+            super.getLogger().error("Erro ao realizar a leitura do arquivo relacionado as doenças " + e.getMessage());
         }
     }
 }
