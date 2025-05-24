@@ -110,3 +110,16 @@ CREATE TABLE Notificacoes (
     FOREIGN KEY (idFuncionario) REFERENCES Funcionario(idFuncionario),
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
+
+
+CREATE TABLE Filtro (
+idFiltro INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(45),
+regiao VARCHAR(45),
+ano INT,
+mes INT,
+fkFuncionario INT,
+fkEmpresa INT,
+FOREIGN KEY (fkFuncionario) REFERENCES Funcionario(idFuncionario),
+FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+);
