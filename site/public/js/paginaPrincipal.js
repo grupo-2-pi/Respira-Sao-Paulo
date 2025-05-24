@@ -1,3 +1,4 @@
+// Para mockar dados aleatórios
 function gerarDadosAleatorios(quantidade, min, max) {
     var resultado = [];
 
@@ -8,20 +9,6 @@ function gerarDadosAleatorios(quantidade, min, max) {
 
     return resultado;
 }
-
-function gerarDadosAleatorios2(quantidade, min, max) {
-    var resultado = [];
-
-    for (var i = 0; i < quantidade; i++) {
-        var numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
-        resultado.push(numeroAleatorio);
-    }
-
-    return resultado;
-}
-
-
-
 
 function switchPersona(persona) {
     localStorage.setItem('personaSelecionada', persona);
@@ -59,20 +46,21 @@ function aplicarEstiloKPI(id, valorTexto) {
 
 
 if (persona == 'saude') {
-
+    // Para o velocimetro
     document.getElementById("segunda-kpi").innerHTML = '<canvas id="velocimetro"></canvas>';
     document.getElementById("m-segunda-kpi").innerHTML = '<canvas id="m-velocimetro"></canvas>';
 
     // KPI
     document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
-    aplicarEstiloKPI('kpi1-value', -5);
+    aplicarEstiloKPI('kpi1-value', -5); // Para o valor dessa KPI, tem que fazer a seguinte conta: ((Mês1 - Mês2) / Mês2) * 100
 
-    new Chart(document.getElementById('velocimetro'), {
+
+    new Chart(document.getElementById('velocimetro'), { // Nessa KPI, não precisa de dados, só setar um valor baseado no mês atual, ex : janeiro vale 10 - fervereiro 20 e baseado no mês que estamos, coloca esse valor
         type: 'doughnut',
         data: {
             labels: ['Risco'],
             datasets: [{
-                data: [30, 70], // ajuste o valor aqui
+                data: [30, 70],
                 backgroundColor: ['orange', '#eee'],
                 borderWidth: 0
             }]
@@ -100,15 +88,15 @@ if (persona == 'saude') {
     
     
     document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
-    document.getElementById('kpi3-value').textContent = '4%';
+    document.getElementById('kpi3-value').textContent = '4%'; //tem essa informação no BD
     document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
-    aplicarEstiloKPI('m-kpi1-value', 5);
+    aplicarEstiloKPI('m-kpi1-value', 5);// Para o valor dessa KPI, tem que fazer a seguinte conta: ((Mês1 - Mês2) / Mês2) * 100 // 
 
     new Chart(document.getElementById('m-velocimetro'), {
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [30, 70], // ajuste o valor aqui
+                data: [30, 70], 
                 backgroundColor: ['orange', '#eee'],
                 borderWidth: 0
             }]
@@ -134,7 +122,7 @@ if (persona == 'saude') {
         }
     });
     document.getElementById('m-kpi3-title').textContent = 'Taxa de mortalidade do último mês';
-    document.getElementById('m-kpi3-value').textContent = '4%';
+    document.getElementById('m-kpi3-value').textContent = '4%'; // tem essa informação no BD
 
     // Gráficos para persona da Saúde
 
@@ -143,18 +131,18 @@ if (persona == 'saude') {
   new Chart(ctx2, {
     type: 'bar',
     data: {
-        labels: municipios.slice(0, 10),
+        labels: municipios.slice(0, 10), // Esse múnicipio vai se baseado nas regiões, e cada região vai ter seus próprios municipios
         datasets: [
             {
                 label: 'Internações (quantidade)',
-                data: gerarDadosAleatorios(10, 100, 1000),
+                data: gerarDadosAleatorios(10, 100, 1000), // Tem a informação de internações nos dados da saúde
                 backgroundColor: 'rgba(54, 162, 235, 0.7)',
                 yAxisID: 'internacoes',
                 barThickness: 20
             },
             {
                 label: 'Poluição (µg/m³)',
-                data: gerarDadosAleatorios(10, 50, 200),
+                data: gerarDadosAleatorios(10, 50, 200), // Tem a qualidade de gás poluentes nos dados do ar, n sei se somamos a quantidade de todos os gases ou não
                 type: 'line',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -195,7 +183,7 @@ if (persona == 'saude') {
             datasets: [
                 {
                     label: 'Gastos 2023',
-                    data: gerarDadosAleatorios(12, 10, 20),
+                    data: gerarDadosAleatorios(12, 10, 20), // tem os dados dos gastos no BD de saúde(mas não de ano atual)
                     borderColor: 'rgba(54, 162, 235, 1)'
                 },
                 {
@@ -205,7 +193,7 @@ if (persona == 'saude') {
                 },
                 {
                 label: 'Média dos Gastos',
-                data: [15,15,15,15,15,15,15,15,15,15,15,15,15],
+                data: [15,15,15,15,15,15,15,15,15,15,15,15,15], // Fazer a média para colocar aqui
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderDash: [5, 5],
                 fill: false
@@ -245,11 +233,11 @@ if (persona == 'saude') {
 } else {
     // KPIS AMBIENTAL
     document.getElementById('kpi1-title').textContent = 'Municipio com maior nível de poluição';
-    document.getElementById('kpi1-value').textContent = 'Guarulhos';
+    document.getElementById('kpi1-value').textContent = 'Guarulhos'; // Com o maior podemos somar a quantidade de poluente no ar?
     document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
-    aplicarEstiloKPI('kpi2-value', -5);
+    aplicarEstiloKPI('kpi2-value', -5);// Mesma conta pensada lá de cima
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
-    document.getElementById('kpi3-value').textContent = 'CO2';
+    document.getElementById('kpi3-value').textContent = 'CO2';// Colocar o gás que está em mais quantidade no BD de qualidade do ar
     document.getElementById('m-kpi1-title').textContent = 'Municipio maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
     document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
@@ -262,12 +250,12 @@ if (persona == 'saude') {
  new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',
+        labels: ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',// Aqui vai ser parecido com o municipio slice, pegando a região do filtro
                  'Mauá', 'Diadema', 'Carapicuíba', 'Barueri', 'Itaquaquecetuba'],
         datasets: [
             {
                 label: 'Carro',
-                data: gerarDadosAleatorios(10,50,100),
+                data: gerarDadosAleatorios(10,50,100), // aqui terá que fazer a conta que é quantidadePoluiçãoCarro x QuantidadeDeCarro. Tem essas duas informações no BD
                 backgroundColor: 'rgba(75, 192, 192, .7)'  
             },
             {
@@ -315,15 +303,14 @@ if (persona == 'saude') {
     }
 });
 
-    //Talvez o ideal é deixar os dados aleatórios, já que temos só 2 meses
     new Chart(ctx2, {
         type: 'line',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
             datasets: [
                 {
-                    label: 'São Paulo',
-                    data: gerarDadosAleatorios(12, 50, 100),
+                    label: 'São Paulo',// os municiíos que aparecerão aqui vão ser baseadas na região do filtro
+                    data: gerarDadosAleatorios(12, 50, 100), // Os dados de poluição tem na qualidade do ar.
                     borderColor: 'rgba(255, 99, 132, 1)',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)'
                 },
@@ -341,7 +328,7 @@ if (persona == 'saude') {
                 },
                                 {
                 label: 'Média dos Gastos',
-                data: gerarDadosAleatorios(12,75,75),
+                data: gerarDadosAleatorios(12,75,75),// pegar a média igual lá em cima
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderDash: [5, 5],
                 fill: false
