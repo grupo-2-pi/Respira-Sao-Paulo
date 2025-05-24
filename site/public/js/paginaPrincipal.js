@@ -379,94 +379,26 @@ function fecharFiltro() {
 }
 
 
-// function atualizarDash() {
-
-//     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
-
-//     var regiao = regiaoDesejada.value;
-//     var municipioPrincipalA = municipioPrincipal.value;
-//     var anoPrincipalA = anoDesejado.value;
-//     var mesPrincipalA = mesDesejado.value;
-
-//     if (municipioPrincipalA == '') {
-//         municipioFeedback.innerHTML = 'São Paulo';
-//     } else {
-//         municipioFeedback.innerHTML = municipioPrincipalA;
-//     }
-//     if (anoPrincipalA == '') {
-//         anoFeedback.innerHTML = '2024';
-//     } else {
-//         anoFeedback.innerHTML = anoPrincipalA;
-//     }
-//     if (mesPrincipalA == '') {
-//         mesFeedback.innerHTML = 'Janeiro';
-//     } else {
-//         mesFeedback.innerHTML = mesPrincipalA;
-//     }
-
-//     atualizarCharts(regiao, anoPrincipalA);
-
-// }
-
-
-// /*DADOS GRÁFICOS*/
-
-// const dadosQtdVeiculosSul = {
-//     "São Paulo": 9000000,
-//     "Guarulhos": 1200000,
-//     "São Bernardo do Campo": 800000,
-//     "Santo André": 700000,
-//     "Osasco": 600000,
-//     "Mauá": 400000,
-//     "Diadema": 350000,
-//     "Carapicuíba": 300000,
-//     "Barueri": 221033,
-//     "Itaquaquecetuba": 158305
-// }
-
-// const emissaoVeicular = {
-//     "Moto": 273,
-//     "Caminhão": 1023,
-//     "Ônibus": 843,
-//     "Carro": 467
-// }
 
 
 
-    // function atualizarCharts(regiao, anoPrincipalA) {
-
-    //     if (regiao == "Sul") {
-    
-    //         var municipios = Object.keys(dadosQtdVeiculosSul);
-    //         var valores = Object.values(dadosQtdVeiculosSul);
-    //         toPuto.data.datasets[0].data[0] = valores[0];
-    //         toPuto.data.datasets[0].data[1] = valores[1];
-    //         toPuto.data.datasets[0].data[2] = valores[2];
-    //         toPuto.data.datasets[0].data[3] = valores[3];
-    //         toPuto.data.datasets[0].data[4] = valores[4];
-    //         toPuto.data.datasets[0].data[5] = valores[5];
-    //         toPuto.data.datasets[0].data[6] = valores[6];
-    //         toPuto.data.datasets[0].data[7] = valores[7];
-    //         toPuto.data.datasets[0].data[8] = valores[8];
-    //         toPuto.data.datasets[0].data[9] = valores[9];
-    
-    //         toPuto.data.datasets[0].labels = municipios;
-    //         toPuto.update();
-    
-    //     }
-    
-    //     if (anoPrincipalA == '2023') {
-    
-    
-    //         var valores = Object.values(emissaoVeicular);
-    
-    //         ctxx.data.datasets[0].data[0] = valores[3];
-    //         ctxx.data.datasets[0].data[1] = valores[0];
-    //         ctxx.data.datasets[0].data[2] = valores[1];
-    //         ctxx.data.datasets[0].data[3] = valores[2];
 
 
-    //         ctxx.update();
-    //     }
-    
-    // }
+//-------------------------------------------------------AQUI ATULALIZA A DASH----------------------------------
+function atualizarDash() {
+    const regiao = document.getElementById('filtroRegiao').value;
+    const ano = document.getElementById('filtroAno').value;
+    const mes = document.getElementById('filtroMes').value;
+
+    console.log(`Buscando dados para: Regiao=${regiao}, Ano=${ano}, Mes=${mes}`);
+
+    fetch(`http://localhost:3000/dashboard/dados?regiao=${regiao}&ano=${ano}&mes=${mes}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Dados recebidos da API:", data);
+            // Próximos passos: atualizar KPIs e gráficos
+        })
+        .catch(error => {
+            console.error("Erro ao buscar dados do dashboard:", error);
+        });
+}
