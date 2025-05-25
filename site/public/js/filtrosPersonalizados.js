@@ -4,7 +4,7 @@ function toggleFiltroPersonalizado() {
 }
 
 
-
+// Alterar isso depois para os filtros do banco.
 let filtrosPersonalizados = [];
 
 function toggleFiltroPersonalizado() {
@@ -12,20 +12,27 @@ function toggleFiltroPersonalizado() {
     lista.classList.toggle("active");
 }
 
-function adicionarFiltroPersonalizado(nomeFiltro) {
-    const lista = document.getElementById("listaFiltrosPersonalizados");
+function adicionarFiltroPersonalizado(div) {
+    let lista = document.getElementById("listaFiltrosPersonalizados");
+    const dados = buscarDadosNovoFiltro();
+
+    if(div.id == "divAdicionarFeedbackEnviar"){
+        lista = document.getElementById("listaFiltrosPersonalizadosFeedback");
+    }
+
+    // fazer o fetch aqui para adicionar ao backend o filtro
 
     const novoFiltro = document.createElement("li");
     novoFiltro.innerHTML = `
-        <span>${nomeFiltro}</span>
+        <span>${dados.nome}</span>
         <div class="filtro-action-buttons">
-            <button class="filtro-btn-editar" onclick="editarFiltro('${nomeFiltro}')">✏️</button>
-            <button class="filtro-btn-excluir" onclick="removerFiltro('${nomeFiltro}')">🗑️</button>
+            <button id="editarFiltroFeedback" class="filtro-btn-editar" onclick="editarFiltro('${dados.nome}')">✏️</button>
+            <button id="removerFiltroFeedback" class="filtro-btn-excluir" onclick="removerFiltro('${dados.nome}')">🗑️</button>
         </div>
     `;
 
     lista.appendChild(novoFiltro);
-    filtrosPersonalizados.push(nomeFiltro);
+    filtrosPersonalizados.push(dados.nome);
 }
 
 function removerFiltro(nomeFiltro) {
@@ -43,7 +50,7 @@ function editarFiltro(nomeFiltro) {
     }
 }
 
-function renderizarFiltros() {
+function renderizarFiltros(feedback) {
     const lista = document.getElementById("listaFiltrosPersonalizados");
     lista.innerHTML = "";
     filtrosPersonalizados.forEach(filtro => {
@@ -51,8 +58,8 @@ function renderizarFiltros() {
         item.innerHTML = `
             <span>${filtro}</span>
             <div class="filtro-action-buttons">
-                <button class="filtro-btn-editar" onclick="editarFiltro('${filtro}')">✏️</button>
-                <button class="filtro-btn-excluir" onclick="removerFiltro('${filtro}')">🗑️</button>
+                <button id="editarFiltroFeedback" class="filtro-btn-editar" onclick="editarFiltro('${filtro}')">✏️</button>
+                <button id="removerFiltroFeedback" class="filtro-btn-excluir" onclick="removerFiltro('${filtro}')">🗑️</button>
             </div>
         `;
         lista.appendChild(item);
@@ -76,4 +83,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtros = JSON.parse(localStorage.getItem("filtrosPersonalizados")) || [];
     filtros.forEach(filtro => adicionarFiltroPersonalizado(filtro.nome));
 });
+
+function abrirAdicionarFiltro(button) {
+    const buttonId = button.id;
+    let modal = document.getElementById("id_fundo_adicionar_filtro");
+
+    if (buttonId == "adicionarFeedback") {
+        console.log(buttonId);
+        modal = document.getElementById("id_fundo_adicionar_filtro_feedback");
+    }
+
+    modal.style.display = "flex";
+    console.log(modal);
+}
+
+function fecharAdicionarFiltro(div) {
+    const divId = div.id;
+
+    let modal = document.getElementById("id_fundo_adicionar_filtro");
+
+    if (divId == "divAdicionarFeedback") {
+        modal = document.getElementById("id_fundo_adicionar_filtro_feedback");
+    }
+
+    modal.style.display = "none";
+}
+
+function buscarDadosNovoFiltro() {
+    return {
+        nome: document.getElementById("nomeNovoFiltro").value,
+        municipio: document.getElementById("municipioNovoFiltro").value,
+        regiao: document.getElementById("regiaoNovoFiltro").value,
+        ano: document.getElementById("anoNovoFiltro").value,
+        mes: document.getElementById("mesNovoFiltro").value,
+    };
+}
 

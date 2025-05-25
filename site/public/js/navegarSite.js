@@ -23,3 +23,7 @@ function goToPersonal(){
 function goToSair(){
     window.location = 'index.html';
 }
+
+function goToFiltros(){
+    window.location = "filtros.html";
+}

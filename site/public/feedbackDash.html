@@ -56,7 +56,7 @@
                 <a href="./verUsuario.html">
                     Ver Usuário
                 </a>
-                
+
             </div>
 
         </div>
@@ -68,7 +68,7 @@
 
             <div class="user-dropdown-options">
                 <button onclick="goToPersonal()">Dados Pessoais</button>
-                <!--  <button>Filtros Salvos</button> -->
+                <button onclick="goToFiltros()">Filtros Salvos</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-toggle">
                         <input type="checkbox" id="theme-toggle">
@@ -134,7 +134,7 @@
 
                     <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
                         <button onclick="goToPersonal()">Dados Pessoais</button>
-                        <!-- <button>Filtros Salvos</button> -->
+                        <button onclick="goToFiltros()">Filtros Salvos</button>
                         <div class="theme-switch-wrapper">
                             <label class="theme-switch" for="theme-toggle">
                                 <input type="checkbox" id="theme-toggle">
@@ -274,6 +274,106 @@
                     </div>
 
                     <div class="filtro-btn" onclick="atualizarDash()">
+
+                        <h1>Adicionar Filtro</h1>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_adicionar_filtro_feedback">
+
+                <div class="escolher-filtro">
+
+                    <div id="divAdicionarFeedback" class="btn-sair" onclick="fecharAdicionarFiltro(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                    </div>
+
+                    <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
+
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Nome do filtro</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <input id="nomeNovoFiltro" type="text">
+                        </div>
+                    </div>
+
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Município Principal</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="municipioNovoFiltro">
+                                <option></option>
+                                <option value="São Paulo">São Paulo</option>
+                                <option value="Santo Andre">Santo Andre</option>
+                                <option value="São Caetano">São Caetano</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Piracicaba">Piracicaba</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Região Desejada</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="regiaoNovoFiltro">
+                                <option></option>
+                                <option value="Sul">Sul</option>
+                                <option value="">Centro-Oeste</option>
+                                <option value="">Norte</option>
+                                <option value="">Nordeste</option>
+                                <option value="Leste">Leste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Ano Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="anoNovoFiltro">
+                                <option></option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Mês Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="mesNovoFiltro">
+                                <option></option>
+                                <option value="Janeiro">Janeiro</option>
+                                <option value="Fevereiro">Fevereiro</option>
+                                <option value="Março">Março</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Maio">Maio</option>
+                                <option value="Junho">Junho</option>
+                                <option value="Julho">Julho</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Setembro">Setembro</option>
+                                <option value="Outubro">Outubro</option>
+                                <option value="Novembro">Novembro</option>
+                                <option value="Dezembro">Dezembro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="divAdicionarFeedbackEnviar" class="filtro-btn"
+                        onclick="adicionarFiltroPersonalizado(this)">
 
                         <h1>Adicionar Filtro</h1>
 
@@ -599,11 +699,16 @@
 
 
     </div>
-
-
-
     </div>
+    <div class="filtro-personalizado-container" id="filtroPersonalizadoContainer">
+        <button class="filtro-personalizado-btn" onclick="toggleFiltroPersonalizado()">Filtros Salvos ⤴︎</button>
+        <div class="filtro-personalizado-lista" id="filtroPersonalizadoLista">
+            <button id="adicionarFeedback" onclick="abrirAdicionarFiltro(this)">Adicionar filtro</button>
+            <ul id="listaFiltrosPersonalizadosFeedback">
 
+            </ul>
+        </div>
+    </div>
 
 </body>
 
@@ -613,3 +718,4 @@
 <script src="./js/script.js"></script>
 <script src="./js/paginaPrincipal.js"></script>
 <script src="./js/navegarSite.js"></script>
+<script src="./js/filtrosPersonalizados.js"></script>
