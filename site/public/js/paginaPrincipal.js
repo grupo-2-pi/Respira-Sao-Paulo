@@ -1,3 +1,9 @@
+const elCtx = document.getElementById('myChart');
+const elCtx2 = document.getElementById('myChartB');
+let chartCtx;
+let chartCtx2;
+
+
 // Para mockar dados aleatórios
 function gerarDadosAleatorios(quantidade, min, max) {
     var resultado = [];
@@ -19,8 +25,6 @@ function switchPersona(persona) {
 const persona = localStorage.getItem('personaSelecionada');
 
 // gráficos
-const ctx = document.getElementById('myChart');
-const ctx2 = document.getElementById('myChartB');
 const ctx3 = document.getElementById('myChartC');
 const ctx4 = document.getElementById("segunda-kpi");
 const ctx5 = document.getElementById("m-segunda-kpi");
@@ -128,7 +132,7 @@ if (persona == 'saude') {
 
     // Gráfico de barra - Do lado esquedo tem o número de internações, do lado direito, a qualidade do ar.
     // Baseado nos filtros, a pessoa poderá selecionar o periodo e os estados que gostaria de ver 
-  new Chart(ctx2, {
+  chartCtx2 = new Chart(elCtx2, {
     type: 'bar',
     data: {
         labels: municipios.slice(0, 10), // Esse múnicipio vai se baseado nas regiões, e cada região vai ter seus próprios municipios
@@ -176,7 +180,7 @@ if (persona == 'saude') {
     }
 });
     //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
-    new Chart(ctx, {
+   chartCtx = new Chart(elCtx,{
         type: 'line',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -246,8 +250,7 @@ if (persona == 'saude') {
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
-    const ctx = document.getElementById('myChart');
- new Chart(ctx, {
+chartCtx = new Chart(elCtx, {
     type: 'bar',
     data: {
         labels: ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',// Aqui vai ser parecido com o municipio slice, pegando a região do filtro
@@ -303,7 +306,7 @@ if (persona == 'saude') {
     }
 });
 
-    new Chart(ctx2, {
+chartCtx2 = new Chart(elCtx2, {
         type: 'line',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -365,45 +368,6 @@ if (persona == 'saude') {
             }
         }
     });
-
-    function atualizarCharts(regiao, anoPrincipalA) {
-
-        if (regiao == "Sul") {
-    
-            var municipios = Object.keys(dadosQtdVeiculosSul);
-            var valores = Object.values(dadosQtdVeiculosSul);
-            toPuto.data.datasets[0].data[0] = valores[0];
-            toPuto.data.datasets[0].data[1] = valores[1];
-            toPuto.data.datasets[0].data[2] = valores[2];
-            toPuto.data.datasets[0].data[3] = valores[3];
-            toPuto.data.datasets[0].data[4] = valores[4];
-            toPuto.data.datasets[0].data[5] = valores[5];
-            toPuto.data.datasets[0].data[6] = valores[6];
-            toPuto.data.datasets[0].data[7] = valores[7];
-            toPuto.data.datasets[0].data[8] = valores[8];
-            toPuto.data.datasets[0].data[9] = valores[9];
-    
-            toPuto.data.datasets[0].labels = municipios;
-            toPuto.update();
-    
-        }
-    
-        if (anoPrincipalA == '2023') {
-    
-    
-            var valores = Object.values(emissaoVeicular);
-    
-            ctxx.data.datasets[0].data[0] = valores[3];
-            ctxx.data.datasets[0].data[1] = valores[0];
-            ctxx.data.datasets[0].data[2] = valores[1];
-            ctxx.data.datasets[0].data[3] = valores[2];
-
-
-            ctxx.update();
-        }
-    
-    }
-
 }
 
 
@@ -418,57 +382,56 @@ function fecharFiltro() {
 }
 
 
+
+
+
+
+
+//-------------------------------------------------------AQUI ATULALIZA A DASH----------------------------------
 function atualizarDash() {
+    const regiao = document.getElementById('filtroRegiao').value;
+    const ano = document.getElementById('filtroAno').value;
+    const mes = document.getElementById('filtroMes').value;
 
-    document.getElementById('id_fundo_escolher_filtro').style.display = "none";
+    console.log(`Buscando dados para: Regiao=${regiao}, Ano=${ano}, Mes=${mes}`);
 
-    var regiao = regiaoDesejada.value;
-    var municipioPrincipalA = municipioPrincipal.value;
-    var anoPrincipalA = anoDesejado.value;
-    var mesPrincipalA = mesDesejado.value;
+    fetch(`http://localhost:3000/dashboard/dados?regiao=${regiao}&ano=${ano}&mes=${mes}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("Dados recebidos da API:", data);
 
-    if (municipioPrincipalA == '') {
-        municipioFeedback.innerHTML = 'São Paulo';
-    } else {
-        municipioFeedback.innerHTML = municipioPrincipalA;
-    }
-    if (anoPrincipalA == '') {
-        anoFeedback.innerHTML = '2024';
-    } else {
-        anoFeedback.innerHTML = anoPrincipalA;
-    }
-    if (mesPrincipalA == '') {
-        mesFeedback.innerHTML = 'Janeiro';
-    } else {
-        mesFeedback.innerHTML = mesPrincipalA;
-    }
+        const persona = localStorage.getItem('personaSelecionada');
 
-    atualizarCharts(regiao, anoPrincipalA);
+        if (persona === 'ambiental') {
+            // Atualizar KPIs ambientais
+            document.getElementById('m-kpi1-value').textContent = data.kpis.maisPoluido;
+            document.getElementById('m-kpi2-value').textContent = data.kpis.variacaoQualidadeAr + '%';
+            document.getElementById('m-kpi3-value').textContent = data.kpis.gasDominante;
 
+            document.getElementById('kpi1-value').textContent = data.kpis.maisPoluido;
+            document.getElementById('kpi2-value').textContent = data.kpis.variacaoQualidadeAr + '%';
+            document.getElementById('kpi3-value').textContent = data.kpis.gasDominante;
+
+            // Atualizar gráficos ambientais
+            // Exemplo: ctx → gráfico de emissões
+           chartCtx.data.datasets[0].data = data.graficos.frota.map(item => item.automoveis);
+           chartCtx.data.datasets[1].data = data.graficos.frota.map(item => item.motos);
+           chartCtx.data.datasets[2].data = data.graficos.frota.map(item => item.caminhoes);
+           chartCtx.data.datasets[3].data = data.graficos.frota.map(item => item.onibus);
+           chartCtx.update();
+
+           chartCtx2.data.datasets.forEach((dataset) => {
+           dataset.data = data.graficos.qualidadeAr
+                      .filter(d => d.municipio === dataset.label)
+                      .map(d => d.valor);
+});
+chartCtx2.update();
+
+        }
+        // Deixar o MODO SAÚDE para a próxima etapa!
+      })
+      .catch(error => {
+        console.error("Erro ao buscar dados do dashboard:", error);
+      });
 }
-
-
-/*DADOS GRÁFICOS*/
-
-const dadosQtdVeiculosSul = {
-    "São Paulo": 9000000,
-    "Guarulhos": 1200000,
-    "São Bernardo do Campo": 800000,
-    "Santo André": 700000,
-    "Osasco": 600000,
-    "Mauá": 400000,
-    "Diadema": 350000,
-    "Carapicuíba": 300000,
-    "Barueri": 221033,
-    "Itaquaquecetuba": 158305
-}
-
-const emissaoVeicular = {
-    "Moto": 273,
-    "Caminhão": 1023,
-    "Ônibus": 843,
-    "Carro": 467
-}
-
-
 
