@@ -1,17 +1,3 @@
-const elCtx = document.getElementById('myChart');
-const elCtx2 = document.getElementById('myChartB');
-let chartCtx;
-let chartCtx2;
-
-function setTextIfExists(id, text) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.textContent = text;
-    }
-}
-
-
-
 // Para mockar dados aleatórios
 function gerarDadosAleatorios(quantidade, min, max) {
     var resultado = [];
@@ -33,6 +19,8 @@ function switchPersona(persona) {
 const persona = localStorage.getItem('personaSelecionada');
 
 // gráficos
+const ctx = document.getElementById('myChart');
+const ctx2 = document.getElementById('myChartB');
 const ctx3 = document.getElementById('myChartC');
 const ctx4 = document.getElementById("segunda-kpi");
 const ctx5 = document.getElementById("m-segunda-kpi");
@@ -140,7 +128,7 @@ if (persona == 'saude') {
 
     // Gráfico de barra - Do lado esquedo tem o número de internações, do lado direito, a qualidade do ar.
     // Baseado nos filtros, a pessoa poderá selecionar o periodo e os estados que gostaria de ver 
-  chartCtx2 = new Chart(elCtx2, {
+  new Chart(ctx2, {
     type: 'bar',
     data: {
         labels: municipios.slice(0, 10), // Esse múnicipio vai se baseado nas regiões, e cada região vai ter seus próprios municipios
@@ -188,7 +176,7 @@ if (persona == 'saude') {
     }
 });
     //Talvez o ideal é deixar os dados aleatórios, se não vai ficar só com 2 meses
-   chartCtx = new Chart(elCtx,{
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -258,7 +246,8 @@ if (persona == 'saude') {
     document.getElementById('m-kpi3-value').textContent = 'CO2';
 
     // Gráficos para persona Ambiental
-chartCtx = new Chart(elCtx, {
+    const ctx = document.getElementById('myChart');
+ new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['São Paulo', 'Guarulhos', 'São Bernardo', 'Santo André', 'Osasco',// Aqui vai ser parecido com o municipio slice, pegando a região do filtro
@@ -314,7 +303,7 @@ chartCtx = new Chart(elCtx, {
     }
 });
 
-chartCtx2 = new Chart(elCtx2, {
+    new Chart(ctx2, {
         type: 'line',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -390,80 +379,94 @@ function fecharFiltro() {
 }
 
 
+// function atualizarDash() {
+
+//     document.getElementById('id_fundo_escolher_filtro').style.display = "none";
+
+//     var regiao = regiaoDesejada.value;
+//     var municipioPrincipalA = municipioPrincipal.value;
+//     var anoPrincipalA = anoDesejado.value;
+//     var mesPrincipalA = mesDesejado.value;
+
+//     if (municipioPrincipalA == '') {
+//         municipioFeedback.innerHTML = 'São Paulo';
+//     } else {
+//         municipioFeedback.innerHTML = municipioPrincipalA;
+//     }
+//     if (anoPrincipalA == '') {
+//         anoFeedback.innerHTML = '2024';
+//     } else {
+//         anoFeedback.innerHTML = anoPrincipalA;
+//     }
+//     if (mesPrincipalA == '') {
+//         mesFeedback.innerHTML = 'Janeiro';
+//     } else {
+//         mesFeedback.innerHTML = mesPrincipalA;
+//     }
+
+//     atualizarCharts(regiao, anoPrincipalA);
+
+// }
+
+
+// /*DADOS GRÁFICOS*/
+
+// const dadosQtdVeiculosSul = {
+//     "São Paulo": 9000000,
+//     "Guarulhos": 1200000,
+//     "São Bernardo do Campo": 800000,
+//     "Santo André": 700000,
+//     "Osasco": 600000,
+//     "Mauá": 400000,
+//     "Diadema": 350000,
+//     "Carapicuíba": 300000,
+//     "Barueri": 221033,
+//     "Itaquaquecetuba": 158305
+// }
+
+// const emissaoVeicular = {
+//     "Moto": 273,
+//     "Caminhão": 1023,
+//     "Ônibus": 843,
+//     "Carro": 467
+// }
 
 
 
+    // function atualizarCharts(regiao, anoPrincipalA) {
+
+    //     if (regiao == "Sul") {
+    
+    //         var municipios = Object.keys(dadosQtdVeiculosSul);
+    //         var valores = Object.values(dadosQtdVeiculosSul);
+    //         toPuto.data.datasets[0].data[0] = valores[0];
+    //         toPuto.data.datasets[0].data[1] = valores[1];
+    //         toPuto.data.datasets[0].data[2] = valores[2];
+    //         toPuto.data.datasets[0].data[3] = valores[3];
+    //         toPuto.data.datasets[0].data[4] = valores[4];
+    //         toPuto.data.datasets[0].data[5] = valores[5];
+    //         toPuto.data.datasets[0].data[6] = valores[6];
+    //         toPuto.data.datasets[0].data[7] = valores[7];
+    //         toPuto.data.datasets[0].data[8] = valores[8];
+    //         toPuto.data.datasets[0].data[9] = valores[9];
+    
+    //         toPuto.data.datasets[0].labels = municipios;
+    //         toPuto.update();
+    
+    //     }
+    
+    //     if (anoPrincipalA == '2023') {
+    
+    
+    //         var valores = Object.values(emissaoVeicular);
+    
+    //         ctxx.data.datasets[0].data[0] = valores[3];
+    //         ctxx.data.datasets[0].data[1] = valores[0];
+    //         ctxx.data.datasets[0].data[2] = valores[1];
+    //         ctxx.data.datasets[0].data[3] = valores[2];
 
 
-//-------------------------------------------------------AQUI ATULALIZA A DASH----------------------------------
-
-
-
-function atualizarDash() {
-    const regiao = document.getElementById('filtroRegiao').value;
-    const ano = document.getElementById('filtroAno').value;
-    const mes = document.getElementById('filtroMes').value;
-
-    console.log(`Buscando dados para: Regiao=${regiao}, Ano=${ano}, Mes=${mes}`);
-
-    fetch(`http://localhost:3000/dashboard/dados?regiao=${regiao}&ano=${ano}&mes=${mes}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log("Dados recebidos da API:", data);
-
-        const persona = localStorage.getItem('personaSelecionada');
-
-        if (persona === 'ambiental') {
-            // Atualizar KPIs ambientais
-            setTextIfExists('m-kpi1-value', data.kpis.maisPoluido);
-            aplicarEstiloKPI('m-kpi2-value', data.kpis.variacaoQualidadeAr);
-            aplicarEstiloKPI('kpi2-value', data.kpis.variacaoQualidadeAr);
-
-            setTextIfExists('m-kpi3-value', data.kpis.gasDominante);
-
-            setTextIfExists('kpi1-value', data.kpis.maisPoluido);
-            aplicarEstiloKPI('kpi2-value', data.kpis.variacaoQualidadeAr);
-            setTextIfExists('kpi3-value', data.kpis.gasDominante);
-
-            // Atualizar gráficos ambientais
-            chartCtx.data.datasets[0].data = data.graficos.frota.map(item => item.automoveis);
-            chartCtx.data.datasets[1].data = data.graficos.frota.map(item => item.motos);
-            chartCtx.data.datasets[2].data = data.graficos.frota.map(item => item.caminhoes);
-            chartCtx.data.datasets[3].data = data.graficos.frota.map(item => item.onibus);
-            chartCtx.update();
-
-            chartCtx2.data.datasets.forEach((dataset) => {
-                dataset.data = data.graficos.qualidadeAr
-                                .filter(d => d.municipio === dataset.label)
-                                .map(d => d.valor);
-            });
-            chartCtx2.update();
-
-        } else if (persona === 'saude') {
-            // Atualizar KPIs saúde
-            setTextIfExists('m-kpi1-value', data.kpis.maiorIndiceDoencas);
-            setTextIfExists('m-kpi2-value', 'R$ ' + data.kpis.valorGasto);
-            aplicarEstiloKPI('m-kpi3-value', data.kpis.taxaMortalidade);
-
-            setTextIfExists('kpi1-value', data.kpis.maiorIndiceDoencas);
-            setTextIfExists('kpi2-value', 'R$ ' + data.kpis.valorGasto);
-            aplicarEstiloKPI('kpi3-value', data.kpis.taxaMortalidade);
-
-            // Atualizar gráficos saúde
-            chartCtx.data.datasets[0].data = data.graficos.mortalidade.map(item => item.numeroInternacoes);
-            chartCtx.data.datasets[1].data = data.graficos.mortalidade.map(item => item.taxaMortalidade);
-            chartCtx.update();
-
-            chartCtx2.data.datasets.forEach((dataset) => {
-                dataset.data = data.graficos.mortalidade
-                                .filter(d => d.municipio === dataset.label)
-                                .map(d => d.numeroInternacoes);
-            });
-            chartCtx2.update();
-        }
-      })
-      .catch(error => {
-        console.error("Erro ao buscar dados do dashboard:", error);
-      });
-}
-
+    //         ctxx.update();
+    //     }
+    
+    // }
