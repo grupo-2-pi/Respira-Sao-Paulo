@@ -1,3 +1,4 @@
+
 // Para mockar dados aleatórios
 function gerarDadosAleatorios(quantidade, min, max) {
     var resultado = [];
