@@ -1,1 +1,38 @@
+services:
+  mysql:
+    image: furqas/respira-bd:latest
+    container_name: respira-bd
+    restart: always
+    hostname: localhost
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - respira-network
+  web:
+    image: furqas/respira-web:latest
+    container_name: respira-web
+    restart: always
+    hostname: localhost
+    environment:
+      - APP_PORT="3000"
+      - APP_HOST=localhost
+      - AMBIENTE_PROCESSO=desenvolvimento
+      - DB_HOST=${DB_HOST}
+      - DB_DATABASE=Respira
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=3306
+    ports:
+      - "3000:3000"
+    networks:
+      - respira-network   
 
+networks:
+  respira-network:
+    name: respira-network
+    driver: bridge
+volumes:
+  mysql_data:
+  
