@@ -3,6 +3,14 @@ const elCtx2 = document.getElementById('myChartB');
 let chartCtx;
 let chartCtx2;
 
+function setTextIfExists(id, text) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.textContent = text;
+    }
+}
+
+
 
 // Para mockar dados aleatórios
 function gerarDadosAleatorios(quantidade, min, max) {
@@ -388,6 +396,9 @@ function fecharFiltro() {
 
 
 //-------------------------------------------------------AQUI ATULALIZA A DASH----------------------------------
+
+
+
 function atualizarDash() {
     const regiao = document.getElementById('filtroRegiao').value;
     const ano = document.getElementById('filtroAno').value;
@@ -404,31 +415,52 @@ function atualizarDash() {
 
         if (persona === 'ambiental') {
             // Atualizar KPIs ambientais
-            document.getElementById('m-kpi1-value').textContent = data.kpis.maisPoluido;
-            document.getElementById('m-kpi2-value').textContent = data.kpis.variacaoQualidadeAr + '%';
-            document.getElementById('m-kpi3-value').textContent = data.kpis.gasDominante;
+            setTextIfExists('m-kpi1-value', data.kpis.maisPoluido);
+            aplicarEstiloKPI('m-kpi2-value', data.kpis.variacaoQualidadeAr);
+            aplicarEstiloKPI('kpi2-value', data.kpis.variacaoQualidadeAr);
 
-            document.getElementById('kpi1-value').textContent = data.kpis.maisPoluido;
-            document.getElementById('kpi2-value').textContent = data.kpis.variacaoQualidadeAr + '%';
-            document.getElementById('kpi3-value').textContent = data.kpis.gasDominante;
+            setTextIfExists('m-kpi3-value', data.kpis.gasDominante);
+
+            setTextIfExists('kpi1-value', data.kpis.maisPoluido);
+            aplicarEstiloKPI('kpi2-value', data.kpis.variacaoQualidadeAr);
+            setTextIfExists('kpi3-value', data.kpis.gasDominante);
 
             // Atualizar gráficos ambientais
-            // Exemplo: ctx → gráfico de emissões
-           chartCtx.data.datasets[0].data = data.graficos.frota.map(item => item.automoveis);
-           chartCtx.data.datasets[1].data = data.graficos.frota.map(item => item.motos);
-           chartCtx.data.datasets[2].data = data.graficos.frota.map(item => item.caminhoes);
-           chartCtx.data.datasets[3].data = data.graficos.frota.map(item => item.onibus);
-           chartCtx.update();
+            chartCtx.data.datasets[0].data = data.graficos.frota.map(item => item.automoveis);
+            chartCtx.data.datasets[1].data = data.graficos.frota.map(item => item.motos);
+            chartCtx.data.datasets[2].data = data.graficos.frota.map(item => item.caminhoes);
+            chartCtx.data.datasets[3].data = data.graficos.frota.map(item => item.onibus);
+            chartCtx.update();
 
-           chartCtx2.data.datasets.forEach((dataset) => {
-           dataset.data = data.graficos.qualidadeAr
-                      .filter(d => d.municipio === dataset.label)
-                      .map(d => d.valor);
-});
-chartCtx2.update();
+            chartCtx2.data.datasets.forEach((dataset) => {
+                dataset.data = data.graficos.qualidadeAr
+                                .filter(d => d.municipio === dataset.label)
+                                .map(d => d.valor);
+            });
+            chartCtx2.update();
 
+        } else if (persona === 'saude') {
+            // Atualizar KPIs saúde
+            setTextIfExists('m-kpi1-value', data.kpis.maiorIndiceDoencas);
+            setTextIfExists('m-kpi2-value', 'R$ ' + data.kpis.valorGasto);
+            aplicarEstiloKPI('m-kpi3-value', data.kpis.taxaMortalidade);
+
+            setTextIfExists('kpi1-value', data.kpis.maiorIndiceDoencas);
+            setTextIfExists('kpi2-value', 'R$ ' + data.kpis.valorGasto);
+            aplicarEstiloKPI('kpi3-value', data.kpis.taxaMortalidade);
+
+            // Atualizar gráficos saúde
+            chartCtx.data.datasets[0].data = data.graficos.mortalidade.map(item => item.numeroInternacoes);
+            chartCtx.data.datasets[1].data = data.graficos.mortalidade.map(item => item.taxaMortalidade);
+            chartCtx.update();
+
+            chartCtx2.data.datasets.forEach((dataset) => {
+                dataset.data = data.graficos.mortalidade
+                                .filter(d => d.municipio === dataset.label)
+                                .map(d => d.numeroInternacoes);
+            });
+            chartCtx2.update();
         }
-        // Deixar o MODO SAÚDE para a próxima etapa!
       })
       .catch(error => {
         console.error("Erro ao buscar dados do dashboard:", error);
