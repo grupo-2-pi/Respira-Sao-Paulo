@@ -208,19 +208,7 @@
                     </div>
 
                     <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Município Principal</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="municipioNovoFiltro">
-                                <option></option>
-                                <option value="São Paulo">São Paulo</option>
-                                <option value="Santo Andre">Santo Andre</option>
-                                <option value="São Caetano">São Caetano</option>
-                                <option value="Campinas">Campinas</option>
-                                <option value="Piracicaba">Piracicaba</option>
-                            </select>
-                        </div>
+                        
                     </div>
                     <div class="filtro-text">
                         <div class="titulo-filtro">
@@ -230,9 +218,9 @@
                             <select name="" class="select-opt" id="regiaoNovoFiltro">
                                 <option></option>
                                 <option value="Sul">Sul</option>
-                                <option value="">Centro-Oeste</option>
-                                <option value="">Norte</option>
-                                <option value="">Nordeste</option>
+                                <option value="Centro-Oeste">Centro-Oeste</option>
+                                <option value="Norte">Norte</option>
+                                <option value="Nordeste">Nordeste</option>
                                 <option value="Leste">Leste</option>
                             </select>
                         </div>
@@ -275,7 +263,7 @@
                         </div>
                     </div>
 
-                    <div  class="filtro-btn" onclick="adicionarFiltroPersonalizado()">
+                    <div  class="filtro-btn" onclick="aplicarFiltroPadrao()">
 
                         <h1>Adicionar Filtro</h1>
 
@@ -311,9 +299,9 @@
                             <select name="" class="select-opt" id="filtroRegiao">
                                 <option></option>
                                 <option value="Sul">Sul</option>
-                                <option value="">Centro-Oeste</option>
-                                <option value="">Norte</option>
-                                <option value="">Nordeste</option>
+                                <option value="Centro-Oeste">Centro-Oeste</option>
+                                <option value="Norte">Norte</option>
+                                <option value="Nordeste">Nordeste</option>
                                 <option value="Leste">Leste</option>
                             </select>
                         </div>
@@ -356,7 +344,7 @@
                         </div>
                     </div>
 
-                    <div class="filtro-btn" onclick="atualizarDash()">
+                    <div class="filtro-btn" onclick="aplicarFiltroPadrao()">
 
                         <h1>Adicionar Filtro</h1>
 
@@ -372,83 +360,67 @@
             <!-- MOBILE -->
 
             <div class="primeira-divisao-kpi">
-                <div class="primeira-kpi">
+    <div class="primeira-kpi">
+        <div class="titulo-kpi">
+            <h1 id="m-kpi1-title">Município mais Poluído</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="m-kpi1-value">--</h1>
+        </div>
+    </div>
 
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi1-title">Munícipio mais Poluído</h1>
-                    </div>
+    <div class="segunda-kpi" id="m-segunda-kpi">
+        <div class="titulo-kpi">
+            <h1 id="m-kpi2-title">Variação da Qualidade do Ar</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="m-kpi2-value">--</h1>
+        </div>
+    </div>
+</div>
 
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi1-value">São Paulo</h1>
-                    </div>
+<div class="primeira-divisao-kpi">
+    <div class="terceira-kpi">
+        <div class="titulo-kpi">
+            <h1 id="m-kpi3-title">Ranking de Gás Poluente</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="m-kpi3-value">--</h1>
+        </div>
+    </div>
+</div>
 
-                </div>
-
-                <div class="segunda-kpi" id="m-segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi2-title">Munícipio com maior Indice de Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi2-value">São Paulo</h1>
-                    </div>
-
-                </div>
-            </div>
-            <div class="primeira-divisao-kpi">
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id="m-kpi3-title">Valor Gasto com Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="m-kpi3-value">R$ 15.000,00</h1>
-                    </div>
-
-                </div>
-            </div>
 
             <!-- DESKTOP -->
 
-            <div class="primeira-divisao-kpi2" style="display: none;">
-                <div class="primeira-kpi">
+           <div class="primeira-divisao-kpi2" style="display: none;">
+    <div class="primeira-kpi">
+        <div class="titulo-kpi">
+            <h1 id='kpi1-title'>Município mais Poluído</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="kpi1-value">--</h1>
+        </div>
+    </div>
 
-                    <div class="titulo-kpi">
-                        <h1 id='kpi1-title'>Munícipio mais Poluído</h1>
-                    </div>
+    <div class="segunda-kpi" id="segunda-kpi">
+        <div class="titulo-kpi">
+            <h1 id='kpi2-title'>Variação da Qualidade do Ar</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="kpi2-value">--</h1>
+        </div>
+    </div>
 
-                    <div class="dado-kpi">
-                        <h1 id="kpi1-value">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="segunda-kpi" id="segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id='kpi2-title'> Maior Indíce Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="kpi2-value">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1 id='kpi3-title'>Valor Gasto com Doenças Respiratórias</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="kpi3-value">R$ 15.000,00</h1>
-                    </div>
-
-                </div>
-            </div>
+    <div class="terceira-kpi">
+        <div class="titulo-kpi">
+            <h1 id='kpi3-title'>Ranking de Gás Poluente</h1>
+        </div>
+        <div class="dado-kpi">
+            <h1 id="kpi3-value">--</h1>
+        </div>
+    </div>
+</div>
 
 
 
@@ -488,4 +460,3 @@
 <script src="./js/paginaPrincipal.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/navegarSite.js"></script>
-<script src="./js/filtrosPersonalizados.js"></script>

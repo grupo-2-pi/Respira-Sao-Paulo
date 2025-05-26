@@ -22,16 +22,17 @@ CREATE TABLE FeedbackPopulacao (
 CREATE TABLE FrotaCirculante (
     iddadosCETESB INT AUTO_INCREMENT PRIMARY KEY,
     municipio VARCHAR(100),
-    regiao VARCHAR(100),
+    regiao VARCHAR(100) COLLATE utf8mb4_general_ci,
     automoveis INT,
     comerciais_leves INT,
     caminhoes INT,
     onibus INT,
     motos INT,
-    ano VARCHAR(45),
-    mes VARCHAR(45),
+    ano VARCHAR(45) COLLATE utf8mb4_general_ci,
+    mes VARCHAR(45) COLLATE utf8mb4_general_ci,
     total INT
 );
+
 
 CREATE TABLE EmissaoVeicular(
     idEmissaoVeicular INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,15 +49,16 @@ CREATE TABLE EmissaoVeicular(
 
 CREATE TABLE MortalidadeRespiratoria (
     iddadosCOVISA INT AUTO_INCREMENT PRIMARY KEY,
-    mes VARCHAR(45),
-    ano VARCHAR(45),
+    mes VARCHAR(45) COLLATE utf8mb4_general_ci,
+    ano VARCHAR(45) COLLATE utf8mb4_general_ci,
     municipio VARCHAR(45),
     valorTotal DOUBLE,
     numeroInternacoes DOUBLE,
     numeroObitos INT,
     taxaMortalidade DOUBLE,
-    regiao VARCHAR(100)
+    regiao VARCHAR(100) COLLATE utf8mb4_general_ci
 );
+
 
 CREATE TABLE Empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,14 +85,15 @@ CREATE TABLE Funcionario (
 );
 
 CREATE TABLE QualidadeAr (
-     mes VARCHAR(45),
-     ano VARCHAR(45),
-     municipio VARCHAR(45),
-     poluente VARCHAR(45),
-     valor DOUBLE,
-     unidade VARCHAR(45),
-     regiao VARCHAR(45)
+    mes VARCHAR(45) COLLATE utf8mb4_general_ci,
+    ano VARCHAR(45) COLLATE utf8mb4_general_ci,
+    municipio VARCHAR(45),
+    poluente VARCHAR(45),
+    valor DOUBLE,
+    unidade VARCHAR(45),
+    regiao VARCHAR(45) COLLATE utf8mb4_general_ci
 );
+
     
 CREATE TABLE LogRestrito (
     idLogRestrito INT AUTO_INCREMENT PRIMARY KEY,
@@ -123,3 +126,10 @@ fkEmpresa INT,
 FOREIGN KEY (fkFuncionario) REFERENCES Funcionario(idFuncionario),
 FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
+
+
+
+
+
+
+
