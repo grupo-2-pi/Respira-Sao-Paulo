@@ -1,5 +1,7 @@
 import { envVars } from "./index.js";
+import { carregarFiltros } from "./filtrosPersonalizados.js";
 
+document.addEventListener('DOMContentLoaded', buscarDados);
 
 const regioes = [
     "ABC",
@@ -101,7 +103,19 @@ export function mudarChartJs(regiao) {
 
 export async function buscarDados() {
     try {
-        // Buscar filtros antes quando estiver implementado
+        // Alterar para o id do funcionario apos implementarem o login
+        const idFixo = 1;
+
+        const responseFiltros = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/buscar/${idFixo}`, {
+            method: "GET",
+            headers: {
+                "Content-Type":"application/json",
+            },
+        });
+
+        const filtrosJson = await responseFiltros.json();
+
+        carregarFiltros(1, "feedback", filtrosJson);
 
         const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/feedback/buscar/${estadoUsuario}`, {
             method: "GET",
@@ -186,5 +200,3 @@ export async function buscarDados() {
         console.log(e);
     }
 }
-
-document.addEventListener('DOMContentLoaded', buscarDados);

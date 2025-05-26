@@ -19,7 +19,6 @@ import java.util.List;
 public class Main {
 
     public static Logger logger = new Logger();
-    public static String[] tipos = {"[INFO]", "[WARNING]", "[ERROR]"};
     public static JDBCConfig jdbcConfig = new JDBCConfig();
     private static final MapaMunicipiosSP mapaMunicipios = new MapaMunicipiosSP();
     private final static JdbcTemplate jdbcTemplate = jdbcConfig.getConnection();
@@ -31,7 +30,7 @@ public class Main {
     private static final EmissaoVeicularService emissaoVeicularService = new EmissaoVeicularService(logger, excelUtils, jdbcTemplate);
     private static final QualidadeArService qualidadeArService = new QualidadeArService(logger, excelUtils, jdbcTemplate,mapaMunicipios);
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args){
         iniciarAplicacao();
 
         List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");

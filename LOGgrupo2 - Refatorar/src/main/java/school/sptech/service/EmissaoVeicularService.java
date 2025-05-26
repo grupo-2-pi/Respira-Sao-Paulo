@@ -18,7 +18,6 @@ public class EmissaoVeicularService extends Services {
 
     private final EmissaoVeicularDao emissaoVeicularDao;
 
-
     public EmissaoVeicularService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
         super(logger, excelUtils, jdbcTemplate);
         this.emissaoVeicularDao = new EmissaoVeicularDao(jdbcTemplate);

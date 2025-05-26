@@ -40,4 +40,4 @@ export async function buscarComentarios(req, res) {
 
     return res.status(500).send(e);
   }
-} 
+}

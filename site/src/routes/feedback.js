@@ -9,6 +9,6 @@ router.get("/buscar/:municipio", (req, res) => {
 
 router.get("/buscar/comentarios/:inicio/:fim", (req, res) => {
     buscarComentarios(req, res);
-})
+});
 
 export default router;
