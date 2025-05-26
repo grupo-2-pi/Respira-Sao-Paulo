@@ -25,7 +25,11 @@ export async function atualizar(idFiltro, updateData) {
 
   for (const [chave, valor] of Object.entries(updateData)) {
     if (valor !== undefined) {
-      campos.push(`${chave} = '${valor}'`);
+      if (valor === null) {
+        campos.push(`${chave} = ${valor}`)
+      } else {
+        campos.push(`${chave} = '${valor}'`);
+      }
     }
   }
 
@@ -38,7 +42,7 @@ export async function atualizar(idFiltro, updateData) {
   await executar(instrucao);
 }
 
-export async function remover(idFiltro){
+export async function remover(idFiltro) {
   const query = `
     DELETE FROM Filtro WHERE idFiltro = ${idFiltro};
   `;

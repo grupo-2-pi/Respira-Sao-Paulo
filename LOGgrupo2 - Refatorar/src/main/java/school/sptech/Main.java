@@ -33,26 +33,26 @@ public class Main {
     public static void main(String[] args) throws IOException{
         iniciarAplicacao();
 
-        List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
-        mortalidadeService.extrairDados(arquivosMortalidade, true);
-
-        List<File> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
-        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
-
-        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
-        List<File> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
-        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
-
-        String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
-        List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
-        qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
+//        List<File> arquivosMortalidade = s3Service.getBucketObjects("mortalidade-respiratoria/");
+//        mortalidadeService.extrairDados(arquivosMortalidade, true);
+//
+//        List<File> arquivosFrota = s3Service.getBucketObjects("frota-circulante");
+//        frotaCirculante.extrairFluxoVeiculos(arquivosFrota);
+//
+//        String nomeArquivo = "OFICIAL-FATOR-DE-EMISSAO-2011-2023.xlsx";
+//        List<File> arquivoEmissao = s3Service.getBucketObjects("emissao-veicular/");
+//        emissaoVeicularService.extrairDadosEmissao(nomeArquivo, arquivoEmissao);
+//
+//        String arquivoQualidadeNome = "QualidadeArExcel.xlsx";
+//        List<File> arquivoQualidade = s3Service.getBucketObjects("qualidade-ar/");
+//        qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
 
         NotificacaoDto noti = new NotificacaoDto(
                 "Chegou mensagem ola"
         );
 
         NotificationClient client = new NotificationClient(
-                "https://hooks.slack.com/services/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",
+                "https://hooks.slack.com/services/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",
                 new Logger()
         );
 
