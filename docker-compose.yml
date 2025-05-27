@@ -28,6 +28,19 @@ services:
       - "3000:3000"
     networks:
       - respira-network   
+  java:
+    image: furqas/respira-java-data:latest
+    container_name: respira-java
+    restart: always
+    hostname: localhost
+        environment:
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+    ports:
+      - "8080:8080"
+    networks:
+      - respira-network   
 
 networks:
   respira-network:

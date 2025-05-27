@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.File;
 import school.sptech.database.model.QualidadeAr;
+import school.sptech.database.model.dao.FrotaCirculanteDao;
 import school.sptech.database.model.dao.QualidadeArDao;
 import school.sptech.utils.ExcelUtils;
 import school.sptech.database.model.Logger;
@@ -16,58 +17,50 @@ import java.io.ByteArrayInputStream;
 import java.text.Normalizer;
 import java.util.List;
 
-public class QualidadeArService {
+public class QualidadeArService extends Services {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(QualidadeArService.class);
-    private final Logger logger;
-    private final ExcelUtils excelUtils;
-    private final JdbcTemplate jdbcTemplate;
     private final QualidadeArDao qualidadeArDao;
-    private final MapaMunicipiosSP mapaMunicipiosSP;
-    private final LogService logService;
 
 
-    public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate, MapaMunicipiosSP mapaMunicipiosSP) {
-        this.logger = logger;
-        this.excelUtils = excelUtils;
-        this.jdbcTemplate = jdbcTemplate;
-        this.mapaMunicipiosSP = mapaMunicipiosSP;
+
+    public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
+        super(logger, excelUtils, jdbcTemplate);
         this.qualidadeArDao = new QualidadeArDao(jdbcTemplate);
-        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairDadosQualidadeAr(String nomeArquivo, List<File> arquivos) {
         try {
             for (File arquivo : arquivos) {
-                logger.info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
+                super.getLogger().info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
 
                 byte[] fileBytes = arquivo.getInputStream().readAllBytes();
 
                 Workbook workbook;
                 if (nomeArquivo.endsWith(".xlsx")) {
                     workbook = new XSSFWorkbook(new ByteArrayInputStream(fileBytes));
-                    logger.info("Arquivo xlsx encontrado");
+                    super.getLogger().info("Arquivo xlsx encontrado");
                 } else {
                     workbook = new HSSFWorkbook(new ByteArrayInputStream(fileBytes));
-                    logger.info("Arquivo xls encontrado");
+                    super.getLogger().info("Arquivo xls encontrado");
                 }
 
                 Sheet sheet = workbook.getSheetAt(0);
-                logger.info("Nome da planilha: " + sheet.getSheetName());
+                super.getLogger().info("Nome da planilha: " + sheet.getSheetName());
 
                 for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                     Row linhaAtual = sheet.getRow(i);
                     if (linhaAtual == null) continue;
 
-                    String[] data = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(0)).split("-");
+                    String[] data = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(0)).split("-");
 
                     String mes = data[1];
                     String ano = data[0];
 
-                    String municipio = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(1));
-                    String poluente = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(2));
-                    Double valor = Double.valueOf(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3)));
-                    String unidade = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(4));
+                    String municipio = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(1));
+                    String poluente = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(2));
+                    Double valor = Double.valueOf(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(3)));
+                    String unidade = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(4));
 
                     String municipioSemTraco = municipio;
 
@@ -83,21 +76,21 @@ public class QualidadeArService {
 
                     QualidadeAr qualidade = new
                             QualidadeAr
-                            (mes,ano, municipioTratado, poluente, valor, unidade, mapaMunicipiosSP.pegarMunicipio(municipioTratado));
-                    logger.info("Leitura realizada: " + qualidade.toString());
+                            (mes,ano, municipioTratado, poluente, valor, unidade,super.getMapaMunicipiosSP().pegarMunicipio(municipioTratado));
+                    super.getLogger().info("Leitura realizada: " + qualidade.toString());
 
-                    logService.salvarLog("INFO", "Leitura realizada: " + qualidade.toString());
+                    super.getLogService().salvarLog("INFO", "Leitura realizada: " + qualidade.toString());
 
                     qualidadeArDao.save(qualidade);
-                    logger.info("Registro salvo no banco");
+                    super.getLogger().info("Registro salvo no banco");
                 }
 
                 workbook.close();
-                logger.info("\nLeitura do arquivo finalizada\n");
+                super.getLogger().info("\nLeitura do arquivo finalizada\n");
                 arquivo.getInputStream().close();
             }
         } catch (Exception e) {
-            logger.error("Erro ao realizar a leitura da planilha de qualidade do ar: " + e.getMessage());
+            super.getLogger().error("Erro ao realizar a leitura da planilha de qualidade do ar: " + e.getMessage());
         }
     }
 

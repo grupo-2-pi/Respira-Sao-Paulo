@@ -3,16 +3,14 @@ package school.sptech.database.model.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.FrotaCirculante;
 
-public class FrotaCirculanteDao {
-
-    private final JdbcTemplate jdbcTemplate;
+public class FrotaCirculanteDao extends DAO{
 
     public FrotaCirculanteDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+        super(jdbcTemplate);
     }
 
     public void save(FrotaCirculante frotaCirculante){
-        jdbcTemplate.update(
+        super.getJdbcTemplate().update(
                 "INSERT INTO FrotaCirculante " +
                         "(municipio, regiao, automoveis, comerciais_leves, caminhoes, onibus, motos, ano,mes, total)" +
                         "VALUES (?,?,?,?,?,?,?,?,?,?)",
