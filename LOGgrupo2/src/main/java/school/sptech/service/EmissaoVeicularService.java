@@ -14,72 +14,65 @@ import school.sptech.utils.ExcelUtils;
 
 import java.util.List;
 
-public class EmissaoVeicularService {
+public class EmissaoVeicularService extends Services {
 
-    private final Logger logger;
-    private final ExcelUtils excelUtils;
-    private final JdbcTemplate jdbcTemplate;
     private final EmissaoVeicularDao emissaoVeicularDao;
-    private final LogService logService;
 
     public EmissaoVeicularService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
-        this.logger = logger;
-        this.excelUtils = excelUtils;
-        this.jdbcTemplate = jdbcTemplate;
+        super(logger, excelUtils, jdbcTemplate);
         this.emissaoVeicularDao = new EmissaoVeicularDao(jdbcTemplate);
-        this.logService = new LogService(this.jdbcTemplate);
     }
 
     public void extrairDadosEmissao(String nomeArquivo, List<File> arquivos) {
         try {
             for (File arquivo : arquivos) {
-                logger.info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
+                super.getLogger().info("\nIniciando leitura do arquivo %s\n".formatted(nomeArquivo));
 
                 Workbook workbook;
                 if (nomeArquivo.endsWith(".xlsx")) {
                     workbook = new XSSFWorkbook(arquivo.getInputStream());
-                    logger.info("Arquivo xlsx encontrado");
+                    super.getLogger().info("Arquivo xlsx encontrado");
                 } else {
                     workbook = new HSSFWorkbook(arquivo.getInputStream());
-                    logger.info("Arquivo xls encontrado");
+                    super.getLogger().info("Arquivo xls encontrado");
                 }
 
                 Sheet sheet = workbook.getSheetAt(0);
-                logger.info("Nome da planilha: " + sheet.getSheetName());
+                super.getLogger().info("Nome da planilha: " + sheet.getSheetName());
 
                 for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                     Row linhaAtual = sheet.getRow(i);
                     if (linhaAtual == null) continue;
 
-                    String tipoVeiculo = excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(0));
-                    int ano = Integer.parseInt(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(1)));
+                    String tipoVeiculo = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(0));
+                    int ano = Integer.parseInt(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(1)));
 
-                    System.out.println(Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(2))));
+                    System.out.println(Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(2))));
 
                     EmissaoVeicular emissao = new EmissaoVeicular(
                             tipoVeiculo,
                             ano,
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(2))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(3))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(4))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(5))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(6))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(7))),
-                            Double.parseDouble(excelUtils.getValorCelulaComoTexto(linhaAtual.getCell(8)))
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(2))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(3))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(4))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(5))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(6))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(7))),
+                            Double.parseDouble(super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(8)))
                     );
 
-                    logger.info("Emissão veicular extraída: " + emissao.toString());
-                    logService.salvarLog("INFO" , "Emissão veicular extraída: " + emissao.toString());
+                    super.getLogger().info("Emissão veicular extraída: " + emissao.toString());
+                    super.getLogService().salvarLog("INFO" , "Emissão veicular extraída: " + emissao.toString());
                     emissaoVeicularDao.save(emissao);
-                    logger.info("Emissão veicular salva no banco");
+                    super.getLogger().info("Emissão veicular salva no banco");
                 }
 
                 workbook.close();
-                logger.info("\nLeitura do arquivo finalizada\n");
+                super.getLogger().info("\nLeitura do arquivo finalizada\n");
                 arquivo.getInputStream().close();
             }
         } catch (Exception e) {
-            logger.error("Erro ao realizar a leitura da planilha de emissão veicular: " + e.getMessage());
+            super.getLogger().error("Erro ao realizar a leitura da planilha de emissão veicular: " + e.getMessage());
         }
     }
 }

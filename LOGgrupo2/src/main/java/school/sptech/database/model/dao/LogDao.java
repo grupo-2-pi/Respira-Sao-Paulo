@@ -3,16 +3,15 @@ package school.sptech.database.model.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.Log;
 
-public class LogDao {
+public class LogDao extends DAO {
 
-    private JdbcTemplate template;
 
-    public LogDao(JdbcTemplate template) {
-        this.template = template;
+    public LogDao(JdbcTemplate jdbcTemplate) {
+        super(jdbcTemplate);
     }
 
     public void save(Log log){
-        template.update(
+        super.getJdbcTemplate().update(
                 "INSERT INTO LogRestrito " +
                         "(tipo, descricao, datahora)" +
                         "VALUES (?,?,?)",

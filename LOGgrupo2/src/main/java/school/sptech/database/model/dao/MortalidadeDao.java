@@ -3,16 +3,15 @@ package school.sptech.database.model.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.database.model.MortalidadeRespiratoria;
 
-public class MortalidadeDao {
+public class MortalidadeDao extends DAO {
 
-    private final JdbcTemplate jdbcTemplate;
 
     public MortalidadeDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+        super(jdbcTemplate);
     }
 
     public void save(MortalidadeRespiratoria mortalidadeRespiratoria){
-        jdbcTemplate.update(
+        super.getJdbcTemplate().update(
                 "INSERT INTO MortalidadeRespiratoria " +
                         "(mes,ano, municipio, valorTotal, numeroInternacoes, numeroObitos, taxaMortalidade, regiao)" +
                         "VALUES (?,?,?,?,?,?,?,?)",
