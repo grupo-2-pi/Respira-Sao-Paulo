@@ -193,7 +193,6 @@ function calcularMesAnterior(ano, mes) {
     }
 
     if (indice === 0) {
-        // Se for Janeiro → mês anterior é Dezembro do ano passado
         return { anoAnterior: String(Number(ano) - 1), mesAnterior: 'Dezembro' };
     } else {
         return { anoAnterior: ano, mesAnterior: meses[indice - 1] };
@@ -244,28 +243,17 @@ function calcularMediaInternacoes(mortalidade) {
 
 function atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona) {
     if (persona === 'ambiental') {
-        // Pega valor médio da qualidade do ar para a comparação
         const mediaAtual = calcularMediaQualidade(dadosAtual.graficos.qualidadeAr);
         const mediaAnterior = calcularMediaQualidade(dadosAnterior.graficos.qualidadeAr);
         const variacao = calcularVariacao(mediaAtual, mediaAnterior);
-        const variacaoFormatada = Math.round(variacao);  // Agora arredonda!
+        const variacaoFormatada = Math.round(variacao);
 
         document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maisPoluido;
         aplicarEstiloKPI('kpi2-value', variacaoFormatada);
         document.getElementById('kpi3-value').textContent = 'CO2'; // Mockado por enquanto
-
-    } else if (persona === 'saude') {
-        // Pega número médio de internações
-        const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
-        const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
-        const variacao = calcularVariacao(mediaAtual, mediaAnterior);
-        const variacaoFormatada = Math.round(variacao);  // Agora arredonda!
-
-        document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maiorIndiceDoencas;
-        aplicarEstiloKPI('kpi2-value', variacaoFormatada);
-        document.getElementById('kpi3-value').textContent = `${dadosAtual.kpis.taxaMortalidade}%`;
     }
 }
+
 
 
 //Atualzando dash aqui------------------------------------------------
@@ -280,7 +268,7 @@ async function atualizarDash() {
     const persona = localStorage.getItem('personaSelecionada');
 
     buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
-        atualizarCharts(dadosAtual);  // Já usa função existente
+        atualizarCharts(dadosAtual); 
         atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
     });
 }
@@ -324,15 +312,55 @@ function atualizarGraficosSaude(graficos) {
     const municipios = graficos.mortalidade.map(item => item.municipio);
 
     const internacoes = graficos.mortalidade.map(item => item.numeroInternacoes);
-    const poluicao = graficos.qualidadeAr.map(item => item.valor);
-
-    myChart.data.labels = municipios;
-    myChart.data.datasets[0].data = internacoes;
-    myChart.update();
+    const valorTotal = graficos.mortalidade.map(item => item.valorTotal);
 
     myChartB.data.labels = municipios;
-    myChartB.data.datasets[0].data = poluicao;
+    myChartB.data.datasets = [
+        {
+            label: 'Internações (quantidade)',
+            data: internacoes,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            yAxisID: 'internacoes',
+            barThickness: 20,
+            type: 'bar'
+        },
+        {
+            label: 'Valor Total',
+            data: valorTotal,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            yAxisID: 'valorTotal',
+            type: 'line',
+            tension: 0.3
+        }
+    ];
+
+    myChartB.options = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Internações Respiratórias X Valor Total ℹ️',
+                font: { size: 18 }
+            }
+        },
+        scales: {
+            internacoes: {
+                type: 'linear',
+                position: 'left',
+                title: { display: true, text: 'Internações' }
+            },
+            valorTotal: {
+                type: 'linear',
+                position: 'right',
+                title: { display: true, text: 'Valor Total' },
+                grid: { drawOnChartArea: false }
+            }
+        }
+    };
+
     myChartB.update();
 }
+
 
 
