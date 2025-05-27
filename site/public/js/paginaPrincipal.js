@@ -177,6 +177,97 @@ function fecharFiltro() {
 }
 
 
+//calculos---------------------------------------------------
+
+function calcularMesAnterior(ano, mes) {
+    const meses = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    let indice = meses.indexOf(mes);
+
+    if (indice === -1) {
+        console.error('Mês inválido:', mes);
+        return { anoAnterior: ano, mesAnterior: mes };
+    }
+
+    if (indice === 0) {
+        // Se for Janeiro → mês anterior é Dezembro do ano passado
+        return { anoAnterior: String(Number(ano) - 1), mesAnterior: 'Dezembro' };
+    } else {
+        return { anoAnterior: ano, mesAnterior: meses[indice - 1] };
+    }
+}
+
+const backendBaseURL = "http://localhost:3000";
+
+
+function buscarDadosDashboard(regiao, ano, mes, callback) {
+    const { anoAnterior, mesAnterior } = calcularMesAnterior(ano, mes);
+
+    const urlAtual = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(ano)}&mes=${encodeURIComponent(mes)}`;
+    const urlAnterior = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(anoAnterior)}&mes=${encodeURIComponent(mesAnterior)}`;
+
+    const fetchAtual = fetch(urlAtual).then(res => res.json());
+    const fetchAnterior = fetch(urlAnterior).then(res => res.json());
+
+    Promise.all([fetchAtual, fetchAnterior])
+        .then(([dadosAtual, dadosAnterior]) => {
+            callback(dadosAtual, dadosAnterior);
+        })
+        .catch(err => {
+            console.error("Erro ao buscar dados do dashboard:", err);
+        });
+}
+
+function calcularVariacao(valorAtual, valorAnterior) {
+    if (valorAnterior === 0) {
+        return 0; // ou pode ser "100%" se quiser forçar, mas melhor 0 para evitar erros.
+    }
+    return ((valorAtual - valorAnterior) / valorAnterior) * 100;
+}
+
+function calcularMediaQualidade(qualidadeAr) {
+    if (!qualidadeAr || qualidadeAr.length === 0) return 0;
+    const soma = qualidadeAr.reduce((acc, item) => acc + item.valor, 0);
+    return soma / qualidadeAr.length;
+}
+
+function calcularMediaInternacoes(mortalidade) {
+    if (!mortalidade || mortalidade.length === 0) return 0;
+    const soma = mortalidade.reduce((acc, item) => acc + item.numeroInternacoes, 0);
+    return soma / mortalidade.length;
+}
+
+
+
+function atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona) {
+    if (persona === 'ambiental') {
+        // Pega valor médio da qualidade do ar para a comparação
+        const mediaAtual = calcularMediaQualidade(dadosAtual.graficos.qualidadeAr);
+        const mediaAnterior = calcularMediaQualidade(dadosAnterior.graficos.qualidadeAr);
+        const variacao = calcularVariacao(mediaAtual, mediaAnterior);
+        const variacaoFormatada = Math.round(variacao);  // Agora arredonda!
+
+        document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maisPoluido;
+        aplicarEstiloKPI('kpi2-value', variacaoFormatada);
+        document.getElementById('kpi3-value').textContent = 'CO2'; // Mockado por enquanto
+
+    } else if (persona === 'saude') {
+        // Pega número médio de internações
+        const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
+        const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
+        const variacao = calcularVariacao(mediaAtual, mediaAnterior);
+        const variacaoFormatada = Math.round(variacao);  // Agora arredonda!
+
+        document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maiorIndiceDoencas;
+        aplicarEstiloKPI('kpi2-value', variacaoFormatada);
+        document.getElementById('kpi3-value').textContent = `${dadosAtual.kpis.taxaMortalidade}%`;
+    }
+}
+
+
 //Atualzando dash aqui------------------------------------------------
 
 async function atualizarDash() {
@@ -186,16 +277,14 @@ async function atualizarDash() {
     const ano = document.getElementById('filtroAno').value;
     const mes = document.getElementById('filtroMes').value;
 
-    try {
-        const response = await fetch(`http://localhost:3000/dashboard/dados?regiao=${regiao}&ano=${ano}&mes=${mes}`);
-        const data = await response.json();
+    const persona = localStorage.getItem('personaSelecionada');
 
-        atualizarCharts(data);
-        atualizarKPIs(data);
-    } catch (error) {
-        console.error("Erro ao buscar dados do dashboard:", error);
-    }
+    buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
+        atualizarCharts(dadosAtual);  // Já usa função existente
+        atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
+    });
 }
+
 
 function atualizarCharts(data) {
     const persona = localStorage.getItem('personaSelecionada');
