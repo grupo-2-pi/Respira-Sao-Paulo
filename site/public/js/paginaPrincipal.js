@@ -222,7 +222,7 @@ function buscarDadosDashboard(regiao, ano, mes, callback) {
 
 function calcularVariacao(valorAtual, valorAnterior) {
     if (valorAnterior === 0) {
-        return 0; // ou pode ser "100%" se quiser forçar, mas melhor 0 para evitar erros.
+        return 0; 
     }
     return ((valorAtual - valorAnterior) / valorAnterior) * 100;
 }
@@ -325,13 +325,15 @@ function atualizarGraficosSaude(graficos) {
             type: 'bar'
         },
         {
-            label: 'Valor Total',
+            label: 'Poluição (µg/m³)',
             data: valorTotal,
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            yAxisID: 'valorTotal',
+            yAxisID: 'poluicao',
             type: 'line',
-            tension: 0.3
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7
         }
     ];
 
@@ -340,7 +342,7 @@ function atualizarGraficosSaude(graficos) {
         plugins: {
             title: {
                 display: true,
-                text: 'Internações Respiratórias X Valor Total ℹ️',
+                text: 'Internações Respiratórias X Poluição do Ar ℹ️',
                 font: { size: 18 }
             }
         },
@@ -350,10 +352,10 @@ function atualizarGraficosSaude(graficos) {
                 position: 'left',
                 title: { display: true, text: 'Internações' }
             },
-            valorTotal: {
+            poluicao: {
                 type: 'linear',
                 position: 'right',
-                title: { display: true, text: 'Valor Total' },
+                title: { display: true, text: 'Poluição (µg/m³)' },
                 grid: { drawOnChartArea: false }
             }
         }
@@ -361,6 +363,7 @@ function atualizarGraficosSaude(graficos) {
 
     myChartB.update();
 }
+
 
 
 
