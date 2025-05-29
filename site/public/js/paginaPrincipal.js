@@ -115,7 +115,7 @@ if (persona == 'saude') {
     document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
     aplicarEstiloKPI('kpi2-value', -5);
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
-    document.getElementById('kpi3-value').textContent = 'CO2';
+    document.getElementById('kpi3-value').textContent = 'COasass2';
     document.getElementById('m-kpi1-title').textContent = 'Municipio maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
     document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
@@ -160,7 +160,7 @@ if (persona == 'saude') {
             responsive: true,
             plugins: { title: { display: true, text: 'Evolução mensal do nível de poluição por município', font: { size: 14 } } },
             scales: {
-                y: { beginAtZero: false, title: { display: true, text: 'Índice de poluição' } },
+                y: { beginAtZero: false, title: { display: true, text: 'Índice de Poluição (µg/m³)' } },
                 x: { title: { display: true, text: 'Mês' } }
             }
         }
@@ -249,7 +249,7 @@ function atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona) {
 
         document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maisPoluido;
         aplicarEstiloKPI('kpi2-value', variacaoFormatada);
-        document.getElementById('kpi3-value').textContent = 'CO2'; // Mockado por enquanto
+        document.getElementById('kpi3-value').textContent = dadosAtual.kpis.rankingPoluente;
     }
 }
 

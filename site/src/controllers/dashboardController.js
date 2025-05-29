@@ -2,7 +2,8 @@ import {
     getDadosFrotaCirculante, 
     getDadosMortalidade, 
     getDadosQualidadeAr,
-    getQualidadeArPorRegiaoTodosMeses
+    getQualidadeArPorRegiaoTodosMeses,
+    getRankingPoluentes
 } from "../models/dadosDashboardModel.js";
 
 export async function obterDadosDashboard(req, res) {
@@ -17,13 +18,16 @@ export async function obterDadosDashboard(req, res) {
         const mortalidade = await getDadosMortalidade(regiao, ano, mes);
         const qualidadeAr = await getDadosQualidadeAr(regiao, ano, mes);
         const qualidadeArTodosMeses = await getQualidadeArPorRegiaoTodosMeses(regiao);
+        const rankingPoluente = await getRankingPoluentes(regiao, ano, mes);
 
         const resposta = {
             kpis: {
                 maisPoluido: qualidadeAr.length > 0 ? qualidadeAr[0].municipio : "Sem dados",
                 maiorIndiceDoencas: mortalidade.length > 0 ? mortalidade[0].municipio : "Sem dados",
                 valorGasto: mortalidade.length > 0 ? mortalidade[0].valorTotal : 0,
-                taxaMortalidade: mortalidade.length > 0 ? mortalidade[0].taxaMortalidade : 0
+                taxaMortalidade: mortalidade.length > 0 ? mortalidade[0].taxaMortalidade : 0,
+                rankingPoluente: rankingPoluente.length > 0 ? rankingPoluente[0].poluente : "Sem dados"
+
             },
             graficos: {
                 frota,
