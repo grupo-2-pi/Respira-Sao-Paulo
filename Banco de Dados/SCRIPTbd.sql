@@ -65,8 +65,8 @@ CREATE TABLE Empresa (
     nomeFantasia VARCHAR(45),
     cnpj CHAR(14) UNIQUE,
     nomeEmpresa VARCHAR(45),
-    quantidadeFuncionarios INT,
-    emailContato VARCHAR(100)
+    emailContato VARCHAR(100),
+    telefoneContato VARCHAR(11)
 );
 
 CREATE TABLE Funcionario (
