@@ -29,3 +29,12 @@ export async function getDadosQualidadeAr(regiao, ano, mes) {
     const resultado = await executar(query);
     return resultado;
 }
+
+export async function getQualidadeArPorRegiaoTodosMeses(regiao) {
+    const query = `
+        SELECT municipio, mes, valor
+        FROM QualidadeAr
+        WHERE regiao = '${regiao}';
+    `;
+    return await executar(query);
+}

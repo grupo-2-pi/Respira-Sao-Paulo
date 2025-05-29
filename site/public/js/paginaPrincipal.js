@@ -153,7 +153,6 @@ if (persona == 'saude') {
                 { label: 'São Paulo', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)' },
                 { label: 'Guarulhos', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)' },
                 { label: 'São Bernardo', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.2)' },
-                { label: 'Média dos Gastos', data: Array(12).fill(75), borderColor: 'rgba(75, 192, 192, 1)', borderDash: [5, 5], fill: false }
             ]
         },
         options: {
@@ -286,6 +285,7 @@ function atualizarCharts(data) {
 
 //ambiente
 function atualizarGraficosAmbientais(graficos) {
+    // === Gráfico da esquerda (barras empilhadas de emissão) ===
     const municipios = graficos.frota.map(item => item.municipio);
 
     const datasetCarro = graficos.frota.map(item => item.automoveis);
@@ -300,12 +300,79 @@ function atualizarGraficosAmbientais(graficos) {
     myChart.data.datasets[3].data = datasetOnibus;
     myChart.update();
 
-    const qualidadePorMunicipio = graficos.qualidadeAr.map(item => item.valor);
+    // === Gráfico da direita (evolução mensal de poluição por município) ===
+    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const dados = graficos.qualidadeArTodosMeses;
 
-    myChartB.data.labels = municipios;
-    myChartB.data.datasets[0].data = qualidadePorMunicipio;
+    const dadosPorMunicipio = {};
+
+    dados.forEach(item => {
+        const municipio = item.municipio;
+        const mes = item.mes;
+        const valor = item.valor;
+
+        if (!dadosPorMunicipio[municipio]) {
+            dadosPorMunicipio[municipio] = {};
+        }
+
+        dadosPorMunicipio[municipio][mes] = valor;
+    });
+
+    const datasets = [];
+
+    for (const municipio in dadosPorMunicipio) {
+        const valores = meses.map(m => dadosPorMunicipio[municipio][m] || 0);
+
+        datasets.push({
+            label: municipio,
+            data: valores,
+            borderColor: gerarCorAleatoria(),
+            backgroundColor: 'transparent',
+            tension: 0,
+            borderWidth: 2,
+            pointRadius: 3,
+            pointHoverRadius: 5
+        });
+    }
+
+    myChartB.data.labels = meses;
+    myChartB.data.datasets = datasets;
+    myChartB.options.plugins.title.text = 'Evolução mensal do nível de poluição por município';
     myChartB.update();
 }
+
+const coresFixas = [
+    '#e6194b', // Vermelho
+    '#3cb44b', // Verde
+    '#ffe119', // Amarelo
+    '#4363d8', // Azul
+    '#f58231', // Laranja
+    '#911eb4', // Roxo
+    '#46f0f0', // Ciano
+    '#f032e6', // Rosa
+    '#bcf60c', // Verde limão
+    '#fabebe', // Rosa claro
+    '#008080', // Verde petróleo
+    '#e6beff', // Lavanda
+    '#9a6324', // Marrom
+    '#fffac8', // Creme
+    '#800000', // Vinho
+    '#aaffc3', // Verde menta
+    '#808000', // Verde musgo
+    '#ffd8b1', // Pêssego
+    '#000075', // Azul escuro
+    '#808080'  // Cinza (último mesmo)
+];
+
+let corIndex = 0;
+function gerarCorAleatoria() {
+    const cor = coresFixas[corIndex % coresFixas.length];
+    corIndex++;
+    return cor;
+}
+
+
+
 
 //saude
 function atualizarGraficosSaude(graficos) {

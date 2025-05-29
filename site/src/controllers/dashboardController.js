@@ -1,7 +1,8 @@
 import { 
     getDadosFrotaCirculante, 
     getDadosMortalidade, 
-    getDadosQualidadeAr 
+    getDadosQualidadeAr,
+    getQualidadeArPorRegiaoTodosMeses
 } from "../models/dadosDashboardModel.js";
 
 export async function obterDadosDashboard(req, res) {
@@ -15,6 +16,7 @@ export async function obterDadosDashboard(req, res) {
         const frota = await getDadosFrotaCirculante(regiao, ano, mes);
         const mortalidade = await getDadosMortalidade(regiao, ano, mes);
         const qualidadeAr = await getDadosQualidadeAr(regiao, ano, mes);
+        const qualidadeArTodosMeses = await getQualidadeArPorRegiaoTodosMeses(regiao);
 
         const resposta = {
             kpis: {
@@ -26,7 +28,8 @@ export async function obterDadosDashboard(req, res) {
             graficos: {
                 frota,
                 mortalidade,
-                qualidadeAr
+                qualidadeAr,
+                qualidadeArTodosMeses
             }
         };
 
