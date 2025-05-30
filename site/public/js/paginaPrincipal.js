@@ -135,7 +135,7 @@ if (persona == 'saude') {
             ]
         },
         options: {
-            plugins: { title: { display: true, text: 'Emissão total de CO₂ por município e tipo de veículo' } },
+            plugins: { title: { display: true, text: 'Estimativa de emissão de CO₂ por km e tipo de veículo' } },
             responsive: true,
             maintainAspectRatio: false,
             scales: {
@@ -288,10 +288,18 @@ function atualizarGraficosAmbientais(graficos) {
     // === Gráfico da esquerda (barras empilhadas de emissão) ===
     const municipios = graficos.frota.map(item => item.municipio);
 
-    const datasetCarro = graficos.frota.map(item => item.automoveis);
-    const datasetMoto = graficos.frota.map(item => item.motos);
-    const datasetCaminhao = graficos.frota.map(item => item.caminhoes);
-    const datasetOnibus = graficos.frota.map(item => item.onibus);
+    const fatorCO2 = {
+    automoveis: 192,
+    motos: 72,
+    caminhoes: 800,
+    onibus: 1040
+};
+
+const datasetCarro = graficos.frota.map(item => item.automoveis * fatorCO2.automoveis);
+const datasetMoto = graficos.frota.map(item => item.motos * fatorCO2.motos);
+const datasetCaminhao = graficos.frota.map(item => item.caminhoes * fatorCO2.caminhoes);
+const datasetOnibus = graficos.frota.map(item => item.onibus * fatorCO2.onibus);
+
 
     myChart.data.labels = municipios;
     myChart.data.datasets[0].data = datasetCarro;
