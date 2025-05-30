@@ -55,4 +55,18 @@ export async function getRankingPoluentes(regiao, ano, mes) {
 }
 
 
-
+//GASTOS 2023 X 2024
+export async function getGastosPorMes(regiao) {
+    const query = `
+        SELECT ano, mes,
+            SUM(valorTotal) AS total_gasto
+        FROM MortalidadeRespiratoria
+        WHERE regiao = '${regiao}'
+        AND (ano = '2023' OR ano = '2024')
+        GROUP BY ano, mes
+        ORDER BY FIELD(mes,
+            'Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+            'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
+    `;
+    return await executar(query);
+}

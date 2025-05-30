@@ -110,13 +110,13 @@ if (persona == 'saude') {
     });
 
 } else {
-    document.getElementById('kpi1-title').textContent = 'Municipio com maior nível de poluição';
+    document.getElementById('kpi1-title').textContent = 'Município com maior nível de poluição';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
     document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
     aplicarEstiloKPI('kpi2-value', -5);
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
-    document.getElementById('kpi3-value').textContent = 'COasass2';
-    document.getElementById('m-kpi1-title').textContent = 'Municipio maior nível de poluição';
+    document.getElementById('kpi3-value').textContent = 'Sem Dados';
+    document.getElementById('m-kpi1-title').textContent = 'Município maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
     document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
     aplicarEstiloKPI('m-kpi2-value', -5);
@@ -464,10 +464,61 @@ function atualizarGraficosSaude(graficos) {
     };
 
     myChartB.update();
+
+
+   // === GRÁFICO myChart: Gastos 2023 vs 2024 ===
+    const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+    const dados2023 = Array(12).fill(0);
+    const dados2024 = Array(12).fill(0);
+
+    graficos.gastosAnuais.forEach(item => {
+        const index = meses.indexOf(item.mes);
+        if (index !== -1) {
+            if (item.ano === '2023') dados2023[index] = item.total_gasto;
+            else if (item.ano === '2024') dados2024[index] = item.total_gasto;
+        }
+    });
+
+    const media = dados2023.map((val, i) => ((val + dados2024[i]) / 2).toFixed(2));
+
+    myChart.data.labels = meses;
+    myChart.data.datasets = [
+        {
+            label: 'Gastos 2023',
+            data: dados2023,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            tension: 0,
+            fill: false,
+            pointRadius: 4
+        },
+        {
+            label: 'Gastos 2024',
+            data: dados2024,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            tension: 0,
+            fill: false,
+            pointRadius: 4
+        },
+        {
+            label: 'Média dos Gastos',
+            data: media,
+            borderColor: 'rgb(67, 101, 250)',
+            borderWidth: 4,
+            borderDash: [5, 5],
+            tension: 0.2,
+            fill: false,
+            pointRadius: 0
+        }
+    ];
+
+    myChart.options.plugins.title.text = 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️';
+    myChart.options.scales.y.title.text = 'R$ em milhões';
+    myChart.update();
+
 }
 
-
-
+//LOGICA SEPARA DO VELOCIMETRO COLOQUEI AQUI P N ME ATRAPALHAR
 
 function getEstacaoPorMes(mes) {
     const estacoes = {
