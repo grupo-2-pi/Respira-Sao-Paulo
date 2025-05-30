@@ -31,14 +31,15 @@ export async function getDadosQualidadeAr(regiao, ano, mes) {
 }
 
 //GRAFICO DOIS DO MODO AMBIENTAL - EVOLUÇÃO MENSAL DE POLUIÇÃO 
-export async function getQualidadeArPorRegiaoTodosMeses(regiao) {
+export async function getQualidadeArPorRegiaoTodosMeses(regiao, ano) {
     const query = `
-        SELECT municipio, mes, valor
+        SELECT municipio, mes, valor, ano
         FROM QualidadeAr
-        WHERE regiao = '${regiao}';
+        WHERE regiao = '${regiao}' AND ano = '${ano}';
     `;
     return await executar(query);
 }
+
 
 //KPI RANKING DE POLUIÇÃO 
 export async function getRankingPoluentes(regiao, ano, mes) {
@@ -52,4 +53,6 @@ export async function getRankingPoluentes(regiao, ano, mes) {
     `;
     return await executar(query);
 }
+
+
 
