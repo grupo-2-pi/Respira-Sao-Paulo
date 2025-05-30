@@ -266,10 +266,15 @@ async function atualizarDash() {
 
     const persona = localStorage.getItem('personaSelecionada');
 
-    buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
+        buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
         atualizarCharts(dadosAtual); 
         atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
+
+        if (persona === 'saude') {
+            atualizarVelocimetro(mes); // <-- insere aqui
+        }
     });
+
 }
 
 
@@ -441,4 +446,60 @@ function atualizarGraficosSaude(graficos) {
 
 
 
+function getEstacaoPorMes(mes) {
+    const estacoes = {
+        'Janeiro':      { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Fevereiro':    { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Dezembro':     { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Março':        { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Abril':        { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Maio':         { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Junho':        { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Julho':        { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Agosto':       { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Setembro':     { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 },
+        'Outubro':      { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 },
+        'Novembro':     { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 }
+    };
+    return estacoes[mes] || { estacao: 'Desconhecida', cor: 'gray', preenchimento: 0 };
+}
+
+function atualizarVelocimetro(mesSelecionado) {
+    const info = getEstacaoPorMes(mesSelecionado);
+
+    // Recria os canvases dinamicamente
+    document.getElementById("segunda-kpi").innerHTML = '<canvas id="velocimetro"></canvas>';
+    document.getElementById("m-segunda-kpi").innerHTML = '<canvas id="m-velocimetro"></canvas>';
+
+    const canvasDesktop = document.getElementById('velocimetro');
+    const canvasMobile = document.getElementById('m-velocimetro');
+
+    const criarGrafico = (ctx) => new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [info.preenchimento, 100 - info.preenchimento],
+                backgroundColor: [info.cor, '#eee'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            rotation: -90,
+            circumference: 180,
+            cutout: '75%',
+            plugins: {
+                title: {
+                    display: true,
+                    text: `Risco de Internações - ${info.estacao}`,
+                    font: { size: 15, weight: 'bold' },
+                    padding: { top: 20, bottom: 20 }
+                },
+                legend: { display: false }
+            }
+        }
+    });
+
+    if (canvasDesktop) criarGrafico(canvasDesktop);
+    if (canvasMobile) criarGrafico(canvasMobile);
+}
 
