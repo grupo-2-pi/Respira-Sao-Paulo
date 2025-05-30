@@ -269,9 +269,12 @@ async function atualizarDash() {
         buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
         atualizarCharts(dadosAtual); 
         atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
+         
 
         if (persona === 'saude') {
-            atualizarVelocimetro(mes); // <-- insere aqui
+            atualizarVelocimetro(mes); 
+            document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
+        document.getElementById('kpi3-value').textContent = dadosAtual.kpis.taxaMortalidade.toFixed(2) + '%';
         }
     });
 
