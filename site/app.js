@@ -4,7 +4,7 @@ import { envVars } from "./src/env/env.js";
 import feedbackRouter from './src/routes/feedback.js';
 import filtroRouter from "./src/routes/filtro.js";
 import dashboardRouter from './src/routes/dashboard.js';
-
+import empresaRouter from "./src/routes/empresas.js";
 
 import express from 'express';
 import cors from 'cors';
@@ -25,6 +25,7 @@ app.use(cors());
 app.use("/feedback", feedbackRouter);
 app.use("/filtro", filtroRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/empresas", empresaRouter);
 
 app.listen(envVars.appPort, "0.0.0.0", () => {
   console.log(`

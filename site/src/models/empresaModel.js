@@ -1,10 +1,8 @@
-var database = require("../database/config");
+import { executar } from "../database/config.js";
 
 
-function cadastrar(fantasia, empresa, email, cnpj, tel) {
-  var instrucaoSql = `INSERT INTO Empresa (nomeFantasia, cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES ('${fantasia}', '${cnpj}', '${empresa}', '${email}', '${tel}')`;
+export function cadastrar(fantasia, empresa, email, cnpj, tel) {
+  const instrucaoSql = `INSERT INTO Empresa (nomeFantasia, cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES ('${fantasia}', '${cnpj}', '${empresa}', '${email}', '${tel}')`;
 
-  return database.executar(instrucaoSql);
+  return executar(instrucaoSql);
 }
-
-module.exports = {cadastrar};
