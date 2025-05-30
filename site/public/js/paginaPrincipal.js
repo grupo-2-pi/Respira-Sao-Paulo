@@ -269,9 +269,26 @@ async function atualizarDash() {
         buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
         atualizarCharts(dadosAtual); 
         atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
+         
 
         if (persona === 'saude') {
-            atualizarVelocimetro(mes); // <-- insere aqui
+            // === VARIAÇÃO DE INTERNAÇÕES ===
+        const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
+        const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
+        const variacao = calcularVariacao(mediaAtual, mediaAnterior);
+        const variacaoFormatada = Math.round(variacao);
+
+            //VELOCIMETRO ATT
+            atualizarVelocimetro(mes); 
+            //TAXA MORTALIDADE ATT
+            document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
+            document.getElementById('kpi3-value').textContent = dadosAtual.kpis.taxaMortalidade.toFixed(2) + '%';
+            //VARIAÇÃO INTERNAÇÕES
+             document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
+            aplicarEstiloKPI('kpi1-value', variacaoFormatada);
+
+             document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
+             aplicarEstiloKPI('m-kpi1-value', variacaoFormatada);
         }
     });
 
