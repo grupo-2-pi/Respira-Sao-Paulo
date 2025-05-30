@@ -404,12 +404,17 @@ function gerarCorAleatoria() {
 
 
 
-//saude
+//GRAFICOS DA SAUDE 
 function atualizarGraficosSaude(graficos) {
     const municipios = graficos.mortalidade.map(item => item.municipio);
 
     const internacoes = graficos.mortalidade.map(item => item.numeroInternacoes);
-    const valorTotal = graficos.mortalidade.map(item => item.valorTotal);
+
+    // Corrigindo: pegar valor da poluição real da tabela QualidadeAr
+    const poluicoes = graficos.mortalidade.map(item => {
+        const registroPoluicao = graficos.qualidadeAr.find(p => p.municipio === item.municipio);
+        return registroPoluicao ? registroPoluicao.valor : 0;
+    });
 
     myChartB.data.labels = municipios;
     myChartB.data.datasets = [
@@ -423,12 +428,12 @@ function atualizarGraficosSaude(graficos) {
         },
         {
             label: 'Poluição (µg/m³)',
-            data: valorTotal,
+            data: poluicoes,
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             yAxisID: 'poluicao',
             type: 'line',
-            tension: 0.3,
+            tension: 0,
             pointRadius: 5,
             pointHoverRadius: 7
         }
@@ -460,6 +465,7 @@ function atualizarGraficosSaude(graficos) {
 
     myChartB.update();
 }
+
 
 
 
