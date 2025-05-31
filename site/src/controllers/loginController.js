@@ -11,9 +11,8 @@ export async function validarUser(req, res) {
         const buscarDado = await buscarDadosUser(req.body.emailServer, req.body.senhaServer);
 
         if (buscarDado.length == 1) {
-            return res.status(200).send({
-                dados: buscarDado
-            });
+            return res.status(200).send(buscarDado[0]
+            );
         }else{
 
             res.status(403).send("Email e/ou senha inválido(s)");

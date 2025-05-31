@@ -73,8 +73,12 @@ async function login(){
       sessionStorage.ID_EMPRESA = json.idEmpresa;
       sessionStorage.IS_FIRST_LOGIN = json.isFirstLogin;
 
+      
+
 
       if(sessionStorage.IS_FIRST_LOGIN){
+        alert('entrou aqui');
+        alert(sessionStorage.CPF_FUNCIONARIO)
         window.location = "trocarSenha.html";
       }else{
         window.location = "paginaPrincipal.html"
