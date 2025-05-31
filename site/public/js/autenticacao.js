@@ -42,22 +42,51 @@ function goToFeedback(){
   location.href = "/#feedback"
 }
 
-function login(){
-  var credentials = receberDadosLogin();
+async function login(){
 
-  var isLoginValid = validateLoginCredentials(credentials);
+  const credentials = receberDadosLogin(); // json com os valores 
 
-  if(isLoginValid){
-    location.replace("/paginaPrincipal.html");
-  }else{
-    console.log("Login invalido")
+  if(credentials.email.trim() == "" || credentials.password.trim() == ""){
+    return false;
   }
+
+  try{
+
+    const resposta = await fetch("/login/buscar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          emailServer: credentials.email,
+          senhaServer: credentials.password
+      })
+    });
+
+    if (resposta.ok) {
+      const json = await resposta.json();
+      sessionStorage.EMAIL_USUARIO = json.email;
+
+      if(essionStorage.EMAIL_USUARIO){
+        window.location = "trocarSenha.html";
+      }else{
+        window.location = "paginaPrincipal.html"
+      }
+
+    }
+
+
+  }catch{
+
+  }
+
+  
 }
 
 // Recebe os dados das inputs e retorna um json pra vacilitar
 function receberDadosLogin(){
   return {
-    cnpj: inputCnpj.value,
+    email: inputEmail.value,
     password: inputLoginPassword.value,
   };
 }
