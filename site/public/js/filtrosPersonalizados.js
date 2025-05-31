@@ -2,6 +2,8 @@
 window.toggleFiltroPersonalizado = toggleFiltroPersonalizado;
 window.editarFiltro = editarFiltro;
 window.abrirEditarFiltro = abrirEditarFiltro;
+window.fecharFiltroEditar = fecharFiltroEditar;
+window.excluirFiltro = excluirFiltro;
 
 let contextoPagina = "";
 let idFixoGlobal = null;
@@ -37,7 +39,7 @@ function adicionarFiltroPersonalizado(fromServer, filtros) {
             const li = document.createElement("li");
             li.innerHTML = `
                 <div class="filtro-item">
-                    <span><strong>${filtro.nome} CU</strong></span>
+                    <span><strong>${filtro.nome}</strong></span>
                     <button onclick="abrirEditarFiltro(${filtro.idFiltro})">Editar</button>
                     <button onclick="excluirFiltro(${filtro.idFiltro})">Excluir</button>
                 </div>
@@ -90,61 +92,79 @@ export async function adicionarFiltroPersonalizadoEnviar() {
 }
 
 export async function excluirFiltro(id) {
-    await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/deletar/${id}`, {
-        method: "DELETE",
-    });
-    carregarFiltros(idFixoGlobal, contextoPagina);
+    try {
+        const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/deletar/${id}`, {
+            method: "DELETE",
+        });
+        
+        if (response.ok) {
+            alert("Filtro excluído com sucesso!");
+            location.reload();
+        } else {
+            console.error("Erro ao excluir filtro");
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+}
+
+
+
+export function fecharFiltroEditar() {
+    document.getElementById("id_fundo_adicionar_filtro_feedback").style.display = "none";
 }
 
 export async function editarFiltro() {
     try {
-        const nome = document.getElementById("nomeNovoFiltro");
-        const municipio = document.getElementById("municipioNovoFiltro");
-        const regiao = document.getElementById("regiaoNovoFiltro");
-        const ano = document.getElementById("anoNovoFiltro");
-        const mes = document.getElementById("mesNovoFiltro");
+        if (!window.filtroASerEditado) {
+            console.error("Nenhum filtro selecionado para edição");
+            return;
+        }
 
-        const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/atualizar/${filtroASerEditado.idFiltro}`, {
+        const nome = document.querySelector('input[type="text"]').value;
+        const regiao = document.getElementById("regiaoDesejadaEditar").value;
+        const ano = document.getElementById("anoDesejadoEditar").value;
+        const mes = document.getElementById("mesDesejadoEditar").value;
+
+        const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/atualizar/${window.filtroASerEditado.idFiltro}`, {
             method: "PUT",
             body: JSON.stringify({
-                nome,
-                ano,
-                mes,
-                regiao,
+                nome: nome,
+                ano: ano,
+                mes: mes,
+                regiao: regiao,
             }),
             headers: {
                 "Content-Type": "application/json"
             },
         });
 
-        console.log(response);
+        if (response.ok) {
+            alert("Filtro atualizado com sucesso!");
+            location.reload();
+            // location.reload();
+        } else {
+            console.error("Erro ao atualizar:", response.statusText);
+        }
 
-        //location.reload();
     } catch (e) {
-        console.log(e);
+        console.error("Erro na requisição:", e);
     }
-
-    console.log(filtroASerEditado);
-
-    document.getElementById("nomeNovoFiltro").value = filtroASerEditado.nome;
-    document.getElementById("municipioNovoFiltro").value = filtroASerEditado.municipio;
-    document.getElementById("regiaoNovoFiltro").value = filtroASerEditado.regiao;
-    document.getElementById("anoNovoFiltro").value = filtroASerEditado.ano;
-    document.getElementById("mesNovoFiltro").value = filtroASerEditado.mes;
 }
 
 export async function abrirEditarFiltro(id) {
     const filtro = dados.filter((f) => f.idFiltro === id)[0];
 
+    window.filtroASerEditado = filtro;
+
     document.getElementById("id_fundo_adicionar_filtro_feedback").style.display = "flex";
 
     console.log(filtro);
 
-    document.getElementByid("nomeEditarFiltro").value = filtro.nome;
-    document.getElementByid("municipioEditarFiltro").value = filtro.municipio;
-    document.getElementByid("regiaoEditarFiltro").value = filtro.regiao;
-    document.getElementByid("anoEditarFiltro").value = filtro.ano;
-    document.getElementByid("mesEditarFiltro").value = filtro.mes;
+    document.querySelector('input[type="text"]').value = filtro.nome;
+    document.getElementById("regiaoDesejadaEditar").value = filtro.regiao;
+    document.getElementById("anoDesejadoEditar").value = filtro.ano;
+    document.getElementById("mesDesejadoEditar").value = filtro.mes;
 }
 
 function capitalize(string) {

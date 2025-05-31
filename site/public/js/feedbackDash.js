@@ -1,7 +1,10 @@
 import { envVars } from "./index.js";
 import { carregarFiltros } from "./filtrosPersonalizados.js";
-
 document.addEventListener('DOMContentLoaded', buscarDados);
+
+window.salvarDash = salvarDash
+
+
 
 const regioes = [
     "ABC",
@@ -28,7 +31,7 @@ var contador = 0;
 
 const myChart = document.getElementById('myChartXX');
 
-const myChartXX = null;
+let myChartXX = null;
 
 export function abrirComentarios() {
 
@@ -43,63 +46,6 @@ export function abrirComentarios() {
         contador = 0;
     }
 }
-/* 
-export function atualizarDash() {
-
-    document.getElementById('id_fundo_escolher_filtro').style.display = "none";
-    lista = gerarDadosAleatorios2(10, 0, 20);
-
-    var regiao = regiaoDesejada.value;
-    var municipioPrincipalA = municipioPrincipal.value;
-    var anoPrincipalA = anoDesejado.value;
-    var mesPrincipalA = mesDesejado.value;
-
-    if (municipioPrincipalA == '') {
-        municipioFeedback.innerHTML = 'São Paulo';
-    } else {
-        municipioFeedback.innerHTML = municipioPrincipalA;
-    }
-    if (anoPrincipalA == '') {
-        anoFeedback.innerHTML = '2024';
-    } else {
-        anoFeedback.innerHTML = anoPrincipalA;
-    }
-    if (mesPrincipalA == '') {
-        mesFeedback.innerHTML = 'Janeiro';
-    } else {
-        mesFeedback.innerHTML = mesPrincipalA;
-    }
-
-    mudarChartJs(regiao);
-
-}
-
-export function mudarChartJs(regiao) {
-
-    if (regiao == 'Sul') {
-
-        var municipios = Object.keys(regiaoSul);
-        var valores = Object.values(regiaoSul);
-
-        myChartXX.data.datasets[0].data[0] = valores[0];
-        myChartXX.data.datasets[0].data[1] = valores[1];
-        myChartXX.data.datasets[0].data[2] = valores[2];
-        myChartXX.data.datasets[0].data[3] = valores[3];
-        myChartXX.data.datasets[0].data[4] = valores[4];
-        myChartXX.data.datasets[0].data[5] = valores[5];
-        myChartXX.data.datasets[0].data[6] = valores[6];
-        myChartXX.data.datasets[0].data[7] = valores[7];
-        myChartXX.data.datasets[0].data[8] = valores[8];
-        myChartXX.data.datasets[0].data[9] = valores[9];
-
-        myChartXX.data.datasets[0].labels = municipios;
-        myChartXX.update();
-        return;
-
-    }
-
-    myChartXX.update();
-} */
 
 export async function buscarDados() {
     try {
@@ -198,5 +144,34 @@ export async function buscarDados() {
 
     } catch (e) {
         console.log(e);
+    }
+}
+
+export async function salvarDash() {
+    var regiao = document.getElementById('regiaoDesejada').value;
+    var ano = document.getElementById('anoDesejado').value;
+    var mes = document.getElementById('mesDesejado').value;
+
+    if (!regiao || !ano || !mes) {
+        return alert('Preencha todos os campos');
+    }
+
+    var filtro = { regiao, ano, mes };
+
+    try {
+        var res = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/criar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(filtro)
+        });
+
+        if (!res.ok) throw new Error('Erro no servidor');
+
+        alert('Filtro salvo!');
+        await buscarDados();
+
+    } catch (e) {
+        console.error(e);
+        alert('Erro ao salvar filtro');
     }
 }

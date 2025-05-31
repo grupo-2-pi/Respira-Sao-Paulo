@@ -1,9 +1,8 @@
 import { executar } from "../database/config.js";
 
-export async function buscarFiltrosFuncionario(idFuncionario) {
+export async function buscarFiltrosFuncionario() {
   const queryBusca = `
     SELECT * FROM Filtro
-    WHERE fkFuncionario = ${idFuncionario};
   `
 
   const resultadoBusca = await executar(queryBusca);
@@ -11,11 +10,17 @@ export async function buscarFiltrosFuncionario(idFuncionario) {
   return resultadoBusca;
 }
 
-export async function criar(nome, regiao, ano, mes, idFuncionario, idEmpresa) {
+export async function criar(regiao, ano, mes) {
   const query = `
     INSERT INTO Filtro (nome, regiao, ano,mes,fkFuncionario,fkEmpresa) VALUES
-    ('${nome}', '${regiao}', ${ano}, '${mes}', ${idFuncionario}, ${idEmpresa});
+    ('filtro Salvo', '${regiao}', '${ano}', '${mes}', null, null);
   `;
+
+  // export async function criar(nome, regiao, ano, mes, idFuncionario, idEmpresa) {
+  // const query = `
+  //   INSERT INTO Filtro (nome, regiao, ano,mes,fkFuncionario,fkEmpresa) VALUES
+  //   ('${nome}', '${regiao}', ${ano}, '${mes}', ${idFuncionario}, ${idEmpresa});
+  // `;
 
   await executar(query);
 }
