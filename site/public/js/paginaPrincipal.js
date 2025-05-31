@@ -282,7 +282,7 @@ async function atualizarDash() {
             atualizarVelocimetro(mes); 
             //TAXA MORTALIDADE ATT
             document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
-            document.getElementById('kpi3-value').textContent = dadosAtual.kpis.taxaMortalidade.toFixed(2) + '%';
+            document.getElementById('kpi3-value').textContent = dadosAtual.kpis.taxaMortalidade.toFixed(1) + '%';
             //VARIAÇÃO INTERNAÇÕES
              document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
             aplicarEstiloKPI('kpi1-value', variacaoFormatada);
