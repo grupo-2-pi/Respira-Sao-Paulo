@@ -47,12 +47,11 @@ public class Main {
         qualidadeArService.extrairDadosQualidadeAr(arquivoQualidadeNome, arquivoQualidade);
 
         NotificacaoDto noti = new NotificacaoDto(
-                "Chegou mensagem ola"
+                "Base tratada com sucesso"
         );
 
         NotificationClient client = new NotificationClient(
-                "https://hooks.slack.com/services/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",
-                new Logger()
+                logger
         );
 
         client.sendMessage(noti);

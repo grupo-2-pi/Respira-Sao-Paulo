@@ -11,13 +11,12 @@ import java.net.http.HttpResponse;
 
 public class NotificationClient {
 
-    private final String webhook;
+    private final String webhook = System.getenv("SLACK_WEBHOOK");
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final HttpClient client = HttpClient.newHttpClient();
     private final Logger logger;
 
-    public NotificationClient(String webhook, Logger logger){
-        this.webhook = webhook;
+    public NotificationClient(Logger logger){
         this.logger = logger;
     }
 
@@ -33,7 +32,7 @@ public class NotificationClient {
 
             HttpResponse<String> respostaEnvio = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            logger.info("Requisição finalizada: " + respostaEnvio.statusCode() + " " + respostaEnvio.body());
+            logger.info(dto.getMessage());
 
         } catch (Exception e) {
             logger.error(e.getMessage());
