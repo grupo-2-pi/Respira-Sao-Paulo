@@ -3,7 +3,7 @@ var router = express.Router();
 import {validarUser} from "../controllers/loginController.js";
 
 
-router.get("/buscar", (req, res) => {
+router.post("/buscar", (req, res) => {
     validarUser(req, res);
 });
 

@@ -1,7 +1,13 @@
 import { executar } from "../database/config.js"
 
-export async function buscarDadosUser(municipio){
+export async function buscarDadosUser(email, senha){
 
 
-    const resultado = await executar()
+    const selectValidacao = `SELECT cpfFuncionario, nomeFuncionario, emailFuncionario, cargoFuncionario, isGerente, idEmpresa, isFirstLogin  
+    FROM Funcionario WHERE emailFuncionario = '${email}' and senha = '${senha}'
+    `;
+
+    const resultado = await executar(selectValidacao);
+
+    return resultado;
 }

@@ -65,9 +65,16 @@ async function login(){
 
     if (resposta.ok) {
       const json = await resposta.json();
-      sessionStorage.EMAIL_USUARIO = json.email;
+      sessionStorage.CPF_FUNCIONARIO = json.cpfFuncionario;
+      sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
+      sessionStorage.EMAIL_FUNCIONARIO = json.emailFuncionario;
+      sessionStorage.CARGO_FUNCIONARIO = json.cargoFuncionario;
+      sessionStorage.IS_GERENTE = json.isGerente;
+      sessionStorage.ID_EMPRESA = json.idEmpresa;
+      sessionStorage.IS_FIRST_LOGIN = json.isFirstLogin;
 
-      if(essionStorage.EMAIL_USUARIO){
+
+      if(sessionStorage.IS_FIRST_LOGIN){
         window.location = "trocarSenha.html";
       }else{
         window.location = "paginaPrincipal.html"
@@ -76,8 +83,9 @@ async function login(){
     }
 
 
-  }catch{
-
+  }catch{ 
+    console.log('Não deu certo');
+    alert('cheguei só até aqui');
   }
 
   
