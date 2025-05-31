@@ -3,7 +3,7 @@ import { executar } from "../database/config.js"
 export async function buscarDadosUser(email, senha){
 
 
-    const selectValidacao = `SELECT cpfFuncionario, nomeFuncionario, emailFuncionario, cargoFuncionario, isGerente, idEmpresa, isFirstLogin  
+    const selectValidacao = `SELECT idFuncionario, cpfFuncionario, nomeFuncionario, emailFuncionario, cargoFuncionario, isGerente, idEmpresa, isFirstLogin  
     FROM Funcionario WHERE emailFuncionario = '${email}' and senha = '${senha}'
     `;
 

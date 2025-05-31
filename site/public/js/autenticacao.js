@@ -65,6 +65,8 @@ async function login(){
 
     if (resposta.ok) {
       const json = await resposta.json();
+
+      sessionStorage.ID_FUNCIONARIO = json.idFuncionario
       sessionStorage.CPF_FUNCIONARIO = json.cpfFuncionario;
       sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
       sessionStorage.EMAIL_FUNCIONARIO = json.emailFuncionario;
@@ -74,11 +76,11 @@ async function login(){
       sessionStorage.IS_FIRST_LOGIN = json.isFirstLogin;
 
       
-
+      if(resposta.status == 403){
+        alert("Usuário e/ou senha inválido(s)");
+      }
 
       if(sessionStorage.IS_FIRST_LOGIN){
-        alert('entrou aqui');
-        alert(sessionStorage.CPF_FUNCIONARIO)
         window.location = "trocarSenha.html";
       }else{
         window.location = "paginaPrincipal.html"
@@ -87,9 +89,8 @@ async function login(){
     }
 
 
-  }catch{ 
-    console.log('Não deu certo');
-    alert('cheguei só até aqui');
+  }catch(erro){ 
+    console.error("Erro na requisição:", erro);
   }
 
   
