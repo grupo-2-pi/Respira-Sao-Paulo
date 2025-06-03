@@ -2,7 +2,6 @@ import { envVars } from "./index.js";
 import { carregarFiltros } from "./filtrosPersonalizados.js";
 document.addEventListener('DOMContentLoaded', buscarDados);
 
-window.salvarDash = salvarDash
 
 
 
@@ -146,34 +145,5 @@ export async function buscarDados() {
 
     } catch (e) {
         console.log(e);
-    }
-}
-
-export async function salvarDash() {
-    var regiao = document.getElementById('regiaoDesejada').value;
-    var ano = document.getElementById('anoDesejado').value;
-    var mes = document.getElementById('mesDesejado').value;
-
-    if (!regiao || !ano || !mes) {
-        return alert('Preencha todos os campos');
-    }
-
-    var filtro = { regiao, ano, mes };
-
-    try {
-        var res = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/criar`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(filtro)
-        });
-
-        if (!res.ok) throw new Error('Erro no servidor');
-
-        alert('Filtro salvo!');
-        await buscarDados();
-
-    } catch (e) {
-        console.error(e);
-        alert('Erro ao salvar filtro');
     }
 }

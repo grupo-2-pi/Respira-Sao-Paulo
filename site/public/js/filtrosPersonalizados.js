@@ -1,9 +1,11 @@
 
+window.salvarDash = salvarDash
 window.toggleFiltroPersonalizado = toggleFiltroPersonalizado;
 window.editarFiltro = editarFiltro;
 window.abrirEditarFiltro = abrirEditarFiltro;
 window.fecharFiltroEditar = fecharFiltroEditar;
 window.excluirFiltro = excluirFiltro;
+
 
 let contextoPagina = "";
 let idFixoGlobal = null;
@@ -26,7 +28,7 @@ export async function carregarFiltros(idFixo, contexto, data) {
 
 
 function adicionarFiltroPersonalizado(fromServer, filtros) {
-    const lista = document.getElementById(`listaFiltrosPersonalizados${capitalize(contextoPagina)}`);
+    const lista = document.getElementById(`listaFiltrosPersonalizados`);
     lista.innerHTML = "";
 
     dados = filtros;
@@ -69,27 +71,6 @@ function limparCamposFiltro() {
     document.getElementById("mesNovoFiltro").value = "";
 }
 
-export async function adicionarFiltroPersonalizadoEnviar() {
-    const filtro = {
-        nome: document.getElementById("nomeNovoFiltro").value,
-        municipio: document.getElementById("municipioNovoFiltro").value,
-        regiao: document.getElementById("regiaoNovoFiltro").value,
-        ano: document.getElementById("anoNovoFiltro").value,
-        mes: document.getElementById("mesNovoFiltro").value,
-        contexto: contextoPagina
-    };
-
-    await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/adicionar`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(filtro)
-    });
-
-    fecharAdicionarFiltro();
-    carregarFiltros(idFixoGlobal, contextoPagina);
-}
 
 export async function excluirFiltro(id) {
     try {
@@ -167,6 +148,31 @@ export async function abrirEditarFiltro(id) {
     document.getElementById("mesDesejadoEditar").value = filtro.mes;
 }
 
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+export async function salvarDash() {
+    var regiao = document.getElementById('regiaoDesejada').value;
+    var ano = document.getElementById('anoDesejado').value;
+    var mes = document.getElementById('mesDesejado').value;
+
+    if (!regiao || !ano || !mes) {
+        return alert('Preencha todos os campos');
+    }
+
+    var filtro = { regiao, ano, mes };
+
+    try {
+        var res = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/criar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(filtro)
+        });
+
+        if (!res.ok) throw new Error('Erro no servidor');
+
+        alert('Filtro salvo!');
+        location.reload();
+
+    } catch (e) {
+        console.error(e);
+        alert('Erro ao salvar filtro');
+    }
 }

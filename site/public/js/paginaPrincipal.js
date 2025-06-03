@@ -260,9 +260,9 @@ function atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona) {
 async function atualizarDash() {
     fecharFiltro();
 
-    const regiao = document.getElementById('filtroRegiao').value;
-    const ano = document.getElementById('filtroAno').value;
-    const mes = document.getElementById('filtroMes').value;
+    const regiao = document.getElementById('regiaoDesejada').value;
+    const ano = document.getElementById('anoDesejado').value;
+    const mes = document.getElementById('mesDesejado').value;
 
     const persona = localStorage.getItem('personaSelecionada');
 
