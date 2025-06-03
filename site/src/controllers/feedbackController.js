@@ -6,6 +6,9 @@ export async function buscarDados(req, res) {
     const { municipio } = req.params;
 
     const responseKpi = await buscarKpis(municipio);
+
+    console.log(responseKpi);
+
     const responseGrafico = await buscarGraficos();
 
     return res.status(200).send({

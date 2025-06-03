@@ -69,9 +69,15 @@ function goToInicio(){
   location.replace("/");
 }
 
-function enviarFeedback(button){
+async function enviarFeedback(button){
   button.innerHTML = `<img class="loading-gif" src="./assets/gifs/gif-carregando.gif" alt="Carregando..."/>`
   
+  try{
+
+  } catch (e) {
+    
+  }
+
   setTimeout(() => {
     button.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">

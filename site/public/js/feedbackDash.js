@@ -77,6 +77,8 @@ export async function buscarDados() {
 
         const { kpis } = jsonData;
 
+        kpis === undefined ? "Sem dados" : kpis;
+
         causaDominante.innerHTML = kpis.causaDominante;
         totalComentarios.innerHTML = kpis.totalComentarios;
 

@@ -32,7 +32,7 @@ export async function buscarKpis(municipio) {
   `;
   const resultCausa = await executar(queryCausaDominante);
 
-  console.log(`${JSON.stringify()}`);
+  console.log(resultCausa);
 
   const queryTotalComentarios = `
     SELECT COUNT(*) AS totalComentarios
