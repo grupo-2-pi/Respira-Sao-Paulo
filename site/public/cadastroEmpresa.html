@@ -17,6 +17,12 @@
 </head>
 
 <body>
+    <div id="overlay"></div>
+    <div id="modal">
+        <h2 id="modalTitle"></h2>
+        <p id="modalContent"></p>
+        <button id="close-modal">Concluído</button>
+    </div>
 
     <!-- MENU MOBILE -->
 
@@ -26,7 +32,7 @@
             <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
         </div>
 
-        
+
         <div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
             <div class="img-nav-alerta2">
                 <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
@@ -177,7 +183,7 @@
 
     </div>
 
-    
+
     <!-- MAIN -->
 
     <div class="container">
@@ -229,7 +235,7 @@
         <div class="linha-divisoria"></div>
 
 
-        <div onclick="cadastrarEmpresa()" class="botao-cadastrar">
+        <div onclick="cadastrarEmpresa()" id="botaoCadastrar" class="botao-cadastrar">
             <h3>CADASTRAR</h3>
         </div>
 

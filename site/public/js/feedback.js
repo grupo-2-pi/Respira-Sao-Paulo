@@ -93,7 +93,6 @@ async function enviarFeedback(button){
 document.getElementById("close-modal").addEventListener("click", function(){
     document.getElementById("overlay").classList.remove("active");
     document.getElementById("modal").classList.remove("active");
-
 });
 document.getElementById("overlay").addEventListener("click", function(){
     document.getElementById("overlay").classList.remove("active");
