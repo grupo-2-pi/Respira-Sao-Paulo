@@ -44,3 +44,19 @@ export async function buscarComentarios(req, res) {
     return res.status(500).send(e);
   }
 }
+
+export async function criarComentario(req, res) {
+  try{
+    const { descricao, classificacao, regiao, tipoPoluicao } = req.body;
+
+    await criarComentario(descricao, classificacao, regiao, tipoPoluicao);
+
+    return res.status(201).send();
+  } catch(e) {
+    console.log(e);
+
+    return res.status(500).send({
+      error: e
+    });
+  }
+}

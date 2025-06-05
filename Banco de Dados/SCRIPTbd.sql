@@ -14,7 +14,7 @@ CREATE TABLE FeedbackPopulacao (
   idFeedbackPopulacao INT AUTO_INCREMENT PRIMARY KEY,
   descricao VARCHAR(45),
   tipoPoluicao VARCHAR(45),
-  municipio VARCHAR(45),
+  regiao VARCHAR(45),
   dtEnvio DATE,
   classificacao INT
 );

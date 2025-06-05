@@ -19,6 +19,16 @@ const regioesSP = [
   "Vale do Ribeira"
 ];
 
+export async function criarComentario (descricao, classificacao, regiao, tipoPoluicao) {
+  const query = `
+  INSERT INTO FeedbackPopulacao (descricao, tipoPoluicao, regiao, dtEnvio, classificacao)
+  VALUES
+  ('${descricao}', '${tipoPoluicao}', '${regiao}', now(), '${classificacao}'); 
+  `;
+
+  await executar(query);
+}
+
 export async function buscarKpis(municipio) {
 
   const queryCausaDominante = `

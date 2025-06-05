@@ -5,7 +5,7 @@ var itemWidth = 150;
 var gap = 20;
 var activeIndex = 2;
 
-let municipios = [
+let regioes = [
   "ABC",
   "Centro",
   "Grande São Paulo",
@@ -25,22 +25,21 @@ let municipios = [
   "Vale do Ribeira"
 ];
 
-var select = document.getElementById("selectMunicipios");
-municipios.forEach((m) => {
+var select = document.getElementById("selectRegioes");
+regioes.forEach((m) => {
   var opt = document.createElement("option");
   opt.value = m;
   opt.textContent = m;
   select.appendChild(opt);
 });
 
-
 function posicionarItens() {
   var centerX = containerWidth / 2;
   items.forEach((item, index) => {
-    
+
     var offset = (index - activeIndex) * (itemWidth + gap);
 
-    var left = centerX - itemWidth /2 + offset;
+    var left = centerX - itemWidth / 2 + offset;
     item.style.left = left + 'px';
 
 
@@ -61,21 +60,48 @@ items.forEach(item => {
   });
 });
 
-function goToAuth(){
+function goToAuth() {
   location.replace("/autenticacao.html");
 }
 
-function goToInicio(){
+function goToInicio() {
   location.replace("/");
 }
 
-async function enviarFeedback(button){
+async function enviarFeedback(button) {
   button.innerHTML = `<img class="loading-gif" src="./assets/gifs/gif-carregando.gif" alt="Carregando..."/>`
-  
-  try{
 
+  const classificacao = document.getElementsByClassName(".carousel-item.active").item;
+
+  if (!classificacao) {
+    console.log("Nao selecionou nenhuma classificacao");
+  };
+
+  const descricao = document.getElementById("textareaDescription").value;
+  const regiao = document.getElementById("selectRegioes").value;
+  const tipoPoluicao = document.getElementById("selectTipoPoluicao").value;
+
+
+  console.log(classificacao);
+  classificacao.name;
+
+  try {
+    const response = await fetch("/feedback/criar", {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        classificacao,
+        descricao,
+        regiao,
+        tipoPoluicao
+      }),
+    });
+
+    console.log(response);
   } catch (e) {
-    
+    console.log(e);
   }
 
   setTimeout(() => {
@@ -90,33 +116,33 @@ async function enviarFeedback(button){
 
 }
 
-document.getElementById("close-modal").addEventListener("click", function(){
-    document.getElementById("overlay").classList.remove("active");
-    document.getElementById("modal").classList.remove("active");
+document.getElementById("close-modal").addEventListener("click", function () {
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementById("modal").classList.remove("active");
 });
-document.getElementById("overlay").addEventListener("click", function(){
-    document.getElementById("overlay").classList.remove("active");
-    document.getElementById("modal").classList.remove("active");
+document.getElementById("overlay").addEventListener("click", function () {
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementById("modal").classList.remove("active");
 
 });
 
 var sideBar = document.querySelector(".side-bar");
 
-function openSidebar(){
-  var body  = document.querySelector(".body");
+function openSidebar() {
+  var body = document.querySelector(".body");
 
-  if(sideBar.classList.contains("active")){
+  if (sideBar.classList.contains("active")) {
 
     sideBar.classList.remove("active");
-  }else{
+  } else {
 
     sideBar.classList.add("active");
-  
-      // Adicionar o listener após um delay
+
+    // Adicionar o listener após um delay
     setTimeout(() => {
       document.addEventListener('click', clickOutsideHandler);
     }, 50);
-}
+  }
 
   console.log(sideBar);
 }
@@ -128,14 +154,15 @@ var clickOutsideHandler = (event) => {
     document.removeEventListener('click', clickOutsideHandler);
   }
 };
-function goToHistory(){
+function goToHistory() {
   location.href = "/#historia"
 }
 
-function goToCrenca(){
+function goToCrenca() {
   location.href = "/#crenca"
 }
 
-function goToFeedback(){
+function goToFeedback() {
   location.href = "/#feedback"
 }
+
