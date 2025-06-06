@@ -1,15 +1,15 @@
 var timesUserClickedOnOptions = 0;
 var timesUserClickedOnNotifications = 0;
 
-function showNotifications(button){
+function showNotifications(button) {
 
-  if(button){
+  if (button) {
     var container = document.querySelector(".notification-dropdown-options");
 
     container.style.opacity = "1";
-  
+
     container.style.visibility = "visible";
-  
+
     container.style.transform = "translateY(0)";
 
     container.style.display = "flex";
@@ -18,7 +18,7 @@ function showNotifications(button){
 
   console.log("dentro");
 
-  if(timesUserClickedOnNotifications > 0){
+  if (timesUserClickedOnNotifications > 0) {
     hideNotifications();
     timesUserClickedOnNotifications = 0;
 
@@ -29,15 +29,15 @@ function showNotifications(button){
 
   var dropdown = document.querySelector(".notification-dropdown");
   dropdown.style.opacity = "1";
-  
+
   dropdown.style.visibility = "visible";
-  
+
   dropdown.style.transform = "translateY(0)";
 
   dropdown.style.display = "flex";
 };
 
-function hideNotifications(){
+function hideNotifications() {
   console.log("fora");
 
   var dropdown = document.querySelector(".notification-dropdown");
@@ -49,10 +49,10 @@ function hideNotifications(){
   dropdown.style.display = "none";
 };
 
-function showUserOptions(){
+function showUserOptions() {
   console.log("dentro");
 
-  if(timesUserClickedOnOptions > 0){
+  if (timesUserClickedOnOptions > 0) {
     hideUserOptions();
     timesUserClickedOnOptions = 0;
 
@@ -63,23 +63,23 @@ function showUserOptions(){
 
   var dropdown = document.querySelector(".user-dropdown-options");
   dropdown.style.opacity = "1";
-  
+
   dropdown.style.visibility = "visible";
-  
+
   dropdown.style.transform = "translateY(0)";
 
   dropdown.style.display = "flex";
 }
 
-function hideUserOptions(){
+function hideUserOptions() {
   console.log("fora");
 
 
   var dropdown = document.querySelector(".user-dropdown-options");
   dropdown.style.opacity = "0";
-  
+
   dropdown.style.visibility = "hidden";
-  
+
   dropdown.style.transform = "translateY(-10px)";
 
   dropdown.style.display = "none";
@@ -110,30 +110,36 @@ function switchTheme(event) {
 toggleSwitch.addEventListener('change', switchTheme, false);
 
 
-function goToPersonal(){
+function goToPersonal() {
   location.replace("/personal.html")
 }
 
-function goToNotification(){
+function goToNotification() {
   location.replace("/notificacoes.html")
 }
 
-function goToHome(){
+function goToHome() {
   location.replace("/");
 }
 
-function goToPaginaInicial(){
+function goToPaginaInicial() {
   location.replace("/paginaPrincipal.html");
 }
 
-function goToCadastrar(){
+function goToCadastrar() {
+
+  if (true) {
+    alert('aqui')
+    location.replace("/cadastroEmpresa.html");
+  }
+
   location.replace("/cadastroPersona.html");
 }
 
-function goToPerfil(){
+function goToPerfil() {
   location.replace("/personal.html");
 }
 
-function disconnectAccount(){
+function disconnectAccount() {
   location.replace("../public/autenticacao.html");
 }

@@ -77,10 +77,9 @@ CREATE TABLE Funcionario (
     senha VARCHAR(45),
     validarSenha VARCHAR(45), 
     cargoFuncionario VARCHAR(45),
-    idGerente INT,
+    isGerente boolean,
     idEmpresa INT,
-    isFirstLogin TINYINT,
-    FOREIGN KEY (idGerente) REFERENCES Funcionario(idFuncionario),
+    isFirstLogin boolean,
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
