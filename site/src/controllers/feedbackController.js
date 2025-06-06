@@ -1,4 +1,4 @@
-import { buscarKpis, buscarGraficos, buscarComentariosPaginados } from "../models/feedbackModel.js";
+import { buscarKpis, buscarGraficos, buscarComentariosPaginados, insertComentario } from "../models/feedbackModel.js";
 
 export async function buscarDados(req, res) {
   try {
@@ -46,13 +46,13 @@ export async function buscarComentarios(req, res) {
 }
 
 export async function criarComentario(req, res) {
-  try{
+  try {
     const { descricao, classificacao, regiao, tipoPoluicao } = req.body;
 
-    await criarComentario(descricao, classificacao, regiao, tipoPoluicao);
+    await insertComentario(descricao, classificacao, regiao, tipoPoluicao);
 
     return res.status(201).send();
-  } catch(e) {
+  } catch (e) {
     console.log(e);
 
     return res.status(500).send({

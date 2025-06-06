@@ -19,7 +19,7 @@ const regioesSP = [
   "Vale do Ribeira"
 ];
 
-export async function criarComentario (descricao, classificacao, regiao, tipoPoluicao) {
+export async function insertComentario(descricao, classificacao, regiao, tipoPoluicao) {
   const query = `
   INSERT INTO FeedbackPopulacao (descricao, tipoPoluicao, regiao, dtEnvio, classificacao)
   VALUES

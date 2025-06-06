@@ -69,9 +69,10 @@ function goToInicio() {
 }
 
 async function enviarFeedback(button) {
-  button.innerHTML = `<img class="loading-gif" src="./assets/gifs/gif-carregando.gif" alt="Carregando..."/>`
+  button.innerHTML = `Carregando...`;
 
-  const classificacao = document.getElementsByClassName(".carousel-item.active").item;
+
+  const classificacao = document.querySelector(".carousel-item.active").id;
 
   if (!classificacao) {
     console.log("Nao selecionou nenhuma classificacao");
@@ -82,9 +83,6 @@ async function enviarFeedback(button) {
   const tipoPoluicao = document.getElementById("selectTipoPoluicao").value;
 
 
-  console.log(classificacao);
-  classificacao.name;
-
   try {
     const response = await fetch("/feedback/criar", {
       headers: {
@@ -92,8 +90,8 @@ async function enviarFeedback(button) {
       },
       method: "POST",
       body: JSON.stringify({
-        classificacao,
         descricao,
+        classificacao,
         regiao,
         tipoPoluicao
       }),
@@ -116,11 +114,11 @@ async function enviarFeedback(button) {
 
 }
 
-document.getElementById("close-modal").addEventListener("click", function () {
+document.getElementById("close-modal").addEventListener("click", function() {
   document.getElementById("overlay").classList.remove("active");
   document.getElementById("modal").classList.remove("active");
 });
-document.getElementById("overlay").addEventListener("click", function () {
+document.getElementById("overlay").addEventListener("click", function() {
   document.getElementById("overlay").classList.remove("active");
   document.getElementById("modal").classList.remove("active");
 

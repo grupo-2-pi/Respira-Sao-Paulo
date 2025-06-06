@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +9,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-  rel="stylesheet">
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
   <title>Feedback</title>
   <link rel="icon" href="./assets/logo.svg">
-</head> 
+</head>
+
 <body>
   <div id="overlay"></div>
   <div id="modal">
-    <h2>Feedback <span>enviado</span> com sucesso 🍃</h2>  
-      <p>Agradecemos pela colaboração, temos certeza que com este feedback estamos dando mais um passo para uma São Paulo melhor.</p>
-      <button id="close-modal">Concluído</button>
+    <h2>Feedback <span>enviado</span> com sucesso 🍃</h2>
+    <p>Agradecemos pela colaboração, temos certeza que com este feedback estamos dando mais um passo para uma São Paulo
+      melhor.</p>
+    <button id="close-modal">Concluído</button>
   </div>
   <div id="sideBar" class="side-bar">
     <img width="20%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
@@ -88,22 +91,22 @@
       </h1>
       <p class="paragraph-content">
         Sua classificação, tipo e descrição serão armazenadas no nosso sistema
-         e entraremos em contato posteriormente com as entidades reponsáveis. 
+        e entraremos em contato posteriormente com as entidades reponsáveis.
       </p>
       <div class="carousel">
-        <div class="carousel-item" data-index="0">
+        <div id="0" class="carousel-item" data-index="0">
           <img src="./assets/emojis/emoji-bravo.png" alt="Imagem 1">
         </div>
-        <div class="carousel-item" data-index="1">
+        <div id="1" class="carousel-item" data-index="1">
           <img src="./assets/emojis/emoji-triste.png" alt="Imagem 2">
         </div>
-        <div class="carousel-item" data-index="2">
+        <div id="2" class="carousel-item" data-index="2">
           <img src="./assets/emojis/emoji-neutro.png" alt="Imagem 3">
         </div>
-        <div class="carousel-item" data-index="3">
+        <div id="3" class="carousel-item" data-index="3">
           <img src="./assets/emojis/emoji-feliz.png" alt="Imagem 4">
         </div>
-        <div class="carousel-item" data-index="4">
+        <div id="4" class="carousel-item" data-index="4">
           <img src="./assets/emojis/emoji-muito-feliz.png" alt="Imagem 5">
         </div>
       </div>
@@ -114,7 +117,7 @@
               Escolha o tipo dessa poluição
             </option>
             <option value="automoveis">
-                Automóveis
+              Automóveis
             </option>
             <option value="industrias">
               Indústrias
@@ -124,7 +127,7 @@
             <option value="#">
               Qual sua região ?
             </option>
-          </select>    
+          </select>
         </div>
         <textarea placeholder="Deixe aqui uma descrição sobre" id="textareaDescription"></textarea>
         <button onclick="enviarFeedback(this)">
@@ -141,7 +144,7 @@
       </div>
       <p id="footer-header">Fale Conosco:</p>
       <div class="contact">
-        <img class="icon" src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png" alt="Email">          
+        <img class="icon" src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png" alt="Email">
         <p class="text">respirasp@sptech.school</p>
       </div>
       <div class="contact">
@@ -153,11 +156,11 @@
     <div class="our-social-media-footer">
       <p id="footer-header">Nossas redes sociais</p>
       <div class="contact">
-        <img class="icon" src="https://devicon-website.vercel.app/api/github/original.svg" alt="Logo github"/>
+        <img class="icon" src="https://devicon-website.vercel.app/api/github/original.svg" alt="Logo github" />
         <a class="link-text" href="https://github.com/grupo-2-pi/Respira-Sao-Paulo">Github</a>
       </div>
       <div class="contact">
-        <img class="icon" src="https://devicon-website.vercel.app/api/linkedin/original.svg" alt="Logo linkedin"/>
+        <img class="icon" src="https://devicon-website.vercel.app/api/linkedin/original.svg" alt="Logo linkedin" />
         <a class="link-text" href="#">Linkedin</a>
       </div>
     </div>
@@ -175,5 +178,6 @@
     </div>
   </footer>
 </body>
+
 </html>
 <script src="./js/feedback.js"></script>
