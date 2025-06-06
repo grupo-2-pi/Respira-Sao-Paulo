@@ -66,6 +66,11 @@ async function login(){
     if (resposta.ok) {
       const json = await resposta.json();
 
+      sessionStorage.ID_ADMIN = json.idAdmin;
+      sessionStorage.IS_RESPIRA_SP = json.isRespiraSP;
+      sessionStorage.NOME_RESPIRA_SP = json.nome;
+      sessionStorage.EMAIL_RESPIRA_SP = json.email;
+
       sessionStorage.ID_FUNCIONARIO = json.idFuncionario
       sessionStorage.CPF_FUNCIONARIO = json.cpfFuncionario;
       sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
@@ -80,7 +85,7 @@ async function login(){
         alert("Usuário e/ou senha inválido(s)");
       }
 
-      if(sessionStorage.IS_FIRST_LOGIN){
+      if(sessionStorage.IS_FIRST_LOGIN == 1){
         window.location = "trocarSenha.html";
       }else{
         window.location = "paginaPrincipal.html"

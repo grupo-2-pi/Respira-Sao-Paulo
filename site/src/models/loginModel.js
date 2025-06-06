@@ -3,11 +3,22 @@ import { executar } from "../database/config.js"
 export async function buscarDadosUser(email, senha){
 
 
-    const selectValidacao = `SELECT idFuncionario, cpfFuncionario, nomeFuncionario, emailFuncionario, cargoFuncionario, isGerente, idEmpresa, isFirstLogin  
+    const selectValidacaoUm = `SELECT idFuncionario, cpfFuncionario, nomeFuncionario, emailFuncionario, cargoFuncionario, isGerente, idEmpresa, isFirstLogin  
     FROM Funcionario WHERE emailFuncionario = '${email}' and senha = '${senha}'
     `;
 
-    const resultado = await executar(selectValidacao);
+    const selectValidacaoDois = `SELECT idAdmin, nome, email, isRespiraSP FROM Administrador WHERE email = '${email}' AND senha = '${senha}' and idAdmin IS NOT NULL
+    `;
 
-    return resultado;
+
+    const resultadoUm = await executar(selectValidacaoUm);
+    const resultadoDois = await executar(selectValidacaoDois);
+
+    if(resultadoDois.length > 0){
+        return resultadoDois;
+    }else{
+        return resultadoUm;
+    }
+
+    
 }
