@@ -33,11 +33,16 @@ services:
     container_name: respira-java
     restart: always
     hostname: localhost
+    depends_on:
+      mysql:
+        condition: service_healthy
+        restart: true
     environment:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
         - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
-        - SLACK_HOOK=${SLACK_HOOK}
+        - SLACK_HOOK_SAUDE=${SLACK_HOOK_SAUDE}
+        - SLACK_HOOK_AMBIENTAL=${SLACK_HOOK_AMBIENTAL}
     ports:
       - "8080:8080"
     networks:
