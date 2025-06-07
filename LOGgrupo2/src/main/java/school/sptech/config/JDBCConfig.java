@@ -8,7 +8,9 @@ import javax.sql.DataSource;
 public class JDBCConfig {
 
     private final DataSource dataSource;
-    private static final String host = "localhost"; // System.getenv("HOST");
+    private static final String host = "mysql";
+    private static final String user = System.getEnv("DB_USER");
+    private static final String password = System.getEnv("DB_PASSWORD");
 
     public JDBCConfig() {
         DriverManagerDataSource driver = new DriverManagerDataSource();
@@ -16,8 +18,8 @@ public class JDBCConfig {
         // Configurações para MySQL
         driver.setDriverClassName("com.mysql.cj.jdbc.Driver");
         driver.setUrl("jdbc:mysql://" + host + ":3306/Respira?useTimezone=true&serverTimezone=UTC");
-        driver.setUsername("root");
-        driver.setPassword("urubu100");
+        driver.setUsername(user);
+        driver.setPassword(password);
 
         this.dataSource = driver;
     }
