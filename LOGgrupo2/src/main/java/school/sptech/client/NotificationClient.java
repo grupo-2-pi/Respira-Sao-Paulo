@@ -11,8 +11,8 @@ import java.net.http.HttpResponse;
 
 public class NotificationClient {
 
-    private final String webhookSaude = System.getenv("SLACK_WEBHOOK_SAUDE");
-    private final String webhookAmbiental = System.getenv("SLACK_WEBHOOK_AMBIENTAL");
+    private final String webhookSaude = System.getenv("SLACK_HOOK_SAUDE");
+    private final String webhookAmbiental = System.getenv("SLACK_HOOK_AMBIENTAL");
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final HttpClient client = HttpClient.newHttpClient();
     private final Logger logger;
