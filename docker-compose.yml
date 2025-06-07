@@ -1,6 +1,11 @@
 services:
   mysql:
     image: furqas/respira-bd:latest
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
     container_name: respira-bd
     restart: always
     hostname: localhost
@@ -36,7 +41,8 @@ services:
     restart: always
     hostname: localhost
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
