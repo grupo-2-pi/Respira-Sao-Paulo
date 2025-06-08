@@ -1,10 +1,10 @@
+
 window.salvarDash = salvarDash
 window.toggleFiltroPersonalizado = toggleFiltroPersonalizado;
 window.editarFiltro = editarFiltro;
 window.abrirEditarFiltro = abrirEditarFiltro;
 window.fecharFiltroEditar = fecharFiltroEditar;
 window.excluirFiltro = excluirFiltro;
-window.aplicarFiltro = aplicarFiltro;
 
 
 let contextoPagina = "";
@@ -26,6 +26,7 @@ export async function carregarFiltros(idFixo, contexto, data) {
     adicionarFiltroPersonalizado(true, data.filtros);
 }
 
+
 function adicionarFiltroPersonalizado(fromServer, filtros) {
     const lista = document.getElementById(`listaFiltrosPersonalizados`);
     lista.innerHTML = "";
@@ -39,70 +40,16 @@ function adicionarFiltroPersonalizado(fromServer, filtros) {
             console.log(filtro)
             const li = document.createElement("li");
             li.innerHTML = `
-                <div class="filtro-item" style="cursor: pointer;">
+                <div class="filtro-item">
                     <span><strong>${filtro.nome}</strong></span>
                     <button onclick="abrirEditarFiltro(${filtro.idFiltro})">Editar</button>
                     <button onclick="excluirFiltro(${filtro.idFiltro})">Excluir</button>
                 </div>
             `;
-            
-            // Adicionar event listener na div inteira
-            const divFiltro = li.querySelector('.filtro-item');
-            divFiltro.addEventListener('click', (event) => {
-                // Verificar se o clique não foi em um botão
-                if (event.target.tagName !== 'BUTTON') {
-                    console.log("🖱️ Clique detectado na div do filtro:", filtro.idFiltro);
-                    aplicarFiltro(filtro.idFiltro);
-                }
-            });
-            
             lista.appendChild(li);
         });
     }
 }
-
-export function aplicarFiltro(id) {
-
-    const filtro = dados.find(f => f.idFiltro === id);
-    
-
-    console.log("Filtro encontrado:", filtro);
-
-    const regiaoDoFiltro = document.getElementById('regiaoDesejada');
-    const anoDoFiltro = document.getElementById('anoDesejado');
-    const mesDoFiltro = document.getElementById('mesDesejado');
-
-    if (regiaoDoFiltro) {
-        regiaoDoFiltro.value = filtro.regiao
-    }
-    if (anoDoFiltro) {
-        anoDoFiltro.value = filtro.ano
-    }
-    if (mesDoFiltro) {
-        mesDoFiltro.value = filtro.mes
-    }
-
-    const lista = document.getElementById("filtroPersonalizadoLista");
-    if (lista) {
-        lista.classList.remove("active");
-        console.log("Lista de filtros fechada");
-    }
-
-    const evento = new CustomEvent('filtroAplicado', {
-        detail: {
-            filtro: filtro,
-            regiao: filtro.regiao,
-            ano: filtro.ano,
-            mes: filtro.mes
-        }
-    });
-    document.dispatchEvent(evento);
-
-    console.log("Filtro aplicado com sucesso:", filtro);
-    
-        atualizarDash();
-}
-
 
 export function abrirAdicionarFiltro() {
     const idModal = `id_fundo_adicionar_filtro_${contextoPagina}`;
@@ -124,6 +71,7 @@ function limparCamposFiltro() {
     document.getElementById("mesNovoFiltro").value = "";
 }
 
+
 export async function excluirFiltro(id) {
     try {
         const response = await fetch(`http://${envVars.appHost}:${envVars.appPort}/filtro/deletar/${id}`, {
@@ -140,6 +88,8 @@ export async function excluirFiltro(id) {
         console.error("Erro na requisição:", error);
     }
 }
+
+
 
 export function fecharFiltroEditar() {
     document.getElementById("id_fundo_adicionar_filtro_feedback").style.display = "none";
@@ -173,6 +123,7 @@ export async function editarFiltro() {
         if (response.ok) {
             alert("Filtro atualizado com sucesso!");
             location.reload();
+            // location.reload();
         } else {
             console.error("Erro ao atualizar:", response.statusText);
         }

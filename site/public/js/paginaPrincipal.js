@@ -110,13 +110,13 @@ if (persona == 'saude') {
     });
 
 } else {
-    document.getElementById('kpi1-title').textContent = 'Município com 05r nível de poluição';
+    document.getElementById('kpi1-title').textContent = 'Município com maior nível de poluição';
     document.getElementById('kpi1-value').textContent = 'Guarulhos';
     document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
     aplicarEstiloKPI('kpi2-value', -5);
     document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
     document.getElementById('kpi3-value').textContent = 'Sem Dados';
-    document.getElementById('m-kpi1-title').textContent = 'Município 05r nível de poluição';
+    document.getElementById('m-kpi1-title').textContent = 'Município maior nível de poluição';
     document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
     document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
     aplicarEstiloKPI('m-kpi2-value', -5);
@@ -180,8 +180,8 @@ function fecharFiltro() {
 
 function calcularMesAnterior(ano, mes) {
     const meses = [
-        '01', '02', '03', '04', '05', '06',
-        '07', '08', '09', '10', '11', '12'
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ];
 
     let indice = meses.indexOf(mes);
@@ -192,7 +192,7 @@ function calcularMesAnterior(ano, mes) {
     }
 
     if (indice === 0) {
-        return { anoAnterior: String(Number(ano) - 1), mesAnterior: '12' };
+        return { anoAnterior: String(Number(ano) - 1), mesAnterior: 'Dezembro' };
     } else {
         return { anoAnterior: ano, mesAnterior: meses[indice - 1] };
     }
@@ -221,7 +221,7 @@ function buscarDadosDashboard(regiao, ano, mes, callback) {
 
 function calcularVariacao(valorAtual, valorAnterior) {
     if (valorAnterior === 0) {
-        return 0;
+        return 0; 
     }
     return ((valorAtual - valorAnterior) / valorAnterior) * 100;
 }
@@ -264,45 +264,32 @@ async function atualizarDash() {
     const ano = document.getElementById('anoDesejado').value;
     const mes = document.getElementById('mesDesejado').value;
 
-
     const persona = localStorage.getItem('personaSelecionada');
 
-    buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
-        atualizarCharts(dadosAtual);
+        buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
+        atualizarCharts(dadosAtual); 
         atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
-
+         
 
         if (persona === 'saude') {
             // === VARIAÇÃO DE INTERNAÇÕES ===
-            const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
-            const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
-            const variacao = calcularVariacao(mediaAtual, mediaAnterior);
-            const variacaoFormatada = Math.round(variacao);
+        const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
+        const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
+        const variacao = calcularVariacao(mediaAtual, mediaAnterior);
+        const variacaoFormatada = Math.round(variacao);
 
             //VELOCIMETRO ATT
-            atualizarVelocimetro(mes);
+            atualizarVelocimetro(mes); 
             //TAXA MORTALIDADE ATT
             document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
             document.getElementById('kpi3-value').textContent = dadosAtual.kpis.taxaMortalidade.toFixed(1) + '%';
             //VARIAÇÃO INTERNAÇÕES
-            document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
+             document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
             aplicarEstiloKPI('kpi1-value', variacaoFormatada);
 
-            document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
-            aplicarEstiloKPI('m-kpi1-value', variacaoFormatada);
+             document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
+             aplicarEstiloKPI('m-kpi1-value', variacaoFormatada);
         }
-
-        const mesesNomes = [
-            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-        ];
-        const mesIndex = Number(mes) - 1;
-        const mesNome = mesesNomes[mesIndex];
-
-        // Atualiza o texto na div "filtroSelecionado"
-        document.getElementById('mesFiltro').innerText = mesNome;
-        document.getElementById('anoFiltro').innerText = ano;
-        document.getElementById('regiaoFiltro').innerText = regiao;
     });
 
 }
@@ -324,16 +311,16 @@ function atualizarGraficosAmbientais(graficos) {
     const municipios = graficos.frota.map(item => item.municipio);
 
     const fatorCO2 = {
-        automoveis: 192,
-        motos: 72,
-        caminhoes: 800,
-        onibus: 1040
-    };
+    automoveis: 192,
+    motos: 72,
+    caminhoes: 800,
+    onibus: 1040
+};
 
-    const datasetCarro = graficos.frota.map(item => item.automoveis * fatorCO2.automoveis);
-    const datasetMoto = graficos.frota.map(item => item.motos * fatorCO2.motos);
-    const datasetCaminhao = graficos.frota.map(item => item.caminhoes * fatorCO2.caminhoes);
-    const datasetOnibus = graficos.frota.map(item => item.onibus * fatorCO2.onibus);
+const datasetCarro = graficos.frota.map(item => item.automoveis * fatorCO2.automoveis);
+const datasetMoto = graficos.frota.map(item => item.motos * fatorCO2.motos);
+const datasetCaminhao = graficos.frota.map(item => item.caminhoes * fatorCO2.caminhoes);
+const datasetOnibus = graficos.frota.map(item => item.onibus * fatorCO2.onibus);
 
 
     myChart.data.labels = municipios;
@@ -344,7 +331,7 @@ function atualizarGraficosAmbientais(graficos) {
     myChart.update();
 
     // === Gráfico da direita (evolução mensal de poluição por município) ===
-    const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
     const dados = graficos.qualidadeArTodosMeses;
 
     const dadosPorMunicipio = {};
@@ -479,8 +466,8 @@ function atualizarGraficosSaude(graficos) {
     myChartB.update();
 
 
-    // === GRÁFICO myChart: Gastos 2023 vs 2024 ===
-    const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+   // === GRÁFICO myChart: Gastos 2023 vs 2024 ===
+    const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
     const dados2023 = Array(12).fill(0);
     const dados2024 = Array(12).fill(0);
@@ -535,18 +522,18 @@ function atualizarGraficosSaude(graficos) {
 
 function getEstacaoPorMes(mes) {
     const estacoes = {
-        '01': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-        '02': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-        '12': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-        '03': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-        '04': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-        '05': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-        '06': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-        '07': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-        '08': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-        '09': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
-        '10': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
-        '11': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 }
+        'Janeiro':      { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Fevereiro':    { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Dezembro':     { estacao: 'Verão',      cor: 'green',      preenchimento: 15 },
+        'Março':        { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Abril':        { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Maio':         { estacao: 'Outono',     cor: '#f1c40f',    preenchimento: 50 },
+        'Junho':        { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Julho':        { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Agosto':       { estacao: 'Inverno',    cor: 'red',        preenchimento: 85 },
+        'Setembro':     { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 },
+        'Outubro':      { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 },
+        'Novembro':     { estacao: 'Primavera',  cor: '#9acd32',    preenchimento: 35 }
     };
     return estacoes[mes] || { estacao: 'Desconhecida', cor: 'gray', preenchimento: 0 };
 }
