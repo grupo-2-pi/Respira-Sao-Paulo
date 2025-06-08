@@ -1,4 +1,4 @@
-import { buscarDadosUser } from "../models/loginModel.js";
+import { buscarDadosUser, buscarDadosUserAdm } from "../models/loginModel.js";
 
 export async function validarUser(req, res) {
 
@@ -8,22 +8,31 @@ export async function validarUser(req, res) {
 
     try {
 
-        const buscarDado = await buscarDadosUser(req.body.emailServer, req.body.senhaServer);
+        var buscarDado;
 
-        if (buscarDado.length == 1) {
+        if (req.body.emailServer.includes("@respirasp.com")) {
+
+            buscarDado = await buscarDadosUserAdm(req.body.emailServer, req.body.senhaServer);
+
+
+        } else {
+
+            buscarDado = await buscarDadosUser(req.body.emailServer, req.body.senhaServer);
+
+        }
+        if (buscarDado.length === 1) {
             return res.status(200).send(buscarDado[0]
             );
-        }else{
+        } else {
 
-            res.status(403).send("Email e/ou senha inválido(s)");
+            return res.status(403).send("Email e/ou senha inválido(s)");
 
         }
 
 
     } catch {
-        console.log("Erro ao buscar comentarios " + e);
 
-        return res.status(500).send(e);
+        return res.status(500);
     }
 
 
