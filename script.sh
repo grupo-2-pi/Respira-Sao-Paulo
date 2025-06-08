@@ -24,52 +24,38 @@ else
 fi
 
 echo "Verificando Docker..."
-sudo docker --version &>/dev/null
-if [ $? -eq 0 ]; then
-    echo "Docker instalado"
+if command -v docker &>/dev/null; then
+	echo "Docker já está instalado."
 else
-    echo "Instalando Docker..."
-    sudo apt update
-    sudo apt install -y docker.io
-    if [ $? -ne 0 ]; then
-        echo "Erro ao instalar o Docker."
-        exit 1
-    fi
-    sudo systemctl start docker
-    sudo systemctl enable docker
+	echo "Instalando Docker..."
+	sudo apt update
+	sudo apt install -y docker.io
+	if [ $? -ne 0 ]; then
+		echo "Erro ao instalar o Docker."
+		exit 1
+	fi
+	sudo systemctl start docker
+	sudo systemctl enable docker
 fi
 
-sudo docker pull furqas/respira-web
-if [ $? -ne 0 ]; then
-    echo "Erro ao baixar a imagem furqas/respira-web."
-    exit 1
-fi
-echo "Imagem baixada: furqas/respira-web"
-
-sudo docker pull furqas/respira-bd
-if [ $? -ne 0 ]; then
-    echo "Erro ao baixar a imagem furqas/respira-bd."
-    exit 1
-fi
-echo "Imagem baixada: furqas/respira-bd"
-
-echo "Limpando containers"
-
-sudo docker rm -f respira-web
-sudo docker rm -f respira-bd
-
-if [ $? -eq 0 ]; then
-    echo "Git instalado"
+echo "Verificando Docker Compose..."
+if docker compose version &>/dev/null; then
+	echo "Docker Compose v2 já está instalado."
 else
-    echo "Instalando Git..."
+	echo "Instalando Docker Compose v2..."
+	mkdir -p ~/.docker/cli-plugins
+	curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
+		-o ~/.docker/cli-plugins/docker-compose
+	chmod +x ~/.docker/cli-plugins/docker-compose
+	sudo groupadd docker
+	sudo usermod -aG docker $USER
+	newgrp docker
+	if ! docker compose version &>/dev/null; then
+		echo "Erro ao instalar o Docker Compose v2."
+		exit 1
+	fi
 
-    sudo apt install -y git
-
-    if [ $? -ne 0 ]; then
-        echo "Erro ao instalar o Git."
-        exit 1
-    fi
-
+	echo "Docker Compose v2 instalado com sucesso."
 fi
 
 echo "Atualizando código Respira-Sao-Paulo..."
@@ -125,3 +111,5 @@ echo "Iniciando containers"
 sudo docker run -d --name respira-web -p 3000:3000 furqas/respira-web
 sudo docker run -d --name respira-bd -p 3306:3306 furqas/respira-bd
 
+echo "Iniciando containers..."
+docker compose up
