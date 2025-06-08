@@ -96,6 +96,10 @@ function cadastrarEmpresa() {
                             </svg>
                         </span>
                     `
+                    sessionStorage.PERMISSAO = 1;
+                    alert('Redirecionando para cadastro de usuário');
+                    setTimeout(location.replace("/cadastroPersona.html"), 10000);
+
                 } else {
                     botaoCadastrar.innerHTML = `<span style='color:red'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-exclamation-square" viewBox="0 0 16 16">
@@ -115,11 +119,10 @@ function cadastrarEmpresa() {
     } else {
         return;
     }
+
+    
 }
 
-//fazer aparecer a mensagem de erro quando algum campo estiver incorreto
-//fazer o fetch
-//fazer a rota -> controller -> model
 
 document.getElementById("close-modal").addEventListener("click", function () {
     document.getElementById("overlay").classList.remove("active");

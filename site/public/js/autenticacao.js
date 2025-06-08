@@ -83,6 +83,15 @@ async function login() {
       sessionStorage.ID_EMPRESA = json.idEmpresa;
       sessionStorage.IS_FIRST_LOGIN = json.isFirstLogin;
 
+      const emailResp = json.email || json.emailFuncionario;
+
+      if (emailResp && emailResp.includes('respira.sp')) {
+        sessionStorage.setItem('IS_RESPIRASP', 'true');
+      } else {
+        sessionStorage.setItem('IS_RESPIRASP', 'false');
+      }
+
+
       if (sessionStorage.IS_FIRST_LOGIN == 1) {
         window.location = "trocarSenha.html";
       } else {

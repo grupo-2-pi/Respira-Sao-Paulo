@@ -127,13 +127,19 @@ function goToPaginaInicial() {
 }
 
 function goToCadastrar() {
+  console.log("Valor no sessionStorage:", sessionStorage.getItem("IS_RESPIRASP"));
 
-  if (true) {
-    alert('aqui')
+  const isRespira = sessionStorage.getItem("IS_RESPIRASP") === "true";
+
+  if (isRespira) {
     location.replace("/cadastroEmpresa.html");
+  } else {
+    if (sessionStorage.IS_GERENTE === 1) {
+      location.replace("/cadastroPersona.html");
+    } else {
+      alert('Somente usuários com cadastro de GERENTE podem fazer cadastro.');
+    }
   }
-
-  location.replace("/cadastroPersona.html");
 }
 
 function goToPerfil() {
