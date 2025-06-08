@@ -105,12 +105,7 @@ CREATE TABLE LogRestrito (
 CREATE TABLE Notificacoes (
     idNotificacoes INT AUTO_INCREMENT PRIMARY KEY,
     dataHora DATETIME,
-    descricao VARCHAR(255),
-    tipo VARCHAR(45),
-    idFuncionario INT,
-    idEmpresa INT,
-    FOREIGN KEY (idFuncionario) REFERENCES Funcionario(idFuncionario),
-    FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+    descricao VARCHAR(255)
 );
 
 
