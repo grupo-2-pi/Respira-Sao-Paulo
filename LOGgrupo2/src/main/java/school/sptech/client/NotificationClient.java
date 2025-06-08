@@ -11,8 +11,7 @@ import java.net.http.HttpResponse;
 
 public class NotificationClient {
 
-    private final String webhookSaude = System.getenv("SLACK_HOOK_SAUDE");
-    private final String webhookAmbiental = System.getenv("SLACK_HOOK_AMBIENTAL");
+    private final String webhook = System.getenv("SLACK_WEBHOOK");
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final HttpClient client = HttpClient.newHttpClient();
     private final Logger logger;
@@ -21,14 +20,13 @@ public class NotificationClient {
         this.logger = logger;
     }
 
-    public void sendMessage(NotificacaoDto dto, Boolean saude){
+    public void sendMessage(NotificacaoDto dto){
         try{
             String json = mapper.writeValueAsString(dto);
-            String hook = saude ? this.webhookSaude : this.webhookAmbiental;
 
             HttpRequest request = HttpRequest
                     .newBuilder()
-                    .uri(URI.create(hook))
+                    .uri(URI.create(this.webhook))
                     .POST(HttpRequest.BodyPublishers.ofString(json))
                     .build();
 

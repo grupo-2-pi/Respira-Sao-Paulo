@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa26407c-40bf-49f8-895f-8e50a24f50a1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Banco de Dados/SCRIPTbd.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Banco de Dados/SCRIPTbd.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/public/js/paginaPrincipal.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/public/js/paginaPrincipal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2xZ8mdjZ7thvXZkWoup7rQCHhSF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,7 +27,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/furqas/projects/Respira-Sao-Paulo/LOGgrupo2"
+    "last_opened_file_path": "C:/Users/rafae/OneDrive/Desktop/Respira-Sao-Paulo/LOGgrupo2 - Refatorar"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
