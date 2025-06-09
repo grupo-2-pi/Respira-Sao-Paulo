@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', buscarDados);
 
 const regioes = [
   "ABC",
-  "Centro",
   "Grande São Paulo",
   "Vale do Paraíba",
   "Campinas",
@@ -18,7 +17,6 @@ const regioes = [
   "Presidente Prudente",
   "São José do Rio Preto",
   "Piracicaba",
-  "Macro Região",
   "Vale do Ribeira"
 ];
 

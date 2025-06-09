@@ -3,9 +3,9 @@ import { buscarKpis, buscarGraficos, buscarComentariosPaginados, insertComentari
 export async function buscarDados(req, res) {
   try {
 
-    const { municipio } = req.params;
+    const { regiao } = req.params;
 
-    const responseKpi = await buscarKpis(municipio);
+    const responseKpi = await buscarKpis(regiao);
 
     console.log(responseKpi);
 
