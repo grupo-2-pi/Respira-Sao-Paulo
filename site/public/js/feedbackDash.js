@@ -6,6 +6,10 @@ window.addEventListener("load", () => {
 
 	const idFuncionario = sessionStorage.ID_FUNCIONARIO;
 
+	const nomeFuncionario = sessionStorage.getItem("NOME_FUNCIONARIO");
+
+	spanNomeUsuario.innerHTML = nomeFuncionario;
+
 	if (idFuncionario === undefined || idFuncionario === null) {
 		location.replace("autenticacao.html");
 	}
@@ -40,7 +44,7 @@ let myChartXX = null;
 
 export async function abrirComentarios() {
 	try {
-		const response = await fetch(`feedback/buscar/comentarios/${10}/${10}`, {
+		const response = await fetch(`feedback/buscar/comentarios/${0}/${10}`, {
 			headers: {
 				"Content-Type": "application/json",
 			},
