@@ -206,9 +206,9 @@ INSERT INTO FeedbackPopulacao (descricao, tipoPoluicao, regiao, dtEnvio, classif
 ('Congestionamento na ponte principal', 'automóveis', 'Outras Regioes', '2025-02-20', 2),
 ('Vazamento em duto de esgoto industrial', 'industrias', 'Outras Regioes', '2025-02-18', 5);
 
-
-
-
-
+INSERT INTO Admin (nome, email, senha) VALUES 
+("Lucas Hernandes Furquim", "lucas@respira.tech", "ishow123"),
+("Joao ohi", "joao@respira.tech", "rockandrowandsaopaulo"),
+("Guilherme antonio", "guilherme@respira.tech", "o garoto 04");
 
 

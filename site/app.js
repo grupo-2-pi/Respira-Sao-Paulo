@@ -9,6 +9,7 @@ import empresasRouter from './src/routes/empresas.js';  //adicionei isso
 import empresaRouter from "./src/routes/empresas.js";
 import loginRouter from "./src/routes/login.js";
 import trocarSenhaRouter from "./src/routes/trocarSenha.js";
+import adminRouter from "./src/routes/admin.js"
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -33,8 +34,11 @@ app.use("/empresas", empresasRouter); // adicionei isso
 app.use("/empresas", empresaRouter);
 app.use("/login", loginRouter);
 app.use("/trocarSenha", trocarSenhaRouter);
+app.use("/admin", adminRouter);
+
+
 app.listen(envVars.appPort, "0.0.0.0", () => {
-  console.log(`
+	console.log(`
     Servidor rodando em: http://${envVars.appHost}:${envVars.appPort}
     Ambiente: ${envVars.env}
   `);
