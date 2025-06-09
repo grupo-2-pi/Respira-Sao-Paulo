@@ -49,7 +49,7 @@ public class FrotaCirulanteService extends Services{
                 String[] nomePlanilha = sheet.getSheetName().split("_");
 
                 String ano = nomePlanilha[1];
-                String mes = nomePlanilha[0];
+                String mes = nomePlanilha[0].substring(0,3);
 
                 super.getLogger().info("Ano atual " + ano);
                 super.getLogger().info("Mes atual " + mes);

@@ -21,10 +21,12 @@ export async function getDadosMortalidade(regiao, ano, mes) {
 }
 
 export async function getDadosQualidadeAr(regiao, ano, mes) {
+    const anoCorrigido = ano > 2021 ? 2021 : ano; 
+    
     const query = `
         SELECT municipio, poluente, valor, unidade
         FROM QualidadeAr
-        WHERE regiao = '${regiao}' AND ano = '${ano}' AND mes = '${mes}';
+        WHERE regiao = '${regiao}' AND ano = '${anoCorrigido}' AND mes = '${mes}';
     `;
     const resultado = await executar(query);
     return resultado;
@@ -32,10 +34,12 @@ export async function getDadosQualidadeAr(regiao, ano, mes) {
 
 //GRAFICO DOIS DO MODO AMBIENTAL - EVOLUÇÃO MENSAL DE POLUIÇÃO 
 export async function getQualidadeArPorRegiaoTodosMeses(regiao, ano) {
+    console.log(ano);
+    const anoCorrigido = ano > 2021 ? 2021 : ano;
     const query = `
         SELECT municipio, mes, valor, ano
         FROM QualidadeAr
-        WHERE regiao = '${regiao}' AND ano = '${ano}';
+        WHERE regiao = '${regiao}' AND ano = '${anoCorrigido}';
     `;
     return await executar(query);
 }
