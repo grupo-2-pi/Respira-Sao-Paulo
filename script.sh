@@ -47,7 +47,6 @@ else
 	curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
 		-o ~/.docker/cli-plugins/docker-compose
 	chmod +x ~/.docker/cli-plugins/docker-compose
-	sudo groupadd docker
 	sudo usermod -aG docker $USER
 	newgrp docker
 	if ! docker compose version &>/dev/null; then
@@ -58,58 +57,13 @@ else
 	echo "Docker Compose v2 instalado com sucesso."
 fi
 
-echo "Atualizando código Respira-Sao-Paulo..."
+echo "Parando containers existentes..."
+docker compose down
 
-if [ -d "Respira-Sao-Paulo" ]; then
-
-    cd Respira-Sao-Paulo
-
-    echo "Pasta existe, fazendo git pull..." 
-
-    git checkout java-data
-
-    git pull origin java-data
-
-    if [ $? -ne 0 ]; then
-        echo "Erro ao atualizar a branch java-data."
-        exit 1
-    fi
-    
-    echo "Compilando o java.."
-
-    ls
-
-    cd LOGgrupo2
-
-    mvn clean package -f ./pom.xml
-
-    ls
-
-else
-    echo "Clonando repositório..."
-    git clone -b dev https://github.com/grupo-2-pi/Respira-Sao-Paulo.git
-
-    if [ $? -ne 0 ]; then
-        echo "Erro ao clonar o repositório."
-        exit 1
-    fi
-
-    cd Respira-Sao-Paulo
-
-    echo "Compilando o java.."
-
-    ls
-
-    cd LOGgrupo2
-
-    ls
-
-    mvn clean package -f ./pom.xml    
-fi
-
-echo "Iniciando containers"
-sudo docker run -d --name respira-web -p 3000:3000 furqas/respira-web
-sudo docker run -d --name respira-bd -p 3306:3306 furqas/respira-bd
+echo "Removendo imagens antigas..."
+sudo docker rmi furqas/respira-web:latest -f
+sudo docker rmi furqas/respira-bd:latest -f
+sudo docker rmi furqas/respira-java-data:latest -f
 
 echo "Iniciando containers..."
-docker compose up
+docker compose up -d

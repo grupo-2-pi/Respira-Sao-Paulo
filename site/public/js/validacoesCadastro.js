@@ -129,8 +129,8 @@ botaoCadastrar.addEventListener("click", async () => {
             mostrarMensagemCard("Cadastro realizado com sucesso!", "sucesso");
             // Limpar campos se quiser
         } else {
-            const erroTexto = await resposta.text();
-            mostrarMensagemCard("Erro ao cadastrar: " + erroTexto, "erro");
+            const erroTexto = await resposta.json();
+            mostrarMensagemCard("Erro ao cadastrar: " + erroTexto.erro, "erro");
         }
     } catch (erro) {
         console.error("Erro na requisição:", erro);

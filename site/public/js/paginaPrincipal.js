@@ -214,22 +214,31 @@ function calcularMesAnterior(ano, mes) {
 const backendBaseURL = "http://localhost:3000";
 
 
-function buscarDadosDashboard(regiao, ano, mes, callback) {
+async function buscarDadosDashboard(regiao, ano, mes, callback) {
 	const { anoAnterior, mesAnterior } = calcularMesAnterior(ano, mes);
 
 	const urlAtual = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(ano)}&mes=${encodeURIComponent(mes)}`;
 	const urlAnterior = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(anoAnterior)}&mes=${encodeURIComponent(mesAnterior)}`;
 
-	const fetchAtual = fetch(urlAtual).then(res => res.json());
-	const fetchAnterior = fetch(urlAnterior).then(res => res.json());
+	try {
+		const fetchAtual = await fetch(urlAtual).then(res => res.json());
+		const fetchAnterior = await fetch(urlAnterior).then(res => res.json());
 
+		callback(fetchAtual, fetchAnterior);
+	} catch (e) {
+		console.log("Erro: " + e);
+	}
+
+/* 
 	Promise.all([fetchAtual, fetchAnterior])
 		.then(([dadosAtual, dadosAnterior]) => {
+			console.log(dadosAtual);
+
 			callback(dadosAtual, dadosAnterior);
 		})
 		.catch(err => {
 			console.error("Erro ao buscar dados do dashboard:", err);
-		});
+		}); */
 }
 
 function calcularVariacao(valorAtual, valorAnterior) {
