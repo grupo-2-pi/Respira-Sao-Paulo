@@ -1,11 +1,14 @@
-import { buscarKpis, buscarGraficos, buscarComentariosPaginados } from "../models/feedbackModel.js";
+import { buscarKpis, buscarGraficos, buscarComentariosPaginados, insertComentario } from "../models/feedbackModel.js";
 
 export async function buscarDados(req, res) {
   try {
 
-    const { municipio } = req.params;
+    const { regiao } = req.params;
 
-    const responseKpi = await buscarKpis(municipio);
+    const responseKpi = await buscarKpis(regiao);
+
+    console.log(responseKpi);
+
     const responseGrafico = await buscarGraficos();
 
     return res.status(200).send({
@@ -39,5 +42,21 @@ export async function buscarComentarios(req, res) {
     console.log("Erro ao buscar comentarios " + e);
 
     return res.status(500).send(e);
+  }
+}
+
+export async function criarComentario(req, res) {
+  try {
+    const { descricao, classificacao, regiao, tipoPoluicao } = req.body;
+
+    await insertComentario(descricao, classificacao, regiao, tipoPoluicao);
+
+    return res.status(201).send();
+  } catch (e) {
+    console.log(e);
+
+    return res.status(500).send({
+      error: e
+    });
   }
 }

@@ -14,7 +14,7 @@ CREATE TABLE FeedbackPopulacao (
   idFeedbackPopulacao INT AUTO_INCREMENT PRIMARY KEY,
   descricao VARCHAR(45),
   tipoPoluicao VARCHAR(45),
-  municipio VARCHAR(45),
+  regiao VARCHAR(45),
   dtEnvio DATE,
   classificacao INT
 );
@@ -77,10 +77,9 @@ CREATE TABLE Funcionario (
     senha VARCHAR(45),
     validarSenha VARCHAR(45), 
     cargoFuncionario VARCHAR(45),
-    idGerente INT,
+    isGerente boolean,
     idEmpresa INT,
-    isFirstLogin TINYINT,
-    FOREIGN KEY (idGerente) REFERENCES Funcionario(idFuncionario),
+    isFirstLogin boolean,
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
@@ -106,12 +105,7 @@ CREATE TABLE LogRestrito (
 CREATE TABLE Notificacoes (
     idNotificacoes INT AUTO_INCREMENT PRIMARY KEY,
     dataHora DATETIME,
-    descricao VARCHAR(255),
-    tipo VARCHAR(45),
-    idFuncionario INT,
-    idEmpresa INT,
-    FOREIGN KEY (idFuncionario) REFERENCES Funcionario(idFuncionario),
-    FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+    descricao VARCHAR(255)
 );
 
 

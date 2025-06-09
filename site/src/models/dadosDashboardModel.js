@@ -31,14 +31,15 @@ export async function getDadosQualidadeAr(regiao, ano, mes) {
 }
 
 //GRAFICO DOIS DO MODO AMBIENTAL - EVOLUÇÃO MENSAL DE POLUIÇÃO 
-export async function getQualidadeArPorRegiaoTodosMeses(regiao) {
+export async function getQualidadeArPorRegiaoTodosMeses(regiao, ano) {
     const query = `
-        SELECT municipio, mes, valor
+        SELECT municipio, mes, valor, ano
         FROM QualidadeAr
-        WHERE regiao = '${regiao}';
+        WHERE regiao = '${regiao}' AND ano = '${ano}';
     `;
     return await executar(query);
 }
+
 
 //KPI RANKING DE POLUIÇÃO 
 export async function getRankingPoluentes(regiao, ano, mes) {
@@ -53,3 +54,19 @@ export async function getRankingPoluentes(regiao, ano, mes) {
     return await executar(query);
 }
 
+
+//GASTOS 2023 X 2024
+export async function getGastosPorMes(regiao) {
+    const query = `
+        SELECT ano, mes,
+            SUM(valorTotal) AS total_gasto
+        FROM MortalidadeRespiratoria
+        WHERE regiao = '${regiao}'
+        AND (ano = '2023' OR ano = '2024')
+        GROUP BY ano, mes
+        ORDER BY FIELD(mes,
+            'Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+            'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
+    `;
+    return await executar(query);
+}

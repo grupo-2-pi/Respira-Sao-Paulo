@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
+    <script type="module" src="./js/feedbackDash.js"></script>
     <link rel="icon" href="./assets/logo-sem-bg.svg">
     <title>Dashboard</title>
 </head>
@@ -41,7 +40,7 @@
             <a onclick="goToComentarios()">
                 Comentários
             </a>
-            <a href="./cadastroPersona.html">
+            <a onclick="goToCadastrar()">
                 Cadastrar
             </a>
             <div onclick="showNotifications()" class="contem-alerta">
@@ -159,16 +158,17 @@
 
     <div class="container">
 
-        <div class="filtro">
-
-            <div class="filtroSelecionado">
-                <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São Paulo</a></h1>
-            </div>
-
          <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
             <button onclick="switchPersona('saude')">Modo Saúde</button>
             <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
         </div>
+
+        <div class="filtro">
+
+            <div class="filtroSelecionado">
+                <h1><a id="mesFiltro">Janeiro</a> de <a id="anoFiltro">2024</a>, região <a id="regiaoFiltro">São
+                        Paulo</a></h1>
+            </div>
 
             <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
             <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
@@ -176,6 +176,7 @@
                 <div class="img-filtro">
                     <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
                 </div>
+
                 <div class="text-filtro">
                     <h1>Filtros</h1>
                 </div>
@@ -187,7 +188,7 @@
                 <div class="escolher-filtro">
 
                     <div class="btn-sair" onclick="fecharFiltro()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             class="bi bi-x-lg" viewBox="0 0 16 16">
                             <path
                                 d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
@@ -197,21 +198,27 @@
                     <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
 
                     <div class="filtro-text">
-                      
-                       
-                    </div>
-                    <div class="filtro-text">
                         <div class="titulo-filtro">
                             <h1>Região Desejada</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="filtroRegiao">
+                            <select name="" class="select-opt" id="regiaoDesejada">
                                 <option></option>
-                                <option value="Sul">Sul</option>
-                                <option value="Centro-Oeste">Centro-Oeste</option>
-                                <option value="Norte">Norte</option>
-                                <option value="Nordeste">Nordeste</option>
-                                <option value="Leste">Leste</option>
+                                <option value="ABC">ABC</option>
+                                <option value="Grande São Paulo">Grande São Paulo</option>
+                                <option value="Vale do Paraíba">Vale do Paraíba</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Sorocaba">Sorocaba</option>
+                                <option value="Baixada Santista">Baixada Santista</option>
+                                <option value="Ribeirão Preto">Ribeirão Preto</option>
+                                <option value="São Carlos">São Carlos</option>
+                                <option value="Bauru">Bauru</option>
+                                <option value="Marília">Marília</option>
+                                <option value="Araçatuba">Araçatuba</option>
+                                <option value="Presidente Prudente">Presidente Prudente</option>
+                                <option value="São José do Rio Preto">São José do Rio Preto</option>
+                                <option value="Piracicaba">Piracicaba</option>
+                                <option value="OutrasRegioes">OutrasRegioes</option>
                             </select>
                         </div>
                     </div>
@@ -220,7 +227,7 @@
                             <h1>Ano Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="filtroAno">
+                            <select name="" class="select-opt" id="anoDesejado">
                                 <option></option>
                                 <option value="2024">2024</option>
                                 <option value="2023">2023</option>
@@ -235,28 +242,125 @@
                             <h1>Mês Desejado</h1>
                         </div>
                         <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="filtroMes">
+                            <select name="" class="select-opt" id="mesDesejado">
                                 <option></option>
-                                <option value="Janeiro">Janeiro</option>
-                                <option value="Fevereiro">Fevereiro</option>
-                                <option value="Março">Março</option>
-                                <option value="Abril">Abril</option>
-                                <option value="Maio">Maio</option>
-                                <option value="Junho">Junho</option>
-                                <option value="Julho">Julho</option>
-                                <option value="Agosto">Agosto</option>
-                                <option value="Setembro">Setembro</option>
-                                <option value="Outubro">Outubro</option>
-                                <option value="Novembro">Novembro</option>
-                                <option value="Dezembro">Dezembro</option>
+                                <option value="01">Janeiro</option>
+                                <option value="02">Fevereiro</option>
+                                <option value="03">Março</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Maio</option>
+                                <option value="06">Junho</option>
+                                <option value="07">Julho</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="filtro-btn" onclick="atualizarDash()">
-                        
-                        <h1>Adicionar Filtro</h1>
-                        
+
+                        <h1>Filtrar</h1>
+
+                    </div>
+
+                    <div class="filtro-btn" onclick="salvarDash()">
+
+                        <h1>Salvar</h1>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_adicionar_filtro_feedback">
+
+                <div class="escolher-filtro">
+
+                    <div class="btn-sair" onclick="fecharFiltroEditar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                    </div>
+
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Nome</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <input type="text" id="nomeFiltro">
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Região Desejada</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="regiaoDesejadaEditar">
+                                <option></option>
+                                <option value="ABC">ABC</option>
+                                <option value="Grande São Paulo">Grande São Paulo</option>
+                                <option value="Vale do Paraíba">Vale do Paraíba</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Sorocaba">Sorocaba</option>
+                                <option value="Baixada Santista">Baixada Santista</option>
+                                <option value="Ribeirão Preto">Ribeirão Preto</option>
+                                <option value="São Carlos">São Carlos</option>
+                                <option value="Bauru">Bauru</option>
+                                <option value="Marília">Marília</option>
+                                <option value="Araçatuba">Araçatuba</option>
+                                <option value="Presidente Prudente">Presidente Prudente</option>
+                                <option value="São José do Rio Preto">São José do Rio Preto</option>
+                                <option value="Piracicaba">Piracicaba</option>
+                                <option value="OutrasRegioes">OutrasRegioes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Ano Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="anoDesejadoEditar">
+                                <option></option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtro-text">
+                        <div class="titulo-filtro">
+                            <h1>Mês Desejado</h1>
+                        </div>
+                        <div class="contem-escolhe-filtro">
+                            <select name="" class="select-opt" id="mesDesejadoEditar">
+                                <option></option>
+                                <option value="01">Janeiro</option>
+                                <option value="02">Fevereiro</option>
+                                <option value="03">Março</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Maio</option>
+                                <option value="06">Junho</option>
+                                <option value="07">Julho</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filtro-btn" onclick="editarFiltro()">
+
+                        <h1>Salvar</h1>
+
                     </div>
 
                 </div>

@@ -34,23 +34,22 @@
             <div class="contem-senhas">
                 <div class="nova-senhar">
                     <h2>Nova Senha</h2>
-                    <input type="password" class="placeholder">
+                    <input type="password" class="placeholder" id="ipt_Senha" oninput="validarSenha()">
                 </div>
 
-                <div class="caracteres-obrigatorios" style="display: none;">
-
-                </div>
-
-                <div class="confirmar-senha">
+                <div class="confirmar-senha"> 
                     <h2>Confirmar Senha</h2>
-                    <input type="password" class="placeholder">
+                    <input type="password" class="placeholder" id="ipt_ConfirmarSenha" oninput="confirmarSenha()">
                 </div>
 
-                <div class="senhas-iguais" style="display: none;"></div>
+                <div id="div_ConfirmarSenha" style="display: none;"></div>
+                <div id="div_validarSenha"></div>
 
             </div>
 
-            <div class="button"> <h3>AVANÇAR</h3> </div>
+            <div class="button" onclick="CriarSenha()" style="cursor: pointer;">
+                <h3>AVANÇAR</h3>
+            </div>
 
         </div>
 
@@ -61,3 +60,5 @@
 </body>
 
 </html>
+
+<script src="./js/trocarSenha.js"></script>

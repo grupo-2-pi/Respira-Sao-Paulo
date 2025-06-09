@@ -53,3 +53,11 @@ export const envVars = {
   appHost: "localhost",
   appPort: 3000
 };
+
+window.openSidebar = openSidebar;
+window.goToHistory = goToHistory;
+window.goToCrenca = goToCrenca;
+window.goToFeedback = goToFeedback;
+window.goToFeedbackPage = goToFeedbackPage;
+window.goToAuth = goToAuth;
+window.envVars = envVars;

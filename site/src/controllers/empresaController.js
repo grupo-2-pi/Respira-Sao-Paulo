@@ -1,16 +1,16 @@
-var empresaModel = require("../models/empresaModel");
+import { cadastrar } from "../models/empresaModel.js";
 
 
-function cadastrar(req, res) {
+export function cadastrarEmpresa(req, res) {
 
   var fantasia = req.body.nomeFantasiaServer;
   var empresa = req.body.nomeEmpresaServer;
   var email = req.body.emailServer;
   var cnpj = req.body.cnpjServer;
   var tel = req.body.telServer;
- 
- 
-  usuarioModel.cadastrar(fantasia, empresa, email, cnpj, tel)
+
+
+  cadastrar(fantasia, empresa, email, cnpj, tel)
     .then(
       function (resultado) {
         res.json(resultado);
@@ -27,8 +27,3 @@ function cadastrar(req, res) {
     );
 
 }
-
-
-module.exports = {
-  cadastrar,
-};

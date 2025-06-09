@@ -3,7 +3,8 @@ import {
     getDadosMortalidade, 
     getDadosQualidadeAr,
     getQualidadeArPorRegiaoTodosMeses,
-    getRankingPoluentes
+    getRankingPoluentes,
+    getGastosPorMes
 } from "../models/dadosDashboardModel.js";
 
 export async function obterDadosDashboard(req, res) {
@@ -17,8 +18,11 @@ export async function obterDadosDashboard(req, res) {
         const frota = await getDadosFrotaCirculante(regiao, ano, mes);
         const mortalidade = await getDadosMortalidade(regiao, ano, mes);
         const qualidadeAr = await getDadosQualidadeAr(regiao, ano, mes);
-        const qualidadeArTodosMeses = await getQualidadeArPorRegiaoTodosMeses(regiao);
+        const qualidadeArTodosMeses = await getQualidadeArPorRegiaoTodosMeses(regiao, ano);
         const rankingPoluente = await getRankingPoluentes(regiao, ano, mes);
+        const gastos = await getGastosPorMes(regiao);
+        
+
 
         const resposta = {
             kpis: {
@@ -33,7 +37,8 @@ export async function obterDadosDashboard(req, res) {
                 frota,
                 mortalidade,
                 qualidadeAr,
-                qualidadeArTodosMeses
+                qualidadeArTodosMeses,
+                gastosAnuais: gastos
             }
         };
 

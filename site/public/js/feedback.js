@@ -5,7 +5,7 @@ var itemWidth = 150;
 var gap = 20;
 var activeIndex = 2;
 
-let municipios = [
+let regioes = [
   "ABC",
   "Centro",
   "Grande São Paulo",
@@ -25,22 +25,21 @@ let municipios = [
   "Vale do Ribeira"
 ];
 
-var select = document.getElementById("selectMunicipios");
-municipios.forEach((m) => {
+var select = document.getElementById("selectRegioes");
+regioes.forEach((m) => {
   var opt = document.createElement("option");
   opt.value = m;
   opt.textContent = m;
   select.appendChild(opt);
 });
 
-
 function posicionarItens() {
   var centerX = containerWidth / 2;
   items.forEach((item, index) => {
-    
+
     var offset = (index - activeIndex) * (itemWidth + gap);
 
-    var left = centerX - itemWidth /2 + offset;
+    var left = centerX - itemWidth / 2 + offset;
     item.style.left = left + 'px';
 
 
@@ -61,17 +60,48 @@ items.forEach(item => {
   });
 });
 
-function goToAuth(){
+function goToAuth() {
   location.replace("/autenticacao.html");
 }
 
-function goToInicio(){
+function goToInicio() {
   location.replace("/");
 }
 
-function enviarFeedback(button){
-  button.innerHTML = `<img class="loading-gif" src="./assets/gifs/gif-carregando.gif" alt="Carregando..."/>`
-  
+async function enviarFeedback(button) {
+  button.innerHTML = `Carregando...`;
+
+
+  const classificacao = document.querySelector(".carousel-item.active").id;
+
+  if (!classificacao) {
+    console.log("Nao selecionou nenhuma classificacao");
+  };
+
+  const descricao = document.getElementById("textareaDescription").value;
+  const regiao = document.getElementById("selectRegioes").value;
+  const tipoPoluicao = document.getElementById("selectTipoPoluicao").value;
+
+
+  try {
+    const response = await fetch("/feedback/criar", {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        descricao,
+        classificacao,
+        regiao,
+        tipoPoluicao
+      }),
+    });
+
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+
   setTimeout(() => {
     button.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
@@ -84,34 +114,33 @@ function enviarFeedback(button){
 
 }
 
-document.getElementById("close-modal").addEventListener("click", function(){
-    document.getElementById("overlay").classList.remove("active");
-    document.getElementById("modal").classList.remove("active");
-
+document.getElementById("close-modal").addEventListener("click", function() {
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementById("modal").classList.remove("active");
 });
-document.getElementById("overlay").addEventListener("click", function(){
-    document.getElementById("overlay").classList.remove("active");
-    document.getElementById("modal").classList.remove("active");
+document.getElementById("overlay").addEventListener("click", function() {
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementById("modal").classList.remove("active");
 
 });
 
 var sideBar = document.querySelector(".side-bar");
 
-function openSidebar(){
-  var body  = document.querySelector(".body");
+function openSidebar() {
+  var body = document.querySelector(".body");
 
-  if(sideBar.classList.contains("active")){
+  if (sideBar.classList.contains("active")) {
 
     sideBar.classList.remove("active");
-  }else{
+  } else {
 
     sideBar.classList.add("active");
-  
-      // Adicionar o listener após um delay
+
+    // Adicionar o listener após um delay
     setTimeout(() => {
       document.addEventListener('click', clickOutsideHandler);
     }, 50);
-}
+  }
 
   console.log(sideBar);
 }
@@ -123,14 +152,15 @@ var clickOutsideHandler = (event) => {
     document.removeEventListener('click', clickOutsideHandler);
   }
 };
-function goToHistory(){
+function goToHistory() {
   location.href = "/#historia"
 }
 
-function goToCrenca(){
+function goToCrenca() {
   location.href = "/#crenca"
 }
 
-function goToFeedback(){
+function goToFeedback() {
   location.href = "/#feedback"
 }
+

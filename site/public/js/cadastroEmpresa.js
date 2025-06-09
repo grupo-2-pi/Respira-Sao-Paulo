@@ -52,6 +52,8 @@ function validarTel(valor) {
 }
 
 function cadastrarEmpresa() {
+    botaoCadastrar.innerHTML = "carregando...";
+
     validarFantasia(nomeFant);
     validarNome(nomeEmpresa);
     validarCnpj(cnpj);
@@ -67,8 +69,6 @@ function cadastrarEmpresa() {
     });
 
     if ((validacaoCnpj && validacaoEmail && validacaoTel && validacaoFantasia && validacaoNome)) {
-        alert("ok!");
-
         fetch("/empresas/cadastrar",
             {
                 method: "POST",
@@ -84,25 +84,47 @@ function cadastrarEmpresa() {
                 })
             }).then(function (resposta) {
                 console.log("resposta: ", resposta);
+
+                document.getElementById("modal").classList.add("active");
+
                 if (resposta.ok) {
-                    alert("banco de dados ok");
+                    modalTitle.innerHTML = "Cadastro realizado com <span>sucesso</span> 🍃"
+                    botaoCadastrar.innerHTMl = `
+                       <span style='color:green'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
+                            </svg>
+                        </span>
+                    `
+                    sessionStorage.PERMISSAO = 1;
+                    alert('Redirecionando para cadastro de usuário');
+                    setTimeout(location.replace("/cadastroPersona.html"), 10000);
+
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    botaoCadastrar.innerHTML = `<span style='color:red'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-exclamation-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                    </span>`
+                    modalTitle.innerHTML = "Houve um <span style='color: red;'>erro</span> ao realizar o cadastro"
+                    resposta.json().then((j) => {
+                        modalContent.innerHTML = j;
+                    });
                 }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                alert("deu tudo errado na inserção")
             });
-
     } else {
-        alert("dados invalidos!");
         return;
     }
+
+    
 }
 
-//fazer aparecer a mensagem de erro quando algum campo estiver incorreto
-//fazer o fetch
-//fazer a rota -> controller -> model
 
-
+document.getElementById("close-modal").addEventListener("click", function () {
+    document.getElementById("overlay").classList.remove("active");
+    document.getElementById("modal").classList.remove("active");
+});

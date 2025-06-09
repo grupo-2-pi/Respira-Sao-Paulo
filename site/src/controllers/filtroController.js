@@ -22,12 +22,11 @@ export async function buscarFiltros(req, res) {
 
 export async function criarFiltro(req, res) {
   try {
-    const { nome, regiao, ano, mes, idFuncionario, idEmpresa } = req.body;
+    const { regiao, ano, mes, idUsuario } = req.body; // Mudou os nomes
 
-    await criar(nome, regiao, ano, mes, idFuncionario, idEmpresa);
+    await criar(regiao, ano, mes); // Só manda o que o MODEL precisa
 
     return res.status(201).send();
-
   } catch (e) {
     return res.status(500).send({
       message: e

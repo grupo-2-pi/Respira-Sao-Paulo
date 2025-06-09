@@ -48,7 +48,11 @@
         </div>
 
 
+
       </div>
+
+
+
 
     </div>
     <div onclick="showUserOptions()" class="user-container" style="display: none;">
@@ -57,8 +61,30 @@
         <span>Rosim</span>
       </div>
 
+
       <div class="user-dropdown-options">
         <button onclick="goToPersonal()">Dados Pessoais</button>
+
+            <a href="./paginaPrincipal.html">
+                Página Inicial
+            </a>
+            <a onclick="goToComentarios()">
+                Comentários
+            </a>
+            <a  onclick="goToCadastrar()">
+                Cadastrar
+            </a>
+            <div onclick="showNotifications()" class="contem-alerta">
+                <div class="img-nav-alerta2">
+                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+                        alt="Imagem de Notificações">
+                </div>
+                <a class="nav-selected" href="./verUsuario.html">
+                    Ver Usuários
+                </a>
+                
+            </div>
+
 
         <div class="theme-switch-wrapper">
           <label class="theme-switch" for="theme-toggle">
