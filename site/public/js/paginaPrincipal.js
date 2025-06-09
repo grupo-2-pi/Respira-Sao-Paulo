@@ -1,27 +1,17 @@
-// Para mockar dados aleatórios
-function gerarDadosAleatorios(quantidade, min, max) {
-	var resultado = [];
-	for (var i = 0; i < quantidade; i++) {
-		var numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
-		resultado.push(numeroAleatorio);
-	}
-	return resultado;
+// Para mockar dados vazios inicialmente
+function gerarDadosVazios(quantidade) {
+	return Array(quantidade).fill(null);
 }
 
 function switchPersona(persona) {
 	localStorage.setItem('personaSelecionada', persona);
-	location.reload(); // Recarrega a página para aplicar a nova persona
+	location.reload();
 }
 
 const persona = localStorage.getItem('personaSelecionada');
 
 window.addEventListener("load", () => {
-
 	const idFuncionario = sessionStorage.ID_FUNCIONARIO;
-
-	const nomeFuncionario = sessionStorage.getItem("NOME_FUNCIONARIO");
-
-	spanNomeUsuario.innerHTML = nomeFuncionario;
 
 	if (idFuncionario === undefined || idFuncionario === null) {
 		location.replace("autenticacao.html");
@@ -60,21 +50,50 @@ if (persona == 'saude') {
 	document.getElementById("m-segunda-kpi").innerHTML = '<canvas id="m-velocimetro"></canvas>';
 
 	document.getElementById('kpi1-title').textContent = 'Variação mensal de internações respiratórias dos 2 últimos meses';
-	aplicarEstiloKPI('kpi1-value', -5);
+	aplicarEstiloKPI('kpi1-value', -0);
 	new Chart(document.getElementById('velocimetro'), {
 		type: 'doughnut',
-		data: { labels: ['Risco'], datasets: [{ data: [30, 70], backgroundColor: ['orange', '#eee'], borderWidth: 0 }] },
-		options: { rotation: -90, circumference: 180, cutout: '75%', plugins: { title: { display: true, text: 'Risco de Internações - Estação Atual', font: { size: 15, weight: 'bold' }, padding: { top: 20, bottom: 20 } } } }
+		data: {
+			labels: ['Risco'],
+			datasets: [{ data: [30, 70], backgroundColor: ['orange', '#eee'], borderWidth: 0 }]
+		},
+		options: {
+			rotation: -90,
+			circumference: 180,
+			cutout: '75%',
+			plugins: {
+				title: {
+					display: true,
+					text: 'Risco de Internações - Estação Atual',
+					font: { size: 15, weight: 'bold' },
+					padding: { top: 20, bottom: 20 }
+				}
+			}
+		}
 	});
 
 	document.getElementById('kpi3-title').textContent = 'Taxa de mortalidade do último mês';
-	document.getElementById('kpi3-value').textContent = '4%';
+	document.getElementById('kpi3-value').textContent = '0%';
 	document.getElementById('m-kpi1-title').textContent = '% de variação nas internações por doenças respiratórias';
 	aplicarEstiloKPI('m-kpi1-value', 5);
 	new Chart(document.getElementById('m-velocimetro'), {
 		type: 'doughnut',
-		data: { datasets: [{ data: [30, 70], backgroundColor: ['orange', '#eee'], borderWidth: 0 }] },
-		options: { rotation: -90, circumference: 180, cutout: '75%', plugins: { title: { display: true, text: 'Risco de Internações - Estação Atual', font: { size: 15, weight: 'bold' }, padding: { top: 10, bottom: 10 } } } }
+		data: {
+			datasets: [{ data: [30, 70], backgroundColor: ['orange', '#eee'], borderWidth: 0 }]
+		},
+		options: {
+			rotation: -90,
+			circumference: 180,
+			cutout: '75%',
+			plugins: {
+				title: {
+					display: true,
+					text: 'Risco de Internações - Estação Atual',
+					font: { size: 15, weight: 'bold' },
+					padding: { top: 10, bottom: 10 }
+				}
+			}
+		}
 	});
 
 	document.getElementById('m-kpi3-title').textContent = 'Taxa de mortalidade do último mês';
@@ -85,13 +104,19 @@ if (persona == 'saude') {
 		data: {
 			labels: municipios.slice(0, 10),
 			datasets: [
-				{ label: 'Internações (quantidade)', data: gerarDadosAleatorios(10, 100, 1000), backgroundColor: 'rgba(54, 162, 235, 0.7)', yAxisID: 'internacoes', barThickness: 20 },
-				{ label: 'Poluição (µg/m³)', data: gerarDadosAleatorios(10, 50, 200), type: 'line', borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.5)', yAxisID: 'poluicao' }
+				{ label: 'Internações (quantidade)', data: gerarDadosVazios(10), backgroundColor: 'rgba(54, 162, 235, 0.7)', yAxisID: 'internacoes', barThickness: 20 },
+				{ label: 'Poluição (µg/m³)', data: gerarDadosVazios(10), type: 'line', borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.5)', yAxisID: 'poluicao' }
 			]
 		},
 		options: {
 			responsive: true,
-			plugins: { title: { display: true, text: 'Internações Respiratórias X Poluição do Ar ℹ️', font: { size: 18 } } },
+			plugins: {
+				title: {
+					display: true,
+					text: 'Internações Respiratórias X Poluição do Ar ℹ️',
+					font: { size: 18 }
+				}
+			},
 			onClick: () => alert('Este gráfico mostra a relação entre internações respiratórias com a qualidade do ar.'),
 			scales: {
 				internacoes: { type: 'linear', position: 'left', title: { display: true, text: 'Internações' } },
@@ -105,15 +130,21 @@ if (persona == 'saude') {
 		data: {
 			labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
 			datasets: [
-				{ label: 'Gastos 2023', data: gerarDadosAleatorios(12, 10, 20), borderColor: 'rgba(54, 162, 235, 1)' },
-				{ label: 'Gastos 2024', data: gerarDadosAleatorios(12, 10, 20), borderColor: 'rgba(255, 99, 132, 1)' },
+				{ label: 'Gastos 2023', data: gerarDadosVazios(12), borderColor: 'rgba(54, 162, 235, 1)' },
+				{ label: 'Gastos 2024', data: gerarDadosVazios(12), borderColor: 'rgba(255, 99, 132, 1)' },
 				{ label: 'Média dos Gastos', data: Array(12).fill(15), borderColor: 'rgba(75, 192, 192, 1)', borderDash: [5, 5], fill: false }
 			]
 		},
 		options: {
 			maintainAspectRatio: false,
 			responsive: true,
-			plugins: { title: { display: true, text: 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️', font: { size: 18 } } },
+			plugins: {
+				title: {
+					display: true,
+					text: 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️',
+					font: { size: 18 }
+				}
+			},
 			onClick: () => alert('Este gráfico mostra os gastos mensais em dois anos e uma linha média para comparação.'),
 			scales: {
 				y: { title: { display: true, text: 'R$ em milhões' } },
@@ -123,16 +154,16 @@ if (persona == 'saude') {
 	});
 
 } else {
-	document.getElementById('kpi1-title').textContent = 'Município com 05r nível de poluição';
-	document.getElementById('kpi1-value').textContent = 'Guarulhos';
+	document.getElementById('kpi1-title').textContent = 'Município com maior nível de poluição';
+	document.getElementById('kpi1-value').textContent = 'Sem Dados';
 	document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
-	aplicarEstiloKPI('kpi2-value', -5);
+	aplicarEstiloKPI('kpi2-value', -0);
 	document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
 	document.getElementById('kpi3-value').textContent = 'Sem Dados';
 	document.getElementById('m-kpi1-title').textContent = 'Município 05r nível de poluição';
 	document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
-	aplicarEstiloKPI('m-kpi2-value', -5);
+	aplicarEstiloKPI('m-kpi2-value', -0);
 	document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente';
 	document.getElementById('m-kpi3-value').textContent = 'CO2';
 
@@ -141,10 +172,10 @@ if (persona == 'saude') {
 		data: {
 			labels: municipios,
 			datasets: [
-				{ label: 'Carro', data: gerarDadosAleatorios(10, 50, 100), backgroundColor: 'rgba(75, 192, 192, .7)' },
-				{ label: 'Moto', data: gerarDadosAleatorios(10, 50, 100), backgroundColor: 'rgba(153, 12, 255, .7)' },
-				{ label: 'Caminhão', data: gerarDadosAleatorios(10, 50, 100), backgroundColor: 'rgba(255, 99, 132, .7)' },
-				{ label: 'Ônibus', data: gerarDadosAleatorios(10, 50, 100), backgroundColor: 'rgba(255, 26, 86, 0.7)' }
+				{ label: 'Carro', data: gerarDadosVazios(10), backgroundColor: 'rgba(75, 192, 192, .7)' },
+				{ label: 'Moto', data: gerarDadosVazios(10), backgroundColor: 'rgba(153, 12, 255, .7)' },
+				{ label: 'Caminhão', data: gerarDadosVazios(10), backgroundColor: 'rgba(255, 99, 132, .7)' },
+				{ label: 'Ônibus', data: gerarDadosVazios(10), backgroundColor: 'rgba(255, 26, 86, 0.7)' }
 			]
 		},
 		options: {
@@ -163,9 +194,9 @@ if (persona == 'saude') {
 		data: {
 			labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
 			datasets: [
-				{ label: 'São Paulo', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)' },
-				{ label: 'Guarulhos', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)' },
-				{ label: 'São Bernardo', data: gerarDadosAleatorios(12, 50, 100), borderColor: 'rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.2)' },
+				{ label: 'São Paulo', data: gerarDadosVazios(12), borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)' },
+				{ label: 'Guarulhos', data: gerarDadosVazios(12), borderColor: 'rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)' },
+				{ label: 'São Bernardo', data: gerarDadosVazios(12), borderColor: 'rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.2)' }
 			]
 		},
 		options: {
