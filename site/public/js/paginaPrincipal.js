@@ -216,8 +216,8 @@ function calcularMesAnterior(ano, mes) {
 async function buscarDadosDashboard(regiao, ano, mes, callback) {
 	const { anoAnterior, mesAnterior } = calcularMesAnterior(ano, mes);
 
-	const urlAnterior = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "01" : mesAnterior)}`;
-	const urlAtual = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "01" : mesAnterior)}`;
+	const urlAnterior = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2022" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
+	const urlAtual = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
 
 	console.log(urlAtual);
 	console.log(urlAtual);
@@ -321,27 +321,27 @@ async function atualizarDash() {
 		}
 
 		var mesesNomes = {
-    jan: 'Janeiro',
-    fev: 'Fevereiro',
-    mar: 'Março',
-    abr: 'Abril',
-    mai: 'Maio',
-    jun: 'Junho',
-    jul: 'Julho',
-    ago: 'Agosto',
-    set: 'Setembro',
-    out: 'Outubro',
-    nov: 'Novembro',
-    dez: 'Dezembro'
-};
+			jan: 'Janeiro',
+			fev: 'Fevereiro',
+			mar: 'Março',
+			abr: 'Abril',
+			mai: 'Maio',
+			jun: 'Junho',
+			jul: 'Julho',
+			ago: 'Agosto',
+			set: 'Setembro',
+			out: 'Outubro',
+			nov: 'Novembro',
+			dez: 'Dezembro'
+		};
 
-// Supondo que a variável `mes` seja, por exemplo, "jan"
-var mesNome = mesesNomes[mes.toLowerCase()]; // Garante que esteja em minúsculas
+		// Supondo que a variável `mes` seja, por exemplo, "jan"
+		var mesNome = mesesNomes[mes.toLowerCase()]; // Garante que esteja em minúsculas
 
-// Atualiza os textos nas divs
-document.getElementById('mesFiltro').innerText = mesNome;
-document.getElementById('anoFiltro').innerText = ano;
-document.getElementById('regiaoFiltro').innerText = regiao;
+		// Atualiza os textos nas divs
+		document.getElementById('mesFiltro').innerText = mesNome;
+		document.getElementById('anoFiltro').innerText = ano;
+		document.getElementById('regiaoFiltro').innerText = regiao;
 	});
 
 }
@@ -525,10 +525,10 @@ function atualizarGraficosSaude(graficos) {
 	const dados2023 = Array(12).fill(0);
 
 	graficos.gastosAnuais.forEach(item => {
-		const index = meses.indexOf(item.mes);
+		const index = meses.indexOf(item.mes.toLowerCase());
 		if (index !== -1) {
-			if (item.ano === '2023') dados2023[index] = item.total_gasto;
-			else if (item.ano === '2024') dados2024[index] = item.total_gasto;
+			if (item.ano === '2022') dados2022[index] = item.total_gasto;
+			else if (item.ano === '2023') dados2023[index] = item.total_gasto;
 		}
 	});
 
