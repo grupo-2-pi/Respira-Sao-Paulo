@@ -46,17 +46,17 @@ export async function getQualidadeArPorRegiaoTodosMeses(regiao, ano) {
 
 
 //KPI RANKING DE POLUIÇÃO 
-export async function getRankingPoluentes(regiao, ano, mes) {
+export async function getRankingPoluentes(regiao, ano) {
 	const query = `
-        SELECT poluente, SUM(valor) AS total
-        FROM QualidadeAr
-        WHERE regiao = '${regiao}' AND ano = '${ano === "2023" || ano === "2022" ? "2021" : ano}' AND mes = '${mes}'
-        GROUP BY poluente
-        ORDER BY total DESC
-        LIMIT 1;
-    `;
+		SELECT poluente, valor
+		FROM QualidadeAr
+		WHERE regiao = '${regiao}' AND ano = '${ano}'
+		ORDER BY valor DESC
+		LIMIT 1;
+	`;
 	return await executar(query);
 }
+
 
 
 //GASTOS 2023 X 2024
