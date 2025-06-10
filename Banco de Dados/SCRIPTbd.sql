@@ -211,4 +211,11 @@ INSERT INTO Admin (nome, email, senha) VALUES
 ("Joao ohi", "joao@respira.tech", "rockandrowandsaopaulo"),
 ("Guilherme antonio", "guilherme@respira.tech", "o garoto 04");
 
+INSERT INTO Empresa (cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES 
+("11111111111111", "Soluções tech", "solucoestech@gmail.com", "11111111111");
+
+INSERT INTO Funcionario 
+(nomeFuncionario, emailFuncionario, senha, validarSenha, cargoFuncionario, isGerente, idEmpresa,isFirstLogin) VALUES 
+("Funcionario teste", "funcionario@gmail.com", "ishow123", "ishow123", "Gerente",true, 1,   false)
+
 

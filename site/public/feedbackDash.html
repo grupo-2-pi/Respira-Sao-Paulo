@@ -2,184 +2,179 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/feedbackDash.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
-    <script type="module" src="./js/feedbackDash.js"></script>
-    <script type="module" src="./js/index.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="./assets/logo.svg">
-    <title>Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/feedbackDash.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+		rel="stylesheet">
+	<script type="module" src="./js/feedbackDash.js"></script>
+	<script type="module" src="./js/index.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+		rel="stylesheet">
+	<link rel="icon" href="./assets/logo.svg">
+	<title>Dashboard</title>
 </head>
 
 <body>
 
-    <!-- MENU MOBILE -->
+	<!-- MENU MOBILE -->
 
-    <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
+	<div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
 
-        <div class="logo-nav-container" onclick="goToHome()">
-            <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
-        </div>
+		<div class="logo-nav-container" onclick="goToHome()">
+			<img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+		</div>
 
 
-        <div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
-            <div class="img-nav-alerta2">
-                <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
-            </div>
-        </div>
+		<div onclick="goToNotification()" class="contem-alerta2" style="display: none;">
+			<div class="img-nav-alerta2">
+				<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+			</div>
+		</div>
 
-        <!-- NAV BAR DESKTOP -->
+		<!-- NAV BAR DESKTOP -->
 
-        <div class="nav-bar-links-container" style="display: none;">
+		<div class="nav-bar-links-container" style="display: none;">
 
-            <a href="./paginaPrincipal.html">
-                Página Inicial
-            </a>
-            <a class="nav-selected" onclick="goToComentarios()">
-                Comentários
-            </a>
-            <a onclick="goToCadastrar()">
-                Cadastrar
-            </a>
-            <div onclick="showNotifications()" class="contem-alerta">
-                <div class="img-nav-alerta2">
-                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
-                        alt="Imagem de Notificações">
-                </div>
-                <a href="./verUsuario.html">
-                    Ver Usuário
-                </a>
+			<a href="./paginaPrincipal.html">
+				Página Inicial
+			</a>
+			<a class="nav-selected" onclick="goToComentarios()">
+				Comentários
+			</a>
+			<a onclick="goToCadastrar()">
+				Cadastrar
+			</a>
+			<div onclick="showNotifications()" class="contem-alerta">
+				<div class="img-nav-alerta2">
+					<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+				</div>
+			</div>
 
-            </div>
+		</div>
+		<div onclick="showUserOptions()" class="user-container" style="display: none;">
+			<div class="user-infos">
+				<img id="id-img-user options" width="15%" src="./assets/img-user.png" alt="Imagem de Usuário">
+				<span id="spanNomeUsuario"></span>
+			</div>
 
-        </div>
-        <div onclick="showUserOptions()" class="user-container" style="display: none;">
-            <div class="user-infos">
-                <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
-                <span>Rosim</span>
-            </div>
+			<div class="user-dropdown-options">
+				<button onclick="goToPersonal()">Dados Pessoais</button>
+				<!-- <button onclick="goToFiltros()">Filtros Salvos</button> -->
+				<!-- <div class="theme-switch-wrapper"> -->
+				<!-- 	<label class="theme-switch" for="theme-toggle"> -->
+				<!-- 		<input type="checkbox" id="theme-toggle"> -->
+				<!-- 		<div class="slider round"></div> -->
+				<!-- 	</label> -->
+				<!-- 	<span id="theme-label"> -->
+				<!-- 		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" -->
+				<!-- 			class="bi bi-brightness-high" viewBox="0 0 16 16"> -->
+				<!-- 			<path -->
+				<!-- 				d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" /> -->
+				<!-- 		</svg> -->
+				<!-- 	</span> -->
+				<!-- </div> -->
+				<button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
+			</div>
+		</div>
+		<!-- FIM NAV BAR -->
 
-            <div class="user-dropdown-options">
-                <button onclick="goToPersonal()">Dados Pessoais</button>
-                <button onclick="goToFiltros()">Filtros Salvos</button>
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-toggle">
-                        <input type="checkbox" id="theme-toggle">
-                        <div class="slider round"></div>
-                    </label>
-                    <span id="theme-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-brightness-high" viewBox="0 0 16 16">
-                            <path
-                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-                        </svg>
-                    </span>
-                </div>
-                <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
-            </div>
-        </div>
-        <!-- FIM NAV BAR -->
-
-        <!--   <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
+		<!--   <div class="persona-switcher" style="position: fixed; bottom: 20px; right: 20px;">
             <button onclick="switchPersona('saude')">Modo Saúde</button>
             <button onclick="switchPersona('ambiental')">Modo Ambiental</button>
         </div>
  -->
-        <button id="id-button-nav-bar" onclick="openSidebar()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
-                class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
-                <path
-                    d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
-                <path
-                    d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
-            </svg>
-        </button>
+		<button id="id-button-nav-bar" onclick="openSidebar()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
+				class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+				<path
+					d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+				<path
+					d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+			</svg>
+		</button>
 
 
 
 
-        <div id="sideBar" class="side-bar">
+		<div id="sideBar" class="side-bar">
 
-            <div class="img-side-bar" onclick="goToHome()">
-                <img width="100%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
-            </div>
-            <div class="side-bar-links-container">
-                <a onclick="goToPaginaInicial()">
-                    Página Inicial
-                </a>
-                <a onclick="goToComentarios()">
-                    Comentários
-                </a>
-                <a onclick="goToCadastrar()">
-                    Cadastrar
-                </a>
-                <a onclick="goToPerfil()">
-                    Perfil
-                </a>
-                <a onclick="goToSair()">
-                    Sair
-                </a>
-                <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
-                    <div class="user-infos">
-                        <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
-                        <span>Dono de tudo</span>
-                    </div>
+			<div class="img-side-bar" onclick="goToHome()">
+				<img width="100%" src="./assets/logo.svg" alt="Logo da Respira São Paulo">
+			</div>
+			<div class="side-bar-links-container">
+				<a onclick="goToPaginaInicial()">
+					Página Inicial
+				</a>
+				<a onclick="goToComentarios()">
+					Comentários
+				</a>
+				<a onclick="goToCadastrar()">
+					Cadastrar
+				</a>
+				<a onclick="goToPerfil()">
+					Perfil
+				</a>
+				<a onclick="goToSair()">
+					Sair
+				</a>
+				<div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
+					<div class="user-infos">
+						<img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+						<span>Dono de tudo</span>
+					</div>
 
-                    <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
-                        <button onclick="goToPersonal()">Dados Pessoais</button>
-                        <button onclick="goToFiltros()">Filtros Salvos</button>
-                        <div class="theme-switch-wrapper">
-                            <label class="theme-switch" for="theme-toggle">
-                                <input type="checkbox" id="theme-toggle">
-                                <div class="slider round"></div>
-                            </label>
-                            <span id="theme-label">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-brightness-high" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-                                </svg>
-                            </span>
-                        </div>
-                        <button id="disconectButton">Desconectar</button>
-                    </div>
+					<div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+						<button onclick="goToPersonal()">Dados Pessoais</button>
+						<button onclick="goToFiltros()">Filtros Salvos</button>
+						<div class="theme-switch-wrapper">
+							<label class="theme-switch" for="theme-toggle">
+								<input type="checkbox" id="theme-toggle">
+								<div class="slider round"></div>
+							</label>
+							<span id="theme-label">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+									class="bi bi-brightness-high" viewBox="0 0 16 16">
+									<path
+										d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+								</svg>
+							</span>
+						</div>
+						<button id="disconectButton">Desconectar</button>
+					</div>
 
-                </div>
-                <!--  <a onclick="goToPerfil(); openSidebar();">
+				</div>
+				<!--  <a onclick="goToPerfil(); openSidebar();">
                     Perfil
                 </a>
                 <a onclick="goToSair(); openSidebar();">
                     Sair
                 </a> -->
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-    </div>
+	</div>
 
 
 
-    <!-- MAIN -->
+	<!-- MAIN -->
 
-    <div class="container">
+	<div class="container">
 
-        <div class="filtro">
+		<div class="filtro">
 
-            <!-- <div class="filtroSelecionado">
+			<!-- <div class="filtroSelecionado">
                 <h1><a id="mesFeedback">Janeiro</a> de <a id="anoFeedback">2024</a>, <a id="municipioFeedback">São
                         Paulo</a></h1>
             </div> -->
 
-            <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-            <!-- <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+			<!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
+			<!-- <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
 
                 <div class="img-filtro">
                     <img id="id-img-filtro" width="100%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
@@ -191,369 +186,369 @@
 
             </div> -->
 
-            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+			<div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
 
-                <div class="escolher-filtro">
+				<div class="escolher-filtro">
 
-                    <div class="btn-sair" onclick="fecharFiltro()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg>
-                    </div>
+					<div class="btn-sair" onclick="fecharFiltro()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg"
+							viewBox="0 0 16 16">
+							<path
+								d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+						</svg>
+					</div>
 
-                    <!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
+					<!-- Tentei fazer o filtro funcionar mas n consegui, pelo menos tentei estruturar cada um em uma DIV -->
 
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Região Desejada</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="regiaoDesejada">
-                                <option></option>
-                                <option value="Sul">Sul</option>
-                                <option value="centro">Centro-Oeste</option>
-                                <option value="norte">Norte</option>
-                                <option value="nordeste">Nordeste</option>
-                                <option value="Leste">Leste</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Ano Desejado</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="anoDesejado">
-                                <option></option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Mês Desejado</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="mesDesejado">
-                                <option></option>
-                                <option value="01">Janeiro</option>
-                                <option value="02">Fevereiro</option>
-                                <option value="03">Março</option>
-                                <option value="04">Abril</option>
-                                <option value="05">Maio</option>
-                                <option value="06">Junho</option>
-                                <option value="07">Julho</option>
-                                <option value="08">Agosto</option>
-                                <option value="09">Setembro</option>
-                                <option value="10">Outubro</option>
-                                <option value="11">Novembro</option>
-                                <option value="12">Dezembro</option>
-                            </select>
-                        </div>
-                    </div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Região Desejada</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="regiaoDesejada">
+								<option></option>
+								<option value="Sul">Sul</option>
+								<option value="centro">Centro-Oeste</option>
+								<option value="norte">Norte</option>
+								<option value="nordeste">Nordeste</option>
+								<option value="Leste">Leste</option>
+							</select>
+						</div>
+					</div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Ano Desejado</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="anoDesejado">
+								<option></option>
+								<option value="2024">2024</option>
+								<option value="2023">2023</option>
+								<option value="2022">2022</option>
+								<option value="2021">2021</option>
+								<option value="2020">2020</option>
+							</select>
+						</div>
+					</div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Mês Desejado</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="mesDesejado">
+								<option></option>
+								<option value="01">Janeiro</option>
+								<option value="02">Fevereiro</option>
+								<option value="03">Março</option>
+								<option value="04">Abril</option>
+								<option value="05">Maio</option>
+								<option value="06">Junho</option>
+								<option value="07">Julho</option>
+								<option value="08">Agosto</option>
+								<option value="09">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+					</div>
 
-                    <div class="filtro-btn" onclick="atualizarDash()">
+					<div class="filtro-btn" onclick="atualizarDash()">
 
-                        <h1>Filtrar</h1>
+						<h1>Filtrar</h1>
 
-                    </div>
+					</div>
 
-                    <div class="filtro-btn" onclick="salvarDash()">
+					<div class="filtro-btn" onclick="salvarDash()">
 
-                        <h1>Salvar</h1>
+						<h1>Salvar</h1>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
-            <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_adicionar_filtro_feedback">
+				</div>
+			</div>
+			<div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_adicionar_filtro_feedback">
 
-                <div class="escolher-filtro">
+				<div class="escolher-filtro">
 
-                    <div class="btn-sair" onclick="fecharFiltroEditar()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path
-                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg>
-                    </div>
+					<div class="btn-sair" onclick="fecharFiltroEditar()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg"
+							viewBox="0 0 16 16">
+							<path
+								d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+						</svg>
+					</div>
 
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Nome</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <input type="text" id="nomeFiltro">
-                        </div>
-                    </div>
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Região Desejada</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="regiaoDesejadaEditar">
-                                <option></option>
-                                <option value="Sul">Sul</option>
-                                <option value="centro">Centro-Oeste</option>
-                                <option value="norte">Norte</option>
-                                <option value="nordeste">Nordeste</option>
-                                <option value="Leste">Leste</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Ano Desejado</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="anoDesejadoEditar">
-                                <option></option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filtro-text">
-                        <div class="titulo-filtro">
-                            <h1>Mês Desejado</h1>
-                        </div>
-                        <div class="contem-escolhe-filtro">
-                            <select name="" class="select-opt" id="mesDesejadoEditar">
-                                <option></option>
-                                <option value="01">Janeiro</option>
-                                <option value="02">Fevereiro</option>
-                                <option value="03">Março</option>
-                                <option value="04">Abril</option>
-                                <option value="05">Maio</option>
-                                <option value="06">Junho</option>
-                                <option value="07">Julho</option>
-                                <option value="08">Agosto</option>
-                                <option value="09">Setembro</option>
-                                <option value="10">Outubro</option>
-                                <option value="11">Novembro</option>
-                                <option value="12">Dezembro</option>
-                            </select>
-                        </div>
-                    </div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Nome</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<input type="text" id="nomeFiltro">
+						</div>
+					</div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Região Desejada</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="regiaoDesejadaEditar">
+								<option></option>
+								<option value="Sul">Sul</option>
+								<option value="centro">Centro-Oeste</option>
+								<option value="norte">Norte</option>
+								<option value="nordeste">Nordeste</option>
+								<option value="Leste">Leste</option>
+							</select>
+						</div>
+					</div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Ano Desejado</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="anoDesejadoEditar">
+								<option></option>
+								<option value="2024">2024</option>
+								<option value="2023">2023</option>
+								<option value="2022">2022</option>
+								<option value="2021">2021</option>
+								<option value="2020">2020</option>
+							</select>
+						</div>
+					</div>
+					<div class="filtro-text">
+						<div class="titulo-filtro">
+							<h1>Mês Desejado</h1>
+						</div>
+						<div class="contem-escolhe-filtro">
+							<select name="" class="select-opt" id="mesDesejadoEditar">
+								<option></option>
+								<option value="01">Janeiro</option>
+								<option value="02">Fevereiro</option>
+								<option value="03">Março</option>
+								<option value="04">Abril</option>
+								<option value="05">Maio</option>
+								<option value="06">Junho</option>
+								<option value="07">Julho</option>
+								<option value="08">Agosto</option>
+								<option value="09">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+					</div>
 
-                    <div class="filtro-btn" onclick="editarFiltro()">
+					<div class="filtro-btn" onclick="editarFiltro()">
 
-                        <h1>Salvar</h1>
+						<h1>Salvar</h1>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
+				</div>
+			</div>
 
-        </div>
-
-
-        <div class="kpis">
-
-            <!-- MOBILE -->
-
-            <div class="primeira-divisao-kpi">
-                <div class="primeira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Índice de Satisfação Ambiental (últimos 30 dias)</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <div class="star-rating" id="rating">
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Causa dominante (últimos 30 dias) </h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="causaDominante">São Paulo</h1>
-                    </div>
-
-                </div>
-            </div>
-            <div class="primeira-divisao-kpi">
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Região mais comentada (Últimos 30 Dias)</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="totalComentarios"></h1>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- DESKTOP -->
-
-            <div class="primeira-divisao-kpi2" style="display: none;">
-                <div class="primeira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Índice de Satisfação Ambiental (últimos 30 dias)</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <div class="star-rating" id="ratingMobile">
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                            <span class="star">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="lucide lucide-star-icon lucide-star">
-                                    <path
-                                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="segunda-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Causa dominante (últimos 30 dias)</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="causaDominanteMobile">São Paulo</h1>
-                    </div>
-
-                </div>
-
-                <div class="terceira-kpi">
-
-                    <div class="titulo-kpi">
-                        <h1>Região mais comentada (Últimos 30 Dias)</h1>
-                    </div>
-
-                    <div class="dado-kpi">
-                        <h1 id="totalComentariosMobile">R$ 15.000,00</h1>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- FIM DESKTOP -->
-
-        </div>
-
-        <div class="dashboards">
-
-            <!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
-
-            <div class="primeira-dashboardF">
-                <canvas id="myChartXX"></canvas>
-            </div>
-
-        </div>
+		</div>
 
 
-        <!-- BUTTON VER COMENTÁRIOS -->
+		<div class="kpis">
 
-        <div class="button-see" onclick="abrirComentarios()">
-            <div class="dentro-button-see" id="button_see">
-                <h3>Ver Comentários</h3>
-            </div>
-        </div>
+			<!-- MOBILE -->
 
-        <!-- COMENTÁRIOS ABERTOS -->
+			<div class="primeira-divisao-kpi">
+				<div class="primeira-kpi">
 
-        <div class="container-comentarios" id="container_comentarios" style="display: none;">
+					<div class="titulo-kpi">
+						<h1>Índice de Satisfação Ambiental (últimos 30 dias)</h1>
+					</div>
 
-            <!-- FILTRO COMENTÁRIOS -->
+					<div class="dado-kpi">
+						<div class="star-rating" id="rating">
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+						</div>
+					</div>
+				</div>
 
-            <div class="filtro">
+				<div class="segunda-kpi">
 
-                <!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
-                <!--                 <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
+					<div class="titulo-kpi">
+						<h1>Causa dominante (últimos 30 dias) </h1>
+					</div>
+
+					<div class="dado-kpi">
+						<h1 id="causaDominante">São Paulo</h1>
+					</div>
+
+				</div>
+			</div>
+			<div class="primeira-divisao-kpi">
+				<div class="terceira-kpi">
+
+					<div class="titulo-kpi">
+						<h1>Região mais comentada (Últimos 30 Dias)</h1>
+					</div>
+
+					<div class="dado-kpi">
+						<h1 id="totalComentarios"></h1>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- DESKTOP -->
+
+			<div class="primeira-divisao-kpi2" style="display: none;">
+				<div class="primeira-kpi">
+
+					<div class="titulo-kpi">
+						<h1>Índice de Satisfação Ambiental (últimos 30 dias)</h1>
+					</div>
+
+					<div class="dado-kpi">
+						<div class="star-rating" id="ratingMobile">
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+							<span class="star">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="lucide lucide-star-icon lucide-star">
+									<path
+										d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+								</svg>
+							</span>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="segunda-kpi">
+
+					<div class="titulo-kpi">
+						<h1>Causa dominante (últimos 30 dias)</h1>
+					</div>
+
+					<div class="dado-kpi">
+						<h1 id="causaDominanteMobile">São Paulo</h1>
+					</div>
+
+				</div>
+
+				<div class="terceira-kpi">
+
+					<div class="titulo-kpi">
+						<h1>Região mais comentada (Últimos 30 Dias)</h1>
+					</div>
+
+					<div class="dado-kpi">
+						<h1 id="totalComentariosMobile">R$ 15.000,00</h1>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- FIM DESKTOP -->
+
+		</div>
+
+		<div class="dashboards">
+
+			<!-- QUERO ADICIONAR UM BOTÃO PRA ESCONDER A DIV DAS DASHBOARDS-->
+
+			<div class="primeira-dashboardF">
+				<canvas id="myChartXX"></canvas>
+			</div>
+
+		</div>
+
+
+		<!-- BUTTON VER COMENTÁRIOS -->
+
+		<div class="button-see" onclick="abrirComentarios()">
+			<div class="dentro-button-see" id="button_see">
+				<h3>Ver Comentários</h3>
+			</div>
+		</div>
+
+		<!-- COMENTÁRIOS ABERTOS -->
+
+		<div class="container-comentarios" id="container_comentarios" style="display: none;">
+
+			<!-- FILTRO COMENTÁRIOS -->
+
+			<div class="filtro">
+
+				<!-- AO CLICAR VAI ABRIR UMA DIV NO CENTRO COM OS GRÁFICOS E O FUNDO FICARÁ DESFOCADO -->
+				<!--                 <div class="filtro-aplicado" style="display: flex;" id="id_filtro_aplicado" onclick="abrirFiltro()">
 
                     <div class="img-filtro">
                         <img id="id-img-filtro" width="80%" src="./assets/img-filtro.png" alt="Imagem do Filtro">
@@ -564,38 +559,38 @@
                     </div>
 
                 </div> -->
-                <!-- TALVEZ REMOVA -->
-                <div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
+				<!-- TALVEZ REMOVA -->
+				<div class="fundo-escolher-filtro" style="display: none;" id="id_fundo_escolher_filtro">
 
-                    <div class="escolher-filtro">
+					<div class="escolher-filtro">
 
-                        <div class="btn-sair" onclick="fecharFiltro()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                class="bi bi-x-lg" viewBox="0 0 16 16">
-                                <path
-                                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                            </svg>
-                        </div>
+						<div class="btn-sair" onclick="fecharFiltro()">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg"
+								viewBox="0 0 16 16">
+								<path
+									d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+							</svg>
+						</div>
 
-                    </div>
-                </div>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <!-- EXIBIR COMENTÁRIOS -->
+			<!-- EXIBIR COMENTÁRIOS -->
 
-            <div id="divComentarios" class="contem-comentarios">
-               
-            </div>
+			<div id="divComentarios" class="contem-comentarios">
 
-        </div>
+			</div>
 
-
+		</div>
 
 
-    </div>
-    </div>
-    <!-- <div class="filtro-personalizado-container" id="filtroPersonalizadoContainer">
+
+
+	</div>
+	</div>
+	<!-- <div class="filtro-personalizado-container" id="filtroPersonalizadoContainer">
         <button class="filtro-personalizado-btn" onclick="toggleFiltroPersonalizado()">Filtros Salvos ⤴︎</button>
         <div class="filtro-personalizado-lista" id="filtroPersonalizadoLista">
             <ul id="listaFiltrosPersonalizados">

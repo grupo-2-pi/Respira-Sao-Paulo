@@ -19,9 +19,14 @@ window.addEventListener("load", () => {
 
 	const idFuncionario = sessionStorage.ID_FUNCIONARIO;
 
+	const nomeFuncionario = sessionStorage.getItem("NOME_FUNCIONARIO");
+
+	spanNomeUsuario.innerHTML = nomeFuncionario;
+
 	if (idFuncionario === undefined || idFuncionario === null) {
 		location.replace("autenticacao.html");
 	}
+	atualizarDash();
 });
 
 const ctx = document.getElementById('myChart').getContext('2d');
@@ -207,25 +212,38 @@ function calcularMesAnterior(ano, mes) {
 	}
 }
 
-const backendBaseURL = "http://localhost:3000";
 
-
-function buscarDadosDashboard(regiao, ano, mes, callback) {
+async function buscarDadosDashboard(regiao, ano, mes, callback) {
 	const { anoAnterior, mesAnterior } = calcularMesAnterior(ano, mes);
 
-	const urlAtual = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(ano)}&mes=${encodeURIComponent(mes)}`;
-	const urlAnterior = `${backendBaseURL}/dashboard/dados?regiao=${encodeURIComponent(regiao)}&ano=${encodeURIComponent(anoAnterior)}&mes=${encodeURIComponent(mesAnterior)}`;
+	const urlAnterior = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
+	const urlAtual = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
 
-	const fetchAtual = fetch(urlAtual).then(res => res.json());
-	const fetchAnterior = fetch(urlAnterior).then(res => res.json());
+	console.log(urlAtual);
+	console.log(urlAtual);
 
-	Promise.all([fetchAtual, fetchAnterior])
-		.then(([dadosAtual, dadosAnterior]) => {
-			callback(dadosAtual, dadosAnterior);
-		})
-		.catch(err => {
-			console.error("Erro ao buscar dados do dashboard:", err);
-		});
+	try {
+		const fetchAtual = await fetch(urlAtual).then(res => res.json());
+		const fetchAnterior = await fetch(urlAnterior).then(res => res.json());
+
+		console.log("Fetch atual");
+		console.log(fetchAtual);
+
+		callback(fetchAtual, fetchAnterior);
+	} catch (e) {
+		console.log("Erro: " + e);
+	}
+
+	/* 
+		Promise.all([fetchAtual, fetchAnterior])
+			.then(([dadosAtual, dadosAnterior]) => {
+				console.log(dadosAtual);
+	
+				callback(dadosAtual, dadosAnterior);
+			})
+			.catch(err => {
+				console.error("Erro ao buscar dados do dashboard:", err);
+			}); */
 }
 
 function calcularVariacao(valorAtual, valorAnterior) {
@@ -278,6 +296,7 @@ async function atualizarDash() {
 
 	buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
 		atualizarCharts(dadosAtual);
+		console.log(dadosAtual);
 		atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona);
 
 
@@ -491,32 +510,32 @@ function atualizarGraficosSaude(graficos) {
 	// === GRÁFICO myChart: Gastos 2023 vs 2024 ===
 	const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
+	const dados2022 = Array(12).fill(0);
 	const dados2023 = Array(12).fill(0);
-	const dados2024 = Array(12).fill(0);
 
 	graficos.gastosAnuais.forEach(item => {
 		const index = meses.indexOf(item.mes);
 		if (index !== -1) {
-			if (item.ano === '2023') dados2023[index] = item.total_gasto;
-			else if (item.ano === '2024') dados2024[index] = item.total_gasto;
+			if (item.ano === '2022') dados2022[index] = item.total_gasto;
+			else if (item.ano === '2023') dados2023[index] = item.total_gasto;
 		}
 	});
 
-	const media = dados2023.map((val, i) => ((val + dados2024[i]) / 2).toFixed(2));
+	const media = dados2022.map((val, i) => ((val + dados2023[i]) / 2).toFixed(2));
 
 	myChart.data.labels = meses;
 	myChart.data.datasets = [
 		{
-			label: 'Gastos 2023',
-			data: dados2023,
+			label: 'Gastos 2022',
+			data: dados2022,
 			borderColor: 'rgba(54, 162, 235, 1)',
 			tension: 0,
 			fill: false,
 			pointRadius: 4
 		},
 		{
-			label: 'Gastos 2024',
-			data: dados2024,
+			label: 'Gastos 2023',
+			data: dados2023,
 			borderColor: 'rgba(255, 99, 132, 1)',
 			tension: 0,
 			fill: false,

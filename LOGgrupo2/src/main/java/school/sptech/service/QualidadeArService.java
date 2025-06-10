@@ -15,18 +15,32 @@ import school.sptech.utils.MapaMunicipiosSP;
 
 import java.io.ByteArrayInputStream;
 import java.text.Normalizer;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QualidadeArService extends Services {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(QualidadeArService.class);
     private final QualidadeArDao qualidadeArDao;
 
-
+    private static final Map<String, String> map = new HashMap<>();
 
     public QualidadeArService(Logger logger, ExcelUtils excelUtils, JdbcTemplate jdbcTemplate) {
         super(logger, excelUtils, jdbcTemplate);
         this.qualidadeArDao = new QualidadeArDao(jdbcTemplate);
+        map.put("01", "JAN");
+        map.put("02", "FEV");
+        map.put("03", "MAR");
+        map.put("04", "ABR");
+        map.put("05", "MAI");
+        map.put("06", "JUN");
+        map.put("07", "JUL");
+        map.put("08", "AGO");
+        map.put("09", "SET");
+        map.put("10", "OUT");
+        map.put("11", "NOV");
+        map.put("12", "DEZ");
     }
 
     public void extrairDadosQualidadeAr(String nomeArquivo, List<File> arquivos) {
@@ -54,7 +68,7 @@ public class QualidadeArService extends Services {
 
                     String[] data = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(0)).split("-");
 
-                    String mes = data[1];
+                    String mes = this.buscarNoMap(data[1]);
                     String ano = data[0];
 
                     String municipio = super.getExcelUtils().getValorCelulaComoTexto(linhaAtual.getCell(1));
@@ -93,6 +107,11 @@ public class QualidadeArService extends Services {
             super.getLogger().error("Erro ao realizar a leitura da planilha de qualidade do ar: " + e.getMessage());
         }
     }
+
+    public String buscarNoMap(String mesNumero) {
+        return map.get(mesNumero);
+    }
+
 
     private static String formatarMunicipio(String texto) {
         // Normaliza para decompor caracteres acentuados em base + acento
