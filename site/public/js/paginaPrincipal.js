@@ -269,16 +269,19 @@ function calcularMediaInternacoes(mortalidade) {
 
 function atualizarKPIsComVariação(dadosAtual, dadosAnterior, persona) {
 	if (persona === 'ambiental') {
-		const mediaAtual = calcularMediaQualidade(dadosAtual.graficos.qualidadeAr);
-		const mediaAnterior = calcularMediaQualidade(dadosAnterior.graficos.qualidadeAr);
-		const variacao = calcularVariacao(mediaAtual, mediaAnterior);
-		const variacaoFormatada = Math.round(variacao);
+		// KPIs do modo ambiental
+		const variacaoFormatada = dadosAtual.kpis.variacaoQualidadeAr ?? 0;
 
 		document.getElementById('kpi1-value').textContent = dadosAtual.kpis.maisPoluido;
 		aplicarEstiloKPI('kpi2-value', variacaoFormatada);
 		document.getElementById('kpi3-value').textContent = dadosAtual.kpis.rankingPoluente;
+
+		document.getElementById('m-kpi1-value').textContent = dadosAtual.kpis.maisPoluido;
+		aplicarEstiloKPI('m-kpi2-value', variacaoFormatada);
+		document.getElementById('m-kpi3-value').textContent = dadosAtual.kpis.rankingPoluente;
 	}
 }
+
 
 
 

@@ -75,7 +75,7 @@ export async function getGastosPorMes(regiao) {
 	return await executar(query);
 }
 
-
+//KPI VARIACAO INTERNAÇOES 
 export async function calcularVariacaoInternacoes(regiao, ano, mes) {
 	const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
 	const indexAtual = meses.indexOf(mes.toUpperCase());
@@ -107,4 +107,40 @@ export async function calcularVariacaoInternacoes(regiao, ano, mes) {
 
 	const variacao = ((totalAtual - totalAnterior) / totalAnterior) * 100;
 	return Number(variacao.toFixed(2));
+}
+
+//KPI VARIACAO INTERNAÇOES 
+export async function calcularVariacaoQualidadeAr(regiao, ano, mesSelecionado) {
+  const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+  const idx = meses.indexOf(mesSelecionado.toUpperCase());
+  if (idx < 2) return 0; // Não tem dois meses anteriores para comparar
+
+  const mesMaisRecente = meses[idx - 1];  // mês M-1
+  const mesMaisAntigo = meses[idx - 2];   // mês M-2
+
+  const anoMaisRecente = (idx - 1 < 0) ? (parseInt(ano) - 1).toString() : ano;
+  const anoMaisAntigo = (idx - 2 < 0) ? (parseInt(ano) - 1).toString() : ano;
+
+  const queryRecente = `
+    SELECT AVG(valor) AS media
+    FROM QualidadeAr
+    WHERE regiao = '${regiao}' AND ano = '${anoMaisRecente}' AND mes = '${mesMaisRecente}'
+  `;
+
+  const queryAntigo = `
+    SELECT AVG(valor) AS media
+    FROM QualidadeAr
+    WHERE regiao = '${regiao}' AND ano = '${anoMaisAntigo}' AND mes = '${mesMaisAntigo}'
+  `;
+
+  const recente = await executar(queryRecente);
+  const antigo = await executar(queryAntigo);
+
+  const mediaRecente = Number(recente[0]?.media || 0);
+  const mediaAntiga = Number(antigo[0]?.media || 0);
+
+  if (mediaAntiga === 0) return 0;
+
+  const variacao = ((mediaRecente - mediaAntiga) / mediaAntiga) * 100;
+  return Number(variacao.toFixed(2));
 }
