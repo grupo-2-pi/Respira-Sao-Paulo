@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/verUsuario.css">
+  <link rel="stylesheet" href="./css/verEmpresas.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
@@ -13,7 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
   <link rel="icon" href="./assets/logo-sem-bg.svg">
-  <title>Ver Usuários</title>
+  <script src="./js/index.js"></script>
+
+  <title>Visualizar Empresas</title>
 </head>
 
 <body>
@@ -39,7 +42,7 @@
       <a onclick="goToComentarios()">
         Comentários
       </a>
-      <a href="./cadastroPersona.html">
+      <a onclick="goToCadastrar()">
         Cadastrar
       </a>
       <div onclick="showNotifications()" class="contem-alerta">
@@ -65,25 +68,24 @@
       <div class="user-dropdown-options">
         <button onclick="goToPersonal()">Dados Pessoais</button>
 
-            <a href="./paginaPrincipal.html">
-                Página Inicial
-            </a>
-            <a onclick="goToComentarios()">
-                Comentários
-            </a>
-            <a  onclick="goToCadastrar()">
-                Cadastrar
-            </a>
-            <div onclick="showNotifications()" class="contem-alerta">
-                <div class="img-nav-alerta2">
-                    <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
-                        alt="Imagem de Notificações">
-                </div>
-                <a class="nav-selected" href="./verUsuario.html">
-                    Ver Usuários
-                </a>
-                
-            </div>
+        <a href="./paginaPrincipal.html">
+          Página Inicial
+        </a>
+        <a onclick="goToComentarios()">
+          Comentários
+        </a>
+        <a onclick="goToCadastrar()">
+          Cadastrar
+        </a>
+        <div onclick="showNotifications()" class="contem-alerta">
+          <div class="img-nav-alerta2">
+            <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+          </div>
+          <a class="nav-selected" href="./verUsuario.html">
+            Ver Usuários
+          </a>
+
+        </div>
 
 
         <div class="theme-switch-wrapper">
@@ -162,20 +164,18 @@
     </div>
   </div>
 
-  <h1 class="user-view">Visualizar Usuários</h1>
+  <h1 class="user-view">Visualizar Empresas</h1>
 
-  <!-- Botões de filtro -->
-  <!DOCTYPE html>
+  <!-- Botões de filtro
   <html lang="pt-BR">
 
   <head>
     <meta charset="UTF-8">
-    <title>Lista de Usuários</title>
+    <title>Lista de Empresas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-
     </style>
-  </head>
+  </head> -->
 
 
   <body>
@@ -187,22 +187,31 @@
 
     </div>
 
-    <div class="lista-usuarios">
+    <div id="lista_empresas" class="lista-empresas"></div>
 
-    </div>
 
     <div id="modal-edicao" class="modal hidden">
       <div class="modal-content">
-        <h2>Editar Usuário</h2>
-        <label for="input-nome">Nome:</label>
-        <input type="text" id="input-nome" />
+        <h2>Editar Empresa</h2>
 
-        <label for="input-cargo">Cargo:</label>
-        <input type="text" id="input-cargo" />
+        <label for="input-nome-fantasia">Nome Fantasia:</label>
+        <input type="text" id="input-nome-fantasia" required>
+
+        <label for="input-cnpj">CNPJ:</label>
+        <input type="text" id="input-cnpj" required>
+
+        <label for="input-razaoSocial">Razão Social:</label>
+        <input type="text" id="input-razaoSocial" required>
+
+        <label for="input-emailContato">E-mail de Contato:</label>
+        <input type="email" id="input-emailContato" required>
+
+        <label for="input-telContato">Telefone de Contato:</label>
+        <input type="tel" id="input-telContato" required>
 
         <div class="modal-buttons">
           <button id="salvar-edicao">Salvar</button>
-          <button id="cancelar-edicao">Cancelar</button>
+          <button id="cancelar-edicao" type="button">Cancelar</button>
         </div>
       </div>
     </div>
@@ -210,7 +219,7 @@
     <div id="modal-confirmar-exclusao" class="modal hidden">
       <div class="modal-content">
         <h2>Confirmar Exclusão</h2>
-        <p>Tem certeza que deseja excluir este usuário?</p>
+        <p>Tem certeza que deseja excluir esta empresa?</p>
         <div class="modal-buttons">
           <button id="confirmar-exclusao" class="btn-danger">Excluir</button>
           <button id="cancelar-exclusao">Cancelar</button>
@@ -224,78 +233,130 @@
 
 
     <script>
-      async function filtrar(tipo) {
-        const url = tipo === 'todos'
-          ? '/usuarios/listar'
-          : `/usuarios/listar/${tipo === 'admin' ? 'Administrador' : 'Usuário'}`;
+      function listarEmpresas() {
+        fetch("/empresas/listar").then(function (resposta) {
+          if (resposta.ok) {
+            if (resposta.status == 204) {
+              var lista = document.getElementById("lista_empresas");
+              var mensagem = document.createElement("span");
+              mensagem.innerHTML = "Nenhuma empresa encontrada.";
+              lista.appendChild(mensagem);
+              throw "Nenhuma empresa encontrada!";
+            }
 
-        try {
-          const resposta = await fetch(url);
-          const dados = await resposta.json();
+            resposta.json().then(function (resposta) {
+              console.log("Empresas recebidas: ", JSON.stringify(resposta));
 
-          const lista = document.querySelector('.lista-usuarios');
-          lista.innerHTML = ''; // limpa a lista
+              var lista = document.getElementById("lista_empresas");
+              lista.innerHTML = "";
 
-          if (dados.length === 0) {
-            lista.innerHTML = `<div class="usuario" data-tipo="${tipo}">Nenhum usuário encontrado.</div>`;
-            return;
+              for (let i = 0; i < resposta.length; i++) {
+                var empresa = resposta[i];
+
+                var nomeFantasia = empresa.nomeFantasia;
+                var cnpj = empresa.cnpj;
+                var nomeEmpresa = empresa.nomeEmpresa;
+                var emailContato = empresa.emailContato;
+                var telefoneContato = empresa.telefoneContato;
+
+                var cardEmpresa = document.createElement("div");
+                var header = document.createElement("div");
+                var body = document.createElement("div");
+
+                var nomeElem = document.createElement("h3");
+                var cnpjElem = document.createElement("p");
+                cnpjElem.id = "id-cnpj";
+                var razaoElem = document.createElement("p");
+                var emailElem = document.createElement("p");
+                var telefoneElem = document.createElement("p");
+
+                let botoes = document.createElement("div");
+                botoes.classList.add("botoes-empresa");
+
+                let btnEditar = document.createElement("button");
+                btnEditar.textContent = "Editar";
+
+                btnEditar.onclick = (function (empresaAtual) {
+                  return function () {
+                    abrirModalEdicao(empresaAtual);
+                  };
+                })(empresa);
+
+                let btnExcluir = document.createElement("button");
+                btnExcluir.textContent = "Excluir";
+                btnExcluir.onclick = function () {
+                  deletarEmpresa(cnpj);
+                };
+
+                nomeElem.innerHTML = nomeFantasia;
+                cnpjElem.innerHTML = `<strong>CNPJ:</strong> ${cnpj}`;
+                razaoElem.innerHTML = `<strong>Razão Social:</strong> ${nomeEmpresa}`;
+                emailElem.innerHTML = `<strong>Email:</strong> ${emailContato}`;
+                telefoneElem.innerHTML = `<strong>Telefone:</strong> ${telefoneContato}`;
+
+                cardEmpresa.classList.add("empresa-card");
+                header.classList.add("empresa-header");
+                body.classList.add("empresa-body");
+
+                header.appendChild(nomeElem);
+                body.appendChild(cnpjElem);
+                body.appendChild(razaoElem);
+                body.appendChild(emailElem);
+                body.appendChild(telefoneElem);
+
+                botoes.appendChild(btnEditar);
+                botoes.appendChild(btnExcluir);
+
+                cardEmpresa.appendChild(header);
+                cardEmpresa.appendChild(body);
+                cardEmpresa.appendChild(botoes);
+
+                lista.appendChild(cardEmpresa);
+              }
+            });
+
+          } else {
+            throw ("Houve um erro na API!");
           }
-
-          dados.forEach(usuario => {
-            const div = document.createElement('div');
-            const cargoNormalizado = usuario.cargoFuncionario.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            const tipoUsuario = cargoNormalizado === 'administrador' ? 'admin' : 'cliente';
-
-            div.className = 'usuario';
-            div.setAttribute('data-tipo', tipo);
-            div.innerHTML = `
-    ${usuario.nomeFuncionario} - ${usuario.cargoFuncionario}
-    <span class="acoes">
-      <i class="fas fa-pen" title="Editar" onclick="iniciarEdicao(${usuario.idFuncionario}, '${usuario.nomeFuncionario}', '${usuario.cargoFuncionario}')"></i>
-      <i class="fas fa-trash" title="Deletar" onclick="deletarUsuario(${usuario.idFuncionario})"></i>
-    </span>
-  `;
-            lista.appendChild(div);
-          });
-        } catch (erro) {
-          console.error("Erro ao buscar usuários:", erro);
-        }
+        }).catch(function (resposta) {
+          console.error(resposta);
+        });
       }
 
-      async function deletarUsuario(id) {
+      async function deletarEmpresa(cnpj) {
         const modal = document.getElementById("modal-confirmar-exclusao");
         const btnConfirmar = document.getElementById("confirmar-exclusao");
         const btnCancelar = document.getElementById("cancelar-exclusao");
 
-        // Mostrar modal
+        let cnpjParaDeletar = cnpj;
+
         modal.classList.remove("hidden");
 
         return new Promise((resolve) => {
           btnCancelar.onclick = () => {
             modal.classList.add("hidden");
-            resolve(); // não faz nada
+            resolve();
           };
 
           btnConfirmar.onclick = async () => {
             modal.classList.add("hidden");
 
             try {
-              const resposta = await fetch(`/usuarios/deletar/${id}`, {
+              const resposta = await fetch(`/empresas/deletar/${cnpjParaDeletar}`, {
                 method: 'DELETE'
               });
 
               if (resposta.ok) {
-
-                filtrar('todos');
+                listarEmpresas();
+                mostrarToast("Empresa excluída com sucesso!", "success");
               } else {
                 const erro = await resposta.text();
                 throw new Error(erro);
               }
             } catch (erro) {
-              console.error("Erro ao deletar usuário:", erro);
-              alert("Erro ao deletar o usuário.");
+              console.error("Erro ao deletar empresa:", erro);
+              mostrarToast("Erro ao deletar empresa.", "error");
             }
-
             resolve();
           };
         });
@@ -310,75 +371,81 @@
           .join(" ");
       }
 
-      async function editarUsuario(id, nomeAtual, cargoAtual) {
+      function abrirModalEdicao(empresa) {
         const modal = document.getElementById("modal-edicao");
-        const inputNome = document.getElementById("input-nome");
-        const inputCargo = document.getElementById("input-cargo");
-        const btnSalvar = document.getElementById("salvar-edicao");
-        const btnCancelar = document.getElementById("cancelar-edicao");
+        const inputNomeFantasia = document.getElementById("input-nome-fantasia");
+        const inputCnpj = document.getElementById("input-cnpj");
+        const inputRazaoSocial = document.getElementById("input-razaoSocial");
+        const inputEmailContato = document.getElementById("input-emailContato");
+        const inputTelContato = document.getElementById("input-telContato");
 
-        inputNome.value = nomeAtual;
-        inputCargo.value = cargoAtual;
+        // Preencher os campos com os valores da empresa clicada
+        inputNomeFantasia.value = empresa.nomeFantasia;
+        inputCnpj.value = empresa.cnpj;
+        inputRazaoSocial.value = empresa.nomeEmpresa;
+        inputEmailContato.value = empresa.emailContato;
+        inputTelContato.value = empresa.telefoneContato;
 
+        // Armazenar o CNPJ original em um campo oculto
+        modal.dataset.cnpjOriginal = empresa.cnpj;
+
+        // Mostrar o modal
         modal.classList.remove("hidden");
 
-        return new Promise((resolve) => {
-          btnCancelar.onclick = () => {
-            modal.classList.add("hidden");
-            resolve(); // cancela
-          };
+        // Configurar o botão Salvar
+        document.getElementById("salvar-edicao").onclick = function () {
+          salvarEdicao(empresa);
+        };
 
-          btnSalvar.onclick = () => {
-            const novoNome = capitalizarPalavras(inputNome.value.trim());
-            const novoCargo = capitalizarPalavras(inputCargo.value);;
-
-            if (!novoNome) {
-              alert("O nome não pode estar vazio.");
-              return;
-            }
-
-            const dadosAtualizados = {
-              nomeFuncionario: novoNome,
-              cargoFuncionario: novoCargo
-            };
-
-            modal.classList.add("hidden");
-            console.log("Dados atualizados:", dadosAtualizados);
-            resolve(dadosAtualizados); // envia os dados para iniciarEdicao
-          };
-        });
+        document.getElementById("cancelar-edicao").onclick = function () {
+          fecharModalEdicao();
+        };
       }
 
-      async function iniciarEdicao(id, nome, cargo) {
-        try {
-          const dadosAtualizados = await editarUsuario(id, nome, cargo);
-          if (!dadosAtualizados) return;
+      function fecharModalEdicao() {
+        const modal = document.getElementById("modal-edicao");
+        modal.classList.add("hidden");
+      }
 
-          const resposta = await fetch('/usuarios/atualizar', {
+      async function salvarEdicao(empresaOriginal) {
+        const modal = document.getElementById("modal-edicao");
+        const cnpjOriginal = modal.dataset.cnpjOriginal;
+
+        const dadosAtualizados = {
+          cnpj: document.getElementById("input-cnpj").value,
+          fantasia: document.getElementById("input-nome-fantasia").value,
+          empresa: document.getElementById("input-razaoSocial").value,
+          email: document.getElementById("input-emailContato").value,
+          tel: document.getElementById("input-telContato").value
+        };
+          console.log('dados sendo enviados:', dadosAtualizados);
+
+        try {
+          const resposta = await fetch('/empresas/atualizar', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-              idFuncionario: id,
-              nomeFuncionario: dadosAtualizados.nomeFuncionario,
-              cargoFuncionario: dadosAtualizados.cargoFuncionario
-            })
+            body: JSON.stringify(dadosAtualizados, cnpjOriginal)
+            
           });
-
+            
           if (resposta.ok) {
-            mostrarToast("Usuário atualizado com sucesso!", "success");
-            filtrar('todos');
+            mostrarToast("Empresa atualizada com sucesso!", "success");
+            modal.classList.add("hidden");
+            listarEmpresas();
+          
           } else {
             const erro = await resposta.text();
-            console.error("Erro:", erro);
-            mostrarToast("Erro ao atualizar usuário.", "error");
+            mostrarToast(erro || "Erro ao atualizar empresa", "error");
           }
+
         } catch (erro) {
-          console.error("Erro ao atualizar usuário:", erro);
-          mostrarToast("Erro ao atualizar usuário.", "error");
+          console.error("Erro ao atualizar empresa:", erro);
+          mostrarToast("Erro ao processar requisição", "error");
         }
       }
+
 
       function mostrarToast(mensagem, tipo = 'success') {
         const toast = document.getElementById("toast");
@@ -407,20 +474,18 @@
 
   </body>
 
-  </html>
+</html>
 
-  </script>
+</script>
 
-  <script>
-    window.onload = function () {
-      filtrar('todos');
-    };
-  </script>
-  
+<script>
+  window.onload = function () {
+    listarEmpresas();
+  }
+</script>
 
-  <script src="./js/index.js"></script>
-  <script src="./js/script.js"></script>
-  <script src="./js/navegarSite.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/navegarSite.js"></script>
 
 </body>
 
