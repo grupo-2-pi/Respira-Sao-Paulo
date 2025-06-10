@@ -5,7 +5,8 @@ import {
     getQualidadeArPorRegiaoTodosMeses,
     getRankingPoluentes,
     getGastosPorMes,
-    calcularVariacaoInternacoes 
+    calcularVariacaoInternacoes,
+    calcularVariacaoQualidadeAr
 } from "../models/dadosDashboardModel.js";
 
 export async function obterDadosDashboard(req, res) {
@@ -23,6 +24,8 @@ export async function obterDadosDashboard(req, res) {
         const rankingPoluente = await getRankingPoluentes(regiao, ano, mes);
         const gastos = await getGastosPorMes(regiao);
         const variacaoInternacoes = await calcularVariacaoInternacoes(regiao, ano, mes);
+        const variacaoQualidadeAr = await calcularVariacaoQualidadeAr(regiao, ano, mes);
+
 
         
 
@@ -34,7 +37,8 @@ export async function obterDadosDashboard(req, res) {
                 valorGasto: mortalidade.length > 0 ? mortalidade[0].valorTotal : 0,
                 taxaMortalidade: mortalidade.length > 0 ? mortalidade[0].taxaMortalidade : 0,
                 rankingPoluente: rankingPoluente.length > 0 ? rankingPoluente[0].poluente : "Sem dados",
-                variacaoInternacoes: variacaoInternacoes
+                variacaoInternacoes: variacaoInternacoes,
+                variacaoQualidadeAr: variacaoQualidadeAr
 
             },
             graficos: {
