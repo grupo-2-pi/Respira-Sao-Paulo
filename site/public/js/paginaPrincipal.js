@@ -114,7 +114,7 @@ if (persona == 'saude') {
 		options: {
 			maintainAspectRatio: false,
 			responsive: true,
-			plugins: { title: { display: true, text: 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️', font: { size: 18 } } },
+			plugins: { title: { display: true, text: 'Evolução Anual de Gastos: 2022 vs. 2023 ℹ️', font: { size: 18 } } },
 			onClick: () => alert('Este gráfico mostra os gastos mensais em dois anos e uma linha média para comparação.'),
 			scales: {
 				y: { title: { display: true, text: 'R$ em milhões' } },
