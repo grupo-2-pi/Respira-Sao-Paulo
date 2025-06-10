@@ -3,9 +3,9 @@ var sideBar = document.querySelector(".side-bar");
 window.addEventListener("load", () => {
 	const eGerente = sessionStorage.getItem("IS_GERENTE") === "1";
 
-	if (!eGerente) {
-		location.replace("paginaPrincipal.html");
-	}
+	// if (!eGerente) {
+	// 	location.replace("paginaPrincipal.html");
+	// }
 
 	const nomeUsuario = sessionStorage.getItem("NOME_FUNCIONARIO");
 

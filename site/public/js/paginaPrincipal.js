@@ -124,13 +124,13 @@ if (persona == 'saude') {
 	});
 
 } else {
-	document.getElementById('kpi1-title').textContent = 'Município com 05r nível de poluição';
+	document.getElementById('kpi1-title').textContent = 'Município com maior nível de poluição';
 	document.getElementById('kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
 	aplicarEstiloKPI('kpi2-value', -5);
 	document.getElementById('kpi3-title').textContent = 'Ranking de gás poluente';
 	document.getElementById('kpi3-value').textContent = 'Sem Dados';
-	document.getElementById('m-kpi1-title').textContent = 'Município 05r nível de poluição';
+	document.getElementById('m-kpi1-title').textContent = 'Município maior nível de poluição';
 	document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
 	aplicarEstiloKPI('m-kpi2-value', -5);
@@ -194,8 +194,8 @@ function fecharFiltro() {
 
 function calcularMesAnterior(ano, mes) {
 	const meses = [
-		'01', '02', '03', '04', '05', '06',
-		'07', '08', '09', '10', '11', '12'
+		'jan', 'fev', 'mai', 'abr', 'mai', 'jun',
+		'jul', 'ago', 'set', 'out', 'nov', 'dez'
 	];
 
 	let indice = meses.indexOf(mes);
@@ -216,8 +216,8 @@ function calcularMesAnterior(ano, mes) {
 async function buscarDadosDashboard(regiao, ano, mes, callback) {
 	const { anoAnterior, mesAnterior } = calcularMesAnterior(ano, mes);
 
-	const urlAnterior = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
-	const urlAtual = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "JAN" : mesAnterior)}`;
+	const urlAnterior = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "01" : mesAnterior)}`;
+	const urlAtual = `/dashboard/dados?regiao=${decodeURIComponent(regiao === "" ? "Grande São Paulo" : regiao)}&ano=${decodeURIComponent(anoAnterior === "" ? "2023" : anoAnterior)}&mes=${decodeURIComponent(mesAnterior === "" ? "01" : mesAnterior)}`;
 
 	console.log(urlAtual);
 	console.log(urlAtual);
@@ -320,17 +320,28 @@ async function atualizarDash() {
 			aplicarEstiloKPI('m-kpi1-value', variacaoFormatada);
 		}
 
-		const mesesNomes = [
-			'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-			'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-		];
-		const mesIndex = Number(mes) - 1;
-		const mesNome = mesesNomes[mesIndex];
+		var mesesNomes = {
+    jan: 'Janeiro',
+    fev: 'Fevereiro',
+    mar: 'Março',
+    abr: 'Abril',
+    mai: 'Maio',
+    jun: 'Junho',
+    jul: 'Julho',
+    ago: 'Agosto',
+    set: 'Setembro',
+    out: 'Outubro',
+    nov: 'Novembro',
+    dez: 'Dezembro'
+};
 
-		// Atualiza o texto na div "filtroSelecionado"
-		document.getElementById('mesFiltro').innerText = mesNome;
-		document.getElementById('anoFiltro').innerText = ano;
-		document.getElementById('regiaoFiltro').innerText = regiao;
+// Supondo que a variável `mes` seja, por exemplo, "jan"
+var mesNome = mesesNomes[mes.toLowerCase()]; // Garante que esteja em minúsculas
+
+// Atualiza os textos nas divs
+document.getElementById('mesFiltro').innerText = mesNome;
+document.getElementById('anoFiltro').innerText = ano;
+document.getElementById('regiaoFiltro').innerText = regiao;
 	});
 
 }
@@ -372,7 +383,7 @@ function atualizarGraficosAmbientais(graficos) {
 	myChart.update();
 
 	// === Gráfico da direita (evolução mensal de poluição por município) ===
-	const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+	const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
 	const dados = graficos.qualidadeArTodosMeses;
 
 	const dadosPorMunicipio = {};
@@ -508,7 +519,7 @@ function atualizarGraficosSaude(graficos) {
 
 
 	// === GRÁFICO myChart: Gastos 2023 vs 2024 ===
-	const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+	const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
 
 	const dados2022 = Array(12).fill(0);
 	const dados2023 = Array(12).fill(0);
@@ -516,8 +527,8 @@ function atualizarGraficosSaude(graficos) {
 	graficos.gastosAnuais.forEach(item => {
 		const index = meses.indexOf(item.mes);
 		if (index !== -1) {
-			if (item.ano === '2022') dados2022[index] = item.total_gasto;
-			else if (item.ano === '2023') dados2023[index] = item.total_gasto;
+			if (item.ano === '2023') dados2023[index] = item.total_gasto;
+			else if (item.ano === '2024') dados2024[index] = item.total_gasto;
 		}
 	});
 
@@ -563,18 +574,18 @@ function atualizarGraficosSaude(graficos) {
 
 function getEstacaoPorMes(mes) {
 	const estacoes = {
-		'01': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-		'02': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-		'12': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
-		'03': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-		'04': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-		'05': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
-		'06': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-		'07': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-		'08': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
-		'09': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
-		'10': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
-		'11': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 }
+		'jan': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
+		'fev': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
+		'dez': { estacao: 'Verão', cor: 'green', preenchimento: 15 },
+		'mar': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
+		'abr': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
+		'mai': { estacao: 'Outono', cor: '#f1c40f', preenchimento: 50 },
+		'jun': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
+		'jul': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
+		'ago': { estacao: 'Inverno', cor: 'red', preenchimento: 85 },
+		'set': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
+		'out': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 },
+		'nov': { estacao: 'Primavera', cor: '#9acd32', preenchimento: 35 }
 	};
 	return estacoes[mes] || { estacao: 'Desconhecida', cor: 'gray', preenchimento: 0 };
 }
