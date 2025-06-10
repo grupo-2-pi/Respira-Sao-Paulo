@@ -391,7 +391,7 @@ function atualizarGraficosAmbientais(graficos) {
 
 	dados.forEach(item => {
 		const municipio = item.municipio;
-		const mes = item.mes;
+		const mes = item.mes.toLowerCase();
 		const valor = item.valor;
 
 		if (!dadosPorMunicipio[municipio]) {
