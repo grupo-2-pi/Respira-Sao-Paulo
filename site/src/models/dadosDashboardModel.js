@@ -50,7 +50,7 @@ export async function getRankingPoluentes(regiao, ano, mes) {
 	const query = `
         SELECT poluente, SUM(valor) AS total
         FROM QualidadeAr
-        WHERE regiao = '${regiao}' AND ano = '${ano}' AND mes = '${mes}'
+        WHERE regiao = '${regiao}' AND ano = '${ano === "2023" || ano === "2022" ? "2021" : ano}' AND mes = '${mes}'
         GROUP BY poluente
         ORDER BY total DESC
         LIMIT 1;
@@ -111,36 +111,36 @@ export async function calcularVariacaoInternacoes(regiao, ano, mes) {
 
 //KPI VARIACAO INTERNAÇOES 
 export async function calcularVariacaoQualidadeAr(regiao, ano, mesSelecionado) {
-  const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
-  const idx = meses.indexOf(mesSelecionado.toUpperCase());
-  if (idx < 2) return 0; // Não tem dois meses anteriores para comparar
+	const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+	const idx = meses.indexOf(mesSelecionado.toUpperCase());
+	if (idx < 2) return 0; // Não tem dois meses anteriores para comparar
 
-  const mesMaisRecente = meses[idx - 1];  // mês M-1
-  const mesMaisAntigo = meses[idx - 2];   // mês M-2
+	const mesMaisRecente = meses[idx - 1];  // mês M-1
+	const mesMaisAntigo = meses[idx - 2];   // mês M-2
 
-  const anoMaisRecente = (idx - 1 < 0) ? (parseInt(ano) - 1).toString() : ano;
-  const anoMaisAntigo = (idx - 2 < 0) ? (parseInt(ano) - 1).toString() : ano;
+	const anoMaisRecente = (idx - 1 < 0) ? (parseInt(ano) - 1).toString() : ano;
+	const anoMaisAntigo = (idx - 2 < 0) ? (parseInt(ano) - 1).toString() : ano;
 
-  const queryRecente = `
+	const queryRecente = `
     SELECT AVG(valor) AS media
     FROM QualidadeAr
     WHERE regiao = '${regiao}' AND ano = '${anoMaisRecente}' AND mes = '${mesMaisRecente}'
   `;
 
-  const queryAntigo = `
+	const queryAntigo = `
     SELECT AVG(valor) AS media
     FROM QualidadeAr
     WHERE regiao = '${regiao}' AND ano = '${anoMaisAntigo}' AND mes = '${mesMaisAntigo}'
   `;
 
-  const recente = await executar(queryRecente);
-  const antigo = await executar(queryAntigo);
+	const recente = await executar(queryRecente);
+	const antigo = await executar(queryAntigo);
 
-  const mediaRecente = Number(recente[0]?.media || 0);
-  const mediaAntiga = Number(antigo[0]?.media || 0);
+	const mediaRecente = Number(recente[0]?.media || 0);
+	const mediaAntiga = Number(antigo[0]?.media || 0);
 
-  if (mediaAntiga === 0) return 0;
+	if (mediaAntiga === 0) return 0;
 
-  const variacao = ((mediaRecente - mediaAntiga) / mediaAntiga) * 100;
-  return Number(variacao.toFixed(2));
+	const variacao = ((mediaRecente - mediaAntiga) / mediaAntiga) * 100;
+	return Number(variacao.toFixed(2));
 }
