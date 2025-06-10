@@ -462,6 +462,9 @@ function atualizarGraficosSaude(graficos) {
 
 	const internacoes = graficos.mortalidade.map(item => item.numeroInternacoes);
 
+	console.log("Dados atuais graficos");
+	console.log(graficos);
+
 	// Corrigindo: pegar valor da poluição real da tabela QualidadeAr
 	const poluicoes = graficos.mortalidade.map(item => {
 		const registroPoluicao = graficos.qualidadeAr.find(p => p.municipio === item.municipio);
