@@ -4,7 +4,7 @@ import * as empresaController from "../controllers/empresaController.js";
 const router = express.Router();
  
  router.post("/cadastrar", function (req, res) {
-    cadastrarEmpresa(req, res);
+    empresaController.cadastrarEmpresa(req, res);
  })
 
 router.get('/listar', empresaController.listar);

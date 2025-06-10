@@ -10,7 +10,7 @@ export function cadastrarEmpresa(req, res) {
   var tel = req.body.telServer;
 
 
-  cadastrar(fantasia, empresa, email, cnpj, tel)
+  empresaModel.cadastrar(fantasia, empresa, email, cnpj, tel)
     .then(
       function (resultado) {
         res.json(resultado);

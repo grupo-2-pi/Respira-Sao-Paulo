@@ -216,6 +216,4 @@ INSERT INTO Empresa (cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES
 
 INSERT INTO Funcionario 
 (nomeFuncionario, emailFuncionario, senha, validarSenha, cargoFuncionario, isGerente, idEmpresa,isFirstLogin) VALUES 
-("Funcionario teste", "funcionario@gmail.com", "ishow123", "ishow123", "Gerente",true, 1,   false)
-
-
+("Funcionario teste", "funcionario@gmail.com", "ishow123", "ishow123", "Gerente",true, 1,   false);

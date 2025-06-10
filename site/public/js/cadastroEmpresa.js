@@ -13,9 +13,6 @@ window.addEventListener("load", () => {
 	}
 });
 
-
-
-
 const dominiosPermitidos = [
 	"gmail.com",
 	"hotmail.com",

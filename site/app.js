@@ -6,7 +6,6 @@ import filtroRouter from "./src/routes/filtro.js";
 import dashboardRouter from './src/routes/dashboard.js';
 import usuariosRouter from './src/routes/usuarios.js';
 import empresasRouter from './src/routes/empresas.js';  //adicionei isso
-import empresaRouter from "./src/routes/empresas.js";
 import loginRouter from "./src/routes/login.js";
 import trocarSenhaRouter from "./src/routes/trocarSenha.js";
 import adminRouter from "./src/routes/admin.js"
@@ -31,7 +30,6 @@ app.use("/filtro", filtroRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/usuarios", usuariosRouter);
 app.use("/empresas", empresasRouter); // adicionei isso
-app.use("/empresas", empresaRouter);
 app.use("/login", loginRouter);
 app.use("/trocarSenha", trocarSenhaRouter);
 app.use("/admin", adminRouter);
