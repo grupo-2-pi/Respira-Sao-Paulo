@@ -77,34 +77,34 @@ export async function getGastosPorMes(regiao) {
 
 
 export async function calcularVariacaoInternacoes(regiao, ano, mes) {
-  const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
-  const indexAtual = meses.indexOf(mes.toUpperCase());
-  if (indexAtual === -1) return 0;
+	const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+	const indexAtual = meses.indexOf(mes.toUpperCase());
+	if (indexAtual === -1) return 0;
 
-  const mesAtual = meses[indexAtual];
-  const mesAnterior = indexAtual === 0 ? 'DEZ' : meses[indexAtual - 1];
-  const anoAnterior = indexAtual === 0 ? (Number(ano) - 1).toString() : ano;
+	const mesAtual = meses[indexAtual];
+	const mesAnterior = indexAtual === 0 ? 'DEZ' : meses[indexAtual - 1];
+	const anoAnterior = ano;
 
-  const queryAtual = `
+	const queryAtual = `
     SELECT SUM(numeroInternacoes) AS total
     FROM MortalidadeRespiratoria
     WHERE regiao = '${regiao}' AND ano = '${ano}' AND mes = '${mesAtual}'
   `;
 
-  const queryAnterior = `
+	const queryAnterior = `
     SELECT SUM(numeroInternacoes) AS total
     FROM MortalidadeRespiratoria
     WHERE regiao = '${regiao}' AND ano = '${anoAnterior}' AND mes = '${mesAnterior}'
   `;
 
-  const atual = await executar(queryAtual);
-  const anterior = await executar(queryAnterior);
+	const atual = await executar(queryAtual);
+	const anterior = await executar(queryAnterior);
 
-  const totalAtual = Number(atual[0]?.total || 0);
-  const totalAnterior = Number(anterior[0]?.total || 0);
+	const totalAtual = Number(atual[0]?.total || 0);
+	const totalAnterior = Number(anterior[0]?.total || 0);
 
-  if (totalAnterior === 0) return 0;
+	if (totalAnterior === 0) return 0;
 
-  const variacao = ((totalAtual - totalAnterior) / totalAnterior) * 100;
-  return Number(variacao.toFixed(2));
+	const variacao = ((totalAtual - totalAnterior) / totalAnterior) * 100;
+	return Number(variacao.toFixed(2));
 }

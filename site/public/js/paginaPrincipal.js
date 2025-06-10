@@ -291,11 +291,11 @@ async function atualizarDash() {
 	const ano = document.getElementById('anoDesejado').value;
 	const mes = document.getElementById('mesDesejado').value;
 
-	if (!regiao || !ano || !mes) {
-	console.warn("[KPI] Filtros incompletos, evitando carregamento inicial.");
-	return; // evita execução com filtros em branco
-}
-
+	// 	if (!regiao || !ano || !mes) {
+	// 	console.warn("[KPI] Filtros incompletos, evitando carregamento inicial.");
+	// 	return; // evita execução com filtros em branco
+	// }
+	//
 	const persona = localStorage.getItem('personaSelecionada');
 
 	buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
