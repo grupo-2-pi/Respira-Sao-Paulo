@@ -291,6 +291,10 @@ async function atualizarDash() {
 	const ano = document.getElementById('anoDesejado').value;
 	const mes = document.getElementById('mesDesejado').value;
 
+	if (!regiao || !ano || !mes) {
+	console.warn("[KPI] Filtros incompletos, evitando carregamento inicial.");
+	return; // evita execução com filtros em branco
+}
 
 	const persona = localStorage.getItem('personaSelecionada');
 
@@ -301,11 +305,8 @@ async function atualizarDash() {
 
 
 		if (persona === 'saude') {
-			// === VARIAÇÃO DE INTERNAÇÕES ===
-			const mediaAtual = calcularMediaInternacoes(dadosAtual.graficos.mortalidade);
-			const mediaAnterior = calcularMediaInternacoes(dadosAnterior.graficos.mortalidade);
-			const variacao = calcularVariacao(mediaAtual, mediaAnterior);
-			const variacaoFormatada = Math.round(variacao);
+			// === VARIAÇÃO DE INTERNAÇÕES === (Vindo do back-end agora)
+			const variacaoFormatada = Math.round(dadosAtual.kpis.variacaoInternacoes || 0);
 
 			//VELOCIMETRO ATT
 			atualizarVelocimetro(mes);
