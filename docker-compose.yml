@@ -1,4 +1,22 @@
 services:
+  mysql:
+    image: furqas/respira-bd:latest
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
+    container_name: respira-bd
+    restart: always
+    hostname: localhost
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - respira-network
   web:
     image: furqas/respira-web:latest
     container_name: respira-web
@@ -15,6 +33,26 @@ services:
       - DB_PORT=3306
     ports:
       - "3000:3000"
+    networks:
+      - respira-network   
+  java:
+    image: furqas/respira-java-data:latest
+    container_name: respira-java
+    restart: always
+    hostname: localhost
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+        - SLACK_HOOK_SAUDE=${SLACK_HOOK_SAUDE}
+        - SLACK_HOOK_AMBIENTAL=${SLACK_HOOK_AMBIENTAL}
+        - DB_USER=${DB_USER}
+        - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "8080:8080"
     networks:
       - respira-network   
 
