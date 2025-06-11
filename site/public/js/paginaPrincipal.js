@@ -128,13 +128,13 @@ if (persona == 'saude') {
 	document.getElementById('kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
 	aplicarEstiloKPI('kpi2-value', -5);
-	document.getElementById('kpi3-title').textContent = 'Ranking anual de gás poluente';
+	document.getElementById('kpi3-title').textContent = 'Poluente mais presente no ano';
 	document.getElementById('kpi3-value').textContent = 'Sem Dados';
 	document.getElementById('m-kpi1-title').textContent = 'Município maior nível de poluição';
 	document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
 	aplicarEstiloKPI('m-kpi2-value', -5);
-	document.getElementById('m-kpi3-title').textContent = 'Ranking anual de gás poluente';
+	document.getElementById('m-kpi3-title').textContent = 'Poluente mais presente no ano';
 	document.getElementById('m-kpi3-value').textContent = 'CO2';
 
 	myChart = new Chart(ctx, {

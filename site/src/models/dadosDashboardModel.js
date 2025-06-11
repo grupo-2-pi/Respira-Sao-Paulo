@@ -55,7 +55,7 @@ export async function getRankingPoluentes(regiao, ano) {
 	const query = `
 		SELECT poluente, valor
 		FROM QualidadeAr
-		WHERE regiao = '${regiao}' AND ano = '${ano}'
+		WHERE regiao = '${regiao}' AND ano = '2021'
 		ORDER BY valor DESC
 		LIMIT 1;
 	`;
@@ -115,28 +115,27 @@ export async function calcularVariacaoInternacoes(regiao, ano, mes) {
 }
 
 //KPI VARIACAO INTERNAÇOES 
-export async function calcularVariacaoQualidadeAr(regiao, ano, mesSelecionado) {
+export async function calcularVariacaoQualidadeAr(regiao, _anoIgnorado, mesSelecionado) {
 	const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
 	const idx = meses.indexOf(mesSelecionado.toUpperCase());
-	if (idx < 2) return 0; // Não tem dois meses anteriores para comparar
+	if (idx < 2) return 0; 
 
-	const mesMaisRecente = meses[idx - 1];  // mês M-1
-	const mesMaisAntigo = meses[idx - 2];   // mês M-2
+	const mesMaisRecente = meses[idx - 1];  // M-1
+	const mesMaisAntigo = meses[idx - 2];   // M-2
 
-	const anoMaisRecente = (idx - 1 < 0) ? (parseInt(ano) - 1).toString() : ano;
-	const anoMaisAntigo = (idx - 2 < 0) ? (parseInt(ano) - 1).toString() : ano;
+	const anoFixo = '2021';
 
 	const queryRecente = `
-    SELECT AVG(valor) AS media
-    FROM QualidadeAr
-    WHERE regiao = '${regiao}' AND ano = '${anoMaisRecente}' AND mes = '${mesMaisRecente}'
-  `;
+		SELECT AVG(valor) AS media
+		FROM QualidadeAr
+		WHERE regiao = '${regiao}' AND ano = '${anoFixo}' AND mes = '${mesMaisRecente}'
+	`;
 
 	const queryAntigo = `
-    SELECT AVG(valor) AS media
-    FROM QualidadeAr
-    WHERE regiao = '${regiao}' AND ano = '${anoMaisAntigo}' AND mes = '${mesMaisAntigo}'
-  `;
+		SELECT AVG(valor) AS media
+		FROM QualidadeAr
+		WHERE regiao = '${regiao}' AND ano = '${anoFixo}' AND mes = '${mesMaisAntigo}'
+	`;
 
 	const recente = await executar(queryRecente);
 	const antigo = await executar(queryAntigo);
@@ -149,3 +148,4 @@ export async function calcularVariacaoQualidadeAr(regiao, ano, mesSelecionado) {
 	const variacao = ((mediaRecente - mediaAntiga) / mediaAntiga) * 100;
 	return Number(variacao.toFixed(2));
 }
+
