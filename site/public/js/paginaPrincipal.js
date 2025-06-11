@@ -7,13 +7,16 @@ function gerarDadosAleatorios(quantidade, min, max) {
 	}
 	return resultado;
 }
+let escolhaPersona = document.getElementById("switch-persona");
+
+let persona;
+persona = localStorage.getItem('personaSelecionada');
 
 function switchPersona(persona) {
 	localStorage.setItem('personaSelecionada', persona);
 	location.reload(); // Recarrega a página para aplicar a nova persona
 }
 
-const persona = localStorage.getItem('personaSelecionada');
 
 window.addEventListener("load", () => {
 
@@ -636,3 +639,12 @@ function atualizarVelocimetro(mesSelecionado) {
 	if (canvasMobile) criarGrafico(canvasMobile);
 }
 
+if (sessionStorage.ID_EMPRESA == 1) {
+	persona = 'saude';
+	escolhaPersona.classList.remove('persona_switcher') 
+	escolhaPersona.classList.add("sumir-switch-persona")
+} else if (sessionStorage.ID_EMPRESA == 2) {
+	persona = "ambiental";
+	escolhaPersona.classList.remove('persona_switcher') 
+	escolhaPersona.classList.add("sumir-switch-persona")
+}

@@ -28,6 +28,9 @@ body {
   --dropdown-letter: #20341E;
 }
 
+.sumir-switch-persona{
+  display: none;
+}
 
 /*MENU MOBILE*/
 
