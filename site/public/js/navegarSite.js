@@ -14,6 +14,16 @@ function goToPaginaInicial() {
 
 }
 
+  function goToEmpresas(){
+
+	if(sessionStorage.ID_EMPRESA == 1 || sessionStorage.ID_EMPRESA == 2 ){
+		alert('Acesso não autorizado.')
+	}else{
+	window.location = 'cadastroEmpresa.html';
+	}
+	
+    }
+
 function goToCadastrar() {
 	console.log("Valor no sessionStorage:", sessionStorage.getItem("IS_RESPIRASP"));
 
