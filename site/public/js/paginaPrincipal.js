@@ -134,7 +134,7 @@ if (persona == 'saude') {
 	document.getElementById('m-kpi1-value').textContent = 'Guarulhos';
 	document.getElementById('m-kpi2-title').textContent = 'Variação da qualidade do ar dos 2 últimos meses';
 	aplicarEstiloKPI('m-kpi2-value', -5);
-	document.getElementById('m-kpi3-title').textContent = 'Ranking de gás poluente';
+	document.getElementById('m-kpi3-title').textContent = 'Ranking anual de gás poluente';
 	document.getElementById('m-kpi3-value').textContent = 'CO2';
 
 	myChart = new Chart(ctx, {

@@ -1,14 +1,19 @@
 import { executar } from "../database/config.js";
 
-export async function getDadosFrotaCirculante(regiao, ano, mes) {
-	const query = `
-        SELECT municipio, automoveis, comerciais_leves, caminhoes, onibus, motos
-        FROM FrotaCirculante
-        WHERE regiao = '${regiao}' AND ano = '${ano}' AND mes = '${mes}';
-    `;
-	const resultado = await executar(query);
-	return resultado;
+export function getDadosFrotaCirculante(regiao, ano, mes) {
+	const instrucao = `
+		SELECT municipio, automoveis, motos, caminhoes, onibus 
+		FROM FrotaCirculante 
+		WHERE 
+			UPPER(regiao) = UPPER('${regiao}')
+			AND ano = '${ano}'
+			AND UPPER(mes) = UPPER('${mes}');
+	`;
+	console.log("Executando SQL para FrotaCirculante:", instrucao);
+	return executar(instrucao);
 }
+
+
 
 export async function getDadosMortalidade(regiao, ano, mes) {
 	const query = `
