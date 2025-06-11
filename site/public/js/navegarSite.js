@@ -1,8 +1,8 @@
 function goToComentarios() {
 	
 
-if(sessionStorage.ID_EMPRESA != 1){
-window.location = 'feedbackDash.html';
+if(sessionStorage.PERSONA === "ambiental"){
+	window.location = 'feedbackDash.html';
 }else{
 	alert('Somente usuários da área ambiental podem acessar os comentários.')
 }

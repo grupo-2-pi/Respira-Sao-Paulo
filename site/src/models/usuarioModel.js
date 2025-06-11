@@ -18,8 +18,8 @@ export function verificarCnpjExiste(cnpj) {
 	});
 }
 
-export function cadastrar(nomeCompleto, cpf, cargo, email, cnpj, isGerente) {
-	console.log("ACESSEI O USUARIO MODEL para cadastrar: ", nomeCompleto, cpf, cargo, email, cnpj, isGerente);
+export function cadastrar(nomeCompleto, cpf, cargo, email, cnpj, isGerente, persona) {
+	console.log("ACESSEI O USUARIO MODEL para cadastrar: ", nomeCompleto, cpf, cargo, email, cnpj, isGerente, persona);
 
 	const cnpjLimpo = cnpj.replace(/[^\d]/g, '');
 	console.log("CNPJ limpo usado no SQL:", cnpjLimpo);
@@ -34,14 +34,15 @@ export function cadastrar(nomeCompleto, cpf, cargo, email, cnpj, isGerente) {
             validarSenha,
             idEmpresa,
             isFirstLogin,
-            isGerente
+            isGerente,
+						persona
         ) VALUES (
             '${nomeCompleto}',
             '${cpf}',
             '${cargo}',
             '${email}',
             '${cpf}',
-            '${cpf}',
+            '${cpf}',	
             (
                 SELECT idEmpresa 
                 FROM Empresa 
@@ -49,7 +50,8 @@ export function cadastrar(nomeCompleto, cpf, cargo, email, cnpj, isGerente) {
                 LIMIT 1
             ),
             true,
-            ${isGerente ? 1 : 0}
+            ${isGerente ? 1 : 0},
+						'${persona}'
         );
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);

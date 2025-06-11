@@ -221,11 +221,21 @@
 
 					<div class="contem-3">
 
-
-
 						<div class="contem-placeholder-dados-empresa">
 							<h3>CNPJ</h3>
 							<input type="number" id="cnpj" name="cnpj" class="place-holder" placeholder="Exemplo: 12345678000199">
+							<span id="erro-cnpj" class="msg-erro">CNPJ inválido. Deve ter 14 dígitos numéricos.</span>
+						</div>
+						<div class="contem-placeholder-dados-empresa">
+							<h3>Tipo da conta</h3>
+							<select class="select-persona" id="selectPersona">
+								<option value="ambiental">
+									Ambiental
+								</option>
+								<option value="saude">
+									Saúde
+								</option>
+							</select>
 							<span id="erro-cnpj" class="msg-erro">CNPJ inválido. Deve ter 14 dígitos numéricos.</span>
 						</div>
 
@@ -241,14 +251,16 @@
 			</div>
 
 		</div>
+		<div class="container-botoes">
+			<div class="botao-cadastrar">
+				<h3>CADASTRAR</h3>
+			</div>
+			<div class="botao-cadastrar" onclick="window.location.href='./verUsuario.html'">
+				<h3>VER USUÁRIO</h3>
+			</div>
 
-		<div class="botao-cadastrar">
-			<h3>CADASTRAR</h3>
-		</div>
-		<div class="botao-cadastrar" onclick="window.location.href='./verUsuario.html'">
-			<h3>VER USUÁRIO</h3>
-		</div>
 
+		</div>
 	</div>
 
 

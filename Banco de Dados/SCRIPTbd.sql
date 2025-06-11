@@ -80,6 +80,7 @@ CREATE TABLE Funcionario (
     isGerente boolean,
     idEmpresa INT,
     isFirstLogin boolean,
+		persona VARCHAR(50),
     FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
@@ -215,5 +216,5 @@ INSERT INTO Empresa (cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES
 ("11111111111111", "Soluções tech", "solucoestech@gmail.com", "11111111111");
 
 INSERT INTO Funcionario 
-(nomeFuncionario, emailFuncionario, senha, validarSenha, cargoFuncionario, isGerente, idEmpresa,isFirstLogin) VALUES 
-("Funcionario teste", "funcionario@gmail.com", "ishow123", "ishow123", "Gerente",true, 1,   false);
+(nomeFuncionario, emailFuncionario, senha, validarSenha, cargoFuncionario, isGerente, idEmpresa,isFirstLogin, persona) VALUES 
+("Funcionario teste", "funcionario@gmail.com", "ishow123", "ishow123", "Gerente",true, 1,   false, "saude");

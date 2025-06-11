@@ -5,6 +5,7 @@ import school.sptech.database.model.Log;
 import school.sptech.database.model.dao.LogDao;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class LogService {
 
@@ -16,12 +17,10 @@ public class LogService {
 
     public void salvarLog(String tipo,String content){
         try{
-            LocalDateTime now = LocalDateTime.now();
-
             Log log = new Log(
                     tipo,
                     content,
-                    now
+                    LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
             );
 
             logDao.save(log);

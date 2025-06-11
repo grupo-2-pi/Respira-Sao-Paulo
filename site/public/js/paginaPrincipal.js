@@ -9,8 +9,7 @@ function gerarDadosAleatorios(quantidade, min, max) {
 }
 let escolhaPersona = document.getElementById("switch-persona");
 
-let persona;
-persona = localStorage.getItem('personaSelecionada');
+let persona = sessionStorage.PERSONA;
 
 function switchPersona(persona) {
 	localStorage.setItem('personaSelecionada', persona);
@@ -302,7 +301,9 @@ async function atualizarDash() {
 	// 	return; // evita execução com filtros em branco
 	// }
 	//
-	const persona = localStorage.getItem('personaSelecionada');
+	const persona = sessionStorage.PERSONA;
+
+	console.log(persona);
 
 	buscarDadosDashboard(regiao, ano, mes, (dadosAtual, dadosAnterior) => {
 		atualizarCharts(dadosAtual);
@@ -355,7 +356,7 @@ async function atualizarDash() {
 
 
 function atualizarCharts(data) {
-	const persona = localStorage.getItem('personaSelecionada');
+	const persona = sessionStorage.PERSONA;
 
 	if (persona === 'ambiental') {
 		atualizarGraficosAmbientais(data.graficos);
@@ -574,7 +575,7 @@ function atualizarGraficosSaude(graficos) {
 		}
 	];
 
-	myChart.options.plugins.title.text = 'Evolução Anual de Gastos: 2023 vs. 2024 ℹ️';
+	myChart.options.plugins.title.text = 'Evolução Anual de Gastos: 2022 vs. 2023 ℹ️';
 	myChart.options.scales.y.title.text = 'R$ em milhões';
 	myChart.update();
 
@@ -639,12 +640,5 @@ function atualizarVelocimetro(mesSelecionado) {
 	if (canvasMobile) criarGrafico(canvasMobile);
 }
 
-if (sessionStorage.ID_EMPRESA == 1) {
-	persona = 'saude';
-	escolhaPersona.classList.remove('persona_switcher') 
-	escolhaPersona.classList.add("sumir-switch-persona")
-} else if (sessionStorage.ID_EMPRESA == 2) {
-	persona = "ambiental";
-	escolhaPersona.classList.remove('persona_switcher') 
-	escolhaPersona.classList.add("sumir-switch-persona")
-}
+console.log(sessionStorage.PERSONA);
+console.log(persona)
