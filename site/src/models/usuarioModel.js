@@ -56,8 +56,8 @@ export function cadastrar(nomeCompleto, cpf, cargo, email, cnpj, isGerente) {
 	return executar(instrucaoSql);
 }
 
-export function listarTodos() {
-	const sql = `SELECT * FROM Funcionario;`;
+export function listarTodos(idEmpresa) {
+	const sql = `SELECT * FROM Funcionario WHERE idEmpresa = '${idEmpresa}';`;
 	return executar(sql);
 }
 

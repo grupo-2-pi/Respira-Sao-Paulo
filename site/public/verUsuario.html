@@ -44,7 +44,8 @@
 			</a>
 			<div onclick="showNotifications()" class="contem-alerta">
 				<div class="img-nav-alerta2">
-					<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+					<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+						alt="Imagem de Notificações">
 				</div>
 
 
@@ -76,7 +77,8 @@
 				</a>
 				<div onclick="showNotifications()" class="contem-alerta">
 					<div class="img-nav-alerta2">
-						<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+						<img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png"
+							alt="Imagem de Notificações">
 					</div>
 					<a class="nav-selected" href="./verUsuario.html">
 						Ver Usuários
@@ -226,8 +228,11 @@
 
 		<script>
 			async function filtrar(tipo) {
+				
+				const idEmpresa =sessionStorage.ID_EMPRESA;
+
 				const url = tipo === 'todos'
-					? '/usuarios/listar'
+					? `/usuarios/listar/${idEmpresa}`
 					: `/usuarios/listar/${tipo === 'admin' ? 'Administrador' : 'Usuário'}`;
 
 				try {

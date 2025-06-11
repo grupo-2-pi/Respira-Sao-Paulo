@@ -99,8 +99,9 @@ export async function cadastrar(req, res) {
 
 
 export async function listarTodos(req, res) {
+    const idEmpresa = req.params.idEmpresa;
     try {
-        const resultado = await usuarioModel.listarTodos();
+        const resultado = await usuarioModel.listarTodos(idEmpresa);
         res.json(resultado);
     } catch (erro) {
         console.error("Erro ao listar todos:", erro);

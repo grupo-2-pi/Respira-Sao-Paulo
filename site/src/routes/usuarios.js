@@ -7,7 +7,7 @@ router.post('/autenticar', usuarioController.autenticar);
 
 router.post('/cadastrar', usuarioController.cadastrar);
 
-router.get('/listar', usuarioController.listarTodos);
+router.get('/listar/:idEmpresa', usuarioController.listarTodos);
 
 router.get('/listar/:cargo', usuarioController.listarPorCargo);
 
