@@ -1,47 +1,73 @@
-var empresaModel = require("../models/empresaModel");
+import * as empresaModel from "../models/empresaModel.js";
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+export function cadastrarEmpresa(req, res) {
+
+  var fantasia = req.body.nomeFantasiaServer;
+  var empresa = req.body.nomeEmpresaServer;
+  var email = req.body.emailServer;
+  var cnpj = req.body.cnpjServer;
+  var tel = req.body.telServer;
+
+
+  empresaModel.cadastrar(fantasia, empresa, email, cnpj, tel)
+    .then(
+      function (resultado) {
+        res.json(resultado);
+      }
+    ).catch(
+      function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      }
+    );
+
 }
 
-function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
+export async function listar(req, res) {
+  try {
+    const resultado = await empresaModel.listar();
+    res.json(resultado);
+  } catch (erro) {
+    console.error("Erro ao listar empresas:", erro);
+    res.status(500).json({ erro: "Erro ao listar empresas" });
+  }
 }
 
-function buscarPorId(req, res) {
-  var id = req.params.id;
+export async function deletar(req, res) {
+  const cnpj = req.params.cnpj;
 
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+  if (!cnpj) {
+    return res.status(400).send("CNPJ está undefined!");
+  }
+
+  empresaModel.deletar(cnpj)
+    .then((resultado) => {
+      res.json({ mensagem: "Empresa deletada com sucesso!", resultado });
+    })
+    .catch((erro) => {
+      console.error("Erro ao deletar empresa:", erro);
+      res.status(500).json({ erro: "Erro ao deletar empresa" });
+    });
 }
 
-function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+export function atualizar(req, res) {
+  const { cnpj, fantasia, empresa, email, tel, cnpjOriginal } = req.body;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    if (resultado.length > 0) {
-      res
-        .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
-    } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
-        res.status(201).json(resultado);
-      });
-    }
-  });
+  console.log("Dados recebidos no controller:", req.body);
+
+  if (!fantasia || !empresa || !email || !cnpj || !tel) {
+    return res.status(400).send("Campos obrigatórios não foram enviados.");
+  }
+
+  empresaModel.atualizar(fantasia, empresa, email, cnpj, tel, cnpjOriginal)
+    .then((resultado) => res.json({ mensagem: "Empresa atualizada!", resultado }))
+    .catch((erro) => {
+      console.error("Erro ao atualizar empresa:", erro);
+      res.status(500).json({ erro: "Erro ao atualizar empresa" });
+    });
 }
-
-module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
-  cadastrar,
-  listar,
-};

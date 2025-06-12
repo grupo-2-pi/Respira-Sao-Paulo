@@ -1,15 +1,18 @@
-var express = require("express");
-var router = express.Router();
+import express from 'express';
+import * as usuarioController from '../controllers/usuarioController.js';
 
-var usuarioController = require("../controllers/usuarioController");
+const router = express.Router();
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrar", function (req, res) {
-    usuarioController.cadastrar(req, res);
-})
+router.post('/autenticar', usuarioController.autenticar);
 
-router.post("/autenticar", function (req, res) {
-    usuarioController.autenticar(req, res);
-});
+router.post('/cadastrar', usuarioController.cadastrar);
 
-module.exports = router;
+router.get('/listar/:idEmpresa', usuarioController.listarTodos);
+
+router.get('/listar/:cargo', usuarioController.listarPorCargo);
+
+router.delete('/deletar/:id', usuarioController.deletarFuncionario); 
+
+router.put('/atualizar', usuarioController.atualizarFuncionario);
+
+export default router;

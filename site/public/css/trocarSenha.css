@@ -10,7 +10,7 @@
 
 .contem-troca-senha {
     width: 78vw;
-    height: 70vh;
+    height: 84vh;
     background-color: var(--primary-bg);
     border-radius: 16px;
     box-shadow: var(--shadow);
@@ -27,7 +27,7 @@
 
 .contem-senhas {
     display: flex;
-    height: 45vh;
+    height: 60vh;
     flex-direction: column;
     align-items: center;
     gap: 37px;

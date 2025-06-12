@@ -1,4 +1,9 @@
-AWS_ACCESS_KEY_ID=ASIAYJ3SI57NJD6K7WEW \
-AWS_SECRET_ACCESS_KEY=SHGfGgakbgTWGhkpkRsBxF4I+FhFKLFIqSTnufUk \
-AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEIb//////////wEaCX...continua \
-java -jar Respira-Sao-Paulo/LOGgrupo2/target/LOGgrupo2-1.0-jar-with-dependencies.jar
+#!/bin/bash
+
+docker run --name respira-java -p 8080:8080 -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+	AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+	AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN} \
+	SLACK_HOOK_SAUDE=${SLACK_HOOK_SAUDE} \
+	SLACK_HOOK_AMBIENTAL=${SLACK_HOOK_AMBIENTAL} \
+	DB_USER=${DB_USER} \
+	DB_PASSWORD=${DB_PASSWORD} furqas/respira-java-data:latest

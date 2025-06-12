@@ -1,27 +1,31 @@
-var database = require("../database/config");
+import { executar } from "../database/config.js";
 
-function buscarPorId(id) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE id = '${id}'`;
 
-  return database.executar(instrucaoSql);
+export function cadastrar(fantasia, empresa, email, cnpj, tel) {
+  const instrucaoSql = `INSERT INTO Empresa (nomeFantasia, cnpj, nomeEmpresa, emailContato, telefoneContato) VALUES ('${fantasia}', '${cnpj}', '${empresa}', '${email}', '${tel}')`;
+
+  return executar(instrucaoSql);
 }
 
-function listar() {
-  var instrucaoSql = `SELECT id, razao_social, cnpj, codigo_ativacao FROM empresa`;
+export function listar() {
+  const instrucaoSql = 'SELECT nomeFantasia, cnpj, nomeEmpresa, emailContato, telefoneContato FROM Empresa';
 
-  return database.executar(instrucaoSql);
+  return executar(instrucaoSql);
 }
 
-function buscarPorCnpj(cnpj) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
+export function deletar(cnpj) {
+  const instrucaoSql = `DELETE FROM Empresa WHERE cnpj = ${cnpj};`;
 
-  return database.executar(instrucaoSql);
+  return executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+export function atualizar(fantasia, empresa, email, cnpj, tel, cnpjOriginal) {
+  const instrucaoSql = `
+    UPDATE Empresa
+    SET nomeFantasia = '${fantasia}', cnpj = '${cnpj}', nomeEmpresa = '${empresa}', emailContato = '${email}', telefoneContato = '${tel}'
+    WHERE cnpj = '${cnpj}';
+  `;
+  
+  return executar(instrucaoSql);
 
-  return database.executar(instrucaoSql);
 }
-
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };

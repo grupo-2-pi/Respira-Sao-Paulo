@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/verEmpresas.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/cadastroPersona.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="./assets/logo-sem-bg.svg">
+  <script src="./js/index.js"></script>
+
+  <title>Visualizar Empresas</title>
+</head>
+
+<body>
+
+  <!-- MENU MOBILE -->
+
+  <div class="mobile-nav-bar" id="mobile_nav_bar" style="display: flex;">
+
+    <div class="logo-nav-container" onclick="goToHome()">
+      <img id="id-logo-nav-bar" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+    </div>
+
+
+
+
+    <!-- NAV BAR DESKTOP -->
+
+    <div class="nav-bar-links-container" style="display: none;">
+
+      <a href="./paginaPrincipal.html">
+        Página Inicial
+      </a>
+      <a onclick="goToComentarios()">
+        Comentários
+      </a>
+      <a onclick="goToCadastrar()">
+        Cadastrar
+      </a>
+    
+  
+
+
+
+
+    </div>
+    <div onclick="showUserOptions()" class="user-container" style="display: none;">
+      <div class="user-infos">
+        <img id="id-img-user options" width="50%" src="./assets/img-user.png" alt="Imagem de Usuário">
+        <span>Rosim</span>
+      </div>
+
+
+      <div class="user-dropdown-options">
+        <button onclick="goToPersonal()">Dados Pessoais</button>
+
+        <a href="./paginaPrincipal.html">
+          Página Inicial
+        </a>
+        <a onclick="goToComentarios()">
+          Comentários
+        </a>
+        <a onclick="goToCadastrar()">
+          Cadastrar
+        </a>
+        <div onclick="showNotifications()" class="contem-alerta">
+          <div class="img-nav-alerta2">
+            <img id="id-img-nav-alerta" width="40%" src="./assets/img-notificacao.png" alt="Imagem de Notificações">
+          </div>
+          <a class="nav-selected" href="./verUsuario.html">
+            Ver Usuários
+          </a>
+
+        </div>
+
+
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <div class="slider round"></div>
+          </label>
+          <span id="theme-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-brightness-high" viewBox="0 0 16 16">
+              <path
+                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+            </svg>
+          </span>
+        </div>
+        <button id="disconectButton" onclick="disconnectAccount()">Desconectar</button>
+      </div>
+    </div>
+    <!-- FIM NAV BAR -->
+
+    <button id="id-button-nav-bar" onclick="openSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="currentColor"
+        class="bi bi-layout-text-window-reverse" viewBox="0 0 16 16">
+        <path
+          d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+        <path
+          d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM2 1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1zM1 4v10a1 1 0 0 0 1 1h2V4zm4 0v11h9a1 1 0 0 0 1-1V4z" />
+      </svg>
+    </button>
+
+    <div id="sideBar" class="side-bar">
+      <div class="img-side-bar" onclick="goToHome()">
+        <img width="40%" src="./assets/logo-sem-bg.svg" alt="Logo da Respira São Paulo">
+      </div>
+      <div class="side-bar-links-container">
+        <a onclick="goToPaginaInicial()">
+          Página Inicial
+        </a>
+        <a onclick="goToComentarios()">
+          Comentários
+        </a>
+        <a onclick="goToCadastrar()">
+          Cadastrar
+        </a>
+        <a onclick="goToPerfil()">
+          Perfil
+        </a>
+        <a onclick="goToSair()">
+          Sair
+        </a>
+        <div onmouseenter="showUserOptions()" class="user-container" style="display: none;">
+          <div class="user-infos">
+            <img id="id-img-user options" width="40%" src="./assets/img-user.png" alt="Imagem de Usuário">
+          </div>
+
+          <div class="user-dropdown-options" onmouseleave="hideUserOptions()">
+            <button onclick="goToPersonal()">Dados Pessoais</button>
+
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="theme-toggle">
+                <input type="checkbox" id="theme-toggle">
+                <div class="slider round"></div>
+              </label>
+              <span id="theme-label">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-brightness-high" viewBox="0 0 16 16">
+                  <path
+                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+              </span>
+            </div>
+            <button id="disconectButton">Desconectar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="user-view">Visualizar Empresas</h1>
+
+  <!-- Botões de filtro
+  <html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de Empresas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    </style>
+  </head> -->
+
+
+  <body>
+
+    <div class="topo">
+      <div class="filtros">
+
+      </div>
+
+    </div>
+
+    <div id="lista_empresas" class="lista-empresas"></div>
+
+
+    <div id="modal-edicao" class="modal hidden">
+      <div class="modal-content">
+        <h2>Editar Empresa</h2>
+
+        <label for="input-nome-fantasia">Nome Fantasia:</label>
+        <input type="text" id="input-nome-fantasia" required>
+
+        <label for="input-cnpj">CNPJ:</label>
+        <input type="text" id="input-cnpj" required>
+
+        <label for="input-razaoSocial">Razão Social:</label>
+        <input type="text" id="input-razaoSocial" required>
+
+        <label for="input-emailContato">E-mail de Contato:</label>
+        <input type="email" id="input-emailContato" required>
+
+        <label for="input-telContato">Telefone de Contato:</label>
+        <input type="tel" id="input-telContato" required>
+
+        <div class="modal-buttons">
+          <button id="salvar-edicao">Salvar</button>
+          <button id="cancelar-edicao" type="button">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-confirmar-exclusao" class="modal hidden">
+      <div class="modal-content">
+        <h2>Confirmar Exclusão</h2>
+        <p>Tem certeza que deseja excluir esta empresa?</p>
+        <div class="modal-buttons">
+          <button id="confirmar-exclusao" class="btn-danger">Excluir</button>
+          <button id="cancelar-exclusao">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast"
+      class="hidden fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300 opacity-0 z-50">
+    </div>
+
+
+    <script>
+      function listarEmpresas() {
+        fetch("/empresas/listar").then(function (resposta) {
+          if (resposta.ok) {
+            if (resposta.status == 204) {
+              var lista = document.getElementById("lista_empresas");
+              var mensagem = document.createElement("span");
+              mensagem.innerHTML = "Nenhuma empresa encontrada.";
+              lista.appendChild(mensagem);
+              throw "Nenhuma empresa encontrada!";
+            }
+
+            resposta.json().then(function (resposta) {
+              console.log("Empresas recebidas: ", JSON.stringify(resposta));
+
+              var lista = document.getElementById("lista_empresas");
+              lista.innerHTML = "";
+
+              for (let i = 0; i < resposta.length; i++) {
+                var empresa = resposta[i];
+
+                var nomeFantasia = empresa.nomeFantasia;
+                var cnpj = empresa.cnpj;
+                var nomeEmpresa = empresa.nomeEmpresa;
+                var emailContato = empresa.emailContato;
+                var telefoneContato = empresa.telefoneContato;
+
+                var cardEmpresa = document.createElement("div");
+                var header = document.createElement("div");
+                var body = document.createElement("div");
+
+                var nomeElem = document.createElement("h3");
+                var cnpjElem = document.createElement("p");
+                cnpjElem.id = "id-cnpj";
+                var razaoElem = document.createElement("p");
+                var emailElem = document.createElement("p");
+                var telefoneElem = document.createElement("p");
+
+                let botoes = document.createElement("div");
+                botoes.classList.add("botoes-empresa");
+
+                let btnEditar = document.createElement("button");
+                btnEditar.textContent = "Editar";
+
+                btnEditar.onclick = (function (empresaAtual) {
+                  return function () {
+                    abrirModalEdicao(empresaAtual);
+                  };
+                })(empresa);
+
+                let btnExcluir = document.createElement("button");
+                btnExcluir.textContent = "Excluir";
+                btnExcluir.onclick = function () {
+                  deletarEmpresa(cnpj);
+                };
+
+                nomeElem.innerHTML = nomeFantasia;
+                cnpjElem.innerHTML = `<strong>CNPJ:</strong> ${cnpj}`;
+                razaoElem.innerHTML = `<strong>Razão Social:</strong> ${nomeEmpresa}`;
+                emailElem.innerHTML = `<strong>Email:</strong> ${emailContato}`;
+                telefoneElem.innerHTML = `<strong>Telefone:</strong> ${telefoneContato}`;
+
+                cardEmpresa.classList.add("empresa-card");
+                header.classList.add("empresa-header");
+                body.classList.add("empresa-body");
+
+                header.appendChild(nomeElem);
+                body.appendChild(cnpjElem);
+                body.appendChild(razaoElem);
+                body.appendChild(emailElem);
+                body.appendChild(telefoneElem);
+
+                botoes.appendChild(btnEditar);
+                botoes.appendChild(btnExcluir);
+
+                cardEmpresa.appendChild(header);
+                cardEmpresa.appendChild(body);
+                cardEmpresa.appendChild(botoes);
+
+                lista.appendChild(cardEmpresa);
+              }
+            });
+
+          } else {
+            throw ("Houve um erro na API!");
+          }
+        }).catch(function (resposta) {
+          console.error(resposta);
+        });
+      }
+
+      async function deletarEmpresa(cnpj) {
+        const modal = document.getElementById("modal-confirmar-exclusao");
+        const btnConfirmar = document.getElementById("confirmar-exclusao");
+        const btnCancelar = document.getElementById("cancelar-exclusao");
+
+        let cnpjParaDeletar = cnpj;
+
+        modal.classList.remove("hidden");
+
+        return new Promise((resolve) => {
+          btnCancelar.onclick = () => {
+            modal.classList.add("hidden");
+            resolve();
+          };
+
+          btnConfirmar.onclick = async () => {
+            modal.classList.add("hidden");
+
+            try {
+              const resposta = await fetch(`/empresas/deletar/${cnpjParaDeletar}`, {
+                method: 'DELETE'
+              });
+
+              if (resposta.ok) {
+                listarEmpresas();
+                mostrarToast("Empresa excluída com sucesso!", "success");
+              } else {
+                const erro = await resposta.text();
+                throw new Error(erro);
+              }
+            } catch (erro) {
+              console.error("Erro ao deletar empresa:", erro);
+              mostrarToast("Erro ao deletar empresa.", "error");
+            }
+            resolve();
+          };
+        });
+      }
+
+      function capitalizarPalavras(texto) {
+        return texto
+          .toLowerCase()
+          .split(" ")
+          .filter(palavra => palavra.length > 0)
+          .map(palavra => palavra[0].toUpperCase() + palavra.slice(1))
+          .join(" ");
+      }
+
+      function abrirModalEdicao(empresa) {
+        const modal = document.getElementById("modal-edicao");
+        const inputNomeFantasia = document.getElementById("input-nome-fantasia");
+        const inputCnpj = document.getElementById("input-cnpj");
+        const inputRazaoSocial = document.getElementById("input-razaoSocial");
+        const inputEmailContato = document.getElementById("input-emailContato");
+        const inputTelContato = document.getElementById("input-telContato");
+
+        // Preencher os campos com os valores da empresa clicada
+        inputNomeFantasia.value = empresa.nomeFantasia;
+        inputCnpj.value = empresa.cnpj;
+        inputRazaoSocial.value = empresa.nomeEmpresa;
+        inputEmailContato.value = empresa.emailContato;
+        inputTelContato.value = empresa.telefoneContato;
+
+        // Armazenar o CNPJ original em um campo oculto
+        modal.dataset.cnpjOriginal = empresa.cnpj;
+
+        // Mostrar o modal
+        modal.classList.remove("hidden");
+
+        // Configurar o botão Salvar
+        document.getElementById("salvar-edicao").onclick = function () {
+          salvarEdicao(empresa);
+        };
+
+        document.getElementById("cancelar-edicao").onclick = function () {
+          fecharModalEdicao();
+        };
+      }
+
+      function fecharModalEdicao() {
+        const modal = document.getElementById("modal-edicao");
+        modal.classList.add("hidden");
+      }
+
+      async function salvarEdicao(empresaOriginal) {
+        const modal = document.getElementById("modal-edicao");
+        const cnpjOriginal = modal.dataset.cnpjOriginal;
+
+        const dadosAtualizados = {
+          cnpj: document.getElementById("input-cnpj").value,
+          fantasia: document.getElementById("input-nome-fantasia").value,
+          empresa: document.getElementById("input-razaoSocial").value,
+          email: document.getElementById("input-emailContato").value,
+          tel: document.getElementById("input-telContato").value
+        };
+          console.log('dados sendo enviados:', dadosAtualizados);
+
+        try {
+          const resposta = await fetch('/empresas/atualizar', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosAtualizados, cnpjOriginal)
+            
+          });
+            
+          if (resposta.ok) {
+            mostrarToast("Empresa atualizada com sucesso!", "success");
+            modal.classList.add("hidden");
+            listarEmpresas();
+          
+          } else {
+            const erro = await resposta.text();
+            mostrarToast(erro || "Erro ao atualizar empresa", "error");
+          }
+
+        } catch (erro) {
+          console.error("Erro ao atualizar empresa:", erro);
+          mostrarToast("Erro ao processar requisição", "error");
+        }
+      }
+
+
+      function mostrarToast(mensagem, tipo = 'success') {
+        const toast = document.getElementById("toast");
+
+        // Define a mensagem e as classes de estilo
+        toast.textContent = mensagem;
+        toast.className = `fixed bottom-5 right-5 text-white px-4 py-2 rounded shadow-lg z-50 ${tipo}`;
+        toast.classList.remove('hidden');
+        toast.classList.add('show');
+        toast.style.opacity = "1";
+
+        // Após 3 segundos, inicia o desaparecimento
+        setTimeout(() => {
+          toast.style.opacity = "0";
+
+          // Após o fade (300ms), esconde o toast completamente
+          setTimeout(() => {
+            toast.classList.remove('show');
+            toast.classList.add('hidden');
+          }, 300);
+        }, 3000);
+      }
+
+
+    </script>
+
+  </body>
+
+</html>
+
+</script>
+
+<script>
+  window.onload = function () {
+    listarEmpresas();
+  }
+</script>
+
+<script src="./js/script.js"></script>
+<script src="./js/navegarSite.js"></script>
+
+</body>
+
+</html>

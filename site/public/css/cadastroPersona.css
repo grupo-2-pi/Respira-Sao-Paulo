@@ -3,175 +3,270 @@
 /*MAIN*/
 
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--primary-bg);
-    align-items: center;
-    gap: 3vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	background-color: var(--primary-bg);
+	align-items: center;
+	gap: 3vh;
 }
 
 /*FUNCIONÁRIO*/
 
 .dados-funcionario {
-    margin-top: 3vh;
-    width: 80vw;
-    height: auto;
+	margin-top: 3vh;
+	width: 80vw;
+	height: auto;
 }
 
 .contem-tudo-dados {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .contem-placeholder {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 12px;
 }
 
 .titulo-pagina {
-    font-size: 0.89rem !important;
-    color: var(--title-text) !important;
-    margin-top: -24px;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
+	font-size: 0.89rem !important;
+	color: var(--title-text) !important;
+	margin-top: -24px;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 10px;
 }
 
 .contem-placeholder-dados {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.89rem !important;
-    color: var(--title-text) !important;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.89rem !important;
+	color: var(--title-text) !important;
 
 }
 
 .place-holder {
-    border: 1px solid #292929;
-    border-radius: 5px;
+	border: 1px solid #292929;
+	border-radius: 5px;
 }
 
 /*LINHA DIVISÓRIA*/
 
 .linha-divisoria {
-    width: 65vw;
-    height: 0.3vw;
-    background-color: black;
-    border-radius: 5px;
+	width: 65vw;
+	height: 0.3vw;
+	background-color: black;
+	border-radius: 5px;
 }
 
 /*EMPRESA*/
 
 .dados-empresa {
-    width: 80vw;
-    height: auto;
+	width: 80vw;
+	height: auto;
 }
 
 .contem-tudo-dados-empresa {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .contem-placeholder-empresa {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 
 .contem-placeholder-dados-empresa {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.89rem !important;
-    color: var(--title-text) !important;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.89rem !important;
+	color: var(--title-text) !important;
 
 }
 
 .contem-placeholder-dados-empresa-checkbox {
-    display: flex;
-    flex-direction: line;
-    font-size: 0.89rem !important;
-    color: var(--title-text) !important;
+	display: flex;
+	flex-direction: line;
+	font-size: 0.89rem !important;
+	color: var(--title-text) !important;
 }
-.contem-placeholder-dados-empresa-checkbox:hover{
-    cursor: pointer;
+
+.contem-placeholder-dados-empresa-checkbox:hover {
+	cursor: pointer;
 }
 
 .botao-cadastrar {
-    display: flex;
-    width: 32vw;
-    border-radius: 25px;
-    height: 3vh;
-    background-color: var(--second-btn-bg);
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 10px;
+	display: flex;
+	width: 32vw;
+	border-radius: 25px;
+	height: 3vh;
+	background-color: var(--second-btn-bg);
+	align-items: center;
+	justify-content: center;
+	color: white;
+	padding: 10px;
 }
 
-.botao-cadastrar:hover{
-    cursor:pointer;
-    opacity: 90%;
+.botao-cadastrar:hover {
+	cursor: pointer;
+	opacity: 90%;
 }
 
 /*DESKTOP*/
 
 @media (min-width: 1024px) {
-    
-    input{
-        padding: 6px;
-    }
 
-    .container{
-        gap: 5vh;
-        padding: 20px 0 20px 0;
-    }
+	input {
+		padding: 6px;
+	}
 
-    .dados-funcionario{
-        margin-top: 7vh;
-    }
+	.container {
+		gap: 5vh;
+		padding: 20px 0 20px 0;
+	}
 
-    .contem-placeholder {
-        gap: 5vh;
-    }
+	.dados-funcionario {
+		margin-top: 7vh;
+	}
 
-    .contem-1 {
-        display: flex;
-        justify-content: center;
-        gap: 5vw;
-    }
+	.contem-placeholder {
+		gap: 5vh;
+	}
 
-    .contem-2 {
-        display: flex;
-        justify-content: center;
-        gap: 5vw;
-    }
+	.contem-1 {
+		display: flex;
+		justify-content: center;
+		gap: 5vw;
+	}
 
-    .contem-placeholder-dados {
-        width: 30vw;
-    }
+	.contem-2 {
+		display: flex;
+		justify-content: center;
+		gap: 5vw;
+	}
 
-    .contem-placeholder-empresa {
-        gap: 7vh;
-    }
+	.contem-placeholder-dados {
+		width: 30vw;
+	}
 
-    .contem-placeholder-dados-empresa{
-        width: 30vw;
-    }
+	.contem-placeholder-empresa {
+		gap: 7vh;
+	}
 
-    .contem-3{
-        display: flex;
-        justify-content: center;
-        gap: 5vw;        
-    }
+	.contem-placeholder-dados-empresa {
+		width: 30vw;
+	}
 
-    .linha-divisoria{
-        height: 0.2vh;
-    }
+	.contem-3 {
+		display: flex;
+		justify-content: center;
+		gap: 5vw;
+	}
 
-    .botao-cadastrar{
-        width: 15vw;
-    }
+	.contem-extra {
+		display: flex;
+		justify-content: left;
+		margin-left: 10%;
+		gap: 5vw;
+	}
 
+	.linha-divisoria {
+		height: 0.2vh;
+	}
+
+	.botao-cadastrar {
+		width: 15vw;
+	}
+}
+
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease;
+}
+
+#overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+#modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.8);
+	background: #fff;
+	padding: 20px;
+	z-index: 1001;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	border-radius: 10px;
+	background-color: var(--primary-bg);
+	width: 40%;
+	border: 1px solid var(--title-text);
+	height: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	color: var(--title-text);
+}
+
+#modal span {
+	color: var(--primary-green);
+}
+
+.select-persona {
+	border-radius: 6px;
+	border: solid 1px var(--title-text);
+	padding: 10px;
+	background-color: white;
+}
+
+.container-botoes {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+#modal p {
+	font-size: medium;
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#modal button {
+	background-color: var(--title-text);
+	color: var(--primary-bg);
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	width: 40%;
+	height: 18%;
+	align-self: flex-end;
+}
+
+#modal button:hover {
+	cursor: pointer;
+	opacity: 80%;
+}
+
+
+#modal.active {
+	opacity: 1;
+	visibility: visible;
+	transform: translate(-50%, -50%) scale(1);
 }

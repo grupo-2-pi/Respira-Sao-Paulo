@@ -1,0 +1,1 @@
+//classe usada para validar o usuário entre as telas e limpar a sessão quando se desconetar.
